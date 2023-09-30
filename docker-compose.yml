@@ -1,6 +1,21 @@
 version: '3.3'
 services:
   web:
-    image: tubes-1:latest
+    hostname: web_wbd_1
+    image: tubes-wbd-1:latest
+    env_file: .env
     ports:
       - 8008:80
+    volumes:
+      - ./src:/var/www/html
+    build:
+      context: .
+      dockerfile: Dockerfile
+  db:
+    hostname: db_wbd_1
+    image: mysql:latest
+    env_file: .env
+    ports:
+      - 3307:3306
+    volumes:
+      - ./mysql:/var/lib/mysql
