@@ -18,9 +18,6 @@ class Router{
         if(strpos($route, '?') !== false){
             throw new Exception("Route cannot contain question marks");
         }
-        if(isset($this->routes[$route])){
-            throw new Exception("Route is defined twice: " . $route);
-        }
     }
 
     public function handleRoute(){

@@ -8,7 +8,6 @@ class UserModel{
     private $database;
 
     public function __construct(){
-        echo "UserModel is loaded!<br>";
         $this->database = new Database();
     }
 
