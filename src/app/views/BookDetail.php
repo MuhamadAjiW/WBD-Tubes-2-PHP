@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/bookdetail.css" />
+    <link rel="stylesheet" href="../../public/css/bookdetail.css" />
 </head>
 <body>
     <div class="top-wrapper">
-    <img class="blur-bg" src="images/book_cover.jpeg">
+    <img class="blur-bg" src="../../storage/images/book_cover.jpeg">
         <div class="book-info">
             <div class="book-cover">
-                <img class="book-cover-image" src="images/book_cover.jpeg">
+                <img class="book-cover-image" src="../../storage/images/book_cover.jpeg">
             </div>
             <div class ="book-contents">
                 <h1 class='book-genre'>Romance</h1>
@@ -133,43 +133,3 @@
         </script>
 </body>
 </html>
-<div class="modal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <span id="close-modal" class="close">&times;</span>
-            <h5 class="modal-title">Submit Review</h5>
-        </div>
-        <div class="modal-body">
-            <input type="text" name="reviewer_name" class="reviewer-form" placeholder="Enter Your Name"/>
-            <textarea type="text" name="reviewer_text" class="reviewer-form" id="form-review" placeholder="Enter Your Review"></textarea>
-            <button type="button" class="submit-review-btn">Submit</button>
-        </div>
-    </div>
-</div>
-
-<script>
-    // Get modal
-    var modal = document.getElementsByClassName("modal")[0];
-    
-    // Get open modal button
-    var openbtn = document.getElementById("review-button");
-
-    // Get close button
-    var closebtn = document.getElementsByClassName("close")[0];
-
-    // Get submit button
-    var submitbtn = document.getElementsByClassName("submit-review-btn")[0];
-    
-    openbtn.onclick = function() {
-        modal.style.display = "block";
-    }
-
-    closebtn.onclick = function() {
-        modal.style.display = "none";
-    }
-
-    submitbtn.onclick = function() {
-        modal.style.display = "none";
-    }
-    
-</script>

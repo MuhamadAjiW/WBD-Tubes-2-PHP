@@ -1,53 +1,22 @@
 <?php
 
-class App{
-    private $controller = 'Error404';
-    private $method = 'index';
-    private $params = [];
+namespace app\core;
 
-    private $database;
+class App{
+    private $router;
 
     public function __construct(){
-        echo "Halo halo ini app<br>";
-        require_once 'app/controllers/' . $this->controller . '.php';        
-        $this->handleRoute();
-    }
-    
-    public function handleRoute(){
-        $url = $this->parseUrl();
-        
-        if($url){
-            if($url[0] === ''){
-                $this->controller = 'Home';
-                require_once 'app/controllers/' . $this->controller . '.php';
-            }
-            else if(file_exists('app/controllers/' . $url[0] . '.php')){
-                $this->controller = $url[0];
-                require_once 'app/controllers/' . $this->controller . '.php';
-            }
-            
-            $this->controller = new $this->controller;
-            $this->params = array_values($url);
-            unset($url[0]);
-
-            if(isset($url[1])){
-                if(method_exists($this->controller, $url[1])){
-                    $this->method = $url[1];
-                    unset($url[1]);
-                }
-            }
-        }
-    
-        call_user_func_array([$this->controller, $this->method], $this->params);
+        $this->router = new Router();
+        $this->initRoutes();
+        $this->router->handleRoute();
     }
 
-    public function parseUrl(){
-        if(isset($_SERVER['REQUEST_URI'])){
-            $url = trim($_SERVER['REQUEST_URI'], '/');
-            $url = filter_var($url, FILTER_SANITIZE_URL);
-            $url = explode('/', $url);
-            return $url;
-        }
+    public function initRoutes(){
+        $this->router->addRoute('/', 'app/controllers/Home', 'index', ['GET']);
+        $this->router->addRoute('/home', 'app/controllers/Home', 'index', ['GET']);
+        $this->router->addRoute('/login', 'app/controllers/Login', 'index', ['GET']);
+        $this->router->addPost('/login', 'app/controllers/Login', 'login');
+        $this->router->addRoute('/detail', 'app/controllers/BookDetail', 'index', ['GET']);
     }
 }
 ?>

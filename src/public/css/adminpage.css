@@ -1,0 +1,223 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Rubik, sans-serif;
+    font-size: 18px;
+}
+
+.main-content {
+    width: 86%;
+    float: left;
+}
+
+.sidebar, .sidebar-header, .sidebar-body {
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.sidebar {
+    width: 14%;
+    height: 100vh;
+    background-color: #3B3131;
+    gap: 2rem;
+    float: left;
+}
+
+.sidebar-header {
+    align-items: center;
+    justify-content: left;
+    margin-top: 40px;
+}
+
+.user-profile-img {
+    width: 120px;
+    height: auto;
+}
+
+.sidebar-body {
+    gap: 1rem;
+    width: 100%;
+}
+
+.section-sidebar {
+    padding-left: 20px;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: 0.75rem;
+    height: 50px;
+}
+
+.section-sidebar:hover {
+    background-color: #544343;
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+#books-icon {
+    font-size: 32px;
+}
+
+#user-icon {
+    font-size: 32px;
+}
+
+#comment-icon {
+    font-size: 32px;
+}
+
+#category-icon {
+    font-size: 32px;
+}
+
+.sidebar-text {
+    font-size: 32px;
+}
+
+h2 {
+    font-family: Rubik, sans-serif;
+    font-size: 35px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.page-header {
+    margin-top: 20px;
+}
+
+table {
+    align-items: center;
+    width: 90%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    box-shadow: 0 2px 15px rgba(64, 64, 64, .7);
+    border-radius: 12px 12px 0 0;
+    margin-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+td,
+th {
+    padding: 10px 16px;
+    text-align: center;
+}
+
+th {
+    background-color: #d7b20d;
+    color: #fafafa;
+    font-family: 'Rubik', Sans-serif;
+    font-weight: bold;
+    border: 2px solid rgb(249, 242, 39);
+}
+
+tr {
+    width: 100%;
+    background-color: #fafafa;
+    font-family: 'Rubik', sans-serif;
+  }
+
+tr:nth-child(even) {
+    background-color: #eeeeee;
+}
+
+.admin-buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 5px;
+}
+
+#edit-button {
+    margin: 0;
+    background-color: rgb(18, 151, 247);
+    height: 30px;
+    color: white;
+}
+
+#delete-button {
+    margin: 0;
+    background-color: rgb(240, 61, 41);
+    height: 30px;
+    color: white;
+}
+
+#edit-button:active {
+    transform: translateY(4px);
+}
+
+#delete-button:active {
+    transform: translateY(4px);
+}
+
+.delete-container {
+    padding: 16px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.delete-modal {
+    display: none;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 250px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4);
+    overflow: auto;
+}
+
+.delete-modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto;
+    border: 1px solid #888;
+    width: 60%; 
+    height: 20%;
+}
+
+.delete-modal-btn {
+    float: left;
+    width: 50%;
+    border: none;
+    height: 50px;
+    cursor: pointer;
+    font-family: Rubik, sans-serif;
+    font-weight: 700;
+    color: white;
+    opacity: 0.8;
+}
+
+.delete-modal-btn:hover {
+    opacity: 1;
+}
+
+#cancel-delete-btn {
+    background-color: #ccc;
+}
+
+#delete-book-btn {
+    background-color: #f44336;
+}
+
+.delete-modal-title {
+    margin: 0;
+    font-family: Rubik, sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.delete-modal-text {
+    margin: 0;
+    font-family: Rubik, sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+}
