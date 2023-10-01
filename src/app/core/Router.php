@@ -2,7 +2,6 @@
 
 namespace app\core;
 
-use app\controllers\Home;
 use Exception;
 
 class Router{
@@ -37,6 +36,7 @@ class Router{
                 $instance->$handler_func();
             }
             else{
+                header("HTTP/1.0 405 Not Allowed");
                 //TODO: should be 405 method not allowed
                 $handler_class = 'app\\controllers\\Error404';
                 $handler_func = 'index';

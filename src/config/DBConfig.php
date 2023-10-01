@@ -2,9 +2,6 @@
 
 namespace config;
 
-use Exception;
-use PDO;
-
 class DBConfig{
     public static function getHost() {
         return getenv('POSTGRES_HOST');
