@@ -208,6 +208,10 @@ tr:nth-child(even) {
     background-color: #f44336;
 }
 
+#delete-user-btn {
+    background-color: #f44336;
+}
+
 .delete-modal-title {
     margin: 0;
     font-family: Rubik, sans-serif;

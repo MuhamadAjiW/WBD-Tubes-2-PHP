@@ -1,62 +1,56 @@
 <div class="page-container">
     <div class="page-header">
-        <h2>List of all Users</h2>
+        <h2>List of all Books</h2>
 
     </div>
-    <table class="book-table">
+    
+    <table class="user-table">
         <thead>
             <tr>
-            <th class="book-column">Book ID</th>
-            <th class="book-column">Title</th>
-            <th class="book-column">Release date</th>
-            <th class="book-column">Author</th>
-            <th class="book-column" colspan="2">Action</th>
+            <th class="user-column">Username</th>
+            <th class="user-column">Email</th>
+            <th class="user-column">Name</th>
+            <th class="user-column">Bio</th>
+            <th class="user-column" colspan="2">Action</th>
             </tr>
         </thead>
         <tr>
-            <td>1</td>
-            <td>Aku Suka Kamu</td>
-            <td>24 Maret 1998</td>
+            <td>Senvis</td>
+            <td>13521127@std.stei.itb.ac.id</td>
             <td>Marcel Ryan Antony</td>
+            <td>Suka kulineran gann</td>
             <td><button class="admin-buttons" id="edit-button" style="height:30px">Edit</button>
             <td><button class="admin-buttons" id="delete-button" style="height:30px">Delete</button>            
         </tr>
         <tr>
-            <td>2</td>
-            <td>Aku Suka Kamu</td>
-            <td>24 Maret 1998</td>
+            <td>Senvis</td>
+            <td>13521127@std.stei.itb.ac.id</td>
             <td>Marcel Ryan Antony</td>
+            <td>Suka kulineran gann</td>
             <td><button class="admin-buttons" id="edit-button" style="height:30px">Edit</button>
             <td><button class="admin-buttons" id="delete-button" style="height:30px">Delete</button>            
         </tr>
         <tr>
-            <td>3</td>
-            <td>Aku Suka Kamu</td>
-            <td>24 Maret 1998</td>
+            <td>Senvis</td>
+            <td>13521127@std.stei.itb.ac.id</td>
             <td>Marcel Ryan Antony</td>
+            <td>Suka kulineran gann</td>
             <td><button class="admin-buttons" id="edit-button" style="height:30px">Edit</button>
             <td><button class="admin-buttons" id="delete-button" style="height:30px">Delete</button>            
         </tr>
-        <tr>
-            <td>4</td>
-            <td>Aku Suka Kamu</td>
-            <td>24 Maret 1998</td>
-            <td>Marcel Ryan Antony</td>
-            <td><button class="admin-buttons" id="edit-button" style="height:30px">Edit</button>
-            <td><button class="admin-buttons" id="delete-button" style="height:30px">Delete</button>            
-        </tr>
+        
     </table>
 </div>
 
 <div class="delete-modal">
     <div class="delete-modal-content">
         <div class="delete-container">
-            <h1 class = "delete-modal-title">Delete Book</h1>
-            <p class = "delete-modal-text">Are you sure you want to delete this book?</p>
+            <h1 class = "delete-modal-title">Delete User</h1>
+            <p class = "delete-modal-text">Are you sure you want to delete this user?</p>
 
             <div class="delete-modal-buttons">
                 <button type="button" class="delete-modal-btn" id="cancel-delete-btn">Cancel</button>
-                <button type="button" class="delete-modal-btn" id="delete-book-btn">Delete</button>
+                <button type="button" class="delete-modal-btn" id="delete-user-btn">Delete</button>
             </div>
         </div>
     </div>
@@ -70,7 +64,7 @@
     var openmodalbtn = document.getElementById("delete-button");
 
     // Get the delete button
-    var deletebtn = document.getElementById("delete-book-btn");
+    var deletebtn = document.getElementById("delete-user-btn");
 
     // Get the cancel button
     var cancelbtn = document.getElementById("cancel-delete-btn");

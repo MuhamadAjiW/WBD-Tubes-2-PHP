@@ -8,7 +8,7 @@
             <i class="fas fa-book" id="books-icon"></i><span class="sidebar-text" onclick="showBooks()">Books</span>
         </div>
         <div class="section-sidebar">
-            <i class="fas fa-user" id="user-icon"></i><span class="sidebar-text">Users</span>
+            <i class="fas fa-user" id="user-icon"></i><span class="sidebar-text" onclick="showUsers()">Users</span>
         </div>
         <div class="section-sidebar">
             <i class="fas fa-comment" id="comment-icon"></i><span class="sidebar-text">Reviews</span>
