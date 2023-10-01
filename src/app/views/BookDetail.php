@@ -133,3 +133,44 @@
         </script>
 </body>
 </html>
+
+<div class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <span id="close-modal" class="close">&times;</span>
+            <h5 class="modal-title">Submit Review</h5>
+        </div>
+        <div class="modal-body">
+            <input type="text" name="reviewer_name" class="reviewer-form" placeholder="Enter Your Name"/>
+            <textarea type="text" name="reviewer_text" class="reviewer-form" id="form-review" placeholder="Enter Your Review"></textarea>
+            <button type="button" class="submit-review-btn">Submit</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Get modal
+    var modal = document.getElementsByClassName("modal")[0];
+    
+    // Get open modal button
+    var openbtn = document.getElementById("review-button");
+
+    // Get close button
+    var closebtn = document.getElementsByClassName("close")[0];
+
+    // Get submit button
+    var submitbtn = document.getElementsByClassName("submit-review-btn")[0];
+    
+    openbtn.onclick = function() {
+        modal.style.display = "block";
+    }
+
+    closebtn.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    submitbtn.onclick = function() {
+        modal.style.display = "none";
+    }
+    
+</script>
