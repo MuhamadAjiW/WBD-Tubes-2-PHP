@@ -7,7 +7,6 @@ function autoLoad($class_name){
     $class_file = str_replace('\\', '/', $class_name);
     $class = $class_path . '/' . $class_file . '.php';
     
-    echo "autoloading: " . $class_name . "<br>";
     if(file_exists($class)){
         require_once($class);
     }

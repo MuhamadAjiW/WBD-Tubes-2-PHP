@@ -27,9 +27,6 @@ class Router{
         $url = Request::parseUrl();
         $method = Request::getMethod();
         
-        echo "route is: " . $url . "<br>";
-        echo $this->routes[$url][$method][0] . ":" . $this->routes[$url][$method][1] . "<br>";
-        
         if(isset($this->routes[$url])){
             if(isset($this->routes[$url][$method])){
                 $handler = $this->routes[$url][$method];
@@ -37,8 +34,7 @@ class Router{
                 $handler_func = $handler[1];
                 
                 $instance = new $handler_class;
-                
-                call_user_func_array([$instance, $handler_func], []);
+                $instance->$handler_func();
             }
             else{
                 //TODO: should be 405 method not allowed
@@ -61,7 +57,6 @@ class Router{
 
     public function addRoute($route, $handler_class, $handler_func = 'index', $methods = ['GET']){
         $this->validityCheck($route, $methods, $handler_class);
-        echo "added " . $route . " with handler " . $handler_class . "<br>";
         foreach($methods as $method){
             $this->routes[$route][$method] = [$handler_class, $handler_func];
         }

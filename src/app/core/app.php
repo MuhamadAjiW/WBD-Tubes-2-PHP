@@ -7,8 +7,6 @@ class App{
     private $database;
 
     public function __construct(){
-        echo "Halo halo ini app<br>";
-
         $this->database = new Database();
         $this->router = new Router();
         $this->initRoutes();
@@ -18,6 +16,7 @@ class App{
 
     public function initRoutes(){
         $this->router->addRoute('/', 'app/controllers/Home', 'index', ['GET']);
+        $this->router->addRoute('/login', 'app/controllers/Login', 'index', ['GET']);
     }
 }
 ?>

@@ -11,14 +11,8 @@ class Database{
     private $loaded_query;
 
     public function __construct(){
-        $dsn = "pgsql:host=" . DBConfig::getHost() . ";port=" . DBConfig::getPort() . ";dbname=" . DBConfig::getName();
+        $this->connection = PDOStatic::getInstance()->getConnection();
         
-        try{
-            $this->connection = new PDO($dsn, DBConfig::getUser(), DBConfig::getPassword());
-        } catch(Exception){
-            error_log('Error: Failed creating a connection');
-        }
-
         try{
             $this->connection->exec(DBConfig::USER_TABLE_INIT);
             $this->connection->exec(DBConfig::BOOK_TABLE_INIT);

@@ -6,7 +6,7 @@ use app\core\Controller;
 
 class Home extends Controller{
     public function index(){
-        $this->view('Home');
+        $this->view('Home', ['name' => 'Hello!']);
     }
 }
 
