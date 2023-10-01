@@ -7,7 +7,7 @@ use Exception;
 
 class Router{
     private $routes = [];
-
+    
     private function validityCheck($route, $methods, $handler){
         if(is_null($methods)){
             throw new Exception("Method cannot be null");
@@ -20,6 +20,7 @@ class Router{
         }
     }
 
+    
     public function handleRoute(){
         $url = Request::parseUrl();
         $method = Request::getMethod();
@@ -27,11 +28,11 @@ class Router{
         if ($this->isFileRequest($url, $method)){
             $this->handleFileRequest($url);
         }
-
+        
         if(isset($this->routes[$url])){
             if(isset($this->routes[$url][$method])){
                 $handler = $this->routes[$url][$method];
-
+                
                 if($handler[1] == AppConfig::REDIRECT){
                     $dest = $handler[0];
                     header("HTTP/1.1 301 Moved Permanently");
@@ -47,32 +48,30 @@ class Router{
                 }
             }
             else{
-                header("HTTP/1.0 405 Not Allowed");
                 //TODO: should be 405 method not allowed
-                $handler_class = 'app\\controllers\\Error404';
-                $handler_func = 'index';
-        
-                $instance = new $handler_class;
-                call_user_func_array([$instance, $handler_func], []);
+                self::NotFound();
             }
         } else{
-            error_log("Not found: " . $url);
-            $handler_class = 'app\\controllers\\Error404';
-            $handler_func = 'index';
-    
-            $instance = new $handler_class;
-            call_user_func_array([$instance, $handler_func], []);
+            self::NotFound();
         }
-
+        
         return $url;
     }
-
+    
     public function handleFileRequest($route){
         $content_type = mime_content_type($route);
         header("Content-Type: $content_type");
         readfile($route);
     }
-
+    
+    public static function NotFound(){
+        $handler_class = 'app\\controllers\\Error404';
+        $handler_func = 'index';
+    
+        $instance = new $handler_class;
+        call_user_func_array([$instance, $handler_func], []);
+    }
+    
     public function isFileRequest($route, $method){
         $folder = explode('/', $route)[0];
         
@@ -87,15 +86,13 @@ class Router{
         }
         return false;
     }
-
     
     public function addRoute($route, $handler_class, $handler_func = 'index', $methods = ['GET']){
         $this->validityCheck($route, $methods, $handler_class);
         foreach($methods as $method){
             $this->routes[$route][$method] = [$handler_class, $handler_func];
         }
-    }
-    
+    }    
     
     public function addGet($route, $handler_class, $handler_func = 'index'){
         $this->validityCheck($route, ['GET'], $handler_class);
