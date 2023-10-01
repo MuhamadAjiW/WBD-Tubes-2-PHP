@@ -1,0 +1,296 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+body {
+    margin: 0;
+}
+
+* {
+    font-family: Rubik, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.top-wrapper {
+    position: relative;
+    min-width: 100%;
+    height: 300px;
+    display: flex;
+}
+
+.blur-bg {
+    object-fit: cover;
+    position: absolute;
+    min-width: 100%;
+    height: 300px;
+    overflow: hidden;
+    filter:blur(10px);
+}
+
+
+.book-cover-image {
+    border-radius: 7%;
+    width: 120px;
+    height: auto;
+    margin-top: 7px;
+    filter: drop-shadow(10px 10px 10px black);
+}
+
+.book-info {
+    display: flex;
+    position: relative;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top : 45px;
+    width: 50%;
+    height: 70%;
+}
+
+.book-contents {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 30px;
+    color: white;
+}
+
+.book-genre {
+    margin: 0;
+    font-family: Rubik, sans-serif;
+    font-size: 12px;
+}
+
+.book-title {
+    font-family: Lora, serif;
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.book-author {
+    margin: 0;
+    font-family: Rubik, sans-serif;
+    font-size: 14px;
+}
+
+.book-buttons {
+    margin-top: 12px;
+    font-family: Rubik, sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    text-align: center;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    
+}
+
+#recommend-button:active {
+    transform: translateY(4px);
+}
+
+#audio-button:active {
+    transform: translateY(4px);
+}
+
+#save-button:active {
+    transform: translateY(4px);
+}
+
+#recommend-button {
+    background-color: #FFFFFF;
+    height: 40px;
+    box-shadow: 0 9px #e9e9e9;
+}
+
+#audio-button {
+    background-color: #D5AC00;
+    margin-left: 10px;
+    color: white;
+    height: 40px;
+    box-shadow: 0 9px #9f820e;
+}
+
+#save-button {
+    background-color: rgba(65,65,65, 0.5);
+    height: 40px;
+    color: white;
+    margin-left: 200px;
+    box-shadow: 0 9px #444444;
+}
+
+.body-wrapper {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    margin-left: 25%;
+    margin-right: 25%;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.book-review {
+    width: 624px;
+    /* background-color: red; */
+}
+
+.book-synopsis {
+    background-color: #ebe7e7;
+    font-family: Rubik, sans-serif;
+    border-radius: 5px;
+}
+
+.text-title {
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.plain-text {
+    font-family: Lora, serif;
+    font-size: 16px;
+}
+
+#synopsis-text {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+
+.author-content {
+    width: 288px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.text-for-sidebar {
+    margin: 0;
+    font-family: Rubik, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #9b9b9b;
+}
+
+.user-profile {
+    background-color: #f7f7f7;
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.author-bio {
+    font-size:12px;
+}
+
+.publish-info {
+    margin: 0;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.write-review {
+    background-color: #f7f7f7;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#review-head {
+    margin: 0;
+    margin-top: 10px;
+    font-family: Lora, serif;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+#write-review-text {
+    font-family: Rubik, sans-serif;
+    font-size: 14px;
+}
+
+#review-button {
+    margin: 0;
+    font-family: Rubik, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #edc001;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    height: 30px;
+    cursor:pointer
+}
+
+#review-button:active {
+    transform: translateY(4px);
+}
+
+#review-button:hover {
+    background-color: #f7f7f7;
+    color: #edc001;
+}
+
+.review-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.review-box {
+    background-color: #f7f7f7;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid rgba(0,0,0, 0.1);
+}
+
+#reviewer-profile {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-bottom: 2px solid rgba(0,0,0, 0.1);
+}
+
+.one-line-review {
+    font-family: Lora, serif;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    min-height: 50px;
+    background-color: white;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.review-date {
+    font-family: Rubik, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: right;
+    vertical-align: middle;
+    line-height: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-top: 2px solid rgba(0,0,0, 0.1);
+    height: 30px;
+}
+
+#load-more {
+    margin-bottom: 30px;
+    font-family: Rubik, sans-serif;
+    background-color: #edc001;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#load-more:hover {
+    background-color: #f7f7f7;
+    color: #edc001;
+}
+
+
