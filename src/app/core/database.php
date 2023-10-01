@@ -1,55 +1,28 @@
 <?php
 
-class InitTables{
-    public const USER_TABLE =
-    "CREATE TABLE IF NOT EXISTS user (
-        user_id         INT             AUTO_INCREMENT          PRIMARY KEY,
-        email           VARCHAR(256)    UNIQUE NOT NULL,
-        username        VARCHAR(256)    UNIQUE NOT NULL,
-        password        VARCHAR(256)    NOT NULL,
-        name            VARCHAR(256)    NOT NULL,
-        admin           BOOLEAN         DEFAULT FALSE NOT NULL
-    );";
+namespace app\core;
 
-    public const BOOK_TABLE =
-    "CREATE TABLE IF NOT EXISTS book (
-        book_id         INT             AUTO_INCREMENT          PRIMARY KEY,
-        title           VARCHAR(256)    NOT NULL,
-        author          VARCHAR(256)    NOT NULL,
-        genre           VARCHAR(256)    NOT NULL,
-        release_date    DATE            NOT NULL,
-        duration        INT             NOT NULL,
-        image_path      VARCHAR(256)    NOT NULL,
-        audio_path      VARCHAR(256)    NOT NULL
-    );";
-
-    public const REVIEW_TABLE =
-    "CREATE TABLE IF NOT EXISTS review (
-        book_id         INT,
-        user_id         INT,
-        PRIMARY KEY (book_id, user_id),
-        FOREIGN KEY (user_id) REFERENCES user(user_id),
-        FOREIGN KEY (book_id) REFERENCES book(book_id)
-    );";
-}
+use config\DBConfig;
+use Exception;
+use PDO;
 
 class Database{
     private $connection;
     private $loaded_query;
 
     public function __construct(){
-        $dsn = "mysql:host=" . DB_HOST . ";port=" . DB_PORT . ";dbname=" . DB_NAME;
+        $dsn = "pgsql:host=" . DBConfig::getHost() . ";port=" . DBConfig::getPort() . ";dbname=" . DBConfig::getName();
         
         try{
-            $this->connection = new PDO($dsn, DB_USER, DB_PASSWORD);
+            $this->connection = new PDO($dsn, DBConfig::getUser(), DBConfig::getPassword());
         } catch(Exception){
             error_log('Error: Failed creating a connection');
         }
 
         try{
-            $this->connection->exec(InitTables::USER_TABLE);
-            $this->connection->exec(InitTables::BOOK_TABLE);
-            $this->connection->exec(InitTables::REVIEW_TABLE);
+            $this->connection->exec(DBConfig::USER_TABLE_INIT);
+            $this->connection->exec(DBConfig::BOOK_TABLE_INIT);
+            $this->connection->exec(DBConfig::REVIEW_TABLE_INIT);
         } catch(Exception){
             error_log('Error: Failed initializing tables');
         }
@@ -81,7 +54,7 @@ class Database{
                         break;
                 }
             }
-            $this->$loaded_query->bindValue($param, $value, $type);
+            $this->loaded_query->bindValue($param, $value, $type);
         } catch(Exception){
             error_log('Error: Failed binding query');
         }

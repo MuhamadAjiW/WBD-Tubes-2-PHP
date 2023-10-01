@@ -1,6 +1,8 @@
-FROM php:8.0-apache
+FROM php:8.2-apache
 WORKDIR /var/www/html
 RUN a2enmod rewrite &&\
-    docker-php-ext-install mysqli pdo pdo_mysql
+    apt-get update &&\
+    apt-get install -y libpq-dev &&\
+    docker-php-ext-install pdo pdo_pgsql
 COPY ./src .
 EXPOSE 80

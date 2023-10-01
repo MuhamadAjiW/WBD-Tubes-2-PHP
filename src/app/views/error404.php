@@ -1,3 +1,6 @@
 <?php
-echo "Halo halo ini error 404 not found"
+
+namespace app\views;
+
+echo "Halo halo ini error 404 not found <br>"
 ?>

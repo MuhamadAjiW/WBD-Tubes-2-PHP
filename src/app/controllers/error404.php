@@ -1,8 +1,12 @@
 <?php
 
+namespace app\controllers;
+
+use app\core\Controller;
+
 class Error404 extends Controller{
     public function index(){
-        $this->view('error404');
+        $this->view('Error404');
     }
 }
 

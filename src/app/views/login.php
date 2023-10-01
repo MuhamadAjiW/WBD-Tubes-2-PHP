@@ -1,3 +1,6 @@
 <?php
-echo "Halo halo ini login"
+
+namespace app\views;
+
+echo "Halo halo ini login <br>"
 ?>

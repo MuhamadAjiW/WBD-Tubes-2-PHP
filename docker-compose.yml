@@ -13,9 +13,9 @@ services:
       dockerfile: Dockerfile
   db:
     hostname: db_wbd_1
-    image: mysql:latest
+    image: postgres:latest
     env_file: .env
     ports:
-      - 3307:3306
+      - 5432:5432
     volumes:
-      - ./mysql:/var/lib/mysql
+      - ./postgres:/var/lib/postgres
