@@ -53,6 +53,43 @@ body {
     color: white;
 }
 
+.book-contents-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+}
+
+.admin-buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#edit-button {
+    margin: 0;
+    background-color: rgb(18, 151, 247);
+    height: 30px;
+    color: white;
+}
+
+#delete-button {
+    margin: 0;
+    background-color: rgb(240, 61, 41);
+    height: 30px;
+    color: white;
+}
+
+#edit-button:active {
+    transform: translateY(4px);
+}
+
+#delete-button:active {
+    transform: translateY(4px);
+}
+
 .book-genre {
     margin: 0;
     font-family: Rubik, sans-serif;
@@ -398,6 +435,70 @@ body {
     transform: translateY(4px);
 }
 
+.delete-container {
+    padding: 16px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
 
+.delete-modal {
+    display: none;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 250px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4);
+    overflow: auto;
+}
 
+.delete-modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto;
+    border: 1px solid #888;
+    width: 60%; 
+    height: 20%;
+}
 
+.delete-modal-btn {
+    float: left;
+    width: 50%;
+    border: none;
+    height: 50px;
+    cursor: pointer;
+    font-family: Rubik, sans-serif;
+    font-weight: 700;
+    color: white;
+    opacity: 0.8;
+}
+
+.delete-modal-btn:hover {
+    opacity: 1;
+}
+
+#cancel-delete-btn {
+    background-color: #ccc;
+}
+
+#delete-book-btn {
+    background-color: #f44336;
+}
+
+.delete-modal-title {
+    margin: 0;
+    font-family: Rubik, sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.delete-modal-text {
+    margin: 0;
+    font-family: Rubik, sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+}
