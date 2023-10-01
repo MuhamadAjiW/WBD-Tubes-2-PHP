@@ -2,6 +2,7 @@
 
 namespace app\core;
 
+use config\AppConfig;
 use Exception;
 
 class Router{
@@ -26,6 +27,10 @@ class Router{
         $url = Request::parseUrl();
         $method = Request::getMethod();
         
+        if ($this->isFileRequest($url, $method)){
+            $this->handleFileRequest($url);
+        }
+
         if(isset($this->routes[$url])){
             if(isset($this->routes[$url][$method])){
                 $handler = $this->routes[$url][$method];
@@ -45,6 +50,7 @@ class Router{
                 call_user_func_array([$instance, $handler_func], []);
             }
         } else{
+            error_log("Not found: " . $url);
             $handler_class = 'app\\controllers\\Error404';
             $handler_func = 'index';
     
@@ -54,6 +60,28 @@ class Router{
 
         return $url;
     }
+
+    public function handleFileRequest($route){
+        $content_type = mime_content_type($route);
+        header("Content-Type: $content_type");
+        readfile($route);
+    }
+
+    public function isFileRequest($route, $method){
+        $folder = explode('/', $route)[0];
+        
+        if($method !== 'GET'){
+            return false;
+        }
+        if(!in_array($route, AppConfig::PUBLIC_FOLDERS)){
+            return false;
+        }
+        if(is_file($route)){
+            return true;
+        }
+        return false;
+    }
+
 
     public function addRoute($route, $handler_class, $handler_func = 'index', $methods = ['GET']){
         $this->validityCheck($route, $methods, $handler_class);

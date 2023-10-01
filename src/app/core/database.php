@@ -18,7 +18,7 @@ class Database{
             $this->connection->exec(DBConfig::BOOK_TABLE_INIT);
             $this->connection->exec(DBConfig::REVIEW_TABLE_INIT);
         } catch(Exception){
-            error_log('Error: Failed initializing tables');
+            throw new Exception('Error: Failed initializing tables');
         }
     }
 
@@ -26,7 +26,7 @@ class Database{
         try{
             $this->loaded_query = $this->connection->prepare($query);
         } catch(Exception){
-            error_log('Error: Failed preparing query');
+            throw new Exception('Error: Failed preparing query');
         }
     }
 
@@ -50,7 +50,7 @@ class Database{
             }
             $this->loaded_query->bindValue($param, $value, $type);
         } catch(Exception){
-            error_log('Error: Failed binding query');
+            throw new Exception('Error: Failed binding query');
         }
     }
 
@@ -58,7 +58,7 @@ class Database{
         try{
             $this->loaded_query->execute();
         } catch(Exception){
-            error_log('Error: Failed executing query');
+            throw new Exception('Error: Failed executing query');
         }
     }
 
@@ -67,7 +67,7 @@ class Database{
             $this->execute();
             $this->loaded_query->fetch(PDO::FETCH_ASSOC);
         } catch(Exception){
-            error_log('Error: Failed fetching query');
+            throw new Exception('Error: Failed fetching query');
         }
     }
 
@@ -76,7 +76,7 @@ class Database{
             $this->execute();
             $this->loaded_query->fetchAll(PDO::FETCH_ASSOC);
         } catch(Exception){
-            error_log('Error: Failed fetching query');
+            throw new Exception('Error: Failed fetching query');
         }
     }
 }

@@ -49,7 +49,7 @@ class DBConfig{
     "CREATE TABLE IF NOT EXISTS reviews (
         book_id         INT,
         user_id         INT,
-        rating          INT             NOT NULL CHECK (rating BETWEEN 1 AND 5),,
+        rating          INT             NOT NULL CHECK (rating BETWEEN 1 AND 5),
         reviewtext      VARCHAR(2048)   DEFAULT '' NOT NULL,
         PRIMARY KEY (book_id, user_id),
         FOREIGN KEY (user_id) REFERENCES users(user_id),

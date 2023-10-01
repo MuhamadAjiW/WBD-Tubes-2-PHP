@@ -10,6 +10,15 @@ class ReviewModel{
     public function __construct(){
         $this->database = new Database();
     }
+
+    public function addReview(
+        $book_id,
+        $user_id,
+        $rating,
+        $reviewtext
+    ){
+
+    }
 }
 
 ?>
