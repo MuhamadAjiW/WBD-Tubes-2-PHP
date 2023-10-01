@@ -34,6 +34,7 @@ class DBConfig{
     "CREATE TABLE IF NOT EXISTS books (
         book_id         SERIAL          PRIMARY KEY,
         title           VARCHAR(256)    NOT NULL,
+        synopsis        VARCHAR(2048)   DEFAULT '' NOT NULL,
         author_id       INT             NOT NULL,
         genre           VARCHAR(256)    NOT NULL,
         release_date    DATE            NOT NULL,

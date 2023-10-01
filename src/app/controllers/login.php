@@ -12,6 +12,7 @@ class Login extends Controller{
     
     public function login(){
         //TODO: Implement
+        header("HTTP/1.0 501 Not Implemented");
         $this->view('Error501', ['name' => 'Hello!']);
 
         // if(isset($_POST['login'])){
