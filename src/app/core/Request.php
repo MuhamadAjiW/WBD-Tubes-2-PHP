@@ -7,8 +7,7 @@ use Exception;
 class Request{
     public static function parseUrl(){
         if(isset($_SERVER['REQUEST_URI'])){
-            $url = '/' . trim($_SERVER['REQUEST_URI'], '/');
-            $url = explode('?', $url);
+            $url = explode('?', $_SERVER['REQUEST_URI']);
             return $url[0];
         }
         else{
