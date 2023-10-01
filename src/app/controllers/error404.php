@@ -2,7 +2,7 @@
 
 class Error404 extends Controller{
     public function index(){
-        $this->view('error404/index');
+        $this->view('error404');
     }
 }
 
