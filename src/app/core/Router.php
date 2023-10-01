@@ -19,16 +19,11 @@ class Router{
             throw new Exception("Route cannot contain question marks");
         }
     }
-
     
     public function handleRoute(){
         $url = Request::parseUrl();
         $method = Request::getMethod();
-        
-        if ($this->isFileRequest($url, $method)){
-            $this->handleFileRequest($url);
-        }
-        
+                
         if(isset($this->routes[$url])){
             if(isset($this->routes[$url][$method])){
                 $handler = $this->routes[$url][$method];
@@ -54,14 +49,6 @@ class Router{
         } else{
             self::NotFound();
         }
-        
-        return $url;
-    }
-    
-    public function handleFileRequest($route){
-        $content_type = mime_content_type($route);
-        header("Content-Type: $content_type");
-        readfile($route);
     }
     
     public static function NotFound(){
@@ -70,21 +57,6 @@ class Router{
     
         $instance = new $handler_class;
         call_user_func_array([$instance, $handler_func], []);
-    }
-    
-    public function isFileRequest($route, $method){
-        $folder = explode('/', $route)[0];
-        
-        if($method !== 'GET'){
-            return false;
-        }
-        if(!in_array($route, AppConfig::PUBLIC_FOLDERS)){
-            return false;
-        }
-        if(is_file($route)){
-            return true;
-        }
-        return false;
     }
     
     public function addRoute($route, $handler_class, $handler_func = 'index', $methods = ['GET']){
