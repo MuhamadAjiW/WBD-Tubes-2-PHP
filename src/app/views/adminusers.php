@@ -1,6 +1,6 @@
 <div class="page-container">
     <div class="page-header">
-        <h2>List of all Books</h2>
+        <h2>List of all Users</h2>
 
     </div>
     
