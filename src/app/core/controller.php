@@ -6,15 +6,22 @@ use config\AppConfig;
 
 class Controller{
     private $rel = "";
-    private $use_topbar = true;
+    private $icon = "<link rel=\"icon\" href=\"storage/assets/logo.svg\" sizes=\"any\" type=\"image/svg+xml\">";
+    private $topbar;
+    private $footer;
+
+    public function __construct(){
+        $this->topbar = AppConfig::TOP_BAR_PATH;
+        $this->footer = AppConfig::FOOTER_PATH;
+    }
 
     public function view($view, $data = []){
         $data[AppConfig::REL_DATA] = $this->rel;
-        if($this->use_topbar){
-            $data[AppConfig::TOP_BAR] = file_get_contents(AppConfig::TOP_BAR_PATH);
-        } else{
-            $data[AppConfig::TOP_BAR] = "";
-        }
+
+        $this->rel = $this->rel . $this->icon;
+        $data[AppConfig::TOP_BAR] = $this->topbar;
+        $data[AppConfig::FOOTER] = $this->footer;
+
         extract($data);
         require_once 'app/views/' . $view . '.php';
     }
@@ -33,11 +40,14 @@ class Controller{
         $this->rel = $this->rel . "<link rel=" . "\"" . $type . "\" href=" . "\"" . $path . "\">";
     }
 
-    public function topbar_off(){
-        $this->use_topbar = true;
+    public function setIcon($path){
+        $icon = "<link rel=\"icon\" href=\"" . $path . "\" sizes=\"any\" type=\"image/svg+xml\">";
     }
-    public function topbar_on(){
-        $this->use_topbar = false;
+    public function setTopBar($path){
+        $this->topbar = $path;
+    }
+    public function setFooter($path){
+        $this->footer = $path;
     }
 }
 

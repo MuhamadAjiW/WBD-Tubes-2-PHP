@@ -1,0 +1,161 @@
+:root {
+  --primary: #eac44a;
+  --bg: #eff2f3;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: 0;
+  outline: none;
+  border: none;
+  text-decoration: none;
+}
+
+body {
+  color: #2a2a2a;
+  font-family: "Rubik", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  background-color: var(--bg);
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.form-box {
+  position: relative;
+  width: 800px;
+  height: 450px;
+  background: var(--bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-box h2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 1cm;
+  color: #2a2a2a;
+  text-align: left;
+  padding: 1rem;
+}
+
+.form-box .p {
+  position: absolute;
+  top: 1.5cm;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+}
+
+.button {
+  box-sizing: border-box;
+  display: inline-block;
+  border: none;
+  border-radius: 6px;
+  font-family: "Rubik", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+  margin: 0;
+  outline: none;
+  padding: 12px 16px;
+  position: relative;
+  text-align: center;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #989618;
+}
+
+.inputbox {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 0;
+  margin-left: 0;
+  line-height: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+  width: 700px;
+  height: 50px;
+  align-self: flex-start;
+  margin-left: -10px;
+}
+
+.inputbox input {
+  width: 500px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1.5px solid #eac44a;
+  text-indent: 20px;
+  margin-top: 8px;
+}
+
+.inputbox-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: -10px;
+  margin-left: 10px;
+  z-index: 1;
+  transform: translateY(-50%);
+}
+
+.Sign-Up {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: -10px;
+  margin-left: 10px;
+  z-index: 1;
+  transform: translateY(-50%);
+  top: 400px;
+  margin-left: 60px;
+}
+
+.forget {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: -10px;
+  margin-left: 10px;
+  z-index: 1;
+  transform: translateY(-50%);
+  top: 370px;
+  margin-left: 60px;
+}
+
+.remember-me {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: -10px;
+  margin-left: 10px;
+  z-index: 1;
+  transform: translateY(-50%);
+  top: 285px;
+  margin-left: 60px;
+}
+
+div{
+  display: block;
+}
+
+.main-app{
+  margin-top: 64px;
+  background-color: white;
+}

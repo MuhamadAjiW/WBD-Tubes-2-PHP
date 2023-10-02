@@ -8,13 +8,6 @@ use app\models\UserModel;
 class Login extends Controller{
     public function index(){
         $usermodel = $this->model("UserModel");
-        //$email="shel@gmail.com";
-        //$username="shelm";
-        //$password="1245";
-        //$name="shma";
-        //$bio='Hai';
-        //$admin=True;
-        //$usermodel->addUser($email,$username,$password,$name,$bio,$admin);
         $this->view('Login');
     }
     
