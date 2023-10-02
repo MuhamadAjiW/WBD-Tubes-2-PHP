@@ -2,49 +2,19 @@
 
 namespace app\controllers;
 
-
 use app\core\Controller;
-use app\models\UserModel;
-class Login extends Controller{
+
+class Register extends Controller{
     public function index(){
         $usermodel = $this->model("UserModel");
-        //$email="shel@gmail.com";
-        //$username="shelm";
-        //$password="1245";
-        //$name="shma";
-        //$bio='Hai';
-        //$admin=True;
-        //$usermodel->addUser($email,$username,$password,$name,$bio,$admin);
-        $this->view('Login');
+        $this->view('Register');
     }
     
-    public function login(){
+    public function register(){
         //TODO: Implement
-        //header("HTTP/1.0 501 Not Implemented");
-        //$this->view('Error501', ['name' => 'Hello!']);
-        session_start();
-        if(isset($_POST['login'])){
-            $userLogin = $this->model("UserModel");
-            $email = $_POST["email"];
-            $password = $_POST["password"];
-            $user = $userLogin->login($email,$password);
-            if($user==null){
-                $_SESSION['error'] = "Invalid username or password";
-                $this->view('Login');
-            }
-            else{
-                if (password_verify($password, $user['password'])) {
-                    $_SESSION['email'] = $email;
-                    echo "Hi ". $_SESSION['email']. "Nanti dihubungin ke home";
-                  } else {
-                    $_SESSION['error'] = "Invalid username or password";
-                    $this->view('Login');
-                  }
-            }
-        }
-        
-        
-        
+        header("HTTP/1.0 501 Not Implemented");
+        $this->view('Error501', ['name' => 'Hello!']);
+
         // if(isset($_POST['login'])){
         //     $email = $_POST["email"];
         //     $password = $_POST["password"];

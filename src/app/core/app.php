@@ -17,6 +17,8 @@ class App{
         $this->router->addRoute('/login', 'app/controllers/Login', 'index', ['GET']);
         $this->router->addPost('/login', 'app/controllers/Login', 'login');
         $this->router->addRoute('/detail', 'app/controllers/BookDetail', 'index', ['GET']);
+        $this->router->addRoute('/register', 'app/controllers/Register', 'index', ['GET']);
+        $this->router->addPost('/register', 'app/controllers/Register', 'register');
     }
 }
 ?>

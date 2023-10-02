@@ -25,13 +25,22 @@ class UserModel{
         $this->database->query($query);
         $this->database->bind('email', $email);
         $this->database->bind('username', $username);
-        $this->database->bind('password', $password);
+        $this->database->bind('password',  password_hash($password, PASSWORD_DEFAULT));
         $this->database->bind('name', $name);
         $this->database->bind('bio', $bio);
         $this->database->bind('admin', $admin);
 
         $this->database->execute();
     }
-}
 
+    public function login($email, $password){
+        $query = 'SELECT email, password FROM users WHERE email=:email LIMIT 1';
+        $this->database->query($query);
+        $this->database->bind('email', $email);
+        $user = $this->database->fetch(); 
+        return $user;
+    }
+
+   
+}
 ?>

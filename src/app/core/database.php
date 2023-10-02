@@ -65,7 +65,7 @@ class Database{
     public function fetch(){
         try{
             $this->execute();
-            $this->loaded_query->fetch(PDO::FETCH_ASSOC);
+            return $this->loaded_query->fetch(PDO::FETCH_ASSOC);
         } catch(Exception){
             throw new Exception('Error: Failed fetching query');
         }
