@@ -8,6 +8,7 @@
 .main-content {
     width: 86%;
     float: left;
+    min-height: 100vh;
 }
 
 .sidebar, .sidebar-header, .sidebar-body {
@@ -18,7 +19,7 @@
 
 .sidebar {
     width: 14%;
-    height: 100vh;
+    min-height: 100vh;
     background-color: #3B3131;
     gap: 2rem;
     float: left;
@@ -170,7 +171,7 @@ tr:nth-child(even) {
     transform: translateY(4px);
 }
 
-#delete-button {
+.delete-button {
     margin: 0;
     background-color: rgb(240, 61, 41);
     height: 30px;
@@ -181,7 +182,7 @@ tr:nth-child(even) {
     transform: translateY(4px);
 }
 
-#delete-button:active {
+.delete-button:active {
     transform: translateY(4px);
 }
 
@@ -215,7 +216,7 @@ tr:nth-child(even) {
     height: 20%;
 }
 
-.delete-modal-btn {
+.delete-modal-btn, .add-book-form-buttons {
     float: left;
     width: 50%;
     border: none;
@@ -227,7 +228,7 @@ tr:nth-child(even) {
     opacity: 0.8;
 }
 
-.delete-modal-btn:hover {
+.delete-modal-btn:hover, .add-book-form-buttons:hover {
     opacity: 1;
 }
 
@@ -235,15 +236,19 @@ tr:nth-child(even) {
     background-color: #ccc;
 }
 
-#delete-book-btn {
+#cancel-add-book-btn {
     background-color: #f44336;
 }
 
-#delete-user-btn {
+#modal-delete-book-btn {
     background-color: #f44336;
 }
 
-#delete-review-btn {
+#modaldelete-user-btn {
+    background-color: #f44336;
+}
+
+#modal-delete-review-btn {
     background-color: #f44336;
 }
 
@@ -252,6 +257,7 @@ tr:nth-child(even) {
     font-family: Rubik, sans-serif;
     font-size: 30px;
     font-weight: 700;
+    margin-left: 222.4px    ;
 }
 
 .delete-modal-text {
@@ -385,8 +391,94 @@ tr:nth-child(even) {
 
 #form-name-input {
     margin-right: 28px;
+    background-color: white;
 }
 
 #form-book-input {
-    margin-right: 10px
+    margin-right: 10px;
+    background-color: white;
+}
+
+#form-rating-input {
+    background-color: white;
+}
+
+/* Add Book Styling */
+
+h1 {
+    margin: 0;
+    margin-top: 20px;
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+    text-align: center;
+    font-size: 36px;
+}
+
+
+.form-container {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    justify-content: center;
+    margin-left: 25%;
+    margin-right: 25%;
+    gap: 0.5rem;
+    border: none;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.add-book-form {
+    height: 30px;
+    font-family: Rubik, sans-serif;
+    font-weight: 500;
+    border: none;
+    border-radius: 5px;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+
+label {
+    font-weight: 700;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+#graphic-content-section {
+    margin-bottom: 30px;
+}
+
+ #add-book-synopsis-form {
+    height:60px;
+    background-color: #e0dbdb;
+}
+
+input[type="text"], input[type="number"], input[type="date"] {
+    background-color: #e0dbdb;
+}
+
+#add-new-book-btn {
+    background-color: greenyellow;
+    text-align: center;
+}
+
+#add-book-title-form {
+    margin-top: 10px;
+}
+
+.add-book-form-buttons {
+    align-items: center;
+    text-align: center;
+    width: 50%;
+    margin: auto;    
+    padding: auto;
+    margin-bottom: 10px;
+}
+
+#add-form-main-content {
+    background-color: #FAD961;
+    background-image: linear-gradient(90deg, #FAD961 0%, #F76B1C 100%);       
 }
