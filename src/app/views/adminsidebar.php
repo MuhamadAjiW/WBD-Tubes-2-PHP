@@ -4,13 +4,13 @@
         <h5 style="margin-top:10px;">Hello, Admin</h5>
     </div>
     <div class="sidebar-body">
-        <div class="section-sidebar" onclick="showBooks(); resetBackground();">
+        <div class="section-sidebar">
             <i class="fas fa-book" id="books-icon"></i><span class="sidebar-text">Books</span>
         </div>
-        <div class="section-sidebar" onclick="showUsers(); resetBackground();">
+        <div class="section-sidebar">
             <i class="fas fa-user" id="user-icon"></i><span class="sidebar-text">Users</span>
         </div>
-        <div class="section-sidebar" onclick="showReviews(); resetBackground();">
+        <div class="section-sidebar">
             <i class="fas fa-comment" id="comment-icon"></i><span class="sidebar-text">Reviews</span>
         </div>
         <div class="section-sidebar">

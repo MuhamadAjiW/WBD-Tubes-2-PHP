@@ -152,20 +152,20 @@
             <span id="close-modal" class="close">&times;</span>
             <h5 class="modal-title">Submit Review</h5>
         </div>
-        <div class="modal-body">
+        <form class="modal-body">
             <div class="first-modal-section">
                 <div class="form-title">
                     <span class="form-title">Name</span>
                     <span class="form-title">Rating</span>
                 </div>
                 <div class="form-input">
-                    <input type="text" name="reviewer_name" class="form-input" id="form-name-input" placeholder="Enter Your Name"/>
-                    <input type="number" name="reviewer_rating" class="form-input" placeholder="1-5" min="1" max="5">
+                    <input type="text" class="form-input" id="form-name-input" placeholder="Enter Your Name"/>
+                    <input type="number"  class="form-input" placeholder="1-5" min="1" max="5">
                 </div>
             </div>
-            <textarea type="text" name="reviewer_text" class="reviewer-form" id="form-review" placeholder="Enter Your Review"></textarea>
+            <textarea type="text" class="reviewer-form" id="form-review" placeholder="Enter Your Review"></textarea>
             <button type="button" class="submit-review-btn">Submit</button>
-        </div>
+        </form>
     </div>
 </div>
 

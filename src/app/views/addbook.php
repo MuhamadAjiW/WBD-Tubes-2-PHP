@@ -10,11 +10,11 @@
 <body>
 
     <?php
-        include "./adminsidebar.php";
+        include __DIR__ . "/adminsidebar.php";
     ?>
 
-    <div class="main-content" id="add-form-main-content">
-        <div class="page-container-add-form">
+    <div class="main-content" id="add-book-form-main-content">
+        <form class="page-container-add-book-form">
             <div class="page-header">
                 <h1>Add Book Form</h1>
             </div>
@@ -58,7 +58,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
 
 

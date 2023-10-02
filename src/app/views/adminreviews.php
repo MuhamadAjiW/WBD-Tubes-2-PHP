@@ -10,7 +10,7 @@
 <body>
 
     <?php
-        include "./adminsidebar.php";
+        include __DIR__ . "/adminsidebar.php";
     ?>
 
     <div class="main-content">
@@ -89,7 +89,7 @@
                     <span id="close-add-modal" class="close">&times;</span>
                     <h5 class="modal-title">Add Review</h5>
                 </div>
-                <div class="modal-body">
+                <form class="modal-body">
                     <div class="first-modal-section">
                         <div class="form-title">
                             <span class="form-title">Name</span>
@@ -97,14 +97,14 @@
                             <span class="form-title">Rating</span>
                         </div>
                         <div class="form-input">
-                            <input type="text" name="reviewer_name" class="form-input" id="form-name-input" placeholder="Enter Name"/>
-                            <input type="text" name="new-book-title" class="form-input" id="form-book-input" placeholder="Enter Book Title"/>
-                            <input type="number" name="reviewer_rating" class="form-input" id="form-rating-input" placeholder="1-5" min="1" max="5">
+                            <input type="text" class="form-input" id="form-name-input" placeholder="Enter Name"/>
+                            <input type="text" class="form-input" id="form-book-input" placeholder="Enter Book Title"/>
+                            <input type="number" class="form-input" id="form-rating-input" placeholder="1-5" min="1" max="5">
                         </div>
                     </div>
-                    <textarea type="text" name="reviewer_text" class="reviewer-form" id="form-review" placeholder="Enter Your Review"></textarea>
+                    <textarea type="text" class="reviewer-form" id="form-review" placeholder="Enter Your Review"></textarea>
                     <button type="submit" class="submit-review-btn" id="submit-add-modal">Add Review</button>
-                </div>
+                </form>
             </div>
         </div>
 
@@ -114,7 +114,7 @@
                     <span id="close-edit-modal" class="close">&times;</span>
                     <h5 class="modal-title">Edit Review</h5>
                 </div>
-                <div class="modal-body">
+                <form class="modal-body">
                     <div class="first-modal-section">
                         <div class="form-title">
                             <span class="form-title">Name</span>
@@ -122,14 +122,14 @@
                             <span class="form-title">Rating</span>
                         </div>
                         <div class="form-input">
-                            <input type="text" name="reviewer_name" class="form-input" id="form-name-input" placeholder="Enter Name"/>
-                            <input type="text" name="new-book-title" class="form-input" id="form-book-input" placeholder="Enter Book Title"/>
-                            <input type="number" name="reviewer_rating" class="form-input" id="form-rating-input" placeholder="1-5" min="1" max="5">
+                            <input type="text" class="form-input" id="form-name-input" placeholder="Enter Name"/>
+                            <input type="text" class="form-input" id="form-book-input" placeholder="Enter Book Title"/>
+                            <input type="number" class="form-input" id="form-rating-input" placeholder="1-5" min="1" max="5">
                         </div>
                     </div>
-                    <textarea type="text" name="reviewer_text" class="reviewer-form" id="form-review" placeholder="Enter Your Review"></textarea>
+                    <textarea type="text" class="reviewer-form" id="form-review" placeholder="Enter Your Review"></textarea>
                     <button type="submit" class="submit-review-btn" id="submit-edit-modal">Save Review</button>
-                </div>
+                </form>
             </div>
         </div>
     </div>
