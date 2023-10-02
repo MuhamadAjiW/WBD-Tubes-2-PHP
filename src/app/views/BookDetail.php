@@ -4,7 +4,7 @@
     <title></title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" href="../../public/css/bookdetail.css" />
 </head>
 <body>
@@ -19,9 +19,9 @@
                 <h1 class='book-title'>The Most Important Thing In The World</h1>
                 <h2 class='book-author'>By Kelly Sanford</h2>
                 <div class="book-buttons">
-                    <button id="recommend-button" class="book-buttons" type="button">Recommend</button>
-                    <button id="audio-button" class="book-buttons" type='button'>Hear it now</button>
-                    <button id="save-button" class="book-buttons" type='button'>Save to library</button>
+                    <button id="recommend-button" class="book-buttons" type="button"><i class="fa-solid fa-thumbs-up" id="recommend-icon"></i>Recommend</button>
+                    <button id="audio-button" class="book-buttons" type='button'><i class="fa-solid fa-play" id="play-icon"></i>Hear it now</button>
+                    <button id="save-button" class="book-buttons" type='button'><i class="fa-solid fa-save" id="save-icon"></i>Save to library</button>
                 </div>
             </div>
         </div>
@@ -50,8 +50,11 @@
             <h1 class="text-title">Reviews</h1>
             <div class="review-section">
                 <div class="review-box">
-                    <div class="user-profile" id="reviewer-profile">
-                        Testimoni Review
+                    <div class="first-section">
+                        <div class="user-profile" id="reviewer-profile">
+                            Testimoni Review
+                        </div>
+                        <span class="rating-score">Score: 4.3/5</span>
                     </div>
                     <div class="one-line-review">
                         Buku ini emang sangat bagus dan rekomended banget buat dibaca
@@ -61,8 +64,11 @@
                     </div>
                 </div>
                 <div class="review-box">
-                    <div class="user-profile" id="reviewer-profile">
-                        Testimoni Review
+                    <div class="first-section">
+                        <div class="user-profile" id="reviewer-profile">
+                            Testimoni Review
+                        </div>
+                        <span class="rating-score">Score: 4.3/5</span>
                     </div>
                     <div class="one-line-review">
                         Buku ini emang sangat bagus dan rekomended banget buat dibaca
@@ -72,8 +78,11 @@
                     </div>
                 </div>
                 <div class="review-box">
-                    <div class="user-profile" id="reviewer-profile">
-                        Testimoni Review
+                    <div class="first-section">
+                        <div class="user-profile" id="reviewer-profile">
+                            Testimoni Review
+                        </div>
+                        <span class="rating-score">Score: 4.3/5</span>
                     </div>
                     <div class="one-line-review">
                         Buku ini emang sangat bagus dan rekomended banget buat dibaca
@@ -83,8 +92,11 @@
                     </div>
                 </div>
                 <div class="review-box">
-                    <div class="user-profile" id="reviewer-profile">
-                        Testimoni Review
+                    <div class="first-section">
+                        <div class="user-profile" id="reviewer-profile">
+                            Testimoni Review
+                        </div>
+                        <span class="rating-score">Score: 4.3/5</span>
                     </div>
                     <div class="one-line-review">
                         Buku ini emang sangat bagus dan rekomended banget buat dibaca
@@ -141,7 +153,16 @@
             <h5 class="modal-title">Submit Review</h5>
         </div>
         <div class="modal-body">
-            <input type="text" name="reviewer_name" class="reviewer-form" placeholder="Enter Your Name"/>
+            <div class="first-modal-section">
+                <div class="form-title">
+                    <span class="form-title">Name</span>
+                    <span class="form-title">Rating</span>
+                </div>
+                <div class="form-input">
+                    <input type="text" name="reviewer_name" class="form-input" id="form-name-input" placeholder="Enter Your Name"/>
+                    <input type="number" name="reviewer_rating" class="form-input" placeholder="1-5" min="1" max="5">
+                </div>
+            </div>
             <textarea type="text" name="reviewer_text" class="reviewer-form" id="form-review" placeholder="Enter Your Review"></textarea>
             <button type="button" class="submit-review-btn">Submit</button>
         </div>
