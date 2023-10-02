@@ -23,3 +23,16 @@ function showUsers() {
         }
     });
 }
+
+function showReviews() {
+    console.log("showReviews function called");
+    $.ajax({
+        url:"../../app/views/adminreviews.php",
+        method:"post",
+        data:{record:1},
+        success:function(data) {
+            console.log("AJAX request successful");
+            $('.main-content').html(data);
+        }
+    });
+}

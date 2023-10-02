@@ -19,24 +19,24 @@
             <td>13521127@std.stei.itb.ac.id</td>
             <td>Marcel Ryan Antony</td>
             <td>Suka kulineran gann</td>
-            <td><button class="admin-buttons edit-button" id="edit-user-button" style="height:30px">Edit</button>
-            <td><button class="admin-buttons" id="delete-button" style="height:30px">Delete</button>            
+            <td><button class="admin-buttons edit-button" id="edit-user-button">Edit</button>
+            <td><button class="admin-buttons" id="delete-button">Delete</button>            
         </tr>
         <tr>
             <td>Senvis</td>
             <td>13521127@std.stei.itb.ac.id</td>
             <td>Marcel Ryan Antony</td>
             <td>Suka kulineran gann</td>
-            <td><button class="admin-buttons edit-button" id="edit-user-button" style="height:30px">Edit</button>
-            <td><button class="admin-buttons" id="delete-button" style="height:30px">Delete</button>            
+            <td><button class="admin-buttons edit-button" id="edit-user-button">Edit</button>
+            <td><button class="admin-buttons" id="delete-button">Delete</button>            
         </tr>
         <tr>
             <td>Senvis</td>
             <td>13521127@std.stei.itb.ac.id</td>
             <td>Marcel Ryan Antony</td>
             <td>Suka kulineran gann</td>
-            <td><button class="admin-buttons edit-button" id="edit-user-button" style="height:30px">Edit</button>
-            <td><button class="admin-buttons" id="delete-button" style="height:30px">Delete</button>            
+            <td><button class="admin-buttons edit-button" id="edit-user-button">Edit</button>
+            <td><button class="admin-buttons" id="delete-button">Delete</button>            
         </tr>
         
     </table>
