@@ -1,7 +1,7 @@
 <div class="page-container">
     <div class="page-header">
         <h2>List of all Books</h2>
-
+        <button class="admin-buttons add-button" id="add-book-button">Add Book</button>
     </div>
     <table class="book-table">
         <thead>
@@ -18,32 +18,32 @@
             <td>Aku Suka Kamu</td>
             <td>24 Maret 1998</td>
             <td>Marcel Ryan Antony</td>
-            <td><button class="admin-buttons" id="edit-button" style="height:30px">Edit</button>
-            <td><button class="admin-buttons" id="delete-button" style="height:30px">Delete</button>            
+            <td><button class="admin-buttons edit-button" id="edit-book-button">Edit</button>
+            <td><button class="admin-buttons" id="delete-button">Delete</button>            
         </tr>
         <tr>
             <td>2</td>
             <td>Aku Suka Kamu</td>
             <td>24 Maret 1998</td>
             <td>Marcel Ryan Antony</td>
-            <td><button class="admin-buttons" id="edit-button" style="height:30px">Edit</button>
-            <td><button class="admin-buttons" id="delete-button" style="height:30px">Delete</button>            
+            <td><button class="admin-buttons edit-button" id="edit-book-button">Edit</button>
+            <td><button class="admin-buttons" id="delete-button">Delete</button>            
         </tr>
         <tr>
             <td>3</td>
             <td>Aku Suka Kamu</td>
             <td>24 Maret 1998</td>
             <td>Marcel Ryan Antony</td>
-            <td><button class="admin-buttons" id="edit-button" style="height:30px">Edit</button>
-            <td><button class="admin-buttons" id="delete-button" style="height:30px">Delete</button>            
+            <td><button class="admin-buttons edit-button" id="edit-book-button">Edit</button>
+            <td><button class="admin-buttons" id="delete-button">Delete</button>            
         </tr>
         <tr>
             <td>4</td>
             <td>Aku Suka Kamu</td>
             <td>24 Maret 1998</td>
             <td>Marcel Ryan Antony</td>
-            <td><button class="admin-buttons" id="edit-button" style="height:30px">Edit</button>
-            <td><button class="admin-buttons" id="delete-button" style="height:30px">Delete</button>            
+            <td><button class="admin-buttons edit-button" id="edit-book-button">Edit</button>
+            <td><button class="admin-buttons" id="delete-button">Delete</button>            
         </tr>
     </table>
 </div>

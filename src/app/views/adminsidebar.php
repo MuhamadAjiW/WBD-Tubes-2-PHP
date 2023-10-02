@@ -14,7 +14,7 @@
             <i class="fas fa-comment" id="comment-icon"></i><span class="sidebar-text">Reviews</span>
         </div>
         <div class="section-sidebar">
-            <i class="fas fa-list" id="category-icon"></i><span class="sidebar-text">Category</span>
+            <i class="fas fa-sign-out" id="sign-out-icon"></i><span class="sidebar-text">Sign Out</span>
         </div>
     </div>
 </div>

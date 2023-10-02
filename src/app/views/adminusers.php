@@ -1,7 +1,7 @@
 <div class="page-container">
     <div class="page-header">
         <h2>List of all Users</h2>
-
+        <button class="admin-buttons add-button" id="add-user-button">Add User</button>
     </div>
     
     <table class="user-table">
@@ -19,7 +19,7 @@
             <td>13521127@std.stei.itb.ac.id</td>
             <td>Marcel Ryan Antony</td>
             <td>Suka kulineran gann</td>
-            <td><button class="admin-buttons" id="edit-button" style="height:30px">Edit</button>
+            <td><button class="admin-buttons edit-button" id="edit-user-button" style="height:30px">Edit</button>
             <td><button class="admin-buttons" id="delete-button" style="height:30px">Delete</button>            
         </tr>
         <tr>
@@ -27,7 +27,7 @@
             <td>13521127@std.stei.itb.ac.id</td>
             <td>Marcel Ryan Antony</td>
             <td>Suka kulineran gann</td>
-            <td><button class="admin-buttons" id="edit-button" style="height:30px">Edit</button>
+            <td><button class="admin-buttons edit-button" id="edit-user-button" style="height:30px">Edit</button>
             <td><button class="admin-buttons" id="delete-button" style="height:30px">Delete</button>            
         </tr>
         <tr>
@@ -35,7 +35,7 @@
             <td>13521127@std.stei.itb.ac.id</td>
             <td>Marcel Ryan Antony</td>
             <td>Suka kulineran gann</td>
-            <td><button class="admin-buttons" id="edit-button" style="height:30px">Edit</button>
+            <td><button class="admin-buttons edit-button" id="edit-user-button" style="height:30px">Edit</button>
             <td><button class="admin-buttons" id="delete-button" style="height:30px">Delete</button>            
         </tr>
         
