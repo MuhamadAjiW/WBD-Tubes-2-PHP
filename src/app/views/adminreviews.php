@@ -67,7 +67,58 @@
     </div>
 </div>
 
-<script> // Modal for book deletion
+<div class="add-modal">
+    <div class="add-modal-content">
+        <div class="modal-header">
+            <span id="close-add-modal" class="close">&times;</span>
+            <h5 class="modal-title">Add Review</h5>
+        </div>
+        <div class="modal-body">
+            <div class="first-modal-section">
+                <div class="form-title">
+                    <span class="form-title">Name</span>
+                    <span class="form-title">Title</span>
+                    <span class="form-title">Rating</span>
+                </div>
+                <div class="form-input">
+                    <input type="text" name="reviewer_name" class="form-input" id="form-name-input" placeholder="Enter Name"/>
+                    <input type="text" name="new-book-title" class="form-input" id="form-book-input" placeholder="Enter Book Title"/>
+                    <input type="number" name="reviewer_rating" class="form-input" placeholder="1-5" min="1" max="5">
+                </div>
+            </div>
+            <textarea type="text" name="reviewer_text" class="reviewer-form" id="form-review" placeholder="Enter Your Review"></textarea>
+            <button type="button" class="submit-review-btn" id="submit-add-modal">Add Review</button>
+        </div>
+    </div>
+</div>
+
+<div class="edit-modal">
+    <div class="edit-modal-content">
+        <div class="modal-header">
+            <span id="close-edit-modal" class="close">&times;</span>
+            <h5 class="modal-title">Edit Review</h5>
+        </div>
+        <div class="modal-body">
+            <div class="first-modal-section">
+                <div class="form-title">
+                    <span class="form-title">Name</span>
+                    <span class="form-title">Title</span>
+                    <span class="form-title">Rating</span>
+                </div>
+                <div class="form-input">
+                    <input type="text" name="reviewer_name" class="form-input" id="form-name-input" placeholder="Enter Name"/>
+                    <input type="text" name="new-book-title" class="form-input" id="form-book-input" placeholder="Enter Book Title"/>
+                    <input type="number" name="reviewer_rating" class="form-input" placeholder="1-5" min="1" max="5">
+                </div>
+            </div>
+            <textarea type="text" name="reviewer_text" class="reviewer-form" id="form-review" placeholder="Enter Your Review"></textarea>
+            <button type="button" class="submit-review-btn" id="submit-edit-modal">Save Review</button>
+        </div>
+    </div>
+</div>
+
+
+<script> // Modal for review deletion
     // Get the modal
     var deletemodal = document.getElementsByClassName("delete-modal")[0];
     
@@ -93,4 +144,60 @@
         deletemodal.style.display = "none";
     }
 
+</script>
+
+<script> // Modal for adding review
+    // Get modal
+    var addmodal = document.getElementsByClassName("add-modal")[0];
+    
+    // Get open modal button
+    var openbtnaddmodal = document.getElementById("add-review-button");
+
+    console.log(openbtnaddmodal)
+
+    // Get close button
+    var closebtnaddmodal = document.getElementById("close-add-modal");
+
+    // Get submit button
+    var submitbtnaddmodal = document.getElementById("submit-add-modal");
+    
+    openbtnaddmodal.onclick = function() {
+        addmodal.style.display = "block";
+    }
+
+    closebtnaddmodal.onclick = function() {
+        addmodal.style.display = "none";
+    }
+
+    submitbtnaddmodal.onclick = function() {
+        addmodal.style.display = "none";
+    }
+    
+</script>
+
+<script> // Modal for editing review
+    // Get modal
+    var editmodal = document.getElementsByClassName("edit-modal")[0];
+    
+    // Get open modal button
+    var openbtneditmodal = document.getElementById("edit-review-button");
+
+    // Get close button
+    var closebtneditmodal = document.getElementById("close-edit-modal");
+
+    // Get submit button
+    var submitbtneditmodal = document.getElementById("submit-edit-modal");
+    
+    openbtneditmodal.onclick = function() {
+        editmodal.style.display = "block";
+    }
+
+    closebtneditmodal.onclick = function() {
+        editmodal.style.display = "none";
+    }
+
+    submitbtneditmodal.onclick = function() {
+        editmodal.style.display = "none";
+    }
+    
 </script>
