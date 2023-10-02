@@ -5,13 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/public/css/bookdetail.css">
-    <link rel="stylesheet" href="/public/css/style.css">
-    <?php echo $REL_DATA;?> 
+    <?php echo strip_tags($REL_DATA, '<link>');?>
 </head>
+<?php if(file_exists($TOP_BAR)) include_once($TOP_BAR);?>
 <body>
     <div id="main-app" class="main-app">
-    <?php echo $TOP_BAR;?>
     <header class="top-wrapper">
         <img class="blur-bg" src="/storage/images/book_cover.jpeg">
             <div class="book-info">
@@ -129,15 +127,18 @@
             </div>
         </div>
     </div>
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                let text=document.querySelectorAll('.plain-text');
-                for (let e of text) {
-                    e.innerHTML = e.innerHTML.replace(/\\n/g, '<br></br>')
-                }
-            })
-        </script>
+    
 </body>
+<?php if(file_exists($FOOTER)) include_once($FOOTER);?>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    let text=document.querySelectorAll('.plain-text');
+    for (let e of text) {
+        e.innerHTML = e.innerHTML.replace(/\\n/g, '<br></br>')
+    }
+})
+</script>
+
 </html>
 
 

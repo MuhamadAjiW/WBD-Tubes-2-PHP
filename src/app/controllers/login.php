@@ -6,7 +6,6 @@ use app\core\Controller;
 
 class Login extends Controller{
     public function index(){
-        $usermodel = $this->model("UserModel");
         $this->view('Login');
     }
     
