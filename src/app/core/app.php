@@ -12,7 +12,7 @@ class App{
     }
 
     public function initRoutes(){
-        $this->router->addRoute('/', 'app/controllers/Home', 'index', ['GET']);
+        $this->router->redirect('/', '/home');
         $this->router->addRoute('/home', 'app/controllers/Home', 'index', ['GET']);
         $this->router->addRoute('/login', 'app/controllers/Login', 'index', ['GET']);
         $this->router->addPost('/login', 'app/controllers/Login', 'login');
