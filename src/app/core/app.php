@@ -11,12 +11,15 @@ class App {
         $this->router->handleRoute();
     }
 
-    public function initRoutes() {
-        $this->router->redirect('/', '/home');
+    public function initRoutes(){
+        $this->router->redirect_permanent('/', '/home');
+
         $this->router->addRoute('/home', 'app/controllers/Home', 'index', ['GET']);
         $this->router->addRoute('/login', 'app/controllers/Login', 'index', ['GET']);
         $this->router->addPost('/login', 'app/controllers/Login', 'login');
         $this->router->addRoute('/detail', 'app/controllers/BookDetail', 'index', ['GET']);
+        $this->router->addRoute('/register', 'app/controllers/Register', 'index', ['GET']);
+        $this->router->addPost('/register', 'app/controllers/Register', 'register');
         $this->router->addRoute('/adminusers', 'app/controllers/AdminUsers', 'index', ['GET']);
         $this->router->addRoute('/adminbooks', 'app/controllers/AdminBooks', 'index', ['GET']);
         $this->router->addRoute('/adminreviews', 'app/controllers/AdminReviews', 'index', ['GET']);

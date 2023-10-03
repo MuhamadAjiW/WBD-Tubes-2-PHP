@@ -3,7 +3,7 @@
 namespace app\controllers;
 
 use app\core\Controller;
-
+use app\models\UserModel;
 class Login extends Controller{
     public function index(){
         $usermodel = $this->model("UserModel");
@@ -11,10 +11,29 @@ class Login extends Controller{
     }
     
     public function login(){
-        //TODO: Implement
-        header("HTTP/1.0 501 Not Implemented");
-        $this->view('Error501', ['name' => 'Hello!']);
-
+        session_start();
+        if(isset($_POST['login'])){
+            $userLogin = $this->model("UserModel");
+            $email = $_POST["email"];
+            $password = $_POST["password"];
+            $user = $userLogin->login($email,$password);
+            if($user==null){
+                $_SESSION['error'] = "Invalid username or password";
+                $this->view('Login');
+            }
+            else{
+                if (password_verify($password, $user['password'])) {
+                    $_SESSION['email'] = $email;
+                    echo "Hi ". $_SESSION['email']. "Nanti dihubungin ke home";
+                  } else {
+                    $_SESSION['error'] = "Invalid username or password";
+                    $this->view('Login');
+                  }
+            }
+        }
+        
+        
+        
         // if(isset($_POST['login'])){
         //     $email = $_POST["email"];
         //     $password = $_POST["password"];

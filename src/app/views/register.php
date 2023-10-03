@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!--Sign Up baru depannya aja-->
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -18,7 +19,7 @@
     <!--Feather Icons-->
     <script src="https://unpkg.com/feather-icons"></script>
 
-    <link rel="stylesheet" href="../../public/css/style.css" />
+    <link rel="stylesheet" href="../public/css/signup.css" />
   </head>
 
   <body>
@@ -31,10 +32,11 @@
           height="250"
         />
       </div>
+
       <div class="form-box">
         <div class="form-value">
-          <form action="/login" method="post">
-            <h2>Welcome back <i data-feather="smile"></i></h2>
+          <form action="/register" method="post">
+            <h2>Welcome To Redsy <i data-feather="smile"></i></h2>
             <div class="p">Login with your Redsy account</div>
             <div class="inputbox">
               <i data-feather="mail"></i>
@@ -56,25 +58,34 @@
                 placeholder="     Masukkan password"
               />
             </div>
-            <div class="remember-me">
-              <input type="checkbox" id="remember-me" name="remember-me" value="1"/>
-              <label for="remember-me">Remember Me</label>
+            <div class="inputbox">
+              <i data-feather="user"></i>
+              <input
+                type="name"
+                id="username"
+                name="username"
+                required
+                placeholder="     Masukkan username"
+              />
             </div>
-            <div class="forget">
-              <a href="# ">Forgot Your Password?</a>
+            <div class="inputbox">
+              <i data-feather="user"></i>
+              <input
+                type="name"
+                id="name"
+                name="name"
+                required
+                placeholder="     Masukkan Nama Lengkap"
+              />
             </div>
-            <button class="button" type="submit" name="login">Log in</button>
-            <div class="Sign-Up">
-              <p>Don 't have a account? <a href="#">Sign Up</a></p>
+            <button class="button" type="submit" name="signup">Sign Up</button>
+            <div class="Login">
+              <p>Already have account <a href="#">Sign Up</a></p>
             </div>
           </form>
-          <div class="sessionerror">
-            <?php 
-              if (isset($_SESSION['error'])) {
-                echo $_SESSION['error'];
-                unset($_SESSION['error']);
-              }
-            ?>
+          <?php if (!empty($namaError)): ?>
+              <div class="error-message"><?php echo $namaError; ?></div>
+          <?php endif; ?>
           </div>
         </div>
       </div>
