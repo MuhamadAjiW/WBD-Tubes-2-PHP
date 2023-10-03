@@ -9,22 +9,22 @@
 </head>
 <body>
     <div class="top-wrapper">
-    <img class="blur-bg" src="../../storage/images/book_cover.jpeg">
-        <div class="book-info">
-            <div class="book-cover">
-                <img class="book-cover-image" src="../../storage/images/book_cover.jpeg">
-            </div>
-            <div class ="book-contents">
-                <h1 class='book-genre'>Romance</h1>
-                <h1 class='book-title'>The Most Important Thing In The World</h1>
-                <h2 class='book-author'>By Kelly Sanford</h2>
-                <div class="book-buttons">
-                    <button id="recommend-button" class="book-buttons" type="button"><i class="fa-solid fa-thumbs-up" id="recommend-icon"></i>Recommend</button>
-                    <button id="audio-button" class="book-buttons" type='button'><i class="fa-solid fa-play" id="play-icon"></i>Hear it now</button>
-                    <button id="save-button" class="book-buttons" type='button'><i class="fa-solid fa-save" id="save-icon"></i>Save to library</button>
+        <img class="blur-bg" src="../../storage/images/book_cover.jpeg">
+            <div class="book-info">
+                <div class="book-cover">
+                    <img class="book-cover-image" src="../../storage/images/book_cover.jpeg">
+                </div>
+                <div class ="book-contents">
+                    <h1 class='book-genre'>Romance</h1>
+                    <h1 class='book-title'>The Most Important Thing In The World</h1>
+                    <h2 class='book-author'>By Kelly Sanford</h2>
+                    <div class="book-buttons">
+                        <button id="recommend-button" class="book-buttons" type="button"><i class="fa-solid fa-thumbs-up" id="recommend-icon"></i>Recommend</button>
+                        <button id="audio-button" class="book-buttons" type='button'><i class="fa-solid fa-play" id="play-icon"></i>Hear it now</button>
+                        <button id="save-button" class="book-buttons" type='button'><i class="fa-solid fa-save" id="save-icon"></i>Save to library</button>
+                    </div>
                 </div>
             </div>
-        </div>
     </div>
     <div class="body-wrapper">
         <div class="book-review">
@@ -117,7 +117,7 @@
             <div class="author-bio">
                 Born in Mumbai, Varsha Chitnis grew up in the beautiful city of Baroda in western India and currently calls California her home. 
                 Through her two Ph.D.s and a fulfilling teaching career,
-                 she has remained a storyteller at heart. She writes about South Asian characters and their multifaceted lives.e</div>
+                she has remained a storyteller at heart. She writes about South Asian characters and their multifaceted lives.e</div>
             <div class="publish-info">
                 <p class="publish-info">Published on bla bla bla</p>
                 <p class="publish-info">Published by</p>
@@ -135,14 +135,15 @@
                 <button id="review-button">Write a review</button>
             </div>
         </div>
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                let text=document.querySelectorAll('.plain-text');
-                for (let e of text) {
-                    e.innerHTML = e.innerHTML.replace(/\\n/g, '<br></br>')
-                }
-            })
-        </script>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let text=document.querySelectorAll('.plain-text');
+            for (let e of text) {
+                e.innerHTML = e.innerHTML.replace(/\\n/g, '<br></br>')
+            }
+        })
+    </script>
 </body>
 </html>
 
@@ -159,7 +160,7 @@
                     <span class="form-title">Rating</span>
                 </div>
                 <div class="form-input">
-                    <input type="text" class="form-input" id="form-name-input" placeholder="Enter Your Name"/>
+                    <input type="text" class="form-input" id="modal-form-name-input" placeholder="Enter Your Name"/>
                     <input type="number"  class="form-input" placeholder="1-5" min="1" max="5">
                 </div>
             </div>
