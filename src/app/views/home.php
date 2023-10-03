@@ -36,12 +36,56 @@
     <div style="background-color:#f9f9f9">
         <!-- TODO: Implement pagination -->
         <div id="content-booklist" class="main-content">
+            <?= var_dump($booktable)?>
             <h2>Book List</h1>
             <section class="book-list">
-                <div class="book-container">
+                <div class="book-grid">
+                    <button class="book-grid-mem"
+                        onclick="location.href='/error/501'";>
+                        <img class="book-image" src="/storage/images/image1.jpg">
+                        <p class="book-grid-mem-t">The Metamporphosis</p>
+                        <p class="book-grid-mem-auth">By Franz Kafka</p>
+                    </button>
+                    <div class="book-grid-mem">
+                        <img class="book-image" src="/storage/images/image2.jpg">
+                        <p class="book-grid-mem-t">Crime and Punishment</p>
+                        <p class="book-grid-mem-auth">By Fyodor Dostoyevsky</p>
+                    </div>
+                    <div class="book-grid-mem">
+                        <img class="book-image" src="/storage/images/image3.jpg">
+                        <p class="book-grid-mem-t">Fabel de la Fontaine</p>
+                        <p class="book-grid-mem-auth">By Jean de la Fontaine</p>
+                    </div>
+                    <div class="book-grid-mem">
+                        Hi!
+                    </div>
+                    <div class="book-grid-mem">
+                        <img class="book-image" src="/storage/images/image3.jpg">
+                        <p>The Metamporphosis</p>
+                        <p>By Franz Kafka</p>
+                    </div>
+                    <div class="book-grid-mem">
+                        Hi!
+                    </div>
+                    <div class="book-grid-mem">
+                        Hi!
+                    </div>
+                    <div class="book-grid-mem">
+                        Hi!
+                    </div>
+                </div>
                     <!-- <img class="book-image" src="/storage/images/metamorphosis_cover.jpg"> -->
                     <!-- <img class="book-image" src="/storage/images/book_cover.jpeg"> -->
-                </div>
+                    <!-- <?php
+                        $data=$booktable[0];
+                        extract($data);
+                        include_once 'app/components/Tester.php';
+                        $data=$booktable[1];
+                        extract($data);
+                        include 'app/components/Tester.php';
+                        echo "<br>";
+                        echo $booklen;
+                    ?> -->
             </section>
             <div>
                 ceritanya pagination tapi belom diimplement

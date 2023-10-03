@@ -74,7 +74,7 @@ class Database{
     public function fetchAll(){
         try{
             $this->execute();
-            $this->loaded_query->fetchAll(PDO::FETCH_ASSOC);
+            return $this->loaded_query->fetchAll(PDO::FETCH_ASSOC);
         } catch(Exception $e){
             throw new Exception('Failed fetching query: ' . $e->getMessage());
         }
@@ -88,13 +88,13 @@ class Database{
         }
     }
     
-    public function lastId(){
-        try{
-            return $this->connection->lastInsertId();
-        } catch(Exception $e){
-            throw new Exception('Failed fetching last inserted id: ' . $e->getMessage());
-        }
-    }
+    // public function lastId(){
+    //     try{
+    //         return $this->connection->lastInsertId();
+    //     } catch(Exception $e){
+    //         throw new Exception('Failed fetching last inserted id: ' . $e->getMessage());
+    //     }
+    // }
 
 }
 

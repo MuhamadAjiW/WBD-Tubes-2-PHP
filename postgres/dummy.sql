@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 14.9
--- Dumped by pg_dump version 14.9
+-- Dumped from database version 15.4
+-- Dumped by pg_dump version 15.4
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -27,6 +27,7 @@ SET default_table_access_method = heap;
 CREATE TABLE public.books (
     book_id integer NOT NULL,
     title character varying(256) NOT NULL,
+    synopsis character varying(2048) DEFAULT ''::character varying NOT NULL,
     author_id integer NOT NULL,
     genre character varying(256) NOT NULL,
     release_date date NOT NULL,
@@ -41,10 +42,10 @@ CREATE TABLE public.books (
 ALTER TABLE public.books OWNER TO postgres;
 
 --
--- Name: books_book_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: books_book_id_seq1; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.books_book_id_seq
+CREATE SEQUENCE public.books_book_id_seq1
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -53,13 +54,13 @@ CREATE SEQUENCE public.books_book_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.books_book_id_seq OWNER TO postgres;
+ALTER TABLE public.books_book_id_seq1 OWNER TO postgres;
 
 --
--- Name: books_book_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: books_book_id_seq1; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
-ALTER SEQUENCE public.books_book_id_seq OWNED BY public.books.book_id;
+ALTER SEQUENCE public.books_book_id_seq1 OWNED BY public.books.book_id;
 
 
 --
@@ -120,7 +121,7 @@ ALTER SEQUENCE public.users_user_id_seq OWNED BY public.users.user_id;
 -- Name: books book_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.books ALTER COLUMN book_id SET DEFAULT nextval('public.books_book_id_seq'::regclass);
+ALTER TABLE ONLY public.books ALTER COLUMN book_id SET DEFAULT nextval('public.books_book_id_seq1'::regclass);
 
 
 --
@@ -134,17 +135,17 @@ ALTER TABLE ONLY public.users ALTER COLUMN user_id SET DEFAULT nextval('public.u
 -- Data for Name: books; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.books (book_id, title, author_id, genre, release_date, word_count, duration, graphic_cntn, image_path, audio_path) FROM stdin;
-1	Judul Buku 1	1	Fiksi	2023-10-03	100000	120	t	src="/storage/images/image1.jpg	src="/storage/audio/audio1.txt
-2	Judul Buku 2	2	Non-Fiksi	2023-10-04	80000	90	f	src="/storage/images/image2.jpg	src="/storage/audio/audio2.txt
-3	Judul Buku 3	3	Fiksi	2023-10-05	120000	150	t	src="/storage/images/image3.jpg	src="/storage/audio/audio3.txt
-4	Judul Buku 4	1	Fiksi	2023-10-06	90000	110	f	src="/storage/images/image4.jpg	src="/storage/audio/audio4.txt
-5	Judul Buku 5	2	Non-Fiksi	2023-10-07	75000	80	t	src="/storage/images/image5.jpg	src="/storage/audio/audio5.txt
-6	Judul Buku 6	3	Fiksi	2023-10-08	110000	130	f	src="/storage/images/image6.jpg	src="/storage/audio/audio6.txt
-7	Judul Buku 7	1	Fiksi	2023-10-09	95000	100	t	src="/storage/images/image7.jpg	src="/storage/audio/audio7.txt
-8	Judul Buku 8	2	Non-Fiksi	2023-10-10	85000	95	f	src="/storage/images/image8.jpg	src="/storage/audio/audio8.txt
-9	Judul Buku 9	3	Fiksi	2023-10-11	105000	125	t	src="/storage/images/image9.jpg	src="/storage/audio/audio9.txt
-10	Judul Buku 10	1	Fiksi	2023-10-12	80000	90	f	src="/storage/images/image10.jpg	src="/storage/audio/audio10.txt
+COPY public.books (book_id, title, synopsis, author_id, genre, release_date, word_count, duration, graphic_cntn, image_path, audio_path) FROM stdin;
+1	Judul Buku 1	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rhoncus nec neque non venenatis. Proin a porttitor mauris, vitae bibendum est. Ut ac dolor dui. Mauris mollis ipsum ut convallis luctus. Vivamus scelerisque vulputate nulla, vel congue quam accumsan sit amet. Nullam luctus lacinia mauris et euismod. Aliquam sed suscipit lacus, ac dictum ex. Pellentesque lectus eros, accumsan vel lacus eu, imperdiet ultrices nisi. Pellentesque non elit ut sem scelerisque placerat sit amet vitae orci. Aliquam tristique, eros eu porttitor molestie, velit massa congue nunc, vel mollis arcu massa ac purus. Integer a mauris pretium, lacinia lectus eu, finibus elit. Mauris vel lectus sit amet sapien bibendum semper eu vitae erat. Morbi ut fringilla massa.	1	Fiksi	2023-10-03	100000	120	t	/storage/images/image1.jpg	/storage/audio/audio1.mp3
+2	Judul Buku 2	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rhoncus nec neque non venenatis. Proin a porttitor mauris, vitae bibendum est. Ut ac dolor dui. Mauris mollis ipsum ut convallis luctus. Vivamus scelerisque vulputate nulla, vel congue quam accumsan sit amet. Nullam luctus lacinia mauris et euismod. Aliquam sed suscipit lacus, ac dictum ex. Pellentesque lectus eros, accumsan vel lacus eu, imperdiet ultrices nisi. Pellentesque non elit ut sem scelerisque placerat sit amet vitae orci. Aliquam tristique, eros eu porttitor molestie, velit massa congue nunc, vel mollis arcu massa ac purus. Integer a mauris pretium, lacinia lectus eu, finibus elit. Mauris vel lectus sit amet sapien bibendum semper eu vitae erat. Morbi ut fringilla massa.	2	Non-Fiksi	2023-10-04	80000	90	f	/storage/images/image2.jpg	/storage/audio/audio2.mp3
+3	Judul Buku 3	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rhoncus nec neque non venenatis. Proin a porttitor mauris, vitae bibendum est. Ut ac dolor dui. Mauris mollis ipsum ut convallis luctus. Vivamus scelerisque vulputate nulla, vel congue quam accumsan sit amet. Nullam luctus lacinia mauris et euismod. Aliquam sed suscipit lacus, ac dictum ex. Pellentesque lectus eros, accumsan vel lacus eu, imperdiet ultrices nisi. Pellentesque non elit ut sem scelerisque placerat sit amet vitae orci. Aliquam tristique, eros eu porttitor molestie, velit massa congue nunc, vel mollis arcu massa ac purus. Integer a mauris pretium, lacinia lectus eu, finibus elit. Mauris vel lectus sit amet sapien bibendum semper eu vitae erat. Morbi ut fringilla massa.	3	Fiksi	2023-10-05	120000	150	t	/storage/images/image3.jpg	/storage/audio/audio3.mp3
+4	Judul Buku 4	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rhoncus nec neque non venenatis. Proin a porttitor mauris, vitae bibendum est. Ut ac dolor dui. Mauris mollis ipsum ut convallis luctus. Vivamus scelerisque vulputate nulla, vel congue quam accumsan sit amet. Nullam luctus lacinia mauris et euismod. Aliquam sed suscipit lacus, ac dictum ex. Pellentesque lectus eros, accumsan vel lacus eu, imperdiet ultrices nisi. Pellentesque non elit ut sem scelerisque placerat sit amet vitae orci. Aliquam tristique, eros eu porttitor molestie, velit massa congue nunc, vel mollis arcu massa ac purus. Integer a mauris pretium, lacinia lectus eu, finibus elit. Mauris vel lectus sit amet sapien bibendum semper eu vitae erat. Morbi ut fringilla massa.	1	Fiksi	2023-10-06	90000	110	f	/storage/images/image4.jpg	/storage/audio/audio4.mp3
+5	Judul Buku 5	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rhoncus nec neque non venenatis. Proin a porttitor mauris, vitae bibendum est. Ut ac dolor dui. Mauris mollis ipsum ut convallis luctus. Vivamus scelerisque vulputate nulla, vel congue quam accumsan sit amet. Nullam luctus lacinia mauris et euismod. Aliquam sed suscipit lacus, ac dictum ex. Pellentesque lectus eros, accumsan vel lacus eu, imperdiet ultrices nisi. Pellentesque non elit ut sem scelerisque placerat sit amet vitae orci. Aliquam tristique, eros eu porttitor molestie, velit massa congue nunc, vel mollis arcu massa ac purus. Integer a mauris pretium, lacinia lectus eu, finibus elit. Mauris vel lectus sit amet sapien bibendum semper eu vitae erat. Morbi ut fringilla massa.	2	Non-Fiksi	2023-10-07	75000	80	t	/storage/images/image5.jpg	/storage/audio/audio5.mp3
+6	Judul Buku 6	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rhoncus nec neque non venenatis. Proin a porttitor mauris, vitae bibendum est. Ut ac dolor dui. Mauris mollis ipsum ut convallis luctus. Vivamus scelerisque vulputate nulla, vel congue quam accumsan sit amet. Nullam luctus lacinia mauris et euismod. Aliquam sed suscipit lacus, ac dictum ex. Pellentesque lectus eros, accumsan vel lacus eu, imperdiet ultrices nisi. Pellentesque non elit ut sem scelerisque placerat sit amet vitae orci. Aliquam tristique, eros eu porttitor molestie, velit massa congue nunc, vel mollis arcu massa ac purus. Integer a mauris pretium, lacinia lectus eu, finibus elit. Mauris vel lectus sit amet sapien bibendum semper eu vitae erat. Morbi ut fringilla massa.	3	Fiksi	2023-10-08	110000	130	f	/storage/images/image6.jpg	/storage/audio/audio6.mp3
+7	Judul Buku 7	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rhoncus nec neque non venenatis. Proin a porttitor mauris, vitae bibendum est. Ut ac dolor dui. Mauris mollis ipsum ut convallis luctus. Vivamus scelerisque vulputate nulla, vel congue quam accumsan sit amet. Nullam luctus lacinia mauris et euismod. Aliquam sed suscipit lacus, ac dictum ex. Pellentesque lectus eros, accumsan vel lacus eu, imperdiet ultrices nisi. Pellentesque non elit ut sem scelerisque placerat sit amet vitae orci. Aliquam tristique, eros eu porttitor molestie, velit massa congue nunc, vel mollis arcu massa ac purus. Integer a mauris pretium, lacinia lectus eu, finibus elit. Mauris vel lectus sit amet sapien bibendum semper eu vitae erat. Morbi ut fringilla massa.	1	Fiksi	2023-10-09	95000	100	t	/storage/images/image7.jpg	/storage/audio/audio7.mp3
+8	Judul Buku 8	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rhoncus nec neque non venenatis. Proin a porttitor mauris, vitae bibendum est. Ut ac dolor dui. Mauris mollis ipsum ut convallis luctus. Vivamus scelerisque vulputate nulla, vel congue quam accumsan sit amet. Nullam luctus lacinia mauris et euismod. Aliquam sed suscipit lacus, ac dictum ex. Pellentesque lectus eros, accumsan vel lacus eu, imperdiet ultrices nisi. Pellentesque non elit ut sem scelerisque placerat sit amet vitae orci. Aliquam tristique, eros eu porttitor molestie, velit massa congue nunc, vel mollis arcu massa ac purus. Integer a mauris pretium, lacinia lectus eu, finibus elit. Mauris vel lectus sit amet sapien bibendum semper eu vitae erat. Morbi ut fringilla massa.	2	Non-Fiksi	2023-10-10	85000	95	f	/storage/images/image8.jpg	/storage/audio/audio8.mp3
+9	Judul Buku 9	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rhoncus nec neque non venenatis. Proin a porttitor mauris, vitae bibendum est. Ut ac dolor dui. Mauris mollis ipsum ut convallis luctus. Vivamus scelerisque vulputate nulla, vel congue quam accumsan sit amet. Nullam luctus lacinia mauris et euismod. Aliquam sed suscipit lacus, ac dictum ex. Pellentesque lectus eros, accumsan vel lacus eu, imperdiet ultrices nisi. Pellentesque non elit ut sem scelerisque placerat sit amet vitae orci. Aliquam tristique, eros eu porttitor molestie, velit massa congue nunc, vel mollis arcu massa ac purus. Integer a mauris pretium, lacinia lectus eu, finibus elit. Mauris vel lectus sit amet sapien bibendum semper eu vitae erat. Morbi ut fringilla massa.	3	Fiksi	2023-10-11	105000	125	t	/storage/images/image9.jpg	/storage/audio/audio9.mp3
+10	Judul Buku 10	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rhoncus nec neque non venenatis. Proin a porttitor mauris, vitae bibendum est. Ut ac dolor dui. Mauris mollis ipsum ut convallis luctus. Vivamus scelerisque vulputate nulla, vel congue quam accumsan sit amet. Nullam luctus lacinia mauris et euismod. Aliquam sed suscipit lacus, ac dictum ex. Pellentesque lectus eros, accumsan vel lacus eu, imperdiet ultrices nisi. Pellentesque non elit ut sem scelerisque placerat sit amet vitae orci. Aliquam tristique, eros eu porttitor molestie, velit massa congue nunc, vel mollis arcu massa ac purus. Integer a mauris pretium, lacinia lectus eu, finibus elit. Mauris vel lectus sit amet sapien bibendum semper eu vitae erat. Morbi ut fringilla massa.	1	Fiksi	2023-10-12	80000	90	f	/storage/images/image10.jpg	/storage/audio/audio10.mp3
 \.
 
 
@@ -185,10 +186,10 @@ COPY public.users (user_id, email, username, password, name, bio, admin) FROM st
 
 
 --
--- Name: books_book_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: books_book_id_seq1; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.books_book_id_seq', 10, true);
+SELECT pg_catalog.setval('public.books_book_id_seq1', 1, false);
 
 
 --
@@ -199,11 +200,11 @@ SELECT pg_catalog.setval('public.users_user_id_seq', 10, true);
 
 
 --
--- Name: books books_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: books books_pkey1; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.books
-    ADD CONSTRAINT books_pkey PRIMARY KEY (book_id);
+    ADD CONSTRAINT books_pkey1 PRIMARY KEY (book_id);
 
 
 --
@@ -239,11 +240,11 @@ ALTER TABLE ONLY public.users
 
 
 --
--- Name: books books_author_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: books books_author_id_fkey1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.books
-    ADD CONSTRAINT books_author_id_fkey FOREIGN KEY (author_id) REFERENCES public.users(user_id);
+    ADD CONSTRAINT books_author_id_fkey1 FOREIGN KEY (author_id) REFERENCES public.users(user_id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
 --
@@ -251,7 +252,7 @@ ALTER TABLE ONLY public.books
 --
 
 ALTER TABLE ONLY public.reviews
-    ADD CONSTRAINT reviews_book_id_fkey FOREIGN KEY (book_id) REFERENCES public.books(book_id);
+    ADD CONSTRAINT reviews_book_id_fkey FOREIGN KEY (book_id) REFERENCES public.books(book_id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
 --
@@ -259,7 +260,7 @@ ALTER TABLE ONLY public.reviews
 --
 
 ALTER TABLE ONLY public.reviews
-    ADD CONSTRAINT reviews_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(user_id);
+    ADD CONSTRAINT reviews_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(user_id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
 --

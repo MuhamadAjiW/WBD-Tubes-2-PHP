@@ -38,33 +38,52 @@ class BookModel{
         $this->database->bind('audio_path', $audio_path);
 
         $this->database->execute();
-
-        return $this->database->lastID();
     }
 
     public function fetchBookByID($book_id){
         $query = "SELECT * FROM books WHERE book_id = :book_id";
-    
+
         $this->database->query($query);
         $this->database->bind('book_id', $book_id);
         
         return $this->database->fetch();
     }
-    public function fetchBooksAmount($amount){
-        $query = "SELECT * FROM books ORDER BY title ASC LIMIT :amount";
-    
+    public function fetchBooksAll(){
+        $query = "SELECT * FROM books";
         $this->database->query($query);
-        $this->database->bind('amount', $amount);
-        
         return $this->database->fetchAll();
     }
-    public function fetchBooksByAuthor($author_id){
-        $query = "SELECT * FROM books WHERE author_id = :author_id";
-        
+    public function fetchBooksPaged($page){
+        $query = "SELECT * FROM books";
         $this->database->query($query);
-        $this->database->bind('author_id', $author_id);
+        $this->database->execute();
+        $totalbooks = $this->database->rowCount();
+
+        $query = "SELECT * FROM books ORDER BY title LIMIT :limit OFFSET :offset";
+        $this->database->query($query);
+        $this->database->bind('limit', AppConfig::ROWS_PER_PAGE);
+        $this->database->bind('offset', ($page - 1) * AppConfig::ROWS_PER_PAGE);
         
-        return $this->database->fetchAll();
+        return [$this->database->fetchAll(), $totalbooks];
+    }
+    public function fetchBooksByAuthor($author_id){
+        //uncomment kalo sekiranya perlu
+        
+        $query = "SELECT * FROM books WHERE author_id = :author_id";
+        // $this->database->bind('author_id', $author_id);
+        // $this->database->query($query);
+        // $this->database->execute();
+        // $totalbooks = $this->database->rowCount();
+
+        // $query = "SELECT * FROM books WHERE author_id = :author_id ORDER BY title ASC LIMIT :amount";
+        
+        // $this->database->query($query);
+        $this->database->bind('author_id', $author_id);
+        // $this->database->bind('amount', $amount);
+        
+        $result = $this->database->fetchAll();
+        // return [$result, $totalbooks];
+        return $result;
     }
     public function fetchBooksBySearch(
         $search,
@@ -74,26 +93,47 @@ class BookModel{
     ){
         if ($genre === 'all'){
             $query = "SELECT * FROM books b JOIN user u ON b.author_id = u.user_id
+                        WHERE (b.title LIKE :search or u.name LIKE :search)";
+            
+            $this->database->query($query);
+            $this->database->bind('sort', $sort);
+            $this->database->bind('search', '%' . $search . '%');
+            
+            $this->database->execute();
+            $totalbooks = $this->database->rowCount();
+
+            $query = "SELECT * FROM books b JOIN user u ON b.author_id = u.user_id
                         WHERE (b.title LIKE :search or u.name LIKE :search)
                         ORDER BY :sort LIMIT :limit OFFSET :offset";
         } else{
+            $query = "SELECT * FROM books JOIN user u ON b.author_id = u.user_id
+                        WHERE (b.title LIKE :search or u.name LIKE :search) and genre = :genre";
+            
+            $this->database->query($query);
+            $this->database->bind('sort', $sort);
+            $this->database->bind('search', '%' . $search . '%');
+            $this->database->bind('genre', $genre);
+            
+            $this->database->execute();
+            $totalbooks = $this->database->rowCount();
+
             $query = "SELECT * FROM books JOIN user u ON b.author_id = u.user_id
                         WHERE (b.title LIKE :search or u.name LIKE :search) and genre = :genre
                         ORDER BY :sort LIMIT :limit OFFSET :offset";
         }
 
+        
+        $this->database->query($query);
         $this->database->query($query);
         $this->database->bind('limit', AppConfig::ROWS_PER_PAGE);
         $this->database->bind('offset', ($page - 1) * AppConfig::ROWS_PER_PAGE);
         $this->database->bind('sort', $sort);
         $this->database->bind('search', '%' . $search . '%');
-        if($genre !== 'all'){
-            $this->database->bind('genre', $genre);
-        }
-
+        if ($genre !== 'all') $this->database->bind('genre', $genre);
+        
         $result = $this->database->fetchAll();
 
-        return $result;
+        return [$result, $totalbooks];
     }
 
     public function updateBookTitle($book_id, $title){

@@ -20,15 +20,6 @@
     height: 100%;
 }
 
-.book-image {
-    position: relative;
-    border-radius: 4%;
-    width: 100%;
-    max-height: 100%;
-    margin-top: 7px;
-    cursor: pointer;
-}
-
 .book-rec-desc{
     width: 80%;
 }
