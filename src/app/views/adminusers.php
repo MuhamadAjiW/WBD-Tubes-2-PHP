@@ -17,7 +17,7 @@
         <div class="page-container">
             <div class="page-header">
                 <h2>List of all Users</h2>
-                <button class="admin-buttons add-button" id="add-user-button">Add User</button>
+                <button class="admin-buttons add-button" id="add-user-button" onclick="location.href='/adduser'">Add User</button>
             </div>
             
             <table class="user-table">
