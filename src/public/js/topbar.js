@@ -39,5 +39,19 @@ function checkScreenWidth(event){
     }
 }
 
+var topbar_input = document.getElementById("topbar-search");
+topbar_input.addEventListener("keydown", function(event) {
+    if(event.key === "Enter" && document.activeElement === topbar_input){
+        location.href="/search?q=".concat(topbar_input.value);
+    }
+});
+
+var topbar_input = document.getElementById("topbar-search");
+topbar_input.addEventListener("keydown", function(event) {
+    if(event.key === "Enter" && document.activeElement === topbar_input){
+        location.href="/search?q=".concat(topbar_input.value);
+    }
+});
+
 const mediaQuery = window.matchMedia("(min-width: 6in)")
 mediaQuery.addEventListener("change", checkScreenWidth)
