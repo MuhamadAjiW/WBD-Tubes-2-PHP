@@ -54,6 +54,43 @@ body {
     color: white;
 }
 
+.book-contents-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+}
+
+.admin-buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#edit-button {
+    margin: 0;
+    background-color: rgb(18, 151, 247);
+    height: 30px;
+    color: white;
+}
+
+#delete-button {
+    margin: 0;
+    background-color: rgb(240, 61, 41);
+    height: 30px;
+    color: white;
+}
+
+#edit-button:active {
+    transform: translateY(4px);
+}
+
+#delete-button:active {
+    transform: translateY(4px);
+}
+
 .book-genre {
     margin: 0;
     font-family: Rubik, sans-serif;
@@ -82,7 +119,25 @@ body {
     border-radius: 5px;
     border: none;
     cursor: pointer;
-    
+    float: left;
+}
+
+#recommend-icon {
+    font-size: 18px;
+    margin-right: 5px;
+    color: black;
+}
+
+#play-icon {
+    font-size: 18px;
+    margin-right: 5px;
+    color: white;
+}
+
+#save-icon {
+    font-size: 18px;
+    margin-right: 5px;
+    color: white;
 }
 
 #recommend-button:active {
@@ -101,6 +156,7 @@ body {
     background-color: #FFFFFF;
     height: 40px;
     box-shadow: 0 9px #e9e9e9;
+    width: 150px;
 }
 
 #audio-button {
@@ -115,7 +171,7 @@ body {
     background-color: rgba(65,65,65, 0.5);
     height: 40px;
     color: white;
-    margin-left: 200px;
+    margin-left: 125px;
     box-shadow: 0 9px #444444;
 }
 
@@ -246,13 +302,32 @@ body {
     border: 2px solid rgba(0,0,0, 0.1);
 }
 
+.first-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-family: Rubik, sans-serif;
+    border-bottom: 2px solid rgba(0,0,0, 0.1);
+}
+
+.rating-score {
+    font-size: 16px;
+    font-weight: 650;
+    margin-right: 5px;
+    display: flex;
+    align-items: center;
+    height: 30px;
+    justify-content: right;
+    margin-left: auto;
+}
+
+
 #reviewer-profile {
     height: 30px;
     display: flex;
     align-items: center;
     padding-left: 10px;
     padding-right: 10px;
-    border-bottom: 2px solid rgba(0,0,0, 0.1);
 }
 
 .one-line-review {
@@ -294,4 +369,193 @@ body {
     color: #edc001;
 }
 
+.modal {
+    display: none;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 250px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4);
+    overflow: auto;
+}
 
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+}
+  
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header {
+    padding: 2px 16px;
+    background-color: #edc001;
+    color: white;
+    height: 50px;
+}
+
+.modal-title {
+    margin: 0;
+    margin-top: 7px;
+    text-align: center;
+    justify-content: center;
+    font-size: 25px;
+}
+
+.modal-body {
+    padding: 2px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.reviewer-form {
+    border: 2px solid rgba(0,0,0, 0.1);
+    font-family: Rubik, sans-serif;
+    font-weight: 650;
+}
+
+#form-review {
+    min-height: 60px;
+    font-weight: 400;
+}
+
+.submit-review-btn {
+    background-color: #edc001;
+    color: white;
+    height: 40px;
+    width: 20%;
+    margin-right: 40%;
+    margin-left: 39%;
+    justify-content: center;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submit-review-btn:active {
+    transform: translateY(4px);
+}
+
+.delete-container {
+    padding: 16px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.delete-modal {
+    display: none;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 250px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4);
+    overflow: auto;
+}
+
+.delete-modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto;
+    border: 1px solid #888;
+    width: 60%; 
+    height: 20%;
+}
+
+.delete-modal-btn {
+    float: left;
+    width: 50%;
+    border: none;
+    height: 50px;
+    cursor: pointer;
+    font-family: Rubik, sans-serif;
+    font-weight: 700;
+    color: white;
+    opacity: 0.8;
+}
+
+.delete-modal-btn:hover {
+    opacity: 1;
+}
+
+#cancel-delete-btn {
+    background-color: #ccc;
+}
+
+#delete-book-btn {
+    background-color: #f44336;
+}
+
+.delete-modal-title {
+    margin: 0;
+    font-family: Rubik, sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.delete-modal-text {
+    margin: 0;
+    font-family: Rubik, sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.form-title {
+    font-weight: 700;
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+    margin-right: auto;
+}
+
+.form-input {
+    display: flex;
+    flex-direction: row;
+    margin-right: auto;
+}
+
+#form-name-input {
+    margin-right: 160px;
+}

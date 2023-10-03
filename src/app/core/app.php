@@ -2,7 +2,7 @@
 
 namespace app\core;
 
-class App{
+class App {
     private $router;
 
     public function __construct(){
@@ -23,6 +23,11 @@ class App{
         $this->router->addRoute('/detail', 'app/controllers/BookDetail', 'index', ['GET']);
         $this->router->addRoute('/register', 'app/controllers/Register', 'index', ['GET']);
         $this->router->addPost('/register', 'app/controllers/Register', 'register');
+        $this->router->addRoute('/adminusers', 'app/controllers/AdminUsers', 'index', ['GET']);
+        $this->router->addRoute('/adminbooks', 'app/controllers/AdminBooks', 'index', ['GET']);
+        $this->router->addRoute('/adminreviews', 'app/controllers/AdminReviews', 'index', ['GET']);
+        $this->router->addRoute('/addbook', 'app/controllers/AddBook', 'index', ['GET']);
+        $this->router->addRoute('/adduser', 'app/controllers/AddUser', 'index', ['GET']);
     }
 }
 ?>

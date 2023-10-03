@@ -1,28 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Book details</title>
+    <title></title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <?php echo strip_tags($REL_DATA, '<link>');?>
+    <link rel="stylesheet" href="css/bookdetail.css" />
 </head>
-<?php if(file_exists($TOP_BAR)) include_once($TOP_BAR);?>
 <body>
     <div class="top-wrapper">
-    <img class="blur-bg" src="../../storage/images/book_cover.jpeg">
+    <img class="blur-bg" src="images/book_cover.jpeg">
         <div class="book-info">
             <div class="book-cover">
-                <img class="book-cover-image" src="../../storage/images/book_cover.jpeg">
+                <img class="book-cover-image" src="images/book_cover.jpeg">
             </div>
             <div class ="book-contents">
-                <h1 class='book-genre'>Romance</h1>
+                <div class="book-contents-header">
+                    <h1 class="book-genre">Romance</h1>
+                    <div class="admin-buttons">
+                        <button id="edit-button" class="book-buttons" type="button">Edit</button>
+                        <button id="delete-button" class="book-buttons" type="button">Delete</button>
+                    </div>
+                </div>
                 <h1 class='book-title'>The Most Important Thing In The World</h1>
                 <h2 class='book-author'>By Kelly Sanford</h2>
                 <div class="book-buttons">
-                    <button id="recommend-button" class="book-buttons" type="button"><i class="fa-solid fa-thumbs-up" id="recommend-icon"></i>Recommend</button>
-                    <button id="audio-button" class="book-buttons" type='button'><i class="fa-solid fa-play" id="play-icon"></i>Hear it now</button>
-                    <button id="save-button" class="book-buttons" type='button'><i class="fa-solid fa-save" id="save-icon"></i>Save to library</button>
+                    <button id="recommend-button" class="book-buttons" type="button">Recommend</button>
+                    <button id="audio-button" class="book-buttons" type='button'>Hear it now</button>
+                    <button id="save-button" class="book-buttons" type='button'>Save to library</button>
                 </div>
             </div>
         </div>
@@ -51,11 +56,8 @@
             <h1 class="text-title">Reviews</h1>
             <div class="review-section">
                 <div class="review-box">
-                    <div class="first-section">
-                        <div class="user-profile" id="reviewer-profile">
-                            Testimoni Review
-                        </div>
-                        <span class="rating-score">Score: 4.3/5</span>
+                    <div class="user-profile" id="reviewer-profile">
+                        Testimoni Review
                     </div>
                     <div class="one-line-review">
                         Buku ini emang sangat bagus dan rekomended banget buat dibaca
@@ -65,11 +67,8 @@
                     </div>
                 </div>
                 <div class="review-box">
-                    <div class="first-section">
-                        <div class="user-profile" id="reviewer-profile">
-                            Testimoni Review
-                        </div>
-                        <span class="rating-score">Score: 4.3/5</span>
+                    <div class="user-profile" id="reviewer-profile">
+                        Testimoni Review
                     </div>
                     <div class="one-line-review">
                         Buku ini emang sangat bagus dan rekomended banget buat dibaca
@@ -79,11 +78,8 @@
                     </div>
                 </div>
                 <div class="review-box">
-                    <div class="first-section">
-                        <div class="user-profile" id="reviewer-profile">
-                            Testimoni Review
-                        </div>
-                        <span class="rating-score">Score: 4.3/5</span>
+                    <div class="user-profile" id="reviewer-profile">
+                        Testimoni Review
                     </div>
                     <div class="one-line-review">
                         Buku ini emang sangat bagus dan rekomended banget buat dibaca
@@ -93,11 +89,8 @@
                     </div>
                 </div>
                 <div class="review-box">
-                    <div class="first-section">
-                        <div class="user-profile" id="reviewer-profile">
-                            Testimoni Review
-                        </div>
-                        <span class="rating-score">Score: 4.3/5</span>
+                    <div class="user-profile" id="reviewer-profile">
+                        Testimoni Review
                     </div>
                     <div class="one-line-review">
                         Buku ini emang sangat bagus dan rekomended banget buat dibaca
@@ -136,7 +129,6 @@
                 <button id="review-button">Write a review</button>
             </div>
         </div>
-    </div>
         <script>
             document.addEventListener("DOMContentLoaded", function() {
                 let text=document.querySelectorAll('.plain-text');
@@ -146,42 +138,64 @@
             })
         </script>
 </body>
-<?php if(file_exists($FOOTER)) include_once($FOOTER);?>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    let text=document.querySelectorAll('.plain-text');
-    for (let e of text) {
-        e.innerHTML = e.innerHTML.replace(/\\n/g, '<br></br>')
-    }
-})
-</script>
-
 </html>
-
 <div class="modal">
     <div class="modal-content">
         <div class="modal-header">
             <span id="close-modal" class="close">&times;</span>
             <h5 class="modal-title">Submit Review</h5>
         </div>
-        <form class="modal-body">
-            <div class="first-modal-section">
-                <div class="form-title">
-                    <span class="form-title">Name</span>
-                    <span class="form-title">Rating</span>
-                </div>
-                <div class="form-input">
-                    <input type="text" class="form-input" id="form-name-input" placeholder="Enter Your Name"/>
-                    <input type="number"  class="form-input" placeholder="1-5" min="1" max="5">
-                </div>
-            </div>
-            <textarea type="text" class="reviewer-form" id="form-review" placeholder="Enter Your Review"></textarea>
+        <div class="modal-body">
+            <input type="text" name="reviewer_name" class="reviewer-form" placeholder="Enter Your Name"/>
+            <textarea type="text" name="reviewer_text" class="reviewer-form" id="form-review" placeholder="Enter Your Review"></textarea>
             <button type="button" class="submit-review-btn">Submit</button>
-        </form>
+        </div>
     </div>
 </div>
 
-<script>
+<div class="delete-modal">
+    <div class="delete-modal-content">
+        <div class="delete-container">
+            <h1 class = "delete-modal-title">Delete Book</h1>
+            <p class = "delete-modal-text">Are you sure you want to delete this book?</p>
+
+            <div class="delete-modal-buttons">
+                <button type="button" class="delete-modal-btn" id="cancel-delete-btn">Cancel</button>
+                <button type="button" class="delete-modal-btn" id="delete-book-btn">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script> // Modal for book deletion
+    // Get the modal
+    var deletemodal = document.getElementsByClassName("delete-modal")[0];
+    
+    // Get the open modal button
+    var openmodalbtn = document.getElementById("delete-button");
+
+    // Get the delete button
+    var deletebtn = document.getElementById("delete-book-btn");
+
+    // Get the cancel button
+    var cancelbtn = document.getElementById("cancel-delete-btn");
+    
+    openmodalbtn.onclick = function() {
+        deletemodal.style.display = "block";
+    }
+
+    cancelbtn.onclick = function() {
+        deletemodal.style.display = "none";
+    }
+
+    // ntar diganti kalau udah jadi
+    deletebtn.onclick = function() {
+        deletemodal.style.display = "none";
+    }
+
+</script>
+
+<script> // Popup Form Modal Script
     // Get modal
     var modal = document.getElementsByClassName("modal")[0];
     
