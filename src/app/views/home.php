@@ -19,7 +19,7 @@
         <section class="book-rec">
             <?php
                 extract($bookfeatured);
-                include 'app/components/BookFeatured.php';
+                include '../app/components/BookFeatured.php';
             ?> 
         </section>
     </div>
@@ -34,7 +34,7 @@
                     <?php
                         foreach ($booktable as $bookdata) {
                             extract($bookdata);
-                            include 'app/components/BookGridEntry.php';
+                            include '../app/components/BookGridEntry.php';
                         }
                     ?> 
                 </div>
@@ -45,7 +45,7 @@
                     'currentpage' => $currentpage
                 ];
                 extract($data);
-                include 'app/components/PageIndex.php';
+                include '../app/components/PageIndex.php';
             ?>
         </section>
     </div>

@@ -3,7 +3,7 @@
 use app\core\App;
 
 function autoLoad($class_name){
-    $class_path = __DIR__;
+    $class_path =  __DIR__ . "/../";
     $class_file = str_replace('\\', '/', $class_name);
     $class = $class_path . '/' . $class_file . '.php';
     
