@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\core\Controller;
+use app\core\Router;
 
 class Register extends Controller{
     public function index(){
@@ -12,8 +13,7 @@ class Register extends Controller{
     
     public function register(){
         //TODO: Implement
-        header("HTTP/1.0 501 Not Implemented");
-        $this->view('Error501', ['name' => 'Hello!']);
+        Router::NotImplemented();
 
         // if(isset($_POST['login'])){
         //     $email = $_POST["email"];

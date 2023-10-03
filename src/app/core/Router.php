@@ -7,6 +7,11 @@ use Exception;
 
 class Router{
     private $routes = [];
+
+    public function __construct() {
+        $this->addRoute('/error/404', 'app/controllers/Error', 'not_found', ['GET']);
+        $this->addRoute('/error/501', 'app/controllers/Error', 'not_implemented', ['GET']);
+    }
     
     private function validityCheck($route, $methods, $handler){
         if(is_null($methods)){
@@ -92,19 +97,11 @@ class Router{
     }
 
     public static function NotFound(){
-        $handler_class = 'app\\controllers\\Error';
-        $handler_func = 'not_found';
-    
-        $instance = new $handler_class;
-        call_user_func_array([$instance, $handler_func], []);
+        self::redirect('/error/404');
     }
 
     public static function NotImplemented(){
-        $handler_class = 'app\\controllers\\Error';
-        $handler_func = 'not_implemented';
-    
-        $instance = new $handler_class;
-        call_user_func_array([$instance, $handler_func], []);
+        self::redirect('/error/501');
     }
 }
 
