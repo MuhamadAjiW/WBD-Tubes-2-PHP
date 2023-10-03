@@ -78,6 +78,25 @@ class BookModel{
         
         return [$this->database->fetchAll(), $totalbooks];
     }
+
+    public function fetchBookIDByAuthorNTitle($author_id, $title) {
+        $query = "SELECT book_id FROM books WHERE author_id = :author_id AND title = :title";
+        $this->database->query($query);
+        $this->database->bind('author_id', $author_id);
+        $this->database->bind('title', $title);
+
+        return $this->database->fetch();
+    }
+
+    public function fetchAllBooksForAdmin() {
+        $query = "SELECT book_id, title, release_date, name FROM books b
+        INNER JOIN users u ON u.user_id = b.author_id";
+
+        $this->database->query($query);
+
+        return $this->database->fetchAll();
+    }
+
     public function fetchBooksByAuthor($author_id){
         //uncomment kalo sekiranya perlu
         
