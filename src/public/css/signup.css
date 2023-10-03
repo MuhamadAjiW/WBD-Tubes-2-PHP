@@ -112,3 +112,21 @@ section {
   top: 430px;
   margin-left: 60px;
 }
+
+.error-message {
+  position: absolute;
+  left: 200px;
+  margin-top: -10px;
+  margin-left: 60px;
+  z-index: 1;
+  transform: translateY(-50%);
+  top: 174px;
+  width: auto;
+  height: 5cm;
+  text-align: center;
+  font-size: 16px;
+  color: red;
+  background: none;
+  border: none;
+  padding: 0;
+}

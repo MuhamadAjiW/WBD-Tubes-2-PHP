@@ -41,6 +41,23 @@ class UserModel{
         return $user;
     }
 
+    public function getEmail($email){
+        $query = 'SELECT * FROM users WHERE email=:email LIMIT 1';
+        $this->database->query($query);
+        $this->database->bind('email', $email);
+        $user = $this->database->fetch();
+        return $user;
+    }
+
+    public function getUserName($username){
+        $query = 'SELECT * FROM users WHERE username=:username LIMIT 1';
+        $this->database->query($query);
+        $this->database->bind('username', $username);
+        $user = $this->database->fetch();
+        return $user;
+    }
+
+    
    
 }
 ?>

@@ -35,7 +35,7 @@
 
       <div class="form-box">
         <div class="form-value">
-          <form action="" method="post">
+          <form action="/register" method="post">
             <h2>Welcome To Redsy <i data-feather="smile"></i></h2>
             <div class="p">Login with your Redsy account</div>
             <div class="inputbox">
@@ -59,13 +59,13 @@
               />
             </div>
             <div class="inputbox">
-              <i data-feather="lock"></i>
+              <i data-feather="user"></i>
               <input
-                type="password"
-                id="confirmPassword"
-                name="confirmPassword"
+                type="name"
+                id="username"
+                name="username"
                 required
-                placeholder="     Tuliskan ulang password"
+                placeholder="     Masukkan username"
               />
             </div>
             <div class="inputbox">
@@ -78,11 +78,15 @@
                 placeholder="     Masukkan Nama Lengkap"
               />
             </div>
-            <button class="button">Sign Up</button>
+            <button class="button" type="submit" name="signup">Sign Up</button>
             <div class="Login">
               <p>Already have account <a href="#">Sign Up</a></p>
             </div>
           </form>
+          <?php if (!empty($namaError)): ?>
+              <div class="error-message"><?php echo $namaError; ?></div>
+          <?php endif; ?>
+          </div>
         </div>
       </div>
     </section>
