@@ -13,6 +13,10 @@ class App{
 
     public function initRoutes(){
         $this->router->redirect_permanent('/', '/home');
+
+        $this->router->addRoute('/404', 'app/controllers/Error', 'not_found', ['GET']);
+        $this->router->addRoute('/501', 'app/controllers/Error', 'not_implemented', ['GET']);
+
         $this->router->addRoute('/home', 'app/controllers/Home', 'index', ['GET']);
         $this->router->addRoute('/login', 'app/controllers/Login', 'index', ['GET']);
         $this->router->addPost('/login', 'app/controllers/Login', 'login');

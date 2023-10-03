@@ -50,14 +50,6 @@ class Router{
         }
     }
     
-    public static function NotFound(){
-        $handler_class = 'app\\controllers\\Error404';
-        $handler_func = 'index';
-    
-        $instance = new $handler_class;
-        call_user_func_array([$instance, $handler_func], []);
-    }
-    
     public function addRoute($route, $handler_class, $handler_func = 'index', $methods = ['GET']){
         $this->validityCheck($route, $methods, $handler_class);
         foreach($methods as $method){
@@ -97,6 +89,22 @@ class Router{
     public static function redirect($dest){
         header("Location: $dest");
         exit;
+    }
+
+    public static function NotFound(){
+        $handler_class = 'app\\controllers\\Error';
+        $handler_func = 'not_found';
+    
+        $instance = new $handler_class;
+        call_user_func_array([$instance, $handler_func], []);
+    }
+
+    public static function NotImplemented(){
+        $handler_class = 'app\\controllers\\Error';
+        $handler_func = 'not_implemented';
+    
+        $instance = new $handler_class;
+        call_user_func_array([$instance, $handler_func], []);
     }
 }
 
