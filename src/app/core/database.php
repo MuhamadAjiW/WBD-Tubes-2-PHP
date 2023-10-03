@@ -44,7 +44,7 @@ class Database{
                         $type = PDO::PARAM_NULL;
                         break;
                     default:
-                        $type = PDO::PARAM_INT;
+                        $type = PDO::PARAM_STR;
                         break;
                 }
             }
@@ -74,11 +74,28 @@ class Database{
     public function fetchAll(){
         try{
             $this->execute();
-            $this->loaded_query->fetchAll(PDO::FETCH_ASSOC);
+            return $this->loaded_query->fetchAll(PDO::FETCH_ASSOC);
         } catch(Exception $e){
             throw new Exception('Failed fetching query: ' . $e->getMessage());
         }
     }
+
+    public function rowCount(){
+        try{
+            return $this->loaded_query->rowCount();
+        } catch(Exception $e){
+            throw new Exception('Failed fetching row count: ' . $e->getMessage());
+        }
+    }
+    
+    // public function lastId(){
+    //     try{
+    //         return $this->connection->lastInsertId();
+    //     } catch(Exception $e){
+    //         throw new Exception('Failed fetching last inserted id: ' . $e->getMessage());
+    //     }
+    // }
+
 }
 
 ?>

@@ -9,6 +9,8 @@ class AppConfig{
     public const FOOTER = 'FOOTER';
     public const TOP_BAR_PATH = 'app/components/TopBar.php';
     public const FOOTER_PATH = 'app/components/Footer.php';
+
+    public const ROWS_PER_PAGE = 4;
 }
 
 ?>
