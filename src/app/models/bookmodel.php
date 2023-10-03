@@ -66,6 +66,16 @@ class BookModel{
         
         return [$this->database->fetchAll(), $totalbooks];
     }
+
+    public function fetchBookIDByAuthorNTitle($author_id, $title) {
+        $query = "SELECT book_id FROM books WHERE author_id = :author_id AND title = :title";
+        $this->database->query($query);
+        $this->database->bind('author_id', $author_id);
+        $this->database->bind('title', $title);
+
+        return $this->database->fetch();
+    }
+
     public function fetchBooksByAuthor($author_id){
         //uncomment kalo sekiranya perlu
         

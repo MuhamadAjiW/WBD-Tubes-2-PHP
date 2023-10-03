@@ -92,14 +92,14 @@
                 <form class="modal-body">
                     <div class="first-modal-section">
                         <div class="form-title">
-                            <span class="form-title">Name</span>
+                            <span class="form-title">Username</span>
                             <span class="form-title">Title</span>
-                            <span class="form-title">Rating</span>
+                            <span class="form-title" id="add-modal-rating">Rating</span>
                         </div>
                         <div class="form-input">
                             <input type="text" class="form-input" id="form-name-input" placeholder="Enter Name"/>
                             <input type="text" class="form-input" id="form-book-input" placeholder="Enter Book Title"/>
-                            <input type="number" class="form-input" id="form-rating-input" placeholder="1-5" min="1" max="5">
+                            <input type="number" class="form-input" id="form-add-rating-input" placeholder="1-5" min="1" max="5">
                         </div>
                     </div>
                     <textarea type="text" class="reviewer-form" id="form-review" placeholder="Enter Your Review"></textarea>
@@ -117,13 +117,9 @@
                 <form class="modal-body">
                     <div class="first-modal-section">
                         <div class="form-title">
-                            <span class="form-title">Name</span>
-                            <span class="form-title">Title</span>
                             <span class="form-title">Rating</span>
                         </div>
                         <div class="form-input">
-                            <input type="text" class="form-input" id="form-name-input" placeholder="Enter Name"/>
-                            <input type="text" class="form-input" id="form-book-input" placeholder="Enter Book Title"/>
                             <input type="number" class="form-input" id="form-rating-input" placeholder="1-5" min="1" max="5">
                         </div>
                     </div>

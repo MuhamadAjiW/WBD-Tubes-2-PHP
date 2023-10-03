@@ -246,7 +246,7 @@ tr:nth-child(even) {
     background-color: #f44336;
 }
 
-#modaldelete-user-btn {
+#modal-delete-user-btn {
     background-color: #f44336;
 }
 
@@ -391,17 +391,26 @@ tr:nth-child(even) {
 }
 
 #form-name-input {
-    margin-right: 55px;
+    margin-right: 43px;
     background-color: white;
 }
 
 #form-book-input {
-    margin-right: 37px;
+    margin-right: 10px;
     background-color: white;
 }
 
 #form-rating-input {
     background-color: white;
+}
+
+#form-add-rating-input {
+    margin-left: 10px;
+    background-color: white;
+}
+
+#add-modal-rating {
+    margin-left: 40px;
 }
 
 /* Admin Form Styling */

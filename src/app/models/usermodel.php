@@ -42,6 +42,14 @@ class UserModel{
         return $user;
     }
 
+    public function fetchUserIDByUsername($username) {
+        $query = "SELECT user_id FROM users WHERE username=:username";
+        $this->database->query($query);
+        $this->database->bind('username', $username);
+
+        return $this->database->fetch();
+    }
+
    
 }
 ?>
