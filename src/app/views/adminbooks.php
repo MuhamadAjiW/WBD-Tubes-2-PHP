@@ -10,14 +10,14 @@
 <body>
 
     <?php
-        include __DIR__ . "/adminsidebar.php";
+        include __DIR__ . "/../components/adminsidebar.php";
     ?>
 
     <div class="main-content">
         <div class="page-container">
             <div class="page-header">
                 <h2>List of all Books</h2>
-                <button class="admin-buttons add-button" id="add-book-button" onclick="showAddBookForm()">Add Book</button>
+                <button class="admin-buttons add-button" id="add-book-button" onclick="location.href='/addbook'">Add Book</button>
             </div>
             <table class="book-table">
                 <thead>

@@ -38,7 +38,6 @@ body {
 
 .book-info {
     display: inline-flex;
-    justify-content: space-between;
     position: relative;
     margin: 0 25%;
     margin-top : 45px;
@@ -556,6 +555,6 @@ body {
     margin-right: auto;
 }
 
-#form-name-input {
-    margin-right: 160px;
+#modal-form-name-input {
+    margin-right: 200px;
 }
