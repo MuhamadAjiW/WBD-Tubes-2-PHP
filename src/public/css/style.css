@@ -91,6 +91,14 @@ h1 {
 
 .cluster-h {
   display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.cluster-v {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 10px;
 }
@@ -125,30 +133,6 @@ h1 {
 
 .search-container {
   position: relative;
-}
-
-.search-container-sm {
-  size: 200px;
-}
-
-.search-result-sm {
-  position: absolute;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 2px 16px 0 rgba(0, 0, 0, 0.05);
-  background: white;
-  width: 100%;
-  height: max-content;
-}
-
-.search-entry-sm{
-    width: 100%;
-    height: max-content;
-    box-shadow: 0 1px 1px 0 rgba(150,150,150,.1), 0 1px 1px 0 rgba(150,150,150,.05);
-    transition: 0.3s;
-}
-
-.search-entry-sm:hover{
-    background-color: #cbcbcb;
-    cursor: pointer;
 }
 
 .title-text {

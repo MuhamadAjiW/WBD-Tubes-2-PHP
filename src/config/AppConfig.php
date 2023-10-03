@@ -11,6 +11,7 @@ class AppConfig{
     public const FOOTER_PATH = '../app/components/Footer.php';
 
     public const ENTRIES_PER_PAGE = 4;
+    public const ENTRIES_SMALL_SEARCH = 5;
     public const FEATURED_SEED = 3310;
 }
 

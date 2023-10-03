@@ -12,6 +12,28 @@ class Search extends Controller{
 
         $this->view('search', []);
     }
+
+    public function serve(){
+        $bookmodel = $this->model("BookModel");
+
+        if(isset($_POST['q'])){
+            $query = $_POST['q'];
+            if($query === '') {
+                json_encode(["error" => "No query"]);
+            }
+            else{                
+                $results = $bookmodel->fetchBooksBySimpleSearch($query);
+                if(!empty($results)){
+                    echo json_encode($results);
+                } else{
+                    echo json_encode(["error" => "No results"]);
+                }
+            }
+        }
+        else{
+            echo json_encode(["error" => "No query"]);
+        }
+    }
 }
 
 ?>
