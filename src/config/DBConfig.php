@@ -44,6 +44,8 @@ class DBConfig{
         image_path      VARCHAR(256)    NOT NULL,
         audio_path      VARCHAR(256)    NOT NULL,
         FOREIGN KEY (author_id) REFERENCES users(user_id)
+                                            ON DELETE CASCADE
+                                            ON UPDATE CASCADE
     );";
 
     public const REVIEW_TABLE_INIT =
@@ -53,8 +55,12 @@ class DBConfig{
         rating          INT             NOT NULL CHECK (rating BETWEEN 1 AND 5),
         reviewtext      VARCHAR(2048)   DEFAULT '' NOT NULL,
         PRIMARY KEY (book_id, user_id),
-        FOREIGN KEY (user_id) REFERENCES users(user_id),
-        FOREIGN KEY (book_id) REFERENCES books(book_id)
+        FOREIGN KEY (user_id) REFERENCES users(user_id) 
+                                            ON DELETE CASCADE
+                                            ON UPDATE CASCADE,
+        FOREIGN KEY (book_id) REFERENCES books(book_id) 
+                                            ON DELETE CASCADE
+                                            ON UPDATE CASCADE
     );";
 }
 

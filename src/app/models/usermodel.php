@@ -20,7 +20,8 @@ class UserModel{
         $admin
     ){
         // TODO: add hash and salt to password, email formatting for email
-        $query = 'INSERT INTO users (email, username, password, name, bio, admin) VALUES (:email, :username, :password, :name, :bio, :admin)';
+        $query = 'INSERT INTO users (email, username, password, name, bio, admin)
+        VALUES (:email, :username, :password, :name, :bio, :admin)';
         
         $this->database->query($query);
         $this->database->bind('email', $email);
