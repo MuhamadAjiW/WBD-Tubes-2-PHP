@@ -6,6 +6,7 @@ body {
     font-family: Rubik, sans-serif;
     min-height: 100vh;
     margin: 0;
+    cursor: default;
 }
 
 h1 {
@@ -53,6 +54,7 @@ h1 {
 }
 
 .btn {
+    transition: 0.3s;
     box-sizing: border-box;
     border: none;
     border-radius: 6px;
@@ -62,10 +64,6 @@ h1 {
     position: relative;
     text-align: center;
     cursor: pointer;
-}
-
-.btn:hover {
-    transition: 0.3s;
 }
 
 .btn-sm{
@@ -102,11 +100,11 @@ h1 {
     border: 2px solid #dbdbdb;
     border-radius: 24px;
     box-sizing: border-box;
+    transition: 0.3s;
 }
 
 .search-bar:hover{
     border: 2px solid #9b9b9b;
-    transition: 0.3s;
 }
 
 .search-bar-sm{
@@ -146,10 +144,10 @@ h1 {
     width: 100%;
     height: max-content;
     box-shadow: 0 1px 1px 0 rgba(150,150,150,.1), 0 1px 1px 0 rgba(150,150,150,.05);
+    transition: 0.3s;
 }
 
 .search-entry-sm:hover{
-    transition: 0.3s;
     background-color: #cbcbcb;
     cursor: pointer;
 }

@@ -1,12 +1,13 @@
 <div class="top-bar">
     <nav class="top-bar-contents">
-        <div class="cluster-h cluster-logo">
+        <button class="cluster-h cluster-logo"
+        onclick="location.href='/home'">
             <img src="storage/assets/logo.svg" alt="Logo of company" style="width: 55px; height: 55px; background: transparent">
             </img>
             <p class="web-title">
                 Baca.a
             </p>
-        </div>
+        </button>
         
         <div class="cluster-h cluster-search">
             <div class="search-container search-container-sm">
@@ -43,9 +44,29 @@
         </div>
     <!-- TODO: implement onclick -->
         <button class="btn btn-menu-sm"
-            onclick="location.href='/login'">
+            onclick=showSmallMenu()>
             <img src="storage/assets/menu3line.svg" alt="Menu button" style="width:100%; height:100%;">
             </img>
         </button>
     </nav>
+    <div id="popup-menu" class="menu-popup-sm">
+        <button class="btn popup-btn-sm"
+            onclick="location.href='/login'">
+            <img class="popup-btn-icn" src="storage/assets/menu3line.svg" alt="Menu button">
+            Login
+        </button>
+        <button class="btn popup-btn-sm"
+            onclick="location.href='/login'">
+            <img class="popup-btn-icn" src="storage/assets/menu3line.svg" alt="Menu button">
+            Login
+        </button>
+        <button class="btn popup-btn-sm"
+            onclick="location.href='/login'">
+            <img class="popup-btn-icn" src="storage/assets/menu3line.svg" alt="Menu button">
+            Login
+        </button>
+    </div>
+
+    <script src="public/js/topbar.js"></script>
+
 </div>

@@ -31,8 +31,7 @@ class Router{
                 if($handler[1] == AppConfig::REDIRECT){
                     $dest = $handler[0];
                     header("HTTP/1.1 301 Moved Permanently");
-                    header("Location: $dest");
-                    exit;
+                    $this->redirect($dest);
                 }
                 else{
                     $handler_class = str_replace('/', '\\', $handler[0]);
@@ -91,8 +90,13 @@ class Router{
         $this->routes[$route]['OPTIONS'] = [$handler_class, $handler_func];
     }
 
-    public function redirect($route, $dest){
+    public function redirect_permanent($route, $dest){
         $this->addRoute($route, $dest, AppConfig::REDIRECT, ['GET']);
+    }
+
+    public static function redirect($dest){
+        header("Location: $dest");
+        exit;
     }
 }
 

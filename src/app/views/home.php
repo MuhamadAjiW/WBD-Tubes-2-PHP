@@ -14,7 +14,7 @@
             <p>Here's what our reviewers think you should read this today</p>
             <p id="currentdate" style="color:#9b9b9b;text-align:right">date</p>
         </header>
-        
+        <?= $data['name'] ?>
         <!-- Template and randomize with hash on day -->
         <section class="book-rec">
             <div class="book-container">
