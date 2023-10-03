@@ -104,6 +104,10 @@ function serveSearchResult(results){
             generateSearchEntry(image_path, title, author, id);
         });
     }{
+        const bookContainer = document.createElement('div');
+        bookContainer.classList.add('book-container');
+        bookContainer.innerHTML = "No result";
+        searchresult.appendChild(bookContainer);
         console.error(results['error']);
     }
 }
