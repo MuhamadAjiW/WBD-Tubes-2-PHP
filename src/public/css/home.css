@@ -29,7 +29,6 @@
     cursor: pointer;
 }
 
-
 .book-rec-desc{
     width: 80%;
 }
@@ -52,4 +51,5 @@
         width: 50%;
         transform: translateX(50%);
     }
+    
 }

@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\core\Controller;
+use app\core\Router;
 
 class Register extends Controller{
     public function index(){

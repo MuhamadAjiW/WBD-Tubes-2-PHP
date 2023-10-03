@@ -2,7 +2,6 @@
 
 namespace app\controllers;
 
-
 use app\core\Controller;
 use app\models\UserModel;
 class Login extends Controller{
@@ -12,9 +11,6 @@ class Login extends Controller{
     }
     
     public function login(){
-        //TODO: Implement
-        //header("HTTP/1.0 501 Not Implemented");
-        //$this->view('Error501', ['name' => 'Hello!']);
         session_start();
         if(isset($_POST['login'])){
             $userLogin = $this->model("UserModel");
