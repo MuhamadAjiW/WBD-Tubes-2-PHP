@@ -10,7 +10,8 @@ class AppConfig{
     public const TOP_BAR_PATH = 'app/components/TopBar.php';
     public const FOOTER_PATH = 'app/components/Footer.php';
 
-    public const ROWS_PER_PAGE = 4;
+    public const ENTRIES_PER_PAGE = 4;
+    public const FEATURED_SEED = 3310;
 }
 
 ?>

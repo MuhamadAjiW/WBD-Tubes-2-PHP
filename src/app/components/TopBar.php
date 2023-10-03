@@ -53,17 +53,17 @@
         <button class="btn popup-btn-sm"
             onclick="location.href='/login'">
             <img class="popup-btn-icn" src="storage/assets/menu3line.svg" alt="Menu button">
-            Login
+            Log in
         </button>
         <button class="btn popup-btn-sm"
-            onclick="location.href='/login'">
+            onclick="location.href='/register'">
             <img class="popup-btn-icn" src="storage/assets/menu3line.svg" alt="Menu button">
-            Login
+            Sign up
         </button>
         <button class="btn popup-btn-sm"
-            onclick="location.href='/login'">
+            onclick="location.href='/search'">
             <img class="popup-btn-icn" src="storage/assets/menu3line.svg" alt="Menu button">
-            Login
+            Search
         </button>
     </div>
 
