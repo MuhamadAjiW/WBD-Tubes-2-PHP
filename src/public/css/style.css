@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
 body {
     display: flex;
     flex-direction: column;
@@ -10,47 +9,47 @@ body {
 }
 
 h1 {
-    margin: 0;
+  margin: 0;
 }
 
-.first{
-    padding-top: 64px;
+.first {
+  padding-top: 64px;
 }
 
-.main-content{
-    position: relative;
-    width: 60%;
-    left: 50%;
-    transform: translateX(-50%);
+.main-content {
+  position: relative;
+  width: 60%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-.main-content-grey{
-    background-color: #9b9b9b;
+.main-content-grey {
+  background-color: #9b9b9b;
 }
 
-.footer-wrap{
-    height: 100%;
-    flex: 1;
-    display: flex;
+.footer-wrap {
+  height: 100%;
+  flex: 1;
+  display: flex;
 }
 
-.footer-pusher{
-    flex: 1;
+.footer-pusher {
+  flex: 1;
 }
 
-.base-footer{
-    font-family: sans-serif;
-    padding-top: 35px;
-    padding-bottom: 45px;
-    box-shadow: 0 -2px 2px 0 rgba(200,200,200,.1);
-    bottom: 0;
+.base-footer {
+  font-family: sans-serif;
+  padding-top: 35px;
+  padding-bottom: 45px;
+  box-shadow: 0 -2px 2px 0 rgba(200, 200, 200, 0.1);
+  bottom: 0;
 }
 
-.footer-contents{
-    position: relative;
-    width: 60%;
-    left: 50%;
-    transform: translateX(-50%);
+.footer-contents {
+  position: relative;
+  width: 60%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .btn {
@@ -72,28 +71,28 @@ h1 {
     line-height: 1;
 }
 
-.btn-grey{
-    background: #e9e9e9;
-    color: #2a2a2a;
+.btn-grey {
+  background: #e9e9e9;
+  color: #2a2a2a;
 }
 
-.btn-grey:hover{
-    background-color: #9b9b9b;
+.btn-grey:hover {
+  background-color: #9b9b9b;
 }
 
-.btn-yellow{
-    background: #edc001;
-    color: #ffffff;
+.btn-yellow {
+  background: #edc001;
+  color: #ffffff;
 }
 
-.btn-yellow:hover{
-    background-color: #d5ac00;
+.btn-yellow:hover {
+  background-color: #d5ac00;
 }
 
-.cluster-h{
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
+.cluster-h {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .search-bar{
@@ -107,37 +106,37 @@ h1 {
     border: 2px solid #9b9b9b;
 }
 
-.search-bar-sm{
-    padding: 5px 0;
+.search-bar-sm {
+  padding: 5px 0;
 }
 
-.input{
-    background: transparent;
-    outline: none;
-    border: none;
-    position: relative;
-    width: 90%;
-    left: 5%;
+.input {
+  background: transparent;
+  outline: none;
+  border: none;
+  position: relative;
+  width: 90%;
+  left: 5%;
 }
 
-.input::placeholder{
-    color: #2a2a2a;
+.input::placeholder {
+  color: #2a2a2a;
 }
 
-.search-container{
-    position: relative;
+.search-container {
+  position: relative;
 }
 
-.search-container-sm{
-    size: 200px;
+.search-container-sm {
+  size: 200px;
 }
 
-.search-result-sm{
-    position: absolute;
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,.1), 0 2px 16px 0 rgba(0,0,0,.05);
-    background: white;
-    width: 100%;
-    height: max-content;
+.search-result-sm {
+  position: absolute;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 2px 16px 0 rgba(0, 0, 0, 0.05);
+  background: white;
+  width: 100%;
+  height: max-content;
 }
 
 .search-entry-sm{
@@ -152,30 +151,47 @@ h1 {
     cursor: pointer;
 }
 
-.title-text{
-    font-size: 28px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+.title-text {
+  font-size: 28px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-.subtitle-text{
-    font-size: 18px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+.subtitle-text {
+  font-size: 18px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-.desc-text{
-    font-size: 14px;
-    margin: 0;
-    text-align: justify;
+.desc-text {
+  font-size: 14px;
+  margin: 0;
+  text-align: justify;
 }
 
-@media (max-width: 12in){
-    .main-content{
-        width: 85%;
-    }
-    .footer-contents{
-        width: 85%;
-    }
+@media (max-width: 12in) {
+  .main-content {
+    width: 85%;
+  }
+  .footer-contents {
+    width: 85%;
+  }
 }
 
+.sessionerror {
+  position: absolute;
+  left: 0;
+  margin-top: -10px;
+  margin-left: 60px;
+  z-index: 1;
+  transform: translateY(-50%);
+  top: 210px;
+  width: auto;
+  height: 5cm;
+  text-align: center;
+  font-size: 16px;
+  color: rgb(198, 29, 29);
+  background: none;
+  border: none;
+  padding: 0;
+}
