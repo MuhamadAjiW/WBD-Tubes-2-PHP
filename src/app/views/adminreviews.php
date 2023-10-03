@@ -23,49 +23,23 @@
             <table class="review-table">
                 <thead>
                     <tr>
-                    <th class="review-column">Reviewer's Name</th>
+                    <th class="review-column">Username</th>
                     <th class="review-column">Book Title</th>
                     <th class="review-column">Rating</th>
                     <th class="review-column">Review</th>
                     <th class="review-column" colspan="2">Action</th>
                     </tr>
                 </thead>
-
+                <?php foreach ($reviewdata as $review): ?>
                 <tr>
-                    <td>Senvis</td>
-                    <td>Aku Suka Kamu</td>
-                    <td>4.5</td>
-                    <td>Mantep bukunyaa keren</td>
-                    <td><button class="admin-buttons edit-button" id="edit-review-button1">Edit</button>
-                    <td><button class="admin-buttons delete-button" id="delete-review-button1">Delete</button>    
+                    <td><?= $review['username'] ?></td>
+                    <td><?= $review['title'] ?></td>
+                    <td><?= $review['rating'] ?></td>
+                    <td><?= $review['reviewtext'] ?></td>
+                    <td><button class="admin-buttons edit-button" data-review-book-id ="<?= $review['book_id'] ?>" data-review-user-id = "<?= $review['user_id'] ?>">Edit</button>
+                    <td><button class="admin-buttons delete-button" data-review-book-id ="<?= $review['book_id'] ?>" data-review-user-id = "<?= $review['user_id'] ?>">Delete</button>    
                 </tr>
-
-                <tr>
-                    <td>Senvis</td>
-                    <td>Aku Suka Kamu</td>
-                    <td>4.5</td>
-                    <td>Mantep bukunyaa keren</td>
-                    <td><button class="admin-buttons edit-button" id="edit-review-button2">Edit</button>
-                    <td><button class="admin-buttons delete-button" id="delete-review-button2">Delete</button>    
-                </tr>
-
-                <tr>
-                    <td>Senvis</td>
-                    <td>Aku Suka Kamu</td>
-                    <td>4.5</td>
-                    <td>Mantep bukunyaa keren</td>
-                    <td><button class="admin-buttons edit-button" id="edit-review-button3">Edit</button>
-                    <td><button class="admin-buttons delete-button" id="delete-review-button3">Delete</button>    
-                </tr>
-
-                <tr>
-                    <td>Senvis</td>
-                    <td>Aku Suka Kamu</td>
-                    <td>4.5</td>
-                    <td>Mantep bukunyaa keren</td>
-                    <td><button class="admin-buttons edit-button" id="edit-review-button4">Edit</button>
-                    <td><button class="admin-buttons delete-button" id="delete-review-button4">Delete</button>    
-                </tr>
+                <?php endforeach; ?>
             </table>
         </div>
 
@@ -97,12 +71,12 @@
                             <span class="form-title" id="add-modal-rating">Rating</span>
                         </div>
                         <div class="form-input">
-                            <input type="text" class="form-input" id="form-name-input" placeholder="Enter Name"/>
-                            <input type="text" class="form-input" id="form-book-input" placeholder="Enter Book Title"/>
-                            <input type="number" class="form-input" id="form-add-rating-input" placeholder="1-5" min="1" max="5">
+                            <input type="text" class="form-input" id="form-name-input" placeholder="Enter Name" required/>
+                            <input type="text" class="form-input" id="form-book-input" placeholder="Enter Book Title" required/>
+                            <input type="number" class="form-input" id="form-add-rating-input" placeholder="1-5" min="1" max="5" required>
                         </div>
                     </div>
-                    <textarea type="text" class="reviewer-form" id="form-review" placeholder="Enter Your Review"></textarea>
+                    <textarea type="text" class="reviewer-form" id="form-review" placeholder="Enter Your Review" required></textarea>
                     <button type="submit" class="submit-review-btn" id="submit-add-modal">Add Review</button>
                 </form>
             </div>
@@ -123,7 +97,7 @@
                             <input type="number" class="form-input" id="form-rating-input" placeholder="1-5" min="1" max="5">
                         </div>
                     </div>
-                    <textarea type="text" class="reviewer-form" id="form-review" placeholder="Enter Your Review"></textarea>
+                    <textarea type="text" class="reviewer-form" id="form-reviewtext-input" placeholder="Enter Your Review"></textarea>
                     <button type="submit" class="submit-review-btn" id="submit-edit-modal">Save Review</button>
                 </form>
             </div>
@@ -143,6 +117,9 @@
     document.addEventListener("click", function() {
         if (event.target.classList.toString() == "admin-buttons delete-button") {
             deletemodal.style.display = "block";
+
+            var bookID = event.target.getAttribute("data-review-book-id");
+            var userID = event.target.getAttribute("data-review-user-id");
         }
     })
 
@@ -191,7 +168,20 @@
     }
 
     submitbtnaddmodal.onclick = function() {
-        addmodal.style.display = "none";
+        
+        // Validate the required fields
+        var nameInput = document.getElementById("form-name-input");
+        var bookInput = document.getElementById("form-book-input");
+        var ratingInput = document.getElementById("form-add-rating-input");
+        var reviewtextInput = document.getElementById("form-reviewtext-input");
+
+        if (nameInput.value.trim() === "" || bookInput.value.trim() === "" || ratingInput.value.trim() === "" || reviewtextInput.value.trim() === "") {
+            alert("Please fill in all required fields");
+        }
+
+        else {
+            addmodal.style.display = "none";
+        }
     }
     
 </script>
@@ -222,7 +212,19 @@
     }
 
     submitbtneditmodal.onclick = function() {
-        editmodal.style.display = "none";
+        // Validate the required fields
+        var nameInput = document.getElementById("form-name-input");
+        var bookInput = document.getElementById("form-book-input");
+        var ratingInput = document.getElementById("form-add-rating-input");
+        var reviewtextInput = document.getElementById("form-reviewtext-input");
+
+        if (nameInput.value.trim() === "" || bookInput.value.trim() === "" || ratingInput.value.trim() === "" || reviewtextInput.value.trim() === "") {
+            alert("Please fill in all required fields");
+        }
+
+        else {
+            editmodal.style.display = "none";
+        }
     }
     
 </script>

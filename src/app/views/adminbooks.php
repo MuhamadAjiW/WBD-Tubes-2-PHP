@@ -29,38 +29,16 @@
                     <th class="book-column" colspan="2">Action</th>
                     </tr>
                 </thead>
-                <tr>
-                    <td>1</td>
-                    <td>Aku Suka Kamu</td>
-                    <td>24 Maret 1998</td>
-                    <td>Marcel Ryan Antony</td>
-                    <td><button class="admin-buttons edit-button" id="edit-book-button">Edit</button>
-                    <td><button class="admin-buttons delete-button" id="delete-book-button1">Delete</button>            
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Aku Suka Kamu</td>
-                    <td>24 Maret 1998</td>
-                    <td>Marcel Ryan Antony</td>
-                    <td><button class="admin-buttons edit-button" id="edit-book-button">Edit</button>
-                    <td><button class="admin-buttons delete-button" id="delete-book-button2">Delete</button>            
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Aku Suka Kamu</td>
-                    <td>24 Maret 1998</td>
-                    <td>Marcel Ryan Antony</td>
-                    <td><button class="admin-buttons edit-button" id="edit-book-button">Edit</button>
-                    <td><button class="admin-buttons delete-button" id="delete-book-button3">Delete</button>            
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Aku Suka Kamu</td>
-                    <td>24 Maret 1998</td>
-                    <td>Marcel Ryan Antony</td>
-                    <td><button class="admin-buttons edit-button" id="edit-book-button">Edit</button>
-                    <td><button class="admin-buttons delete-button" id="delete-book-button4">Delete</button>            
-                </tr>
+                <?php foreach ($bookdata as $book): ?>
+                    <tr>
+                        <td><?= $book['book_id'] ?></td>
+                        <td><?= $book['title'] ?></td>
+                        <td><?= $book['release_date'] ?></td>
+                        <td><?= $book['name'] ?></td>
+                        <td><button class="admin-buttons edit-button" data-book-id="<?= $book['book_id'] ?>">Edit</button></td>
+                        <td><button class="admin-buttons delete-button" data-book-id="<?= $book['book_id'] ?>">Delete</button></td>
+                    </tr>
+                <?php endforeach; ?>
             </table>
         </div>
 
@@ -93,18 +71,16 @@
     document.addEventListener("click", function() {
         if (event.target.classList.toString() == "admin-buttons delete-button") {
             deletemodal.style.display = "block";
+            var bookID = event.target.getAttribute("data-book-id");
         }
     })
 
+
     // Get the delete button
-    var deletebtn = document.getElementById("delete-book-btn");
+    var deletebtn = document.getElementById("modal-delete-book-btn");
 
     // Get the cancel button
     var cancelbtn = document.getElementById("cancel-delete-btn");
-    
-    // openmodalbtn.onclick = function() {
-    //     deletemodal.style.display = "block";
-    // }
 
     cancelbtn.onclick = function() {
         deletemodal.style.display = "none";

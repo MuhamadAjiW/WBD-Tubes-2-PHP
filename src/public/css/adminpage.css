@@ -9,6 +9,7 @@
     width: 86%;
     float: left;
     min-height: 100vh;
+    margin-left: 14%;
 }
 
 .sidebar, .sidebar-header, .sidebar-body {
@@ -18,6 +19,7 @@
 }
 
 .sidebar {
+    position: fixed;
     width: 14%;
     min-height: 100vh;
     background-color: #3B3131;
@@ -354,7 +356,7 @@ tr:nth-child(even) {
     font-weight: 650;
 }
 
-#form-review {
+#form-reviewtext-input {
     min-height: 60px;
     font-weight: 400;
 }

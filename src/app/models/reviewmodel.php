@@ -39,7 +39,7 @@ class ReviewModel{
     }
 
     public function fetchReviewsAll() {
-        $query = "SELECT user_id, book_id, username, title, rating, reviewtext
+        $query = "SELECT u.user_id, book_id, username, title, rating, reviewtext
         FROM reviews r
         NATURAL JOIN books b
         INNER JOIN users u ON u.user_id = b.author_id";

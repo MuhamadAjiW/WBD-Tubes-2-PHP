@@ -30,31 +30,16 @@
                     <th class="user-column" colspan="2">Action</th>
                     </tr>
                 </thead>
-                <tr>
-                    <td>Senvis</td>
-                    <td>13521127@std.stei.itb.ac.id</td>
-                    <td>Marcel Ryan Antony</td>
-                    <td>Suka kulineran gann</td>
-                    <td><button class="admin-buttons edit-button" id="edit-user-button">Edit</button>
-                    <td><button class="admin-buttons delete-button" id="user-delete-button1">Delete</button>            
-                </tr>
-                <tr>
-                    <td>Senvis</td>
-                    <td>13521127@std.stei.itb.ac.id</td>
-                    <td>Marcel Ryan Antony</td>
-                    <td>Suka kulineran gann</td>
-                    <td><button class="admin-buttons edit-button" id="edit-user-button">Edit</button>
-                    <td><button class="admin-buttons delete-button" id="user-delete-button2">Delete</button>            
-                </tr>
-                <tr>
-                    <td>Senvis</td>
-                    <td>13521127@std.stei.itb.ac.id</td>
-                    <td>Marcel Ryan Antony</td>
-                    <td>Suka kulineran gann</td>
-                    <td><button class="admin-buttons edit-button" id="edit-user-button">Edit</button>
-                    <td><button class="admin-buttons delete-button" id="user-delete-button3">Delete</button>            
-                </tr>
-                
+                <?php foreach($userdata as $user): ?>
+                    <tr>
+                        <td><?= $user['username'] ?></td>
+                        <td><?= $user['email'] ?></td>
+                        <td><?= $user['name'] ?></td>
+                        <td><?= $user['bio'] ?></td>
+                        <td><button class="admin-buttons edit-button" data-user-id="<?= $user['user_id'] ?>">Edit</button></td>
+                        <td><button class="admin-buttons delete-button" data-user-id="<?= $user['user_id'] ?>">Delete</button></td>
+                   </tr>
+                <?php endforeach; ?>
             </table>
         </div>
 
@@ -87,11 +72,13 @@
     document.addEventListener("click", function() {
         if (event.target.classList.toString() == "admin-buttons delete-button") {
             deletemodal.style.display = "block";
+
+            var userID = event.target.getAttribute('data-user-id');
         }
     })
 
     // Get the delete button
-    var deletebtn = document.getElementById("delete-user-btn");
+    var deletebtn = document.getElementById("modal-delete-user-btn");
 
     // Get the cancel button
     var cancelbtn = document.getElementById("cancel-delete-btn");

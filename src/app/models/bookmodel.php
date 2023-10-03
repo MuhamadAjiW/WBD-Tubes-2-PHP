@@ -88,6 +88,15 @@ class BookModel{
         return $this->database->fetch();
     }
 
+    public function fetchAllBooksForAdmin() {
+        $query = "SELECT book_id, title, release_date, name FROM books b
+        INNER JOIN users u ON u.user_id = b.author_id";
+
+        $this->database->query($query);
+
+        return $this->database->fetchAll();
+    }
+
     public function fetchBooksByAuthor($author_id){
         //uncomment kalo sekiranya perlu
         

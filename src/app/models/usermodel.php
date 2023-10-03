@@ -49,7 +49,14 @@ class UserModel{
 
         return $this->database->fetch();
     }
+    
+    public function fetchAllUsers() {
+        $query = "SELECT * FROM users";
 
+        $this->database->query($query);
+
+        return $this->database->fetchAll();
+    }
    
 }
 ?>
