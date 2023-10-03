@@ -13,7 +13,7 @@
         <div class="section-sidebar" onclick="location.href='/adminreviews'">
             <i class="fas fa-comment" id="comment-icon"></i><span class="sidebar-text">Reviews</span>
         </div>
-        <div class="section-sidebar">
+        <div class="section-sidebar" onclick="location.href='/login'">
             <i class="fas fa-sign-out" id="sign-out-icon"></i><span class="sidebar-text">Sign Out</span>
         </div>
     </div>

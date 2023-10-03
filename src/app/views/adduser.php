@@ -13,47 +13,51 @@
         include __DIR__ . "/../components/adminsidebar.php";
     ?>
 
-    <div class="main-content" id="add-user-form-main-content">
-        <div class="page-container-add-user-form">
-            <div class="add-user-title">
+    <div class="main-content" id="admin-form-main-content">
+        <div class="page-container-admin-form">
+            <div class="admin-form-title">
                 Add User Form
             </div>
             <form>
-                <div class="add-user-form-row">
-                    <div class="add-user-input-data">
+                <div class="admin-form-row">
+                    <div class="admin-form-input">
                         <input type="text" required>
                         <div class="underline"></div>
                         <label for="">Name</label>
                     </div>
-                    <div class="add-user-input-data">
+                    <div class="admin-form-input">
                         <input type="text" required>
                         <div class="underline"></div>
                         <label for="">Username</label>
                     </div>
                 </div>
-                <div class="add-user-form-row">
-                    <div class="add-user-input-data">
+                <div class="admin-form-row">
+                    <div class="admin-form-input">
                         <input type="text" required>
                         <div class="underline"></div>
                         <label for="">Email Address</label>
                     </div>
-                    <div class="add-user-input-data">
+                    <div class="admin-form-input">
                         <input type="password" required>
                         <div class="underline"></div>
                         <label for="">Password</label>
                     </div>
                 </div>
-                <div class="add-user-form-row">
-                    <div class="add-user-input-data add-user-input-data-textarea">
+                <div class="admin-form-row" id="admin-form-row-textarea">
+                    <div class="admin-form-input admin-form-input-textarea">
                         <textarea rows="8" cols="80" required></textarea>
                         <br />
                         <label for="">Write your bio</label>
                         <br />
                     </div>
                 </div>
-                <div class="add-user-form-buttons">
-                    <button type="button" class="add-user-form-cancel-btn">Cancel</button>
-                    <input type="submit" class="add-user-form-submit-btn">
+                <div class="admin-form-row" id="admin-form-row-checkbox">
+                    <input type="checkbox" value="admin" class="add-user-form-checkbox">
+                    <label for="">Admin?</label>
+                </div>
+                <div class="admin-form-buttons">
+                    <button type="button" class="admin-form-cancel-btn" onclick="location.href='adminusers'">Cancel</button>
+                    <input type="submit" class="admin-form-submit-btn">
                 </div>
             </form>
         </div>
