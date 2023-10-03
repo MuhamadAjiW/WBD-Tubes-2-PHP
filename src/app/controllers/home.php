@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\core\Controller;
 use app\core\Router;
+use config\AppConfig;
 use Exception;
 
 class Home extends Controller{
@@ -33,9 +34,16 @@ class Home extends Controller{
         $booktable = $bookdata[0];
         $booklen = $bookdata[1];
 
+        $currentDate = date("Y-m-d");
+        $year = intval(date("Y", strtotime($currentDate)));
+        $month = intval(date("m", strtotime($currentDate)));
+        $day = intval(date("d", strtotime($currentDate)));
+        $featurednumber =  @abs((intval(AppConfig::FEATURED_SEED * $year) * cos($month) * sin($day)) % $booklen);
+        $featuredbook = $bookmodel->fetchBookByRow($featurednumber);
+
         if(empty($booktable)) Router::NotFound();
 
-        $this->view('Home', ['booktable' => $booktable, 'booklen' => $booklen]);
+        $this->view('Home', ['booktable' => $booktable, 'booklen' => $booklen, 'bookfeatured' => $featuredbook, 'currentpage' => intval($page)]);
     }
 }
 

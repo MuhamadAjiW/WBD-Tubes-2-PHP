@@ -33,7 +33,7 @@ h1 {
   display: flex;
 }
 
-.footer-pusher {
+.pusher {
   flex: 1;
 }
 
@@ -236,6 +236,78 @@ h1 {
   word-wrap: break-word;
   overflow-wrap: break-word;
   margin: 0;
+}
+
+.page-nav{
+  margin-top: 10px;
+  margin-bottom: 35px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+}
+
+.page-nav-btn-clstr{
+  margin: 35px 0;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 200px;
+  gap: 10px;
+}
+
+.page-nav-btn{
+  color: #2a2a2a;
+  background-color: transparent;
+  position: relative;
+  transition: 0.3s;
+  padding: 5px;
+  border-radius: 3px;
+}
+
+.page-nav-btn-on{
+  color: white;
+  background-color: #2a2a2a;
+  position: relative;
+  transition: 0.3s;
+  padding: 5px;
+  border-radius: 3px;
+  cursor: default;
+}
+
+.page-nav-btn-off{
+  color: #2a2a2a;
+  background-color: transparent;
+  position: relative;
+  transition: 0.3s;
+  padding: 5px;
+  border-radius: 3px;
+}
+
+.page-nav-btn:hover{
+  background-color: #e1e1e1;
+}
+
+.page-nav-btn-lr-n{
+  color: #cbcbcb;
+  background-color: transparent;
+  position: relative;
+  padding: 5px;
+  border-radius: 3px;
+  cursor: default;
+}
+
+.page-nav-btn-lr{
+  color: #2a2a2a;
+  background-color: transparent;
+  position: relative;
+  padding: 5px;
+  border-radius: 3px;
+}
+
+.page-nav-btn-lr:hover{
+  color: #7b7b7b;
 }
 
 @media (max-width: 12in) {

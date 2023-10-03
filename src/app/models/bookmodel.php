@@ -41,10 +41,20 @@ class BookModel{
     }
 
     public function fetchBookByID($book_id){
-        $query = "SELECT * FROM books WHERE book_id = :book_id";
+        $query = "SELECT * FROM books LIMIT 1 OFFSET :offset";
 
         $this->database->query($query);
         $this->database->bind('book_id', $book_id);
+        
+        return $this->database->fetch();
+    }
+    public function fetchBookByRow($row){
+        $query = "SELECT * FROM books JOIN users
+                    ON books.author_id = users.user_id
+                    LIMIT 1 OFFSET :offset";
+
+        $this->database->query($query);
+        $this->database->bind('offset', $row);
         
         return $this->database->fetch();
     }
@@ -59,10 +69,12 @@ class BookModel{
         $this->database->execute();
         $totalbooks = $this->database->rowCount();
 
-        $query = "SELECT * FROM books ORDER BY title LIMIT :limit OFFSET :offset";
+        $query = "SELECT * FROM books JOIN users
+                    ON books.author_id = users.user_id
+                    ORDER BY books.title LIMIT :limit OFFSET :offset";
         $this->database->query($query);
-        $this->database->bind('limit', AppConfig::ROWS_PER_PAGE);
-        $this->database->bind('offset', ($page - 1) * AppConfig::ROWS_PER_PAGE);
+        $this->database->bind('limit', AppConfig::ENTRIES_PER_PAGE);
+        $this->database->bind('offset', ($page - 1) * AppConfig::ENTRIES_PER_PAGE);
         
         return [$this->database->fetchAll(), $totalbooks];
     }
@@ -135,8 +147,8 @@ class BookModel{
         
         $this->database->query($query);
         $this->database->query($query);
-        $this->database->bind('limit', AppConfig::ROWS_PER_PAGE);
-        $this->database->bind('offset', ($page - 1) * AppConfig::ROWS_PER_PAGE);
+        $this->database->bind('limit', AppConfig::ENTRIES_PER_PAGE);
+        $this->database->bind('offset', ($page - 1) * AppConfig::ENTRIES_PER_PAGE);
         $this->database->bind('sort', $sort);
         $this->database->bind('search', '%' . $search . '%');
         if ($genre !== 'all') $this->database->bind('genre', $genre);
