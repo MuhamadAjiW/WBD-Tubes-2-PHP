@@ -42,6 +42,6 @@ class UserModel{
         return $user;
     }
 
-
+   
 }
 ?>
