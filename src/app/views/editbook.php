@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Book</title>
+    <title>Edit Book</title>
     <link rel="stylesheet" href="../../public/css/adminpage.css"></link>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 </head>
@@ -16,9 +16,9 @@
     <div class="main-content" id="admin-form-main-content">
         <div class="page-container-admin-form" id="admin-book-form-container">
             <div class="admin-form-title">
-                Add Book Form
+                Edit Book Form
             </div>
-            <form action="/admin/addbook" method="post">
+            <form action="/admin/editbook" method="post">
                 <div class="admin-form-row">
                     <div class="admin-form-input">
                         <input type="text" required>
@@ -81,7 +81,7 @@
                 </div>
                 <div class="admin-form-buttons">
                     <button type="button" class="admin-form-cancel-btn" onclick="location.href='adminbooks'">Cancel</button>
-                    <input type="submit" class="admin-form-submit-btn" name="add-book">
+                    <input type="submit" class="admin-form-submit-btn" name="edit-booK">
                 </div>
             </form>
         </div>
