@@ -116,6 +116,22 @@ class BookModel{
         // return [$result, $totalbooks];
         return $result;
     }
+    public function fetchBooksBySimpleSearch(
+        $search,
+    ){
+        $query = "SELECT * FROM books b JOIN users u ON b.author_id = u.user_id
+                    WHERE (b.title ILIKE :search or u.name ILIKE :search)
+                    ORDER BY title LIMIT :limit";
+
+        
+        $this->database->query($query);
+        $this->database->bind('limit', AppConfig::ENTRIES_SMALL_SEARCH);
+        $this->database->bind('search', '%' . $search . '%');
+        
+        $result = $this->database->fetchAll();
+
+        return $result;
+    }
     public function fetchBooksBySearch(
         $search,
         $sort = 'title',
@@ -123,7 +139,7 @@ class BookModel{
         $page = 1
     ){
         if ($genre === 'all'){
-            $query = "SELECT * FROM books b JOIN user u ON b.author_id = u.user_id
+            $query = "SELECT * FROM books b JOIN users u ON b.author_id = u.user_id
                         WHERE (b.title LIKE :search or u.name LIKE :search)";
             
             $this->database->query($query);
@@ -133,11 +149,11 @@ class BookModel{
             $this->database->execute();
             $totalbooks = $this->database->rowCount();
 
-            $query = "SELECT * FROM books b JOIN user u ON b.author_id = u.user_id
+            $query = "SELECT * FROM books b JOIN users u ON b.author_id = u.user_id
                         WHERE (b.title LIKE :search or u.name LIKE :search)
                         ORDER BY :sort LIMIT :limit OFFSET :offset";
         } else{
-            $query = "SELECT * FROM books JOIN user u ON b.author_id = u.user_id
+            $query = "SELECT * FROM books JOIN users u ON b.author_id = u.user_id
                         WHERE (b.title LIKE :search or u.name LIKE :search) and genre = :genre";
             
             $this->database->query($query);
@@ -148,7 +164,7 @@ class BookModel{
             $this->database->execute();
             $totalbooks = $this->database->rowCount();
 
-            $query = "SELECT * FROM books JOIN user u ON b.author_id = u.user_id
+            $query = "SELECT * FROM books JOIN users u ON b.author_id = u.user_id
                         WHERE (b.title LIKE :search or u.name LIKE :search) and genre = :genre
                         ORDER BY :sort LIMIT :limit OFFSET :offset";
         }

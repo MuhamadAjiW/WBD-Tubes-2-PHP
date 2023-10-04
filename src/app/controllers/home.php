@@ -11,7 +11,7 @@ class Home extends Controller{
     public function index(){
         // $middleware = $this->middleware('TestMiddleware');        
         $this->addRel("stylesheet", "/public/css/topbar.css");
-        $this->addRel("stylesheet", "/public/css/style.css");
+        $this->addRel("stylesheet", "/public/css/style-2.css");
         $this->addRel("stylesheet", "/public/css/home.css");
 
         if(!isset($_GET['page'])){

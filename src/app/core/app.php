@@ -15,6 +15,8 @@ class App {
         $this->router->redirect_permanent('/', '/home');
 
         $this->router->addRoute('/home', 'app/controllers/Home', 'index', ['GET']);
+        $this->router->addRoute('/search', 'app/controllers/Search', 'index', ['GET']);
+        $this->router->addRoute('/search', 'app/controllers/Search', 'serve', ['POST']);
         $this->router->addRoute('/login', 'app/controllers/Login', 'index', ['GET']);
         $this->router->addPost('/login', 'app/controllers/Login', 'login');
         $this->router->addRoute('/detail', 'app/controllers/BookDetail', 'index', ['GET']);

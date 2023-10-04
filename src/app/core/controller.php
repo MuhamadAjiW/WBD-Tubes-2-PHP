@@ -23,7 +23,7 @@ class Controller{
         $data[AppConfig::FOOTER] = $this->footer;
 
         extract($data);
-        require_once 'app/views/' . $view . '.php';
+        require_once '../app/views/' . $view . '.php';
     }
 
     public function model($model){
