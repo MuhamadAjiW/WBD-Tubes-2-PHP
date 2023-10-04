@@ -1,3 +1,5 @@
+<?php use app\controllers\TopBar;?>
+
 <div class="top-bar">
     <nav class="top-bar-contents">
         <button class="cluster-h cluster-logo"
@@ -12,9 +14,22 @@
         <div class="cluster-h cluster-search">
             <div class="search-container search-container-sm">
                 <div class="search-bar search-bar-sm">
-                    <input id="topbar-search" type="text" class="input" placeholder="Search...">
+                    <input id="topbar-search" type="text" class="input input-sm" placeholder="Search...">
                 </div>
                 <div id="topbar-search-result" class="search-result-sm">
+                    <!-- placeholder -->
+                    <!-- <button class="search-entry-sm" onclick="window.location.href = '/detail?bid=1'">
+                        <div class="book-container">
+                            <img class="book-image" src="/storage/images/image1.jpg" alt="image of title">
+                        </div>
+                        <div class="cluster-v">
+                            <div class="pusher"></div>
+                                <p class="search-entry-sm-t">title</p>
+                                <p class="search-entry-sm-a">By author</p>
+                            <div class="pusher"></div>
+                        </div>
+                    </button> -->
+                    <!-- placeholder -->
                 </div>
             </div>
     <!-- TODO: make template -->
@@ -53,6 +68,7 @@
         </button>
     </div>
 
+    <script src="public/js/util.js"></script>
     <script src="public/js/topbar.js"></script>
 
 </div>

@@ -16,7 +16,6 @@ class App {
 
         $this->router->addRoute('/home', 'app/controllers/Home', 'index', ['GET']);
         $this->router->addRoute('/search', 'app/controllers/Search', 'index', ['GET']);
-        $this->router->addRoute('/search', 'app/controllers/Search', 'serve', ['POST']);
         $this->router->addRoute('/login', 'app/controllers/Login', 'index', ['GET']);
         $this->router->addPost('/login', 'app/controllers/Login', 'login');
         $this->router->addRoute('/detail', 'app/controllers/BookDetail', 'index', ['GET']);
@@ -27,6 +26,9 @@ class App {
         $this->router->addRoute('/admin/reviews', 'app/controllers/AdminReviews', 'index', ['GET']);
         $this->router->addRoute('/addbook', 'app/controllers/AddBook', 'index', ['GET']);
         $this->router->addRoute('/adduser', 'app/controllers/AddUser', 'index', ['GET']);
+        
+        $this->router->addRoute('/api/search', 'app/controllers/Search', 'serve', ['GET']);
+        $this->router->addRoute('/api/searchsm', 'app/controllers/TopBar', 'search', ['GET']);
     }
 }
 ?>

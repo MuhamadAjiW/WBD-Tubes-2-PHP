@@ -30,7 +30,7 @@ class Home extends Controller{
             }
         }
         $bookmodel = $this->model('BookModel');
-        $bookdata = $bookmodel->fetchBooksPaged($page);
+        $bookdata = $bookmodel->fetchBooksPaged($page, AppConfig::ENTRIES_PER_PAGE);
         $booktable = $bookdata[0];
         $booklen = $bookdata[1];
 

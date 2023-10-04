@@ -23,6 +23,12 @@ h1 {
   transform: translateX(-50%);
 }
 
+.gen-header{
+  font-family: sans-serif;
+  padding-top: 35px;
+  border-bottom: 1px solid #e9e9e9;
+}
+
 .main-content-grey {
   background-color: #9b9b9b;
 }
@@ -107,6 +113,7 @@ h1 {
     border: 2px solid #dbdbdb;
     border-radius: 24px;
     box-sizing: border-box;
+    padding: 8px 0;
     transition: 0.3s;
 }
 
@@ -123,8 +130,15 @@ h1 {
   outline: none;
   border: none;
   position: relative;
+  width: 95%;
+  left: 2.5%;
+  font-size: 14px;
+}
+
+.input-sm{
   width: 90%;
   left: 5%;
+  font-size: 12px;
 }
 
 .input::placeholder {
@@ -133,6 +147,7 @@ h1 {
 
 .search-container {
   position: relative;
+  margin: 20px 0;
 }
 
 .title-text {

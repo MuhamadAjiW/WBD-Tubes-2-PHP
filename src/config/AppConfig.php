@@ -12,6 +12,7 @@ class AppConfig{
 
     public const ENTRIES_PER_PAGE = 4;
     public const ENTRIES_SMALL_SEARCH = 5;
+    public const ENTRIES_MAIN_SEARCH = 8;
     public const FEATURED_SEED = 3310;
 }
 
