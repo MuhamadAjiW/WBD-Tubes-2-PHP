@@ -163,7 +163,6 @@ class BookModel{
         $query = "SELECT * FROM books b JOIN users u ON b.author_id = u.user_id
                         WHERE (b.title ILIKE :search or u.name ILIKE :search)";
         if($genre !== 'all') $query = $query . " AND genre = :genre";
-        if($not_graphic_cntn) echo "no graphic content<br>";
         
         $this->database->query($query);
         $this->database->bind('search', '%' . $search . '%');
