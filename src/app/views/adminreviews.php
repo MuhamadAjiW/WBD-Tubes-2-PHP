@@ -63,7 +63,7 @@
                     <span id="close-add-modal" class="close">&times;</span>
                     <h5 class="modal-title">Add Review</h5>
                 </div>
-                <form class="modal-body">
+                <form action ="/admin/reviews" class="modal-body" method="post">
                     <div class="first-modal-section">
                         <div class="form-title">
                             <span class="form-title">Username</span>
@@ -77,7 +77,7 @@
                         </div>
                     </div>
                     <textarea type="text" class="reviewer-form" id="form-review" placeholder="Enter Your Review" required></textarea>
-                    <button type="submit" class="submit-review-btn" id="submit-add-modal">Add Review</button>
+                    <button type="submit" class="submit-review-btn" id="submit-add-modal" name="add-review">Add Review</button>
                 </form>
             </div>
         </div>
@@ -88,7 +88,7 @@
                     <span id="close-edit-modal" class="close">&times;</span>
                     <h5 class="modal-title">Edit Review</h5>
                 </div>
-                <form class="modal-body">
+                <form action="admin/reviews" class="modal-body" method="post">
                     <div class="first-modal-section">
                         <div class="form-title">
                             <span class="form-title">Rating</span>
@@ -98,7 +98,7 @@
                         </div>
                     </div>
                     <textarea type="text" class="reviewer-form" id="form-reviewtext-input" placeholder="Enter Your Review"></textarea>
-                    <button type="submit" class="submit-review-btn" id="submit-edit-modal">Save Review</button>
+                    <button type="submit" class="submit-review-btn" id="submit-edit-modal" name="edit-review">Save Review</button>
                 </form>
             </div>
         </div>

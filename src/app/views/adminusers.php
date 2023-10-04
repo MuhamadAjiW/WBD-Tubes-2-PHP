@@ -17,7 +17,7 @@
         <div class="page-container">
             <div class="page-header">
                 <h2>List of all Users</h2>
-                <button class="admin-buttons add-button" id="add-user-button" onclick="location.href='/adduser'">Add User</button>
+                <button class="admin-buttons add-button" id="add-user-button" onclick="location.href='/admin/adduser'">Add User</button>
             </div>
             
             <table class="user-table">
@@ -36,7 +36,7 @@
                         <td><?= $user['email'] ?></td>
                         <td><?= $user['name'] ?></td>
                         <td><?= $user['bio'] ?></td>
-                        <td><button class="admin-buttons edit-button" data-user-id="<?= $user['user_id'] ?>">Edit</button></td>
+                        <td><button class="admin-buttons edit-button" data-user-id="<?= $user['user_id'] ?>" onclick="location.href='/admin/edituser'">Edit</button></td>
                         <td><button class="admin-buttons delete-button" data-user-id="<?= $user['user_id'] ?>">Delete</button></td>
                    </tr>
                 <?php endforeach; ?>

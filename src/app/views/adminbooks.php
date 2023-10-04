@@ -17,7 +17,7 @@
         <div class="page-container">
             <div class="page-header">
                 <h2>List of all Books</h2>
-                <button class="admin-buttons add-button" id="add-book-button" onclick="location.href='/addbook'">Add Book</button>
+                <button class="admin-buttons add-button" id="add-book-button" onclick="location.href='/admin/addbook'">Add Book</button>
             </div>
             <table class="book-table">
                 <thead>
@@ -35,7 +35,7 @@
                         <td><?= $book['title'] ?></td>
                         <td><?= $book['release_date'] ?></td>
                         <td><?= $book['name'] ?></td>
-                        <td><button class="admin-buttons edit-button" data-book-id="<?= $book['book_id'] ?>">Edit</button></td>
+                        <td><button class="admin-buttons edit-button" data-book-id="<?= $book['book_id'] ?>" onclick="location.href='/admin/editbook'">Edit</button></td>
                         <td><button class="admin-buttons delete-button" data-book-id="<?= $book['book_id'] ?>">Delete</button></td>
                     </tr>
                 <?php endforeach; ?>

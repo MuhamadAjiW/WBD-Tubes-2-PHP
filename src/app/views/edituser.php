@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add User</title>
+    <title>Edit User</title>
     <link rel="stylesheet" href="../../public/css/adminpage.css"></link>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 </head>
@@ -16,9 +16,9 @@
     <div class="main-content" id="admin-form-main-content">
         <div class="page-container-admin-form">
             <div class="admin-form-title">
-                Add User Form
+                Edit User Form
             </div>
-            <form action="/admin/adduser" method="post">
+            <form action="/admin/edituser" method="post">
                 <div class="admin-form-row">
                     <div class="admin-form-input">
                         <input type="text" required>
@@ -57,7 +57,7 @@
                 </div>
                 <div class="admin-form-buttons">
                     <button type="button" class="admin-form-cancel-btn" onclick="location.href='adminusers'">Cancel</button>
-                    <input type="submit" class="admin-form-submit-btn" name="add-user">
+                    <input type="submit" class="admin-form-submit-btn" name="edit-user">
                 </div>
             </form>
         </div>

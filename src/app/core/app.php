@@ -24,8 +24,15 @@ class App {
         $this->router->addRoute('/admin/users', 'app/controllers/AdminUsers', 'index', ['GET']);
         $this->router->addRoute('/admin/books', 'app/controllers/AdminBooks', 'index', ['GET']);
         $this->router->addRoute('/admin/reviews', 'app/controllers/AdminReviews', 'index', ['GET']);
+
         $this->router->addRoute('/addbook', 'app/controllers/AddBook', 'index', ['GET']);
         $this->router->addRoute('/adduser', 'app/controllers/AddUser', 'index', ['GET']);
+        
+        $this->router->addRoute('/admin/addbook', 'app/controllers/AddBook', 'index', ['GET']);
+        $this->router->addRoute('/admin/adduser', 'app/controllers/AddUser', 'index', ['GET']);
+        $this->router->addRoute('/admin/edituser', 'app/controllers/EditUser', 'index', ['GET']);
+        $this->router->addRoute('/admin/editbook', 'app/controllers/EditBook', 'index', ['GET']);
+        $this->router->addRoute('/admin', 'app/controllers/AdminPage', 'index', ['GET']);
         
         $this->router->addRoute('/api/search', 'app/controllers/Search', 'serve', ['GET']);
         $this->router->addRoute('/api/searchsm', 'app/controllers/TopBar', 'search', ['GET']);

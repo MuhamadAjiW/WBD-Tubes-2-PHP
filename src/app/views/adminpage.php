@@ -10,7 +10,7 @@
 <body>
 
     <?php
-        include "./adminsidebar.php";
+        include __DIR__ . "/../components/adminsidebar.php";
     ?>
 
     <div class="main-content">
