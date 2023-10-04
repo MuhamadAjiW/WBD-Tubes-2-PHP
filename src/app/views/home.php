@@ -8,12 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php echo strip_tags($REL_DATA, '<link>');?>
 </head>
-<body>
+<body class="gen-body">
     <?php if(file_exists($TOP_BAR)) include_once($TOP_BAR);?>
 
     <div id="content-header" class="main-content first">
         <header class="gen-header">
-            <h1>Start Exploring</h1>
+            <h1 class="gen-h1 ">Start Exploring</h1>
             <p>Here's what our reviewers think you should read this today</p>
             <p id="currentdate" style="color:#9b9b9b;text-align:right">date</p>
         </header>

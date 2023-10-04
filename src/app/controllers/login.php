@@ -7,6 +7,10 @@ use app\models\UserModel;
 class Login extends Controller{
     public function index(){
         $usermodel = $this->model("UserModel");
+        $this->addRel("stylesheet", "/public/css/style-2.css");
+        $this->addRel("stylesheet", "/public/css/auth.css");
+        $this->addRel("stylesheet", "/public/css/topbar.css");
+
         $this->view('Login');
     }
     

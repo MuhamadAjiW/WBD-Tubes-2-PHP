@@ -9,11 +9,6 @@
     height: 100%;
 }
 
-.book-container{
-    position: relative;
-    height: 100%;
-}
-
 .book-rec-desc{
     width: 80%;
 }
@@ -32,9 +27,4 @@
     .book-rec-desc{
         width: 100%;
     }
-    .book-container{
-        width: 50%;
-        transform: translateX(50%);
-    }
-    
 }

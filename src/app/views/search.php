@@ -8,15 +8,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php echo strip_tags($REL_DATA, '<link>');?>
 </head>
-<body>
+<body class="gen-body">
     <?php if(file_exists($TOP_BAR)) include_once($TOP_BAR);?>
     <div class="main-content first">
         <header class="gen-header">
-            <h1>Search</h1>
+            <h1 class="gen-h1 ">Search</h1>
             <p>What kind of book are you looking for?</p>
         </header>
-        <div class="search-container">
-            <div class="search-bar">
+        <div class="input-container">
+            <div class="input-bar">
                 <input id="query-input" type="text" class="input" placeholder="Search..."
                 value="<?php if($querydata['query']) echo htmlspecialchars($querydata['query'], ENT_QUOTES, 'UTF-8');?>">
             </div>

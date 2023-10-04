@@ -12,8 +12,8 @@
         </button>
         
         <div class="cluster-h cluster-search">
-            <div class="search-container search-container-sm">
-                <div class="search-bar search-bar-sm">
+            <div class="input-container input-container-sm">
+                <div class="input-bar input-bar-sm">
                     <input id="topbar-search" type="text" class="input input-sm" placeholder="Search...">
                 </div>
                 <div id="topbar-search-result" class="search-result-sm">
