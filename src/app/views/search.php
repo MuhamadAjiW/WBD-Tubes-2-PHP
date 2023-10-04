@@ -28,10 +28,14 @@
                 <label>Select Genre</label>
                 <select id="genre-select" name="genre" onchange="changeGenre()">
                     <option value="all" <?php if($querydata['genre'] === "all") echo "selected";?>>All</option>
-                    <!-- TODO: Fetch genres first then generate-->
-                    <option value="Non-Fiksi" <?php if($querydata['genre'] === "Non-Fiksi") echo "selected";?>>Non-Fiksi</option>
-                    <option value="Fiksi" <?php if($querydata['genre'] === "Fiksi") echo "selected";?>>Fiksi</option>
-                    <!-- TODO: Fetch genres first then generate -->
+                    <?php
+                        foreach ($genrelist as $g) {
+                            $genreentry = $g['genre'];
+                            echo '<option value="' . $genreentry . '"';
+                            if($querydata["genre"] === $genreentry) echo "selected";
+                            echo '>' . $genreentry . '</option>';
+                        }
+                    ?>                    
                 </select>
             </div>
 

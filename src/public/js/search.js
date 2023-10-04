@@ -11,9 +11,11 @@ function changeQuery(){
     if(queryinput.value != ''){
         params.set('q', queryinput.value)
         changePage(1)
-        debounced_main_search(1);
+        debounced_main_search();
     } else{
-        debounced_main_search(1);
+        params.delete('q');
+        changePage(1)
+        debounced_main_search();
     }
 }
 function changeGenre(){
@@ -27,7 +29,7 @@ function changeSort(){
     search();
 }
 function changeDesc(){
-    params.set('desc', nographiccomponent.checked)
+    params.set('desc', desccomponent.checked)
     changePage(1)
     search();
 }
@@ -45,8 +47,7 @@ function changePage(page){
 function search(){
     let xhr = new XMLHttpRequest();
     
-    console.log(params.toString());
-    window.history.replaceState({}, "", "/search?" + params);
+    window.history.replaceState({}, "", "/search?" + params.toString());
 
     xhr.open("GET", "/api/search?" + params.toString(), true);    
     xhr.onreadystatechange = function (){
@@ -59,6 +60,6 @@ function search(){
 
 const debounced_main_search = debounce(search, 500);
 
-queryinput.addEventListener("keyup", function(event) {
-    debounced_main_search(1);
+queryinput.addEventListener("keyup", function(event) { 
+    changeQuery();
 });

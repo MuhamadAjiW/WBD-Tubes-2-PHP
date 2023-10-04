@@ -80,6 +80,10 @@ class Search extends Controller{
 
         return [$bookdata, $querydata];
     }
+    public function getBookGenres(){
+        $bookmodel = $this->model("BookModel");
+        return $bookmodel->fetchBookGenres();
+    }
 
     public function index(){
         // $middleware = $this->middleware('TestMiddleware');        
@@ -93,7 +97,9 @@ class Search extends Controller{
         $booktable = $bookdata[0];
         $booklen = $bookdata[1];
 
-        $this->view('Search', ['booktable' => $booktable, 'booklen' => $booklen, 'currentpage' => intval($querydata['page']), 'querydata' => $querydata]);
+        $genres = $this->getBookGenres();
+
+        $this->view('Search', ['booktable' => $booktable, 'booklen' => $booklen, 'currentpage' => intval($querydata['page']), 'querydata' => $querydata, 'genrelist' => $genres]);
     }
 
     public function serve(){

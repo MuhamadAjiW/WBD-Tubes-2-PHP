@@ -117,9 +117,15 @@ class BookModel{
         // return [$result, $totalbooks];
         return $result;
     }
-    public function fetchBooksBySimpleSearch(
-        $search,
-    ){
+
+    public function fetchBookGenres(){
+        $query = "SELECT DISTINCT genre FROM books";
+        $this->database->query($query);
+        $result = $this->database->fetchAll();
+        return $result;
+    }
+
+    public function fetchBooksBySimpleSearch($search){
         $query = "SELECT * FROM books b JOIN users u ON b.author_id = u.user_id
                     WHERE (b.title ILIKE :search or u.name ILIKE :search)
                     ORDER BY title LIMIT :limit";

@@ -56,8 +56,7 @@ function cleanSearchEntry(){
 function searchTopbar(){
     let xhr = new XMLHttpRequest();
     
-    console.log(topParams.toString());
-    window.history.replaceState({}, "", currentPage + "?" + topParams);
+    window.history.replaceState({}, "", currentPage.toString() + '?' + topParams.toString());
 
     xhr.open("GET", "/api/searchsm?" + topParams.toString(), true);    
     xhr.onreadystatechange = function (){

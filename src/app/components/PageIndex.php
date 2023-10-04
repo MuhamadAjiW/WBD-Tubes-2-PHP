@@ -76,7 +76,7 @@
         <div class="pusher"></div>
     </div>
     <?php
-        if($currentpage === $pagelen || $pagelen === 1){
+        if($currentpage === $pagelen || $pagelen <= 1){
             $buttonconfig = '<button class="btn page-nav-btn-lr-n">';
         }
         else{
