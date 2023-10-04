@@ -103,7 +103,7 @@ function serveSearchResult(results){
             id = entry['book_id'];
             generateSearchEntry(image_path, title, author, id);
         });
-    }{
+    } else{
         const bookContainer = document.createElement('div');
         bookContainer.classList.add('book-container');
         bookContainer.innerHTML = "No result";

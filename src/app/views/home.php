@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php echo strip_tags($REL_DATA, '<link>');?>
 </head>
+<?php if(file_exists($TOP_BAR)) include_once($TOP_BAR);?>
 <body>
-    <?php if(file_exists($TOP_BAR)) include_once($TOP_BAR);?>
     <div id="content-header" class="main-content first">
         <header class="home-header">
             <h1>Start Exploring</h1>
