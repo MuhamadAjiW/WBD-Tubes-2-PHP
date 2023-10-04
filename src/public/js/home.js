@@ -8,7 +8,6 @@ function changePage(page){
     let xhr = new XMLHttpRequest();
     
     window.history.replaceState({}, "", "home?" + homeParams.toString());
-    console.log("/home?" + homeParams);
 
     xhr.open("GET", "/api/homelist?" + homeParams.toString(), true);    
     xhr.onreadystatechange = function (){

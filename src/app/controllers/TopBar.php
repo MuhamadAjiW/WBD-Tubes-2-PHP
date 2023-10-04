@@ -14,9 +14,8 @@ class TopBar extends Controller{
                 extract($bookdata);
                 include "../app/components/BookEntrySmall.php";
             }
-        }
-        else{
-            echo "no query";
+
+            if(empty($results)) echo "no result";
         }
     }
 }

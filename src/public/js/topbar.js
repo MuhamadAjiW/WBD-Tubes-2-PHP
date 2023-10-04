@@ -40,7 +40,6 @@ function showMenu(){
 
 function checkScreenWidth(event){
     if(event.matches){
-        console.log("Yes")
         smallMenuShown = false;
         hideMenu();
     }
@@ -61,7 +60,6 @@ function searchTopbar(){
     xhr.open("GET", "/api/searchsm?" + topParams.toString(), true);    
     xhr.onreadystatechange = function (){
         if(this.readyState == 4 && this.status == 200){
-            console.log(xhr.response);
             topbar_searchresult.innerHTML = xhr.response;
         }
     }
