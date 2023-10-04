@@ -30,6 +30,7 @@ class App {
         $this->router->addRoute('/admin/edituser', 'app/controllers/EditUser', 'index', ['GET']);
         $this->router->addRoute('/admin/editbook', 'app/controllers/EditBook', 'index', ['GET']);
         $this->router->addRoute('/admin', 'app/controllers/AdminPage', 'index', ['GET']);
+        $this->router->addPost('/admin/adduser', 'app/controllers/AddUser', 'add', ['POST']);
     }
 }
 ?>

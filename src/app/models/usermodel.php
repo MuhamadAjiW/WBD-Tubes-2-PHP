@@ -32,6 +32,8 @@ class UserModel{
         $this->database->bind('admin', $admin);
 
         $this->database->execute();
+
+        return $this->database->rowCount();
     }
 
     public function login($email, $password){
@@ -57,6 +59,15 @@ class UserModel{
 
         return $this->database->fetchAll();
     }
-   
+    
+    public function checkUsernameExists($username) {
+        $query = "SELECT * FROM users WHERE username = :username";
+
+        $this->database->query($query);
+        $this->database->bind('username', $username);
+        $rows = $this->database->fetchAll();
+
+        return count($rows);
+    }
 }
 ?>
