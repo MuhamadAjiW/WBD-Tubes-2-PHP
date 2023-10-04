@@ -80,7 +80,7 @@
             </div>
             <button class="button" type="submit" name="signup">Sign Up</button>
             <div class="Login">
-              <p>Already have account <a href="#">Sign Up</a></p>
+              <p>Already have account <a href="/login?redirect=signup">Login</a></p>
             </div>
           </form>
           <?php if (!empty($namaError)): ?>

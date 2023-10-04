@@ -65,7 +65,7 @@
             </div>
             <button class="button" type="submit" name="login">Log in</button>
             <div class="Sign-Up">
-              <p>Don 't have a account? <a href="#">Sign Up</a></p>
+              <p>Don 't have a account? <a href="/register?redirect=login">Sign Up</a></p>
             </div>
           </form>
           <div class="sessionerror">

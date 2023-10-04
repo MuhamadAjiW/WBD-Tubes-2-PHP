@@ -50,6 +50,21 @@ class UserModel{
         return $this->database->fetch();
     }
     
+    public function fetchUserIDByEmail($email) {
+        $query = "SELECT email FROM users WHERE email=:email";
+        $this->database->query($query);
+        $this->database->bind('email', $email);
+
+        return $this->database->fetch();
+    }
+    public function fetchInfoUsers($email) {
+        $query = 'SELECT email,username,name,bio,admin FROM users WHERE email=:email LIMIT 1';
+        $this->database->query($query);
+        $this->database->bind('email', $email);
+        $user = $this->database->fetch(); 
+        return $user;
+    }
+
     public function fetchAllUsers() {
         $query = "SELECT * FROM users";
 
