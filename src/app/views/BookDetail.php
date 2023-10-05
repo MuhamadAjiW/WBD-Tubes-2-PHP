@@ -1,3 +1,5 @@
+<?php use config\AppConfig; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,27 +9,90 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <?php echo strip_tags($REL_DATA, '<link>');?>
 </head>
-<?php if(file_exists($TOP_BAR)) include_once($TOP_BAR);?>
-<body>
-    <div class="top-wrapper">
-        <img class="blur-bg" src="../../storage/images/book_cover.jpeg">
-            <div class="book-info">
-                <div class="book-cover">
-                    <img class="book-cover-image" src="../../storage/images/book_cover.jpeg">
+<body class="gen-body">
+    <?php if(file_exists($TOP_BAR)) include_once($TOP_BAR);?>
+    <div class="main-content first">
+        <img class="blur-bg" src="<?=$book_data['image_path'];?>">
+        <header class="gen-header cluster-h book-header">
+            <img class="book-cover-image" src="<?=$book_data['image_path'];?>">
+            <div class="book-cluster">
+                <p><?=$book_data['genre'];?></p>
+                <h1><?=$book_data['title'];?></h1>
+                <h2><?=$author_data['name'];?></h2>
+                <div>
+                    <button id="review-button" class="btn btn-yellow" type="button"></i>Write a review</button>
+                    <!-- +TODO: Implement -->
+                    <button id="save-button" class="btn btn-grey" type='button' onclick="location.href='/error/501'"></i>Save to library</button>
+                
                 </div>
-                <div class ="book-contents">
-                    <h1 class='book-genre'>Romance</h1>
-                    <h1 class='book-title'>The Most Important Thing In The World</h1>
-                    <h2 class='book-author'>By Kelly Sanford</h2>
-                    <div class="book-buttons">
-                        <button id="recommend-button" class="book-buttons" type="button"><i class="fa-solid fa-thumbs-up" id="recommend-icon"></i>Recommend</button>
-                        <button id="audio-button" class="book-buttons" type='button'><i class="fa-solid fa-play" id="play-icon"></i>Hear it now</button>
-                        <button id="save-button" class="book-buttons" type='button'><i class="fa-solid fa-save" id="save-icon"></i>Save to library</button>
-                    </div>
+                <audio class="audioplayer" controls> 
+                    <source src="<?=$book_data['audio_path'];?>" type="audio/mpeg"> 
+                </audio> 
+            </div>
+        </header>
+    </div>
+    <div class="main-content main-detail">
+        <div class="synopsis-reviews">
+            <section class="synopsis">
+                <h2>Synopsis</h2>
+                <p class="synopsis-text"><?=$book_data['synopsis'];?></p>
+            </section>
+            <section class="reviews" id="review-block">
+                <h2>Reviews</h2>
+                <?php
+                foreach ($review_data as $review) {
+                    extract($review);
+                    include "../app/components/ReviewEntry.php";
+                }
+                ?>
+            </section>
+            <?php
+            if($review_count > AppConfig::REVIEWS_PER_LOAD){
+                echo '<button class="btn btn-grey" id="load-more" style="margin:15px 0">Load more</button>';
+            }
+            ?>
+        </div>
+        <div class="pusher" style="flex:2"></div>
+        <div class="author-info">
+            <p class="blurb">About the author</p>
+            <div class="authorname-wrap">
+                <div class="image-container">
+                    <img src="/storage/assets/profile.svg" alt="illustration of the author">
+                </div>
+                <div class="cluster-v" style="min-height:100%">
+                    <div class="pusher"></div>
+                        <p class="authorname"><?=$author_data['name'];?></p>
+                    <div class="pusher"></div>
                 </div>
             </div>
+            <p class="authorbio"><?=$author_data['bio'];?></p>
+        </div>
     </div>
-    <div class="body-wrapper">
+    <?php if(file_exists($FOOTER)) include_once($FOOTER);?>
+</body>
+
+<!-- TODO: Check if user has reviewed the book -->
+<div id="reviewmodal" class="fullscreen centered modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Submit Review</h5>
+            <span id="close-review" class="close-review">&times;</span>
+        </div>
+        <form class="modal-body" method="POST">
+            <textarea type="text" class="reviewer-form" id="form-review" placeholder="Enter Your Review"></textarea>
+            <div class="cluster-h" style="min-width:100%;padding: 5px 0">
+                <label for="ratingval">Score:</label>
+                <input id="ratingval" name="ratingval" type="number"  class="form-input" placeholder="1-5" min="1" max="5">
+                <div class="pusher"></div>
+                <button id="submit-review" type="button" class="btn btn-yellow submit-review-btn">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="/public/js/bookdetail.js"></script>
+
+    <!-- <div class="body-wrapper">
         <div class="book-review">
             <div class="book-synopsis">
                 <div class="text-title">Synopsis</div>
@@ -158,29 +223,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 </html>
 
-<div class="modal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <span id="close-modal" class="close">&times;</span>
-            <h5 class="modal-title">Submit Review</h5>
-        </div>
-        <form class="modal-body">
-            <div class="first-modal-section">
-                <div class="form-title">
-                    <span class="form-title">Name</span>
-                    <span class="form-title">Rating</span>
-                </div>
-                <div class="form-input">
-                    <input type="text" class="form-input" id="modal-form-name-input" placeholder="Enter Your Name"/>
-                    <input type="number"  class="form-input" placeholder="1-5" min="1" max="5">
-                </div>
-            </div>
-            <textarea type="text" class="reviewer-form" id="form-review" placeholder="Enter Your Review"></textarea>
-            <button type="button" class="submit-review-btn">Submit</button>
-        </form>
-    </div>
-</div>
-
 <script>
     // Get modal
     var modal = document.getElementsByClassName("modal")[0];
@@ -206,4 +248,4 @@ document.addEventListener("DOMContentLoaded", function() {
         modal.style.display = "none";
     }
     
-</script>
+</script> -->

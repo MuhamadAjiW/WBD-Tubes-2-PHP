@@ -1,5 +1,5 @@
 let smallMenuShown = false;
-const mediaQuery = window.matchMedia("(min-width: 6in)")
+const mediaQuery = window.matchMedia("(min-width: 7in)")
 const topbar_input = document.getElementById("topbar-search");
 const topbar_searchresult = document.getElementById("topbar-search-result")
 const popupmenu = document.getElementById("popup-menu");

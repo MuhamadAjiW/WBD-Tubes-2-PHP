@@ -46,7 +46,7 @@ use app\models\UserModel;
                 echo '<button class="btn btn-sm btn-grey" onclick="location.href=\'/profile\'">' . $name . '</button>';
                 echo '<button class="book-container" style="background-color: transparent;border:none" onclick="location.href=\'/profile\'">';
                 // +TODO: User images
-                echo '<img class="book-image" src="/storage/assets/profile.svg">';
+                echo '<img class="book-image" src="/storage/assets/profile.svg" alt="illustration of a user">';
                 
                 echo '</button>';
                 echo '</div>';

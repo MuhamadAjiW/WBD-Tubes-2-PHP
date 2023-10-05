@@ -13,7 +13,7 @@
     width: 80%;
 }
 
-@media (max-width: 6in){
+@media (max-width: 7in){
     .book-rec{
         position: relative;
         padding-top: 25px;

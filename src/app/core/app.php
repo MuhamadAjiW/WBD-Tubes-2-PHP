@@ -39,6 +39,7 @@ class App {
         $this->router->addRoute('/api/search', 'app/controllers/Search', 'serve', ['GET']);
         $this->router->addRoute('/api/searchsm', 'app/controllers/TopBar', 'search', ['GET']);
         $this->router->addRoute('/api/homelist', 'app/controllers/Home', 'updatelist', ['GET']);
+        $this->router->addRoute('/api/bookdetailrvw', 'app/controllers/BookDetail', 'updateReviews', ['GET']);
     }
 }
 ?>

@@ -82,7 +82,7 @@
     background-size: cover;
 } 
 
-@media (max-width: 6in){
+@media (max-width: 7in){
     .auth-container{
         width: 85%;
     }

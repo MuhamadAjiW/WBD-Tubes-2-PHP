@@ -42,7 +42,7 @@ class BookModel{
     }
 
     public function fetchBookByID($book_id){
-        $query = "SELECT * FROM books LIMIT 1 OFFSET :offset";
+        $query = "SELECT * FROM books WHERE book_id = :book_id LIMIT 1";
 
         $this->database->query($query);
         $this->database->bind('book_id', $book_id);

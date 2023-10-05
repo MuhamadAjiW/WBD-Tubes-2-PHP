@@ -14,7 +14,7 @@ use config\AppConfig;
 <body class="gen-body">
     <?php if(file_exists($TOP_BAR)) include_once($TOP_BAR);?>
 
-    <div id="content-header" class="main-content first">
+    <div class="main-content first">
         <header class="gen-header">
             <?php
                 if(isset($_SESSION['user_id'])){
@@ -28,7 +28,6 @@ use config\AppConfig;
                 }
             ?>
             <p>Here's what our reviewers think you should read this today</p>
-            <?php echo "Hello user: "; if(isset($_SESSION['user_id'])) echo $_SESSION['user_id']?>
             <p id="currentdate" style="color:#9b9b9b;text-align:right">date</p>
         </header>
         <section class="book-rec">
@@ -69,7 +68,7 @@ use config\AppConfig;
     <?php if(file_exists($FOOTER)) include_once($FOOTER);?>
 </body>
 
-<script src="public/js/home.js"></script>
+<script src="/public/js/home.js"></script>
 </html>
 
 

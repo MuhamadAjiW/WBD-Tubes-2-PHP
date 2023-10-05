@@ -11,6 +11,7 @@ class AppConfig{
     public const FOOTER_PATH = '../app/components/Footer.php';
     public const DOMAIN_NAME = 'localhost';
 
+    public const REVIEWS_PER_LOAD = 5;
     public const ENTRIES_PER_PAGE = 4;
     public const ENTRIES_SMALL_SEARCH = 5;
     public const ENTRIES_MAIN_SEARCH = 8;
