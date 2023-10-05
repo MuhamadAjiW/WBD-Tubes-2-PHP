@@ -2,6 +2,8 @@ let smallMenuShown = false;
 const mediaQuery = window.matchMedia("(min-width: 6in)")
 const topbar_input = document.getElementById("topbar-search");
 const topbar_searchresult = document.getElementById("topbar-search-result")
+const popupmenu = document.getElementById("popup-menu");
+const popupcontainer = document.getElementById("popup-container");
 
 const topQueryString = window.location.search;
 const currentPage = window.location.pathname;
@@ -17,7 +19,6 @@ function showSmallMenu(){
 }
 
 function hideMenu(){
-    let popupmenu = document.getElementById("popup-menu");
     let buttons = document.getElementsByClassName("popup-btn-sm");    
     popupmenu.style.height = '0px';
     for (let i = 0; i < buttons.length; i++) {
@@ -25,17 +26,20 @@ function hideMenu(){
         buttons[i].style.height = '0';
     }
     smallMenuShown = false;
+    setTimeout(function () {popupcontainer.style.display = 'none';}, 300);
 }
 
 function showMenu(){
-    let popupmenu = document.getElementById("popup-menu");
     let buttons = document.getElementsByClassName("popup-btn-sm");
-    popupmenu.style.height = '192px';
-    for (let i = 0; i < buttons.length; i++) {
-        buttons[i].style.display = 'flex';
-        buttons[i].style.height = '64px';
-    }
-    smallMenuShown = true;
+    popupcontainer.style.display = 'flex';
+    setTimeout(function () {
+        popupmenu.style.height = '100%';
+        for (let i = 0; i < buttons.length; i++) {
+            buttons[i].style.display = 'flex';
+            buttons[i].style.height = '64px';
+        }
+        smallMenuShown = true;
+    }, 0);
 }
 
 function checkScreenWidth(event){

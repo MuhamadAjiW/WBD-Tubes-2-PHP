@@ -3,6 +3,7 @@
 namespace app\core;
 
 use app\core\Database;
+use config\AppConfig;
 
 class Sessions{
     public static function cleanExpiredSessions(){
@@ -51,6 +52,15 @@ class Sessions{
         $database->bind('session_id', $session_id);
 
         return $database->fetch();
+    }
+
+    public static function logout($redirect = null){
+        session_unset();
+        session_destroy();
+        setcookie("session_id", "", time() - 3600, "/", AppConfig::DOMAIN_NAME);
+        if(isset($redirect)){
+            Router::redirect($redirect);
+        }
     }
 }
 

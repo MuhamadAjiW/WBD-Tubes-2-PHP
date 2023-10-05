@@ -2,7 +2,6 @@
 
 namespace app\middlewares;
 
-use app\core\Database;
 use app\core\Router;
 use app\core\Sessions;
 use config\AppConfig;
@@ -41,12 +40,7 @@ class AuthMiddleware{
                     }
                 }
                 else{
-                    session_unset();
-                    session_destroy();
-                    setcookie("session_id", "", time() - 3600, "/", AppConfig::DOMAIN_NAME);
-                    if(isset($redirect)){
-                        Router::redirect($redirect);
-                    }
+                    Sessions::logout($redirect);
                 }
             }
             else{
@@ -55,12 +49,7 @@ class AuthMiddleware{
                 }
             }
         } else if (time() - $_SESSION['last_ping'] > AppConfig::INACTIVITY_THRESHOLD) {
-            session_unset();
-            session_destroy();
-            setcookie("session_id", "", time() - 3600, "/", AppConfig::DOMAIN_NAME);
-            if(isset($redirect)){
-                Router::redirect($redirect);
-            }
+            Sessions::logout($redirect);
         }
         else{
             $_SESSION['last_ping'] = time();

@@ -22,7 +22,7 @@ class Login extends Controller{
             $userLogin = $this->model("UserModel");
             $email = $_POST["email"];
             $password = $_POST["password"];
-            $user = $userLogin->login($email,$password);
+            $user = $userLogin->login($email);
             if($user==null){
                 $errors['loginError'] = "Invalid username or password";
                 $errors['email'] = $email;
@@ -64,6 +64,10 @@ class Login extends Controller{
                 }
             }
         }
+    }
+
+    public function logout(){
+        Sessions::logout('/login');
     }
 }
 

@@ -26,7 +26,7 @@
       </div>
       <div class="input-container checkbox">
         <input type="checkbox" id="remember-me" name="remember-me" value="1"/>
-        <label class="input" for="remember-me">Remember Me</label>
+        <label class="input" for="remember-me">Stay Logged In</label>
       </div>
       <button class="btn btn-yellow auth-submit" type="submit" name="login">Log in</button>
 

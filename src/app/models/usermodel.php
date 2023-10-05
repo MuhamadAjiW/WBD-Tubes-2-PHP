@@ -19,7 +19,6 @@ class UserModel{
         $bio,
         $admin
     ){
-        // TODO: add hash and salt to password, email formatting for email
         $query = 'INSERT INTO users (email, username, password, name, bio, admin)
         VALUES (:email, :username, :password, :name, :bio, :admin)';
         
@@ -34,12 +33,19 @@ class UserModel{
         $this->database->execute();
     }
 
-    public function login($email, $password){
+    public function login($email){
         $query = 'SELECT user_id, password, admin FROM users WHERE email=:email LIMIT 1';
         $this->database->query($query);
         $this->database->bind('email', $email);
         $user = $this->database->fetch(); 
         return $user;
+    }
+
+    public function fetchUserByID($user_id) {
+        $query = "SELECT * FROM users WHERE user_id=:user_id";
+        $this->database->query($query);
+        $this->database->bind('user_id', $user_id);
+        return $this->database->fetch();
     }
 
     public function fetchUserIDByUsername($username) {

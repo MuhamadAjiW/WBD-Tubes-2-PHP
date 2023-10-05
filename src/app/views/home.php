@@ -1,4 +1,7 @@
-<?php use config\AppConfig;?>
+<?php
+use app\models\UserModel;
+use config\AppConfig;
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +16,17 @@
 
     <div id="content-header" class="main-content first">
         <header class="gen-header">
-            <h1 class="gen-h1 ">Start Exploring</h1>
+            <?php
+                if(isset($_SESSION['user_id'])){
+                    $bookmodel = new UserModel();
+                    $name = $bookmodel->fetchUserByID($_SESSION['user_id'])['name'];
+
+                    echo '<h1 class="gen-h1 ">Hello ' . $name .'!</h1>';
+                }
+                else{
+                    echo '<h1 class="gen-h1 ">Start Exploring</h1>';
+                }
+            ?>
             <p>Here's what our reviewers think you should read this today</p>
             <?php echo "Hello user: "; if(isset($_SESSION['user_id'])) echo $_SESSION['user_id']?>
             <p id="currentdate" style="color:#9b9b9b;text-align:right">date</p>
