@@ -24,7 +24,10 @@ class Login extends Controller{
             $password = $_POST["password"];
             $user = $userLogin->login($email,$password);
             if($user==null){
-                $data['loginError'] = "Invalid username or password";
+                $errors['loginError'] = "Invalid username or password";
+                $errors['email'] = $email;
+                $errors['password'] = $password;
+                $data['errors'] = $errors;
                 $this->index($data);
             }
             else{
@@ -53,9 +56,10 @@ class Login extends Controller{
                     }
                     Router::redirect('/home');
                 } else {
-                    $data['loginError'] = "Invalid username or password";
-                    $data['email'] = $email;
-                    $data['password'] = $password;
+                    $errors['loginError'] = "Invalid username or password";
+                    $errors['email'] = $email;
+                    $errors['password'] = $password;
+                    $data['errors'] = $errors;
                     $this->index($data);
                 }
             }

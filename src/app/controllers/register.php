@@ -59,7 +59,8 @@ class Register extends Controller{
                 $errors['password'] = $_POST['password'];
                 $errors['username'] = $_POST['username'];
                 $errors['name'] = $_POST['name'];
-                $this->index($errors);
+                $data['errors'] = $errors;
+                $this->index($data);
             }
         }
     }

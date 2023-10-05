@@ -20,9 +20,8 @@
     font-weight: 100;
 }
 
-.auth-submit{
-    width: 100%;
-    border-radius: 24px;
+.auth-container label{
+    font-family: Rubik, sans-serif;
 }
 
 .auth-container p{
@@ -39,6 +38,11 @@
 
 .auth-container a:hover{
     text-decoration: underline;
+}
+
+.auth-container .input-bar{
+    background-color: rgba(255, 255, 255, 0.9);
+    font-family: Rubik, sans-serif;
 }
 
 .auth-container .forgor{
@@ -61,8 +65,9 @@
     color: #5a5a5a;
 }
 
-.auth-container label{
-    font-family: Rubik, sans-serif;
+.auth-submit{
+    width: 100%;
+    border-radius: 24px;
 }
 
 .sty-bckgrnd{
