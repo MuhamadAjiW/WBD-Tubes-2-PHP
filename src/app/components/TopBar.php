@@ -58,26 +58,6 @@ use app\models\UserModel;
                 echo '</div>';
             }
             ?>
-            <!-- Placeholder for users
-            <div class="cluster-h cluster-login">
-                <button class="btn btn-sm btn-grey" onclick="location.href='/profile'">
-                    User One
-                </button>
-                <button class="book-container" style="background-color: transparent;border:none" onclick="location.href='/profile'">
-                    <img class="book-image" src="/storage/assets/profile.svg">
-                </button>
-            </div> -->
-            
-            <!-- Placeholder for non-users
-            <div class="cluster-h cluster-login">
-                <button class="btn btn-sm btn-grey"
-                    onclick="location.href='/login'">
-                    Log in
-                </button>
-                <button class="btn btn-sm btn-yellow" onclick="location.href='/register'">
-                    Sign up
-                </button>
-            </div> -->
 
         </div>
         <button class="btn btn-menu-sm"
@@ -86,6 +66,7 @@ use app\models\UserModel;
             </img>
         </button>
     </nav>
+    
     <?php
     if (isset($_SESSION['user_id'])) {
         echo '<div id="popup-container" class="menu-popup-wrap" style="height:128px">';
@@ -112,26 +93,6 @@ use app\models\UserModel;
         echo '</div></div>';
     }
     ?>
-    <!-- Placeholder for non-users -->
-    <!-- <div id="popup-container" class="menu-popup-wrap">
-        <div id="popup-menu" class="menu-popup-sm">
-            <button class="btn popup-btn-sm"
-                onclick="location.href='/login'">
-                <img class="popup-btn-icn" src="storage/assets/menu3line.svg" alt="Menu button">
-                Log in
-            </button>
-            <button class="btn popup-btn-sm"
-                onclick="location.href='/register'">
-                <img class="popup-btn-icn" src="storage/assets/menu3line.svg" alt="Menu button">
-                Sign up
-            </button>
-            <button class="btn popup-btn-sm"
-                onclick="location.href='/search'">
-                <img class="popup-btn-icn" src="storage/assets/menu3line.svg" alt="Menu button">
-                Search
-            </button>
-        </div>
-    </div> -->
 
     <script src="public/js/util.js"></script>
     <script src="public/js/topbar.js"></script>
