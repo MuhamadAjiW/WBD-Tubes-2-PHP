@@ -3,6 +3,7 @@
 namespace app\models;
 
 use app\core\Database;
+use app\core\Router;
 use config\AppConfig;
 
 class BookModel{
@@ -63,7 +64,7 @@ class BookModel{
         $this->database->query($query);
         return $this->database->fetchAll();
     }
-    public function fetchBooksPaged($page){
+    public function fetchBooksPaged($page = 1, $pagesize = AppConfig::ENTRIES_PER_PAGE){
         $query = "SELECT * FROM books";
         $this->database->query($query);
         $this->database->execute();
@@ -73,8 +74,8 @@ class BookModel{
                     ON books.author_id = users.user_id
                     ORDER BY books.title LIMIT :limit OFFSET :offset";
         $this->database->query($query);
-        $this->database->bind('limit', AppConfig::ENTRIES_PER_PAGE);
-        $this->database->bind('offset', ($page - 1) * AppConfig::ENTRIES_PER_PAGE);
+        $this->database->bind('limit', $pagesize);
+        $this->database->bind('offset', ($page - 1) * $pagesize);
         
         return [$this->database->fetchAll(), $totalbooks];
     }
@@ -116,9 +117,15 @@ class BookModel{
         // return [$result, $totalbooks];
         return $result;
     }
-    public function fetchBooksBySimpleSearch(
-        $search,
-    ){
+
+    public function fetchBookGenres(){
+        $query = "SELECT DISTINCT genre FROM books";
+        $this->database->query($query);
+        $result = $this->database->fetchAll();
+        return $result;
+    }
+
+    public function fetchBooksBySimpleSearch($search){
         $query = "SELECT * FROM books b JOIN users u ON b.author_id = u.user_id
                     WHERE (b.title ILIKE :search or u.name ILIKE :search)
                     ORDER BY title LIMIT :limit";
@@ -135,46 +142,54 @@ class BookModel{
     public function fetchBooksBySearch(
         $search,
         $sort = 'title',
+        $desc = false,
         $genre = 'all',
-        $page = 1
+        $not_graphic_cntn = false,
+        $page = 1,
+        $pagesize = AppConfig::ENTRIES_PER_PAGE
     ){
-        if ($genre === 'all'){
-            $query = "SELECT * FROM books b JOIN users u ON b.author_id = u.user_id
-                        WHERE (b.title LIKE :search or u.name LIKE :search)";
-            
-            $this->database->query($query);
-            $this->database->bind('sort', $sort);
-            $this->database->bind('search', '%' . $search . '%');
-            
-            $this->database->execute();
-            $totalbooks = $this->database->rowCount();
+        $available_sort = [
+            'title',
+            'genre',
+            'rating_avg',
+            'name',
+            'release_date'
+        ];
 
-            $query = "SELECT * FROM books b JOIN users u ON b.author_id = u.user_id
-                        WHERE (b.title LIKE :search or u.name LIKE :search)
-                        ORDER BY :sort LIMIT :limit OFFSET :offset";
-        } else{
-            $query = "SELECT * FROM books JOIN users u ON b.author_id = u.user_id
-                        WHERE (b.title LIKE :search or u.name LIKE :search) and genre = :genre";
-            
-            $this->database->query($query);
-            $this->database->bind('sort', $sort);
-            $this->database->bind('search', '%' . $search . '%');
-            $this->database->bind('genre', $genre);
-            
-            $this->database->execute();
-            $totalbooks = $this->database->rowCount();
-
-            $query = "SELECT * FROM books JOIN users u ON b.author_id = u.user_id
-                        WHERE (b.title LIKE :search or u.name LIKE :search) and genre = :genre
-                        ORDER BY :sort LIMIT :limit OFFSET :offset";
+        if(!in_array($sort, $available_sort)){
+            Router::NotFound();
         }
 
+        $query = "SELECT * FROM books b JOIN users u ON b.author_id = u.user_id
+                        WHERE (b.title ILIKE :search or u.name ILIKE :search)";
+        if($genre !== 'all') $query = $query . " AND genre = :genre";
         
         $this->database->query($query);
+        $this->database->bind('search', '%' . $search . '%');
+        if($genre !== 'all') $this->database->bind('genre', $genre);
+        
+        $this->database->execute();
+        $totalbooks = $this->database->rowCount();
+
+        $query = "SELECT * FROM books b
+                    JOIN users u ON b.author_id = u.user_id
+                    JOIN
+                        (SELECT b.book_id, AVG(rating) as rating_avg
+                            FROM books b JOIN reviews r ON b.book_id = r.book_id
+                            GROUP BY b.book_id) r_avg
+                        ON b.book_id = r_avg.book_id
+                    WHERE (b.title ILIKE :search or u.name ILIKE :search)";
+
+        if($genre !== 'all') $query = $query . " AND genre = :genre";
+        if($not_graphic_cntn) $query = $query . " AND graphic_cntn = FALSE";
+
+        if($desc) $query = $query . " ORDER BY $sort DESC LIMIT :limit OFFSET :offset";
+        else $query = $query . " ORDER BY $sort LIMIT :limit OFFSET :offset";
+
+        // b.title, u.name, r_avg.rating_avg
         $this->database->query($query);
-        $this->database->bind('limit', AppConfig::ENTRIES_PER_PAGE);
-        $this->database->bind('offset', ($page - 1) * AppConfig::ENTRIES_PER_PAGE);
-        $this->database->bind('sort', $sort);
+        $this->database->bind('limit', $pagesize);
+        $this->database->bind('offset', ($page - 1) * $pagesize);
         $this->database->bind('search', '%' . $search . '%');
         if ($genre !== 'all') $this->database->bind('genre', $genre);
         

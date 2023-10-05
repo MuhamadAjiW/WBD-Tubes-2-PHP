@@ -2,6 +2,10 @@
 
 use app\core\App;
 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 function autoLoad($class_name){
     $class_path =  __DIR__ . "/../";
     $class_file = str_replace('\\', '/', $class_name);

@@ -30,13 +30,6 @@
     cursor: pointer;
 }
 
-.web-title{
-    padding-left: 20px;
-    font-family: Helvetica;
-    font-weight: 600;
-    font-size: 24px;
-}
-
 .btn-menu-sm{
     display: none;
 }
@@ -80,8 +73,9 @@
     height: 18px;
 }
 
-.search-container-sm {
+.input-container-sm {
   size: 200px;
+  margin: 0;
 }
 
 .search-result-sm {
@@ -110,6 +104,7 @@
   margin: 0 10px;
   text-align: left;
   max-width: 90%;
+  font-size: 15px;
 }
 
 .search-entry-sm-a{
@@ -128,6 +123,7 @@
     align-items: flex-start;
     word-wrap: break-word;
     max-width: 75%;
+    gap: 7px;
 }
 
 .search-entry-sm .book-container{

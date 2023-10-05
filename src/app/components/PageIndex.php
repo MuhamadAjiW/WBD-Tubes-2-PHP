@@ -1,13 +1,19 @@
 <div class="page-nav">
     <div class="pusher"></div>
     <?php
+        if(!isset($clickparams)) {
+            $clickparams = '';
+        } else{
+            $clickparams = ', ' . $clickparams;
+        }
+
         $buttonconfig;
         if($currentpage === 1){
             $buttonconfig = '<button class="btn page-nav-btn-lr-n">';
         }
         else{
             $buttonconfig = '<button class="btn page-nav-btn-lr"
-                                onclick="location.href=\'home?page=' . 1 . '\'">';
+                            onclick="' . $clickfunction . '(' . 1 . $clickparams . ')' . '">';
         }
         echo $buttonconfig . "&lt First </button>";
     ?>
@@ -21,7 +27,7 @@
                     }
                     else{
                         $buttonconfig = '<button class="btn page-nav-btn"
-                                            onclick="location.href=\'home?page=' . $i . '\'">';
+                                        onclick="' . $clickfunction . '(' . $i . $clickparams . ')' . '">';
                     }
                     echo $buttonconfig . $i ."</button>";
                 }
@@ -37,7 +43,7 @@
                         }
                         else{
                             $buttonconfig = '<button class="btn page-nav-btn"
-                                                onclick="location.href=\'home?page=' . $i . '\'">';
+                                            onclick="' . $clickfunction . '(' . $i . $clickparams . ')' . '">';
                         }
                         echo $buttonconfig . $i ."</button>";
                     }
@@ -49,7 +55,7 @@
                         }
                         else{
                             $buttonconfig = '<button class="btn page-nav-btn"
-                                                onclick="location.href=\'home?page=' . $i . '\'">';
+                                            onclick="' . $clickfunction . '(' . $i . $clickparams . ')' . '">';
                         }
                         echo $buttonconfig . $i ."</button>";
                     }
@@ -60,7 +66,7 @@
                         }
                         else{
                             $buttonconfig = '<button class="btn page-nav-btn"
-                                                onclick="location.href=\'home?page=' . $i . '\'">';
+                                            onclick="' . $clickfunction . '(' . $i . $clickparams . ')' . '">';
                         }
                         echo $buttonconfig . $i ."</button>";
                     }
@@ -70,12 +76,12 @@
         <div class="pusher"></div>
     </div>
     <?php
-        if($currentpage === $pagelen){
+        if($currentpage === $pagelen || $pagelen <= 1){
             $buttonconfig = '<button class="btn page-nav-btn-lr-n">';
         }
         else{
             $buttonconfig = '<button class="btn page-nav-btn-lr"
-                                onclick="location.href=\'home?page=' . $pagelen . '\'">';
+                            onclick="' . $clickfunction . '(' . $pagelen . $clickparams . ')' . '">';
         }
         echo $buttonconfig . "Last > </button>";
     ?>

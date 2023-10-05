@@ -1,0 +1,92 @@
+:root {
+  --primary: #eac44a;
+  --bg: #eff2f3;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: 0;
+  outline: none;
+  border: none;
+  text-decoration: none;
+}
+
+body {
+  font-family: "Rubik", sans-serif;
+  background-color: var(--bg);
+  color: #2a2a2a;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.form-box {
+  position: relative;
+  width: 800px;
+  height: 510px;
+  background: var(--bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-box h2 {
+  position: absolute;
+  top: 0;
+  font-size: 1cm;
+  color: #2a2a2a;
+  text-align: center;
+  padding: 1rem;
+}
+
+.form-box .p {
+  position: absolute;
+  top: 1.4cm;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+}
+
+.inputbox {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 0px;
+  margin-left: 0px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+  width: 400x;
+  height: 40px;
+  align-self: flex-start;
+  display: flex;
+  justify-content: space-between;
+}
+
+.inputbox input {
+  width: 500px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1.5px solid #eac44a;
+  text-indent: 20px;
+  margin-top: 3px;
+}
+
+.inputbox span {
+  margin-right: 10px;
+}
+
+.user img {
+  float: left;
+  margin-left: 70px;
+}

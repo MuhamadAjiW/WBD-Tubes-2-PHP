@@ -16,14 +16,14 @@ class Controller{
     }
 
     public function view($view, $data = []){
-        $data[AppConfig::REL_DATA] = $this->rel;
-
+        
         $this->rel = $this->rel . $this->icon;
         $data[AppConfig::TOP_BAR] = $this->topbar;
         $data[AppConfig::FOOTER] = $this->footer;
+        $data[AppConfig::REL_DATA] = $this->rel;
 
         extract($data);
-        require_once '../app/views/' . $view . '.php';
+        include '../app/views/' . $view . '.php';
     }
 
     public function model($model){

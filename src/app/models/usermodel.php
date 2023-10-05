@@ -37,7 +37,7 @@ class UserModel{
     }
 
     public function login($email, $password){
-        $query = 'SELECT email, password FROM users WHERE email=:email LIMIT 1';
+        $query = 'SELECT user_id, password, admin FROM users WHERE email=:email LIMIT 1';
         $this->database->query($query);
         $this->database->bind('email', $email);
         $user = $this->database->fetch(); 
@@ -52,6 +52,21 @@ class UserModel{
         return $this->database->fetch();
     }
     
+    public function fetchUserIDByEmail($email) {
+        $query = "SELECT email FROM users WHERE email=:email";
+        $this->database->query($query);
+        $this->database->bind('email', $email);
+
+        return $this->database->fetch();
+    }
+    public function fetchInfoUsers($email) {
+        $query = 'SELECT email,username,name,bio,admin FROM users WHERE email=:email LIMIT 1';
+        $this->database->query($query);
+        $this->database->bind('email', $email);
+        $user = $this->database->fetch(); 
+        return $user;
+    }
+
     public function fetchAllUsers() {
         $query = "SELECT * FROM users";
 

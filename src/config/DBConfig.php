@@ -62,6 +62,15 @@ class DBConfig{
                                             ON DELETE CASCADE
                                             ON UPDATE CASCADE
     );";
+
+    public const SESSION_TABLE_INIT =
+    "CREATE TABLE IF NOT EXISTS sessions (
+        session_id      VARCHAR(64)     PRIMARY KEY,
+        user_id         SERIAL          NOT NULL,
+        admin           BOOLEAN         DEFAULT FALSE NOT NULL,
+        loggedin        BOOLEAN         DEFAULT FALSE NOT NULL,
+        expire_date     INT             NOT NULL
+    );";
 }
 
 ?>
