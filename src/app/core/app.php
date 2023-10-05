@@ -31,6 +31,8 @@ class App {
         $this->router->addRoute('/admin/editbook', 'app/controllers/EditBook', 'index', ['GET']);
         $this->router->addRoute('/admin', 'app/controllers/AdminPage', 'index', ['GET']);
         $this->router->addPost('/admin/adduser', 'app/controllers/AddUser', 'add', ['POST']);
+        $this->router->addPost('/admin/users', 'app/controllers/AdminUsers', 'delete', ['POST']);
+        $this->router->addPost('/admin/edituser', 'app/controllers/EditUser', 'edit', ['POST']);
 
         $this->router->addRoute('/profile', 'app/controllers/Profile', 'index', ['GET']);
         $this->router->addRoute('/detail', 'app/controllers/BookDetail', 'index', ['GET']);
@@ -38,6 +40,8 @@ class App {
         $this->router->addRoute('/api/search', 'app/controllers/Search', 'serve', ['GET']);
         $this->router->addRoute('/api/searchsm', 'app/controllers/TopBar', 'search', ['GET']);
         $this->router->addRoute('/api/homelist', 'app/controllers/Home', 'updatelist', ['GET']);
+
+
     }
 }
 ?>

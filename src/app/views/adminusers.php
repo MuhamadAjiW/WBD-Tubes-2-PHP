@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Users</title>
     <link rel="stylesheet" href="../../public/css/adminpage.css"></link>
+    <script type="text/javascript" src="../../public/js/deleteuser.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 </head>
 <body>
@@ -36,7 +37,7 @@
                         <td><?= $user['email'] ?></td>
                         <td><?= $user['name'] ?></td>
                         <td><?= $user['bio'] ?></td>
-                        <td><button class="admin-buttons edit-button" data-user-id="<?= $user['user_id'] ?>" onclick="location.href='/admin/edituser'">Edit</button></td>
+                        <td><button class="admin-buttons edit-button" data-user-id="<?= $user['user_id'] ?>" onclick="editUserURL(<?= $user['user_id'] ?>)">Edit</button></td>
                         <td><button class="admin-buttons delete-button" data-user-id="<?= $user['user_id'] ?>">Delete</button></td>
                    </tr>
                 <?php endforeach; ?>
@@ -51,18 +52,23 @@
 
                     <div class="delete-modal-buttons">
                         <button type="button" class="delete-modal-btn" id="cancel-delete-btn">Cancel</button>
-                        <button type="button" class="delete-modal-btn" id="modal-delete-user-btn">Delete</button>
+                        <button type="button" class="delete-modal-btn" id="modal-delete-user-btn">Delete</button>                    
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-
-    <script type="text/javascript" src="../../public/js/admin.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </body>
 </html>
+
+<script>
+    function editUserURL(userID) {
+        const editURL = `/admin/edituser?user_id=${userID}`;
+
+        window.location.href = editURL;
+    }
+</script>
 
 <script> // Modal for book deletion
     // Get the modal
@@ -74,6 +80,8 @@
             deletemodal.style.display = "block";
 
             var userID = event.target.getAttribute('data-user-id');
+
+            document.getElementById("modal-delete-user-btn").setAttribute('data-user-id', userID);
         }
     })
 
@@ -83,9 +91,6 @@
     // Get the cancel button
     var cancelbtn = document.getElementById("cancel-delete-btn");
     
-    // openmodalbtn.onclick = function() {
-    //     deletemodal.style.display = "block";
-    // }
 
     cancelbtn.onclick = function() {
         deletemodal.style.display = "none";
@@ -93,6 +98,8 @@
 
     // ntar diganti kalau udah jadi
     deletebtn.onclick = function() {
+        deleteUser(document.getElementById("modal-delete-user-btn").getAttribute("data-user-id"));
+
         deletemodal.style.display = "none";
     }
 

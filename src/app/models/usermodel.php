@@ -44,6 +44,15 @@ class UserModel{
         return $user;
     }
 
+    public function fetchUserByID($user_id) {
+        $query = "SELECT user_id, name, username, email, password, bio, admin FROM users WHERE user_id = :user_id";
+
+        $this->database->query($query);
+        $this->database->bind('user_id', $user_id);
+
+        return $this->database->fetch();
+    }
+
     public function fetchUserIDByUsername($username) {
         $query = "SELECT user_id FROM users WHERE username=:username";
         $this->database->query($query);
@@ -68,7 +77,7 @@ class UserModel{
     }
 
     public function fetchAllUsers() {
-        $query = "SELECT * FROM users";
+        $query = "SELECT user_id, email, username, name, bio, admin, password FROM users";
 
         $this->database->query($query);
 
@@ -83,6 +92,58 @@ class UserModel{
         $rows = $this->database->fetchAll();
 
         return count($rows);
+    }
+
+    public function checkUsernameExists2($username) { // Checking By ID
+        $query = "SELECT user_id FROM users WHERE username=:username";
+
+        $this->database->query($query);
+        $this->database->bind('username', $username);
+        
+        return $this->database->fetch();
+    }
+
+    public function deleteUserByID($user_id) {
+        $query = "DELETE FROM users WHERE user_id = :user_id";
+
+        $this->database->query($query);
+        $this->database->bind('user_id', $user_id);
+        $this->database->execute();
+
+        return $this->database->rowCount();
+    }
+
+    public function updateUserData($user_id, $name, $username, $email, $password, $bio, $admin) {
+        $query = "UPDATE users SET name=:name, username=:username, email=:email, password=:password, bio=:bio, admin=:admin WHERE user_id=:user_id";
+
+        $this->database->query($query);
+        $this->database->bind('email', $email);
+        $this->database->bind('username', $username);
+        $this->database->bind('password',  password_hash($password, PASSWORD_DEFAULT));
+        $this->database->bind('name', $name);
+        $this->database->bind('bio', $bio);
+        $this->database->bind('admin', $admin);
+        $this->database->bind('user_id', $user_id);
+
+        $this->database->execute();
+
+        return $this->database->rowCount();
+    }
+
+    public function updateUserData2($user_id, $name, $username, $email, $bio, $admin) { // No password update
+        $query = "UPDATE users SET name=:name, username=:username, email=:email, bio=:bio, admin=:admin WHERE user_id=:user_id";
+
+        $this->database->query($query);
+        $this->database->bind('email', $email);
+        $this->database->bind('username', $username);
+        $this->database->bind('name', $name);
+        $this->database->bind('bio', $bio);
+        $this->database->bind('admin', $admin);
+        $this->database->bind('user_id', $user_id);
+
+        $this->database->execute();
+
+        return $this->database->rowCount();
     }
 }
 ?>

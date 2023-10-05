@@ -24,7 +24,7 @@ class AddUser extends Controller{
 
                 if ($rows) {
                     http_response_code(200);
-                    echo json_encode(array("message" => "Add user success"));
+                    echo json_encode(array("message" => "Add user success", "redirect" => "/admin/users"));
                 } else {
                     http_response_code(500);
                     echo json_encode(array("message" => "Add user failed"));

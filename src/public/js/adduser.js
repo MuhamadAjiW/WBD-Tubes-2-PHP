@@ -31,7 +31,11 @@ const submitUserForm = () => {
     
     xhr.onload = function() {
         if (this.status === 200) {
+            const response = JSON.parse(xhr.responseText);
             alert("Add user success :)");
+            if (response.redirect) {
+                window.location.href = response.redirect;
+            }
         } else if (this.status === 409) {
             alert("Username already taken :(");
         } else {
