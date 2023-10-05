@@ -39,6 +39,8 @@ class BookModel{
         $this->database->bind('audio_path', $audio_path);
 
         $this->database->execute();
+
+        return $this->database->rowCount();
     }
 
     public function fetchBookByID($book_id){
@@ -285,6 +287,8 @@ class BookModel{
         $this->database->query($query);
         $this->database->bind('book_id', $book_id);
         $this->database->execute();
+
+        return $this->database->rowCount();
     }
 
     public function checkBookExistsByTitle($title) {
@@ -303,6 +307,24 @@ class BookModel{
 
         $this->database->query($query);
         $this->database->bind('title', $title);
+
+        return $this->database->fetch();
+    }
+
+    public function fetchImagePathByID($book_id) {
+        $query = "SELECT image_path FROM books WHERE book_id=:book_id";
+
+        $this->database->query($query);
+        $this->database->bind('book_id', $book_id);
+
+        return $this->database->fetch();
+    }
+
+    public function fetchAudioPathByID($book_id) {
+        $query = "SELECT audio_path FROM books WHERE book_id=:book_id";
+
+        $this->database->query($query);
+        $this->database->bind('book_id', $book_id);
 
         return $this->database->fetch();
     }

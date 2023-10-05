@@ -18,46 +18,46 @@
             <div class="admin-form-title">
                 Add Book Form
             </div>
-            <form action="/admin/addbook" method="post">
+            <form action="javascript:;" enctype="multipart/form-data" onsubmit="return submitAddBookForm()">
                 <div class="admin-form-row">
                     <div class="admin-form-input">
-                        <input type="text" required>
+                        <input type="text" required id="add-book-form-title">
                         <div class="underline"></div>
                         <label for="">Title</label>
                     </div>
                     <div class="admin-form-input">
-                        <input type="text" required>
+                        <input type="text" required id="add-book-form-username">
                         <div class="underline"></div>
                         <label for="">Author Name</label>
                     </div>
                 </div>
                 <div class="admin-form-row">
                     <div class="admin-form-input">
-                        <input type="text" required>
+                        <input type="text" required id="add-book-form-genre">
                         <div class="underline"></div>
                         <label for="">Genre</label>
                     </div>
                     <div class="admin-form-input">
-                        <input type="date" required>
+                        <input type="date" required id="add-book-form-date">
                         <div class="underline"></div>
                         <label for="">Release Date</label>
                     </div>
                 </div>
                 <div class="admin-form-row">
                     <div class="admin-form-input">
-                        <input type="number" min="1" max="5" required>
+                        <input type="number" min="1" max="5" required id="add-book-form-wordcount">
                         <div class="underline"></div>
                         <label for="">Word Count</label>
                     </div>
                     <div class="admin-form-input">
-                        <input type="number" required>
+                        <input type="number" required id="add-book-form-duration">
                         <div class="underline"></div>
                         <label for="">Duration in minutes</label>
                     </div>
                 </div>
                 <div class="admin-form-row" id="admin-form-row-textarea">
                     <div class="admin-form-input admin-form-input-textarea">
-                        <textarea rows="8" cols="80" required></textarea>
+                        <textarea rows="8" cols="80" required id="add-book-form-synopsis"></textarea>
                         <br />
                         <label for="">Book synopsis</label>
                         <br />
@@ -66,17 +66,17 @@
                 <div class="admin-form-row admin-form-row-file">
                     <div class="admin-form-input-file">
                         <label for="">Insert book cover</label>
-                        <input type="file" accept="image/*" required>
+                        <input type="file" accept="image/*" required id="add-book-form-image">
                         <div class="underline"></div>
                     </div>
                     <div class="admin-form-input-file">
                         <label for="">Insert audio file</label>
-                        <input type="file" accept="audio/*" required>
+                        <input type="file" accept="audio/*" required id="add-book-form-audio">
                         <div class="underline"></div>
                     </div>
                 </div>
                 <div class="admin-form-row" id="admin-form-row-checkbox">
-                    <input type="checkbox" value="admin" class="add-book-form-checkbox">
+                    <input type="checkbox" value="admin" class="add-book-form-checkbox" id="add-book-form-graphic">
                     <label for="">Contains graphic content?</label>
                 </div>
                 <div class="admin-form-buttons">
@@ -88,7 +88,6 @@
     </div>
 
 
-    <script type="text/javascript" src="../../public/js/admin.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="../../public/js/addbook.js"></script>
 </body>
 </html> 

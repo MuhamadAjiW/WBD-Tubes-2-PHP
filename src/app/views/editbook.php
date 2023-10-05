@@ -18,7 +18,7 @@
             <div class="admin-form-title">
                 Edit Book Form
             </div>
-            <form action="/admin/editbook" method="post">
+            <form action="javascript:;" onsubmit="return submitEditBookForm()">
                 <div class="admin-form-row">
                     <div class="admin-form-input">
                         <input type="text" required>
@@ -76,7 +76,7 @@
                     </div>
                 </div>
                 <div class="admin-form-row" id="admin-form-row-checkbox">
-                    <input type="checkbox" value="admin" class="add-book-form-checkbox">
+                    <input type="checkbox" value="graphic" class="add-book-form-checkbox">
                     <label for="">Contains graphic content?</label>
                 </div>
                 <div class="admin-form-buttons">
@@ -88,7 +88,7 @@
     </div>
 
 
-    <script type="text/javascript" src="../../public/js/admin.js"></script>
+    <script type="text/javascript" src="../../public/js/editbook.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </body>
 </html> 
