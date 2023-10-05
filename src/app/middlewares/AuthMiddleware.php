@@ -8,7 +8,7 @@ use config\AppConfig;
 use Exception;
 
 class AuthMiddleware{
-    public function check($redirect=null){
+    public function check($admin=false, $redirect=null, $nonadminredirect=null){
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
@@ -38,6 +38,14 @@ class AuthMiddleware{
                     } catch(Exception){
                         Sessions::extendSessions($cookie_value, $cookie_time);
                     }
+
+                    if($admin and !$_SESSION['permissions']){
+                        if(isset($nonadminredirect)) Router::redirect($nonadminredirect);
+                        else if(isset($redirect)) Router::redirect($redirect);
+                        
+                        //TODO: harusnya 401 unauthorized
+                        Router::NotFound();
+                    }
                 }
                 else{
                     Sessions::logout($redirect);
@@ -53,6 +61,14 @@ class AuthMiddleware{
         }
         else{
             $_SESSION['last_ping'] = time();
+            
+            if($admin and !$_SESSION['permissions']){
+                if(isset($nonadminredirect)) Router::redirect($nonadminredirect);
+                else if(isset($redirect)) Router::redirect($redirect);
+                
+                //TODO: harusnya 401 unauthorized
+                Router::NotFound();
+            }
         }
     }
 }

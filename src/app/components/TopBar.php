@@ -1,6 +1,5 @@
 <?php
 use app\controllers\TopBar;
-use app\models\BookModel;
 use app\models\UserModel;
 
 ?>
