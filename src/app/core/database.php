@@ -17,6 +17,7 @@ class Database{
             $this->connection->exec(DBConfig::USER_TABLE_INIT);
             $this->connection->exec(DBConfig::BOOK_TABLE_INIT);
             $this->connection->exec(DBConfig::REVIEW_TABLE_INIT);
+            $this->connection->exec(DBConfig::SESSION_TABLE_INIT);
         } catch(Exception $e){
             throw new Exception('Failed initializing tables' . $e->getMessage());
         }

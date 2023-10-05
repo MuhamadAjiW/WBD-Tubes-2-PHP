@@ -14,31 +14,29 @@
       <h1>Welcome back 👋</h1>
       <h2>log in with your account</h2>  
       <div class="input-container">
-        <div class="input-bar">
+        <div class="input-bar" <?php if (isset($_SESSION['error'])) echo 'style="border: 2px solid #ff9b9b"'; ?>>
           <input type="email" id="email" name="email" class="input" placeholder="Email" required>
         </div>
       </div>
       <div class="input-container">
-        <div class="input-bar">
+        <div class="input-bar" <?php if (isset($_SESSION['error'])) echo 'style="border: 2px solid #ff9b9b"'; ?>>
           <input type="password" id="password" name="password" class="input" placeholder="Password" required>
         </div>
+        <?php if(isset($_SESSION['error'])) echo "<p style='color:#ff9b9b;font-size:12px'>". $_SESSION['error'] ."</p>";?>
+      </div>
+      <div class="input-container checkbox">
+        <input type="checkbox" id="remember-me" name="remember-me" value="1"/>
+        <label class="input" for="remember-me">Remember Me</label>
       </div>
       <button class="btn btn-yellow auth-submit" type="submit" name="login">Log in</button>
       <p><a class="forgor" href="/error/501">Forgot Your Password?</a></p>
       <p class="noacc">Don't have a account? <a class="reg" href="/register">Sign Up</a></p>
     </form>
-    <div class="sessionerror">
-      <?php 
-      if (isset($_SESSION['error'])) {
-        echo $_SESSION['error'];
-        unset($_SESSION['error']);
-      }
-      ?>
-    </div>
   </section>
 </body>
 </html>
 
+<?php if(isset($_SESSION['error'])) unset($_SESSION['error']);?>
 
 <!-- <!DOCTYPE html>
 <html lang="en">

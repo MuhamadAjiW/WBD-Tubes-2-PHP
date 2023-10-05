@@ -41,7 +41,9 @@ class Home extends Controller{
     }
 
     public function index(){
-        // $middleware = $this->middleware('TestMiddleware');        
+        $middleware = $this->middleware('AuthMiddleware');
+        $middleware->check();
+        
         $this->addRel("stylesheet", "/public/css/topbar.css");
         $this->addRel("stylesheet", "/public/css/style-2.css");
         $this->addRel("stylesheet", "/public/css/home.css");

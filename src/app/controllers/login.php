@@ -3,10 +3,13 @@
 namespace app\controllers;
 
 use app\core\Controller;
-use app\models\UserModel;
+use app\core\Router;
+use app\core\Sessions;
+use config\AppConfig;
+use Exception;
+
 class Login extends Controller{
     public function index(){
-        $usermodel = $this->model("UserModel");
         $this->addRel("stylesheet", "/public/css/style-2.css");
         $this->addRel("stylesheet", "/public/css/auth.css");
         $this->addRel("stylesheet", "/public/css/topbar.css");
@@ -15,7 +18,6 @@ class Login extends Controller{
     }
     
     public function login(){
-        session_start();
         if(isset($_POST['login'])){
             $userLogin = $this->model("UserModel");
             $email = $_POST["email"];
@@ -23,61 +25,39 @@ class Login extends Controller{
             $user = $userLogin->login($email,$password);
             if($user==null){
                 $_SESSION['error'] = "Invalid username or password";
-                $this->view('Login');
+                $this->index();
             }
             else{
                 if (password_verify($password, $user['password'])) {
-                    $_SESSION['email'] = $email;
-                    echo "Hi ". $_SESSION['email']. "Nanti dihubungin ke home";
-                  } else {
+                    $_SESSION['logged_in'] = true;
+                    $_SESSION['user_id'] = $user['user_id'];
+                    $_SESSION['user_ip'] = $_SERVER['REMOTE_ADDR'];
+                    $_SESSION['permissions'] = $user['admin'];
+                    $_SESSION['last_ping'] = time();
+
+                    if(isset($_POST['remember-me'])){
+                        $cookie_name = "remember_session_id";
+                        $cookie_value = session_id();
+                        $cookie_time = $_SESSION['last_ping'] + AppConfig::REMEMBER_THRESHOLD;
+                        setcookie($cookie_name, $cookie_value, $cookie_time, "/", AppConfig::DOMAIN_NAME, false, true);
+                        
+                        // TODO: CRITICAL ini crime separah parahnya crime, harusnya ini dijalanin di backround task per satuan waktu, bukan per request
+                        // Karena tubes ini sebenernya gak mencakup ini jadi yaudah lah ya
+                        Sessions::cleanExpiredSessions();
+                        
+                        try{
+                            Sessions::addSessions($cookie_value, $_SESSION['user_id'], $_SESSION['permissions'], true, $cookie_time);
+                        } catch(Exception){
+                            Sessions::extendSessions($cookie_value, $cookie_time);
+                        }
+                    }
+                    // Router::redirect('/home');
+                } else {
                     $_SESSION['error'] = "Invalid username or password";
-                    $this->view('Login');
-                  }
+                    $this->index();
+                }
             }
         }
-        
-        
-        
-        // if(isset($_POST['login'])){
-        //     $email = $_POST["email"];
-        //     $password = $_POST["password"];
-        
-        //     if($email=='' or $password==''){
-        //         $err++;
-        //         echo "Silakan masukan username dan password";
-        //     }
-        //     else{
-        //         $sql1 = "select * from user where email = '$email'";
-        //         $ql1 = mysqli_query($connection,$sql1);
-        //         $r1 = mysqli_fetch_array($ql1);
-        //         if($r1['email'] == ''){
-        //             echo "Email tidak tersedia";
-        //             $err+=1;
-        //         }
-        //         elseif($r1['password'] != md5($password)){
-        //             echo "Password yang dimasukkan tidak sesuai";
-        //             $err+=1;
-        //         }
-        //         if($err == 0){
-        //             $_SESSION['session_email'] = $email;
-        //             $_SESSION['session_password'] = md5($password);
-        //             if($_POST['remember-me'] == 1){
-        //                 $cookie_name = "cookie_email";
-        //                 $cookie_value = $email;
-        //                 $cookie_time = time() + (60 * 60 * 24 * 30);
-        //                 setcookie($cookie_name, $cookie_value,$cookie_time,"/");
-        
-        //                 $cookie_name = "cookie_password";
-        //                 $cookie_value = md5($password);
-        //                 $cookie_time = time() + (60 * 60 * 24 * 30);
-        //                 setcookie($cookie_name, $cookie_value,$cookie_time,"/");
-        //             }
-        //             header("location:anggota.php");
-        
-        //         }
-        //     }
-        // }
-        
     }
 }
 

@@ -57,6 +57,14 @@
     color: #9a9a9a;
 }
 
+.auth-container .checkbox{
+    color: #5a5a5a;
+}
+
+.auth-container label{
+    font-family: Rubik, sans-serif;
+}
+
 .sty-bckgrnd{
     position: fixed;
     left: 0;

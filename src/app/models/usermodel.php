@@ -35,7 +35,7 @@ class UserModel{
     }
 
     public function login($email, $password){
-        $query = 'SELECT email, password FROM users WHERE email=:email LIMIT 1';
+        $query = 'SELECT user_id, password, admin FROM users WHERE email=:email LIMIT 1';
         $this->database->query($query);
         $this->database->bind('email', $email);
         $user = $this->database->fetch(); 

@@ -15,6 +15,7 @@
         <header class="gen-header">
             <h1 class="gen-h1 ">Start Exploring</h1>
             <p>Here's what our reviewers think you should read this today</p>
+            <?php echo "Hello user: "; if(isset($_SESSION['user_id'])) echo $_SESSION['user_id']?>
             <p id="currentdate" style="color:#9b9b9b;text-align:right">date</p>
         </header>
         <section class="book-rec">
