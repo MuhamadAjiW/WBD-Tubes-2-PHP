@@ -81,20 +81,16 @@ use config\AppConfig;
             <span id="close-review" class="close-review">&times;</span>
         </div>
         <?php if($self_review) echo '<p class="modal-subtitle">You have written a review for this book</p>';?>
-        <form class="modal-body" method="POST" action=
-            <?php
-                if($self_review) echo '"/api/editreview"';
-                else echo '"/api/addreview"';
-            ?>
-        >
-            <input type="hidden" name="bid" value="<?=$book_data['book_id']?>">
-            <textarea type="text" class="reviewer-form" id="form-review" placeholder="Enter Your Review"><?php if($self_review) echo $self_review['reviewtext'];?></textarea>
+        <form class="modal-body">
+            <input id="bid-data" type="hidden" name="bid" value="<?=$book_data['book_id']?>">
+            <input id="edit-data" type="hidden" name="edit" value="<?php if($self_review) echo true; else echo false;?>">
+            <textarea id="form-review" type="text" class="reviewer-form" placeholder="Enter Your Review"><?php if($self_review) echo $self_review['reviewtext'];?></textarea>
             <div class="cluster-h" style="min-width:100%;padding: 5px 0">
                 <label for="ratingval">Score:</label>
                 <input id="ratingval" name="ratingval" type="number"  class="form-input" placeholder="1-5" min="1" max="5"
                     value="<?php if($self_review){ echo $self_review['rating'];}?>">
                 <div class="pusher"></div>
-                <button id="submit-review" type="submit" class="btn btn-yellow submit-review-btn">Submit</button>
+                <button id="submit-review" type="button" class="btn btn-yellow submit-review-btn">Submit</button>
             </div>
         </form>
     </div>

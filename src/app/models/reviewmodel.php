@@ -19,7 +19,7 @@ class ReviewModel{
         $reviewtext
     ){
         $query = "INSERT INTO reviews (book_id, user_id, rating, reviewtext)
-        VALUES(:book_id, :user_id, :rating, :review) ";
+        VALUES(:book_id, :user_id, :rating, :reviewtext) ";
 
         $this->database->query($query);
         $this->database->bind('book_id', $book_id);
@@ -103,8 +103,19 @@ class ReviewModel{
         return $this->database->fetch();
     }
 
+    public function updateReview($book_id, $user_id, $reviewtext, $rating) {
+        $query = "UPDATE reviews SET reviewtext=:reviewtext, rating=:rating WHERE book_id=:book_id AND user_id=:user_id";
+
+        $this->database->query($query);
+        $this->database->bind('book_id', $book_id);
+        $this->database->bind('user_id', $user_id);
+        $this->database->bind('reviewtext', $reviewtext);
+        $this->database->bind('rating', $rating);
+        $this->database->execute();
+    }
+
     public function updateReviewText($book_id, $user_id, $reviewtext) {
-        $query = "UPDATE books SET reviewtext=:reviewtext WHERE book_id=:book_id AND user_id=:user_id";
+        $query = "UPDATE reviews SET reviewtext=:reviewtext WHERE book_id=:book_id AND user_id=:user_id";
 
         $this->database->query($query);
         $this->database->bind('book_id', $book_id);
@@ -114,7 +125,7 @@ class ReviewModel{
     }
 
     public function updateReviewRating($book_id, $user_id, $rating) {
-        $query = "UPDATE books SET rating=:rating WHERE book_id=:book_id AND user_id=:user_id";
+        $query = "UPDATE reviews SET rating=:rating WHERE book_id=:book_id AND user_id=:user_id";
 
         $this->database->query($query);
         $this->database->bind('book_id', $book_id);
@@ -124,7 +135,7 @@ class ReviewModel{
     }
 
     public function deleteReview($book_id, $user_id) {
-        $query = "DELETE FROM books WHERE book_id=:book_id AND user_id=:user_id";
+        $query = "DELETE FROM reviews WHERE book_id=:book_id AND user_id=:user_id";
 
         $this->database->query($query);
         $this->database->bind('book_id', $book_id);

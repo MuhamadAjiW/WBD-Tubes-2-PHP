@@ -40,8 +40,8 @@ class App {
         $this->router->addRoute('/api/searchsm', 'app/controllers/TopBar', 'search', ['GET']);
         $this->router->addRoute('/api/homelist', 'app/controllers/Home', 'updatelist', ['GET']);
         $this->router->addRoute('/api/bookdetailrvw', 'app/controllers/BookDetail', 'moreReviews', ['GET']);
-        $this->router->addRoute('/api/editreview', 'app/controllers/BookDetail', 'addReview', ['POST']);
-        $this->router->addRoute('/api/addreview', 'app/controllers/BookDetail', 'editReview', ['POST']);
+        $this->router->addRoute('/api/editreview', 'app/controllers/BookDetail', 'editReview', ['POST']);
+        $this->router->addRoute('/api/addreview', 'app/controllers/BookDetail', 'addReview', ['POST']);
     }
 }
 ?>

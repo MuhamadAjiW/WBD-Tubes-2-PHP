@@ -76,10 +76,13 @@ class BookDetail extends Controller{
             $reviewmodel = $this->model('ReviewModel');
     
             $book_id = $_POST['bid'];
+            $rating = $_POST['rating'];
+            $review = $_POST['review'];
             $user_id = $_SESSION['user_id'];
 
+            $reviewmodel->addReview($book_id, $user_id, $rating, $review);
+
             http_response_code(200);
-            echo "add euy";
         } catch (Exception){
             http_response_code(500);
         }
@@ -87,14 +90,16 @@ class BookDetail extends Controller{
 
     public function editReview(){
         try{
-            var_dump($_POST);
             $reviewmodel = $this->model('ReviewModel');
     
             $book_id = $_POST['bid'];
+            $rating = $_POST['rating'];
+            $review = $_POST['review'];
             $user_id = $_SESSION['user_id'];
 
+            $reviewmodel->updateReview($book_id, $user_id, $review, $rating);
+
             http_response_code(200);
-            echo "edit euy";
         } catch (Exception){
             http_response_code(500);
         }
