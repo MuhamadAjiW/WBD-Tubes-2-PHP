@@ -22,19 +22,19 @@
             <form action="javascript:;" onsubmit="return submitEditUserForm()" id="form-edit-user" data-user-id = <?= $userdata['user_id'] ?>>
                 <div class="admin-form-row">
                     <div class="admin-form-input">
-                        <input type="text" required id="edit-user-input-name" value=<?= $userdata['name'] ?>>
+                        <input type="text" required id="edit-user-input-name" value="<?= $userdata['name'] ?>">
                         <div class="underline"></div>
                         <label for="">Name</label>
                     </div>
                     <div class="admin-form-input">
-                        <input type="text" required id="edit-user-input-username" value=<?= $userdata['username'] ?>>
+                        <input type="text" required id="edit-user-input-username" value="<?= $userdata['username'] ?>">
                         <div class="underline"></div>
                         <label for="">Username</label>
                     </div>
                 </div>
                 <div class="admin-form-row">
                     <div class="admin-form-input">
-                        <input type="text" required id="edit-user-input-email" value=<?= $userdata['email'] ?>>
+                        <input type="text" required id="edit-user-input-email" value="<?= $userdata['email'] ?>">
                         <div class="underline"></div>
                         <label for="">Email Address</label>
                     </div>

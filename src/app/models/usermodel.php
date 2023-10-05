@@ -85,13 +85,13 @@ class UserModel{
     }
     
     public function checkUsernameExists($username) {
-        $query = "SELECT * FROM users WHERE username = :username";
+        $query = "SELECT username FROM users WHERE username = :username";
 
         $this->database->query($query);
         $this->database->bind('username', $username);
         $rows = $this->database->fetchAll();
 
-        return count($rows);
+        return $rows;
     }
 
     public function checkUsernameExists2($username) { // Checking By ID

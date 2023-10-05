@@ -286,6 +286,26 @@ class BookModel{
         $this->database->bind('book_id', $book_id);
         $this->database->execute();
     }
+
+    public function checkBookExistsByTitle($title) {
+        $query = 'SELECT title FROM books WHERE title=:title';
+
+        $this->database->query($query);
+        $this->database->bind('title', $title);
+        
+        $rows = $this->database->fetchAll();
+
+        return $rows;
+    }
+
+    public function fetchBookIDByTitle($title) {
+        $query = 'SELECT book_id FROM books WHERE title=:title';
+
+        $this->database->query($query);
+        $this->database->bind('title', $title);
+
+        return $this->database->fetch();
+    }
 }
 
 ?>

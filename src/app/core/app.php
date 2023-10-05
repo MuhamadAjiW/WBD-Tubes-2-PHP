@@ -27,12 +27,17 @@ class App {
         $this->router->addRoute('/admin/reviews', 'app/controllers/AdminReviews', 'index', ['GET']);
         $this->router->addRoute('/admin/addbook', 'app/controllers/AddBook', 'index', ['GET']);
         $this->router->addRoute('/admin/adduser', 'app/controllers/AddUser', 'index', ['GET']);
+        $this->router->addRoute('/admin/addreview', 'app/controllers/AddReview', 'index', ['GET']);
         $this->router->addRoute('/admin/edituser', 'app/controllers/EditUser', 'index', ['GET']);
         $this->router->addRoute('/admin/editbook', 'app/controllers/EditBook', 'index', ['GET']);
+        $this->router->addRoute('/admin/editreview', 'app/controllers/EditReview', 'index', ['GET']);
         $this->router->addRoute('/admin', 'app/controllers/AdminPage', 'index', ['GET']);
         $this->router->addPost('/admin/adduser', 'app/controllers/AddUser', 'add', ['POST']);
+        $this->router->addPost('/admin/addreview', 'app/controllers/AddReview', 'add', ['POST']);
         $this->router->addPost('/admin/users', 'app/controllers/AdminUsers', 'delete', ['POST']);
         $this->router->addPost('/admin/edituser', 'app/controllers/EditUser', 'edit', ['POST']);
+        $this->router->addPost('/admin/reviews', 'app/controllers/AdminReviews', 'delete', ['POST']);
+        $this->router->addPost('/admin/editreview', 'app/controllers/EditReview', 'edit', ['POST']);
 
         $this->router->addRoute('/profile', 'app/controllers/Profile', 'index', ['GET']);
         $this->router->addRoute('/detail', 'app/controllers/BookDetail', 'index', ['GET']);
