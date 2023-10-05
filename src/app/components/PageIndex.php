@@ -9,10 +9,10 @@
 
         $buttonconfig;
         if($currentpage === 1){
-            $buttonconfig = '<button class="btn page-nav-btn-lr-n">';
+            $buttonconfig = '<button class="btn page-nav-btn-lr-n" name="navigation button">';
         }
         else{
-            $buttonconfig = '<button class="btn page-nav-btn-lr"
+            $buttonconfig = '<button class="btn page-nav-btn-lr"  name="navigation button"
                             onclick="' . $clickfunction . '(' . 1 . $clickparams . ')' . '">';
         }
         echo $buttonconfig . "&lt First </button>";
@@ -23,10 +23,10 @@
             if($pagelen <= 5){
                 for ($i=1; $i <= $pagelen; $i++) { 
                     if($i === $currentpage){
-                        $buttonconfig = '<button class="btn page-nav-btn-on">';
+                        $buttonconfig = '<button class="btn page-nav-btn-on" name="navigation button">';
                     }
                     else{
-                        $buttonconfig = '<button class="btn page-nav-btn"
+                        $buttonconfig = '<button class="btn page-nav-btn" name="navigation button"
                                         onclick="' . $clickfunction . '(' . $i . $clickparams . ')' . '">';
                     }
                     echo $buttonconfig . $i ."</button>";
@@ -39,10 +39,10 @@
                 if($offsetL <= 0){
                     for ($i = 1; $i <= 5; $i++) { 
                         if($i === $currentpage){
-                            $buttonconfig = '<button class="btn page-nav-btn-on">';
+                            $buttonconfig = '<button class="btn page-nav-btn-on" name="navigation button">';
                         }
                         else{
-                            $buttonconfig = '<button class="btn page-nav-btn"
+                            $buttonconfig = '<button class="btn page-nav-btn name="navigation button""
                                             onclick="' . $clickfunction . '(' . $i . $clickparams . ')' . '">';
                         }
                         echo $buttonconfig . $i ."</button>";
@@ -51,10 +51,10 @@
                 else if($offsetR >= $pagelen){
                     for ($i = $pagelen - 4; $i <= $pagelen; $i++){ 
                         if($i === $currentpage){
-                            $buttonconfig = '<button class="btn page-nav-btn-on">';
+                            $buttonconfig = '<button class="btn page-nav-btn-on"> name="navigation button"';
                         }
                         else{
-                            $buttonconfig = '<button class="btn page-nav-btn"
+                            $buttonconfig = '<button class="btn page-nav-btn" name="navigation button"
                                             onclick="' . $clickfunction . '(' . $i . $clickparams . ')' . '">';
                         }
                         echo $buttonconfig . $i ."</button>";
@@ -62,10 +62,10 @@
                 }else{
                     for ($i = $currentpage - 2; $i <= $currentpage + 2; $i++){ 
                         if($i === $currentpage){
-                            $buttonconfig = '<button class="btn page-nav-btn-on">';
+                            $buttonconfig = '<button class="btn page-nav-btn-on"> name="navigation button"';
                         }
                         else{
-                            $buttonconfig = '<button class="btn page-nav-btn"
+                            $buttonconfig = '<button class="btn page-nav-btn" name="navigation button"
                                             onclick="' . $clickfunction . '(' . $i . $clickparams . ')' . '">';
                         }
                         echo $buttonconfig . $i ."</button>";
@@ -77,10 +77,10 @@
     </div>
     <?php
         if($currentpage === $pagelen || $pagelen <= 1){
-            $buttonconfig = '<button class="btn page-nav-btn-lr-n">';
+            $buttonconfig = '<button class="btn page-nav-btn-lr-n" name="navigation button">';
         }
         else{
-            $buttonconfig = '<button class="btn page-nav-btn-lr"
+            $buttonconfig = '<button class="btn page-nav-btn-lr" name="navigation button"
                             onclick="' . $clickfunction . '(' . $pagelen . $clickparams . ')' . '">';
         }
         echo $buttonconfig . "Last > </button>";

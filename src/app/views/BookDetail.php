@@ -1,4 +1,6 @@
-<?php use config\AppConfig; ?>
+<?php
+use config\AppConfig;
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,6 +23,7 @@
                 <h2><?=$author_data['name'];?></h2>
                 <div>
                     <button id="review-button" class="btn btn-yellow" type="button"></i>Write a review</button>
+                    
                     <!-- +TODO: Implement -->
                     <button id="save-button" class="btn btn-grey" type='button' onclick="location.href='/error/501'"></i>Save to library</button>
                 
@@ -46,11 +49,9 @@
                 }
                 ?>
             </section>
-            <?php
-            if($review_count > AppConfig::REVIEWS_PER_LOAD){
-                echo '<button class="btn btn-grey" id="load-more" style="margin:15px 0">Load more</button>';
-            }
-            ?>
+            <button class="btn btn-grey" id="load-more" style="margin:15px 0"
+                <?php if($review_count <= AppConfig::REVIEWS_PER_LOAD) echo "hidden"?>
+            >Load more</button>
         </div>
         <div class="pusher" style="flex:2"></div>
         <div class="author-info">
@@ -71,20 +72,29 @@
     <?php if(file_exists($FOOTER)) include_once($FOOTER);?>
 </body>
 
-<!-- TODO: Check if user has reviewed the book -->
+
+<!-- TODO: fix submission and edition -->
 <div id="reviewmodal" class="fullscreen centered modal">
     <div class="modal-content">
         <div class="modal-header">
             <h5 class="modal-title">Submit Review</h5>
             <span id="close-review" class="close-review">&times;</span>
         </div>
-        <form class="modal-body" method="POST">
-            <textarea type="text" class="reviewer-form" id="form-review" placeholder="Enter Your Review"></textarea>
+        <?php if($self_review) echo '<p class="modal-subtitle">You have written a review for this book</p>';?>
+        <form class="modal-body" method="POST" action=
+            <?php
+                if($self_review) echo '"/api/editreview"';
+                else echo '"/api/addreview"';
+            ?>
+        >
+            <input type="hidden" name="bid" value="<?=$book_data['book_id']?>">
+            <textarea type="text" class="reviewer-form" id="form-review" placeholder="Enter Your Review"><?php if($self_review) echo $self_review['reviewtext'];?></textarea>
             <div class="cluster-h" style="min-width:100%;padding: 5px 0">
                 <label for="ratingval">Score:</label>
-                <input id="ratingval" name="ratingval" type="number"  class="form-input" placeholder="1-5" min="1" max="5">
+                <input id="ratingval" name="ratingval" type="number"  class="form-input" placeholder="1-5" min="1" max="5"
+                    value="<?php if($self_review){ echo $self_review['rating'];}?>">
                 <div class="pusher"></div>
-                <button id="submit-review" type="button" class="btn btn-yellow submit-review-btn">Submit</button>
+                <button id="submit-review" type="submit" class="btn btn-yellow submit-review-btn">Submit</button>
             </div>
         </form>
     </div>

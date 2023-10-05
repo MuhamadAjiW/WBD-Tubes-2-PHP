@@ -1,4 +1,4 @@
-<button class="book-container" style="background-color: transparent;border:none"
+<button class="book-container" style="background-color: transparent;border:none" name="clickable image of the featured book"
     onclick="location.href='\detail?bid=<?=$book_id?>'">
     <img class="book-image" src="<?=$image_path?>">
 </button>

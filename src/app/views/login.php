@@ -32,7 +32,6 @@
 
       <!-- +TODO: implement -->
       <p><a class="forgor" href="/error/501">Forgot Your Password?</a></p>
-      <!-- +TODO: implement -->
 
       <p class="noacc">Don't have a account? <a class="reg" href="/register">Sign Up</a></p>
     </form>

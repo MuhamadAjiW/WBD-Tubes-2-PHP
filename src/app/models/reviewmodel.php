@@ -38,6 +38,26 @@ class ReviewModel{
 
         return $this->database->fetchall();
     }
+    
+    public function fetchReviewByUserID($user_id) {
+        $query = "SELECT * FROM reviews WHERE user_id = :user_id";
+
+        $this->database->query($query);
+        $this->database->bind('user_id', $user_id);
+
+        return $this->database->fetchall();
+    }
+
+    public function fetchReviewByBookAndUserID($book_id, $user_id) {
+        $query = "SELECT * FROM reviews
+                    WHERE book_id = :book_id AND user_id = :user_id";
+
+        $this->database->query($query);
+        $this->database->bind('book_id', $book_id);
+        $this->database->bind('user_id', $user_id);
+
+        return $this->database->fetch();
+    }
 
     public function fetchReviewData($book_id, $page=1, $pagesize = AppConfig::REVIEWS_PER_LOAD) {
         $query = "SELECT book_id, name, rating, reviewtext

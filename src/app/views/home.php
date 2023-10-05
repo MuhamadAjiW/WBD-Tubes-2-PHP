@@ -40,7 +40,6 @@ use config\AppConfig;
 
 
     <div style="background-color:#f9f9f9">
-        <!-- TODO: Implement pagination -->
         <section id="content-booklist" class="main-content">
             <h2>Book List</h2>
             <div class="book-list">

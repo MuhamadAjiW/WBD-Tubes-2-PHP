@@ -48,20 +48,55 @@ class BookDetail extends Controller{
         $review_data = $reviews[0];
         $review_count = $reviews[1];
 
-        $this->view('BookDetail', ['book_data' => $book_data, 'author_data' => $author_data, 'review_data' => $review_data, 'review_count' => $review_count]);
+        $self_review = $reviewmodel->fetchReviewByBookAndUserID($book_id, $_SESSION['user_id']);
+
+        $this->view('BookDetail', ['book_data' => $book_data, 'author_data' => $author_data, 'review_data' => $review_data, 'review_count' => $review_count, 'self_review' => $self_review]);
     }
 
-    public function updateReviews(){
-        $reviewmodel = $this->model('ReviewModel');
+    public function moreReviews(){
+        try{
+            $reviewmodel = $this->model('ReviewModel');
+    
+            $book_id = $_GET['bid'];
+            $offset = $_GET['offset'];
+    
+            $reviews = $reviewmodel->fetchReviewData($book_id, $offset)[0];
+    
+            foreach ($reviews as $review) {
+                extract($review);
+                include "../app/components/ReviewEntry.php";
+            }
+        } catch (Exception){
+            http_response_code(500);
+        }
+    }
 
-        $book_id = $_GET['bid'];
-        $offset = $_GET['offset'];
+    public function addReview(){
+        try{
+            $reviewmodel = $this->model('ReviewModel');
+    
+            $book_id = $_POST['bid'];
+            $user_id = $_SESSION['user_id'];
 
-        $reviews = $reviewmodel->fetchReviewData($book_id, $offset)[0];
+            http_response_code(200);
+            echo "add euy";
+        } catch (Exception){
+            http_response_code(500);
+        }
+    }
 
-        foreach ($reviews as $review) {
-            extract($review);
-            include "../app/components/ReviewEntry.php";
+    public function editReview(){
+        try{
+            var_dump($_POST);
+            $reviewmodel = $this->model('ReviewModel');
+    
+            $book_id = $_POST['bid'];
+            $user_id = $_SESSION['user_id'];
+
+            http_response_code(200);
+            echo "edit euy";
+        } catch (Exception){
+            http_response_code(500);
         }
     }
 }

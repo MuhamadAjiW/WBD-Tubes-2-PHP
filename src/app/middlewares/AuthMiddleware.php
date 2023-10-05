@@ -43,7 +43,7 @@ class AuthMiddleware{
                         if(isset($nonadminredirect)) Router::redirect($nonadminredirect);
                         else if(isset($redirect)) Router::redirect($redirect);
                         
-                        //TODO: harusnya 401 unauthorized
+                        //TODO: should be 401 unauthorized
                         Router::NotFound();
                     }
                 }
@@ -66,7 +66,7 @@ class AuthMiddleware{
                 if(isset($nonadminredirect)) Router::redirect($nonadminredirect);
                 else if(isset($redirect)) Router::redirect($redirect);
                 
-                //TODO: harusnya 401 unauthorized
+                //TODO: should be 401 unauthorized
                 Router::NotFound();
             }
         }

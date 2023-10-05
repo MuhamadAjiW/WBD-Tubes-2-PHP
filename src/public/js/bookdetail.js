@@ -14,10 +14,6 @@ closebtn.onclick = function() {
     modal.style.display = "none";
 }
 
-submitbtn.onclick = function() {
-    modal.style.display = "none";
-}
-
 function getMoreReviews(){
     let xhr = new XMLHttpRequest();
 

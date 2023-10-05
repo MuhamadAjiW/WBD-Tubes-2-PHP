@@ -6,7 +6,7 @@ use app\models\UserModel;
 
 <div class="top-bar">
     <nav class="top-bar-contents">
-        <button class="cluster-h cluster-logo"
+        <button class="cluster-h cluster-logo" name="clickable logo of the company, leads to the homepage"
         onclick="location.href='/home'">
             <img src="storage/assets/logo.svg" alt="Logo of company" style="width: 55px; height: 55px; background: transparent">
             </img>
@@ -45,6 +45,7 @@ use app\models\UserModel;
                 echo '<div class="cluster-h cluster-login">';
                 echo '<button class="btn btn-sm btn-grey" onclick="location.href=\'/profile\'">' . $name . '</button>';
                 echo '<button class="book-container" style="background-color: transparent;border:none" onclick="location.href=\'/profile\'">';
+                
                 // +TODO: User images
                 echo '<img class="book-image" src="/storage/assets/profile.svg" alt="illustration of a user">';
                 
