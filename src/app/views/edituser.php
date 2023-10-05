@@ -56,7 +56,7 @@
                     <label for="">Admin?</label>
                 </div>
                 <div class="admin-form-buttons">
-                    <button type="button" class="admin-form-cancel-btn" onclick="location.href='adminusers'">Cancel</button>
+                    <button type="button" class="admin-form-cancel-btn" onclick="location.href='/admin/users'">Cancel</button>
                     <input type="submit" class="admin-form-submit-btn" name="edit-user">
                 </div>
             </form>

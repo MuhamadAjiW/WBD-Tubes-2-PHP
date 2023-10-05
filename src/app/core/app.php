@@ -31,10 +31,7 @@ class App {
         $this->router->addRoute('/admin/edituser', 'app/controllers/EditUser', 'index', ['GET']);
         $this->router->addRoute('/admin/editbook', 'app/controllers/EditBook', 'index', ['GET']);
         $this->router->addRoute('/admin', 'app/controllers/AdminPage', 'index', ['GET']);
-
-        $this->router->addRoute('/addbook', 'app/controllers/AddBook', 'index', ['GET']);
-        $this->router->addRoute('/adduser', 'app/controllers/AddUser', 'index', ['GET']);
-        
+        $this->router->addPost('/admin/adduser', 'app/controllers/AddUser', 'add', ['POST']);
 
         $this->router->addRoute('/profile', 'app/controllers/Profile', 'index', ['GET']);
         $this->router->addRoute('/detail', 'app/controllers/BookDetail', 'index', ['GET']);

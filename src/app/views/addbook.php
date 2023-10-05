@@ -80,7 +80,7 @@
                     <label for="">Contains graphic content?</label>
                 </div>
                 <div class="admin-form-buttons">
-                    <button type="button" class="admin-form-cancel-btn" onclick="location.href='adminbooks'">Cancel</button>
+                    <button type="button" class="admin-form-cancel-btn" onclick="location.href='/admin/books'">Cancel</button>
                     <input type="submit" class="admin-form-submit-btn" name="add-book">
                 </div>
             </form>
