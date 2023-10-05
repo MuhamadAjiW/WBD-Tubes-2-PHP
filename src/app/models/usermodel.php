@@ -65,6 +65,14 @@ class UserModel{
         return $user;
     }
 
+    public function fetchInfoUsersByID($user_id) {
+        $query = 'SELECT email,username,name,bio,admin FROM users WHERE user_id=:user_id LIMIT 1';
+        $this->database->query($query);
+        $this->database->bind('user_id', $user_id);
+        $user = $this->database->fetch(); 
+        return $user;
+    }
+
     public function fetchAllUsers() {
         $query = "SELECT * FROM users";
 
