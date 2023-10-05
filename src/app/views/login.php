@@ -14,15 +14,15 @@
       <h1>Welcome back 👋</h1>
       <h2>log in with your account</h2>  
       <div class="input-container">
-        <div class="input-bar" <?php if (isset($_SESSION['error'])) echo 'style="border: 2px solid #ff9b9b"'; ?>>
-          <input type="email" id="email" name="email" class="input" placeholder="Email" required>
+        <div class="input-bar" <?php if (isset($loginError)) echo 'style="border: 2px solid #ff9b9b"'; ?>>
+          <input type="email" id="email" name="email" class="input" placeholder="Email" required <?php if (isset($email)) echo 'value="' . $email . '"'; ?>>
         </div>
       </div>
       <div class="input-container">
-        <div class="input-bar" <?php if (isset($_SESSION['error'])) echo 'style="border: 2px solid #ff9b9b"'; ?>>
-          <input type="password" id="password" name="password" class="input" placeholder="Password" required>
+        <div class="input-bar" <?php if (isset($loginError)) echo 'style="border: 2px solid #ff9b9b"'; ?>>
+          <input type="password" id="password" name="password" class="input" placeholder="Password" required <?php if (isset($password)) echo 'value="' . $password . '"'; ?>>
         </div>
-        <?php if(isset($_SESSION['error'])) echo "<p style='color:#ff9b9b;font-size:12px'>". $_SESSION['error'] ."</p>";?>
+        <?php if(isset($loginError)) echo "<p style='color:#ff9b9b;font-size:12px'>". $loginError ."</p>";?>
       </div>
       <div class="input-container checkbox">
         <input type="checkbox" id="remember-me" name="remember-me" value="1"/>
@@ -36,7 +36,7 @@
 </body>
 </html>
 
-<?php if(isset($_SESSION['error'])) unset($_SESSION['error']);?>
+<?php if(isset($loginError)) unset($loginError);?>
 
 <!-- <!DOCTYPE html>
 <html lang="en">
@@ -108,9 +108,9 @@
         </form>
       <div class="sessionerror">
         <?php 
-          if (isset($_SESSION['error'])) {
-            echo $_SESSION['error'];
-            unset($_SESSION['error']);
+          if (isset($loginError)) {
+            echo $loginError;
+            unset($loginError);
           }
         ?>
       </div>

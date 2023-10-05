@@ -9,12 +9,12 @@ use config\AppConfig;
 use Exception;
 
 class Login extends Controller{
-    public function index(){
+    public function index($data=[]){
         $this->addRel("stylesheet", "/public/css/style-2.css");
         $this->addRel("stylesheet", "/public/css/auth.css");
         $this->addRel("stylesheet", "/public/css/topbar.css");
 
-        $this->view('Login');
+        $this->view('Login', $data);
     }
     
     public function login(){
@@ -24,8 +24,8 @@ class Login extends Controller{
             $password = $_POST["password"];
             $user = $userLogin->login($email,$password);
             if($user==null){
-                $_SESSION['error'] = "Invalid username or password";
-                $this->index();
+                $data['loginError'] = "Invalid username or password";
+                $this->index($data);
             }
             else{
                 if (password_verify($password, $user['password'])) {
@@ -51,10 +51,12 @@ class Login extends Controller{
                             Sessions::extendSessions($cookie_value, $cookie_time);
                         }
                     }
-                    // Router::redirect('/home');
+                    Router::redirect('/home');
                 } else {
-                    $_SESSION['error'] = "Invalid username or password";
-                    $this->index();
+                    $data['loginError'] = "Invalid username or password";
+                    $data['email'] = $email;
+                    $data['password'] = $password;
+                    $this->index($data);
                 }
             }
         }
