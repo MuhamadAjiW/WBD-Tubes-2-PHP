@@ -25,11 +25,11 @@ class Register extends Controller{
             $password = $_POST['password'];
             $username = $_POST['username'];
             $nama = $_POST['name'];
-            $userEmail = $userSignUp->getEmail($email);
-            $userUsername = $userSignUp->getUserName($username);
+            $userEmail = $userSignUp->fetchUserIDByEmail($email);
+            $userUsername = $userSignUp->fetchUserIDByUsername($username);
             if($userEmail == null and $userUsername == null){
                 $userSignUp->addUser($email,$username,$password,$nama,"",False);
-                
+                $this->view('Login');
             }
             else{
                 $namaError = "Username atau password sudah digunakan";
