@@ -24,3 +24,10 @@ cancelbtn.onclick = function () {
 cancelbtn2.onclick = function () {
   modal2.style.display = "none";
 };
+
+submitbtn2.onclick = function(){
+  let xhr = new XMLHttpRequest();
+    
+  xhr.open("POST", "/logout");    
+  xhr.send();
+}
