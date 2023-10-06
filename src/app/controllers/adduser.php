@@ -16,7 +16,7 @@ class AddUser extends Controller{
             
             $usernameexist = $usermodel->checkUsernameExists($_POST['username']);
 
-            if ($usernameexist) {
+            if (count($usernameexist) > 0) {
                 http_response_code(409);
                 echo json_encode(array("message" => "Username can't be the same"));
             } else {
@@ -24,7 +24,7 @@ class AddUser extends Controller{
 
                 if ($rows) {
                     http_response_code(200);
-                    echo json_encode(array("message" => "Add user success"));
+                    echo json_encode(array("message" => "Add user success", "redirect" => "/admin/users"));
                 } else {
                     http_response_code(500);
                     echo json_encode(array("message" => "Add user failed"));

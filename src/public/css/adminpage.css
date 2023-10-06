@@ -392,12 +392,12 @@ tr:nth-child(even) {
     margin-right: auto;
 }
 
-#form-name-input {
+#form-add-name-input {
     margin-right: 43px;
     background-color: white;
 }
 
-#form-book-input {
+#form-add-book-input {
     margin-right: 10px;
     background-color: white;
 }
@@ -542,6 +542,11 @@ tr:nth-child(even) {
     display: flex;
     justify-content: center;
     text-align: center;
+    position: relative;
+}
+
+#add-review-form-buttons {
+    margin-top: 30px;
 }
 
 .admin-form-cancel-btn {

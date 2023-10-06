@@ -6,6 +6,7 @@
     <title>Admin Reviews</title>
     <link rel="stylesheet" href="../../public/css/adminpage.css"></link>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <script type="text/javascript" src="../../public/js/adminreview.js"></script>
 </head>
 <body>
 
@@ -17,7 +18,7 @@
         <div class="page-container">
             <div class="page-header">
                 <h2>List of all Reviews</h2>
-                <button class="admin-buttons add-button" id="add-review-button">Add Review</button>
+                <button class="admin-buttons add-button" id="add-review-button" onclick="location.href='/admin/addreview'">Add Review</button>
             </div>
 
             <table class="review-table">
@@ -36,7 +37,7 @@
                     <td><?= $review['title'] ?></td>
                     <td><?= $review['rating'] ?></td>
                     <td><?= $review['reviewtext'] ?></td>
-                    <td><button class="admin-buttons edit-button" data-review-book-id ="<?= $review['book_id'] ?>" data-review-user-id = "<?= $review['user_id'] ?>">Edit</button>
+                    <td><button class="admin-buttons edit-button" data-review-book-id ="<?= $review['book_id'] ?>" data-review-user-id = "<?= $review['user_id'] ?>" onclick="editReviewURL(<?= $review['user_id'] ?>, <?= $review['book_id']?>)">Edit</button>
                     <td><button class="admin-buttons delete-button" data-review-book-id ="<?= $review['book_id'] ?>" data-review-user-id = "<?= $review['user_id'] ?>">Delete</button>    
                 </tr>
                 <?php endforeach; ?>
@@ -56,58 +57,17 @@
                 </div>
             </div>
         </div>
-
-        <div class="add-modal">
-            <div class="add-modal-content">
-                <div class="modal-header">
-                    <span id="close-add-modal" class="close">&times;</span>
-                    <h5 class="modal-title">Add Review</h5>
-                </div>
-                <form action ="/admin/reviews" class="modal-body" method="post">
-                    <div class="first-modal-section">
-                        <div class="form-title">
-                            <span class="form-title">Username</span>
-                            <span class="form-title">Title</span>
-                            <span class="form-title" id="add-modal-rating">Rating</span>
-                        </div>
-                        <div class="form-input">
-                            <input type="text" class="form-input" id="form-name-input" placeholder="Enter Name" required/>
-                            <input type="text" class="form-input" id="form-book-input" placeholder="Enter Book Title" required/>
-                            <input type="number" class="form-input" id="form-add-rating-input" placeholder="1-5" min="1" max="5" required>
-                        </div>
-                    </div>
-                    <textarea type="text" class="reviewer-form" id="form-review" placeholder="Enter Your Review" required></textarea>
-                    <button type="submit" class="submit-review-btn" id="submit-add-modal" name="add-review">Add Review</button>
-                </form>
-            </div>
-        </div>
-
-        <div class="edit-modal">
-            <div class="edit-modal-content">
-                <div class="modal-header">
-                    <span id="close-edit-modal" class="close">&times;</span>
-                    <h5 class="modal-title">Edit Review</h5>
-                </div>
-                <form action="admin/reviews" class="modal-body" method="post">
-                    <div class="first-modal-section">
-                        <div class="form-title">
-                            <span class="form-title">Rating</span>
-                        </div>
-                        <div class="form-input">
-                            <input type="number" class="form-input" id="form-rating-input" placeholder="1-5" min="1" max="5">
-                        </div>
-                    </div>
-                    <textarea type="text" class="reviewer-form" id="form-reviewtext-input" placeholder="Enter Your Review"></textarea>
-                    <button type="submit" class="submit-review-btn" id="submit-edit-modal" name="edit-review">Save Review</button>
-                </form>
-            </div>
-        </div>
     </div>
-
-    <script type="text/javascript" src="../../public/js/admin.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </body>
 </html> 
+
+<script>
+    function editReviewURL(userID, bookID) {
+        const editURL = `/admin/editreview?user_id=${userID}&book_id=${bookID}`;
+
+        window.location.href = editURL;
+    }
+</script>
 
 <script> // Modal for review deletion
     // Get the modal
@@ -120,18 +80,18 @@
 
             var bookID = event.target.getAttribute("data-review-book-id");
             var userID = event.target.getAttribute("data-review-user-id");
+
+            document.getElementById("modal-delete-review-btn").setAttribute("data-review-book-id", bookID);
+            document.getElementById("modal-delete-review-btn").setAttribute("data-review-user-id", userID);
         }
     })
 
     // Get the delete button
-    var deletebtn = document.getElementById("delete-review-btn");
+    var deletebtn = document.getElementById("modal-delete-review-btn");
 
     // Get the cancel button
     var cancelbtn = document.getElementById("cancel-delete-btn");
-    
-    // openmodalbtn.onclick = function() {
-    //     deletemodal.style.display = "block";
-    // }
+
 
     cancelbtn.onclick = function() {
         deletemodal.style.display = "none";
@@ -139,92 +99,8 @@
 
     // ntar diganti kalau udah jadi
     deletebtn.onclick = function() {
+        deleteReview(document.getElementById("modal-delete-review-btn").getAttribute("data-review-book-id"), document.getElementById("modal-delete-review-btn").getAttribute("data-review-user-id"));
         deletemodal.style.display = "none";
     }
 
-</script>
-
-<script> // Modal for adding review
-    // Get modal
-    var addmodal = document.getElementsByClassName("add-modal")[0];
-    
-    // Get open modal button
-    var openbtnaddmodal = document.getElementById("add-review-button");
-
-    console.log(openbtnaddmodal)
-
-    // Get close button
-    var closebtnaddmodal = document.getElementById("close-add-modal");
-
-    // Get submit button
-    var submitbtnaddmodal = document.getElementById("submit-add-modal");
-    
-    openbtnaddmodal.onclick = function() {
-        addmodal.style.display = "block";
-    }
-
-    closebtnaddmodal.onclick = function() {
-        addmodal.style.display = "none";
-    }
-
-    submitbtnaddmodal.onclick = function() {
-        
-        // Validate the required fields
-        var nameInput = document.getElementById("form-name-input");
-        var bookInput = document.getElementById("form-book-input");
-        var ratingInput = document.getElementById("form-add-rating-input");
-        var reviewtextInput = document.getElementById("form-reviewtext-input");
-
-        if (nameInput.value.trim() === "" || bookInput.value.trim() === "" || ratingInput.value.trim() === "" || reviewtextInput.value.trim() === "") {
-            alert("Please fill in all required fields");
-        }
-
-        else {
-            addmodal.style.display = "none";
-        }
-    }
-    
-</script>
-
-<script> // Modal for editing review
-    // Get modal
-    var editmodal = document.getElementsByClassName("edit-modal")[0];
-    
-    // Get open modal button
-    document.addEventListener("click", function() {
-        if (event.target.classList.toString() == "admin-buttons edit-button") {
-            editmodal.style.display = "block";
-        }
-    })
-
-    // Get close button
-    var closebtneditmodal = document.getElementById("close-edit-modal");
-
-    // Get submit button
-    var submitbtneditmodal = document.getElementById("submit-edit-modal");
-    
-    // openbtneditmodal.onclick = function() {
-    //     editmodal.style.display = "block";
-    // }
-
-    closebtneditmodal.onclick = function() {
-        editmodal.style.display = "none";
-    }
-
-    submitbtneditmodal.onclick = function() {
-        // Validate the required fields
-        var nameInput = document.getElementById("form-name-input");
-        var bookInput = document.getElementById("form-book-input");
-        var ratingInput = document.getElementById("form-add-rating-input");
-        var reviewtextInput = document.getElementById("form-reviewtext-input");
-
-        if (nameInput.value.trim() === "" || bookInput.value.trim() === "" || ratingInput.value.trim() === "" || reviewtextInput.value.trim() === "") {
-            alert("Please fill in all required fields");
-        }
-
-        else {
-            editmodal.style.display = "none";
-        }
-    }
-    
 </script>

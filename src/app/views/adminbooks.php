@@ -6,6 +6,7 @@
     <title>Admin Books</title>
     <link rel="stylesheet" href="../../public/css/adminpage.css"></link>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <script type="text/javascript" src="../../public/js/deletebook.js"></script>
 </head>
 <body>
 
@@ -72,6 +73,8 @@
         if (event.target.classList.toString() == "admin-buttons delete-button") {
             deletemodal.style.display = "block";
             var bookID = event.target.getAttribute("data-book-id");
+
+            document.getElementById("modal-delete-book-btn").setAttribute("data-book-id", bookID);
         }
     })
 
@@ -88,6 +91,7 @@
 
     // ntar diganti kalau udah jadi
     deletebtn.onclick = function() {
+        deleteBook(document.getElementById("modal-delete-book-btn").getAttribute("data-book-id"));
         deletemodal.style.display = "none";
     }
 

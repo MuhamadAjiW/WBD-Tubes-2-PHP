@@ -28,6 +28,8 @@ class ReviewModel{
         $this->database->bind('reviewtext', $reviewtext);
 
         $this->database->execute();
+
+        return $this->database->rowCount();
     }
 
     public function fetchReviewByBookID($book_id) {
@@ -86,7 +88,7 @@ class ReviewModel{
         $query = "SELECT u.user_id, book_id, username, title, rating, reviewtext
         FROM reviews r
         NATURAL JOIN books b
-        INNER JOIN users u ON u.user_id = b.author_id";
+        INNER JOIN users u ON u.user_id = r.user_id";
 
         $this->database->query($query);
         
@@ -94,7 +96,10 @@ class ReviewModel{
     }
 
     public function fetchReviewByUserNBookID($book_id, $user_id) {
-        $query = "SELECT * FROM reviews WHERE user_id = :user_id AND book_id = :book_id";
+        $query = "SELECT u.user_id, b.book_id, u.username, b.title, r.rating, r.reviewtext FROM reviews r
+        INNER JOIN users u ON r.user_id = u.user_id
+        INNER JOIN books b ON b.book_id = r.book_id
+        WHERE r.user_id = :user_id AND r.book_id = :book_id";
 
         $this->database->query($query);
         $this->database->bind('book_id', $book_id);
@@ -141,6 +146,8 @@ class ReviewModel{
         $this->database->bind('book_id', $book_id);
         $this->database->bind('user_id', $user_id);
         $this->database->execute();
+
+        return $this->database->rowCount();
     }
 }
 
