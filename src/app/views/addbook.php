@@ -45,7 +45,7 @@
                 </div>
                 <div class="admin-form-row">
                     <div class="admin-form-input">
-                        <input type="number" min="1" max="5" required id="add-book-form-wordcount">
+                        <input type="number" required id="add-book-form-wordcount">
                         <div class="underline"></div>
                         <label for="">Word Count</label>
                     </div>

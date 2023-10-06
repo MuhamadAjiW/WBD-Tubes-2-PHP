@@ -44,7 +44,11 @@ class BookModel{
     }
 
     public function fetchBookByID($book_id){
-        $query = "SELECT * FROM books LIMIT 1 OFFSET :offset";
+        $query = "SELECT book_id, title, synopsis, b.author_id, genre, 
+        release_date, word_count, duration, graphic_cntn, image_path, audio_path, u.username 
+        FROM books b
+        INNER JOIN users u ON u.user_id = b.author_id
+        WHERE book_id =:book_id";
 
         $this->database->query($query);
         $this->database->bind('book_id', $book_id);
@@ -325,6 +329,16 @@ class BookModel{
 
         $this->database->query($query);
         $this->database->bind('book_id', $book_id);
+
+        return $this->database->fetch();
+    }
+
+    public function checkBookExistsByTitleNAuthor($title, $author_id) {
+        $query = "SELECT * FROM books WHERE title=:title AND author_id = :author_id";
+
+        $this->database->query($query);
+        $this->database->bind('title', $title);
+        $this->database->bind('author_id', $author_id);
 
         return $this->database->fetch();
     }

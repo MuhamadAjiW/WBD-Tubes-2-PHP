@@ -36,7 +36,7 @@
                         <td><?= $book['title'] ?></td>
                         <td><?= $book['release_date'] ?></td>
                         <td><?= $book['name'] ?></td>
-                        <td><button class="admin-buttons edit-button" data-book-id="<?= $book['book_id'] ?>" onclick="location.href='/admin/editbook'">Edit</button></td>
+                        <td><button class="admin-buttons edit-button" data-book-id="<?= $book['book_id'] ?>" onclick="editBookURL(<?= $book['book_id'] ?>)">Edit</button></td>
                         <td><button class="admin-buttons delete-button" data-book-id="<?= $book['book_id'] ?>">Delete</button></td>
                     </tr>
                 <?php endforeach; ?>
@@ -57,12 +57,16 @@
             </div>
         </div>
     </div>
-
-
-    <script type="text/javascript" src="../../public/js/admin.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </body>
 </html>
+
+<script>
+    function editBookURL(bookID) {
+        const editURL = `/admin/editbook?book_id=${bookID}`;
+
+        window.location.href = editURL;
+    }
+</script>
 
 <script> // Modal for book deletion
     // Get the modal

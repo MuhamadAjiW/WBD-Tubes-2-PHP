@@ -40,6 +40,7 @@ class App {
         $this->router->addPost('/admin/editreview', 'app/controllers/EditReview', 'edit', ['POST']);
         $this->router->addPost('/admin/books', 'app/controllers/AdminBooks', 'delete', ['POST']);
         $this->router->addPost('/admin/addbook', 'app/controllers/AddBook', 'add', ['POST']);
+        $this->router->addPost('/admin/editbook', 'app/controllers/EditBook', 'edit', ['POST']);
 
         $this->router->addRoute('/profile', 'app/controllers/Profile', 'index', ['GET']);
         $this->router->addRoute('/detail', 'app/controllers/BookDetail', 'index', ['GET']);
