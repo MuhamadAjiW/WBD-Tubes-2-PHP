@@ -45,18 +45,26 @@ class AddBook extends Controller{
                 if (count($usernameexist) > 0) {
                     $user = $usermodel->fetchUserIDByUsername($_POST['username']);
 
-                    $move_image = move_uploaded_file($_FILES['image_file']['tmp_name'], $target_img_dir);
-                    $move_audio = move_uploaded_file($_FILES['audio_file']['tmp_name'], $target_audio_dir);
+                    $bookexist = $bookmodel->checkBookExistsByTitleNAuthor($_POST['title'], $user['user_id']);
 
-                    $rows = $bookmodel->addBook($_POST['title'], $user['user_id'], $_POST['genre'], $_POST['release_date'], $_POST['word_count'], $_POST['duration'], $_POST['graphic_cntn'], $saved_img_dir, $saved_audio_dir);
+                    if (count($bookexist) <= 0) {
+                        $rows = $bookmodel->addBook($_POST['title'], $user['user_id'], $_POST['genre'], $_POST['release_date'], $_POST['word_count'], $_POST['duration'], $_POST['graphic_cntn'], $saved_img_dir, $saved_audio_dir);
 
-                    if ($rows) {
-                        http_response_code(200);
-                        echo json_encode(array("message" => "Add book success", "redirect" => "/admin/books"));
+                        $move_image = move_uploaded_file($_FILES['image_file']['tmp_name'], $target_img_dir);
+                        $move_audio = move_uploaded_file($_FILES['audio_file']['tmp_name'], $target_audio_dir);
+
+                        if ($rows) {
+                            http_response_code(200);
+                            echo json_encode(array("message" => "Add book success", "redirect" => "/admin/books"));
+                        } else {
+                            http_response_code(500);
+                            echo json_encode(array("message" => "Add book failed"));
+                        }
                     } else {
-                        http_response_code(500);
-                        echo json_encode(array("message" => "Add book failed"));
+                        http_response_code(409);
+                        echo json_encode(array("message" => "Book already exist"));
                     }
+
                 }
                 else {
                     http_response_code(409);
