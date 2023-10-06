@@ -6,19 +6,23 @@ use app\core\Controller;
 use app\models\UserModel;
 class Profile extends Controller{
     public function index(){
-        session_start();
-        $usermodel = $this->model("UserModel");
-        $email = $_SESSION["email"];
-        if($_SESSION["email"] != null){
-            $user=$usermodel->fetchInfoUsers($email);
-            $email=$user["email"];
-            $username = $user["username"];
-            $name = $user["name"];
-            $bio = $user["bio"];
-            $admin = $user["admin"];
+        $this->addRel("stylesheet", "/public/css/style-2.css");
+        $this->addRel("stylesheet", "/public/css/auth.css");
+        $userProfil = $this->model("UserModel");
+        $user = $_SESSION['user_id'];
+        if($user != null){
+            $userProfil = $userProfil->fetchInfoUsersByID($user);
+            $email=$userProfil['email'];
+            $username = $userProfil['username'];
+            $name = $userProfil['name'];
+            $bio = $userProfil['bio'];
+            $admin = $userProfil['admin'];
             $this->view('Profile', ['email' => $email, 'name' => $name, 'username' => $username, 'bio' => $bio, 'admin' => $admin]);
-        } 
-    }
+        }
+        else{
+            Router::redirect('/error/404');
+        }
+}
 }
 
 ?>

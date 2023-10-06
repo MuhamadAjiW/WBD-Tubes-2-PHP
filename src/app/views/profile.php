@@ -1,5 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+  <title>Profile User Baca.a</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <?php echo strip_tags($REL_DATA, '<link>');?>
+</head>
+<div class="user">
+  <img
+          src="https://www.theventuretours.com/wp-content/uploads/2020/03/avatar-icon-png-1-1024x1024.png"
+          alt="Gambar User"
+          width="250"
+          height="250"
+        />
+</div>
+<img class="sty-bckgrnd" src="storage/assets/logo.svg" alt="Stylized Background">
+<body class="fullscreen centered">
+  <section class="auth-container">
+    <form class="form-container" action="/profile" method="POST">
+      <h1>Profile User</h1> 
+      <div class="input-container">
+        <div class="input-bar-profile">
+          <input type="email" id="email" name="email" class="input" value=<?php echo $email;?> />
+          <span>Email </span>
+        </div>
+        <div class="input-bar-profile">
+          <input type="name" id="username" name="username" class="input" value=<?php echo $username;?> />
+          <span>Username </span>
+        </div>
+        <div class="input-bar-profile">
+          <input type="name" id="name" name="name" class="input" value=<?php echo $name;?> />
+          <span>Name </span>
+        </div>
+        <div class="input-bar-profile">
+          <input type="text" id="bio" name="bio" class="input" value=<?php echo $bio;?> />
+          <span>Bio </span>
+        </div>
+        <div class="input-bar-profile">
+          <input type="text" id="admin" name="admin" class="input" value=<?php echo $admin;?> />
+          <span>Admin </span>
+        </div>
+      <button class="btn btn-yellow auth-submit" type="submit" name="logout">Log Out</button>
+    </form>
+  </section>
+</body>
+</html>
+
+<!--<!DOCTYPE html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE-edge" />
@@ -8,14 +56,14 @@
       content="height=device-height,width=device-width,initial-scale=1.0,maximum-scale=1.0,viewport-fit=cover"
     />
     <title>Profil</title>
-    <!--Fonts Pake Poppins-->
+    Fonts Pake Poppins
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css?family=Rubik:400,400i,500,700&display=swap"
       rel="stylesheet"
     />
-    <!--Feather Icons-->
+    Feather Icons
     <script src="https://unpkg.com/feather-icons"></script>
 
     <link rel="stylesheet" href="../../public/css/profile.css" />
@@ -59,9 +107,11 @@
         </div>
       </div>
     </section>
-    <!--Feather Icons-->
+    Feather Icons
     <script>
       feather.replace();
     </script>
   </body>
-</html>
+</html> -->
+
+
