@@ -9,7 +9,11 @@ class AdminBooks extends Controller{
         $bookmodel = $this->model('BookModel');
         $bookdata = $bookmodel->fetchAllBooksForAdmin();
 
-        $this->view('AdminBooks', ['bookdata' => $bookdata]);
+        $this->addRel("stylesheet", "/public/css/topbar.css");
+        $this->addRel("stylesheet", "/public/css/style-2.css");
+        $this->addRel("stylesheet", "/public/css/bookdetail.css");
+        
+        $this->view('AdminBooks', ['bookdata' => $bookdata, 'inadminpage' => true]);
     }
 
     public function delete() {

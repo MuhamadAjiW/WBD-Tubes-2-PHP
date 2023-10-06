@@ -1,6 +1,8 @@
-const modal = document.getElementById("reviewmodal");
+const reviewmodal = document.getElementById("reviewmodal");
+const confirmmodal = document.getElementById("confirmmodal");
 const reviewbtn = document.getElementById("review-button");
 const closebtn = document.getElementById("close-review");
+const closecnfrm = document.getElementById("close-confirm");
 const submitbtn = document.getElementById("submit-review");
 const morereviewbtn = document.getElementById("load-more");
 
@@ -8,15 +10,23 @@ const bid_data = document.getElementById("bid-data");
 const edit_data = document.getElementById("edit-data");
 const review_input = document.getElementById("form-review");
 const rating_input = document.getElementById("ratingval");
+const confirm_btn = document.getElementById("confirm-btn");
+const cancel_btn = document.getElementById("cancel-btn");
 
 let reviewOffset = 2;
 
 reviewbtn.onclick = function() {
-    modal.style.display = "flex";
+    reviewmodal.style.display = "flex";
+}
+closebtn.onclick = function() {
+    reviewmodal.style.display = "none";
 }
 
-closebtn.onclick = function() {
-    modal.style.display = "none";
+closecnfrm.onclick = function() {
+    confirmmodal.style.display = "none";
+}
+cancel_btn.onclick = function() {
+    confirmmodal.style.display = "none";
 }
 
 function getMoreReviews(){
@@ -40,34 +50,82 @@ function getMoreReviews(){
     xhr.send();
 }
 
+
+// +TODO: make input validation response better
+function validateEntry(review_input, rating_input){
+    if (review_input.value.length > 2048) {
+        alert("Review must be shorter than 2048 characters");
+        return false;
+    }
+    const rating = parseInt(rating_input.value);
+    if (isNaN(rating) || rating < 1 || rating > 5) {
+        alert("Rating must be a number between 1 and 5");
+        return false;
+    }
+    return true;
+}
+
 function submitReview(){
     const bid_data = document.getElementById("bid-data");
     const edit_data = document.getElementById("edit-data");
     const review_input = document.getElementById("form-review");
     const rating_input = document.getElementById("ratingval");
-    
-    let xhr = new XMLHttpRequest();
-    if(edit_data.value == true){
-        console.log("edit")
-        xhr.open("POST", "/api/editreview", true);    
-    }
-    else{
-        console.log("add")
-        xhr.open("POST", "/api/addreview", true);    
-    }
-    
-    const formData = new FormData();
-    formData.append("bid", bid_data.value);
-    formData.append("review", review_input.value);
-    formData.append("rating", rating_input.value);
-
-    xhr.onreadystatechange = function (){
-        if(this.readyState == 4 && this.status == 200){
-            location.href = window.location.href;
+    if(validateEntry(review_input, rating_input)){
+        let xhr = new XMLHttpRequest();
+        if(edit_data.value == true){
+            xhr.open("POST", "/api/editreview", true);
         }
+        else{
+            xhr.open("PUT", "/api/addreview", true);    
+        }
+        
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        const data = new URLSearchParams();
+        data.append("bid", bid_data.value);
+        data.append("review", review_input.value);
+        data.append("rating", rating_input.value);
+        
+        xhr.onreadystatechange = function (){
+            if(this.readyState == 4 && this.status == 200){
+                location.href = window.location.href;
+            }
+        }
+        xhr.send(data);
     }
-    xhr.send(formData);
 }
 
 morereviewbtn.onclick = getMoreReviews;
-submitbtn.onclick = submitReview;
+
+
+if(edit_data.value == true){
+    const delete_btn = document.getElementById("delete-review");
+
+    function deleteReview(){
+        let xhr = new XMLHttpRequest();
+        xhr.open("DELETE", "/api/deletereview", true);    
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        
+        const data = new URLSearchParams();
+        data.append("bid", bid_data.value);
+        
+        xhr.onreadystatechange = function (){
+            if(this.readyState == 4 && this.status == 200){
+                location.href = window.location.href;
+            }
+        }
+        xhr.send(data);
+    }
+    
+    
+    submitbtn.onclick = function(){
+        confirmmodal.style.display = "flex";
+        confirm_btn.onclick = submitReview; 
+    }
+    delete_btn.onclick = function(){
+        confirmmodal.style.display = "flex";
+        confirm_btn.onclick = deleteReview; 
+    }
+}
+else{
+    submitbtn.onclick = submitReview;
+}

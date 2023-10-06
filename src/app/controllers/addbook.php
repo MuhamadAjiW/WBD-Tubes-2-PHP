@@ -6,7 +6,11 @@ use app\core\Controller;
 
 class AddBook extends Controller{
     public function index(){
-        $this->view('AddBook', ['name' => 'Hello!']);
+        $this->addRel("stylesheet", "/public/css/topbar.css");
+        $this->addRel("stylesheet", "/public/css/style-2.css");
+        $this->addRel("stylesheet", "/public/css/bookdetail.css");
+        
+        $this->view('AddBook', ['inadminpage' => true]);
     }
 
     public function add() {

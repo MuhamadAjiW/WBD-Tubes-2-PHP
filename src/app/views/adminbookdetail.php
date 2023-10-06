@@ -148,7 +148,7 @@
         <div class="modal-body">
             <input type="text" name="reviewer_name" class="reviewer-form" placeholder="Enter Your Name"/>
             <textarea type="text" name="reviewer_text" class="reviewer-form" id="form-review" placeholder="Enter Your Review"></textarea>
-            <button type="button" class="submit-review-btn">Submit</button>
+            <button type="button" class="circular-btn">Submit</button>
         </div>
     </div>
 </div>
@@ -206,7 +206,7 @@
     var closebtn = document.getElementsByClassName("close")[0];
 
     // Get submit button
-    var submitbtn = document.getElementsByClassName("submit-review-btn")[0];
+    var submitbtn = document.getElementsByClassName("circular-btn")[0];
     
     openbtn.onclick = function() {
         modal.style.display = "block";

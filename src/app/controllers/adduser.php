@@ -7,7 +7,11 @@ use app\core\Controller;
 
 class AddUser extends Controller{
     public function index(){
-        $this->view('AddUser', ['name' => 'Hello!']);
+        $this->addRel("stylesheet", "/public/css/topbar.css");
+        $this->addRel("stylesheet", "/public/css/style-2.css");
+        $this->addRel("stylesheet", "/public/css/bookdetail.css");
+        
+        $this->view('AddUser', ['inadminpage' => true]);
     }
     
     public function add() {

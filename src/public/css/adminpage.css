@@ -361,7 +361,7 @@ tr:nth-child(even) {
     font-weight: 400;
 }
 
-.submit-review-btn {
+.circular-btn {
     background-color: #edc001;
     color: white;
     height: 40px;
@@ -374,7 +374,7 @@ tr:nth-child(even) {
     cursor: pointer;
 }
 
-.submit-review-btn:active {
+.circular-btn:active {
     transform: translateY(4px);
 }
 

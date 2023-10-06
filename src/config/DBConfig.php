@@ -26,7 +26,7 @@ class DBConfig{
         username        VARCHAR(256)    UNIQUE NOT NULL,
         password        VARCHAR(256)    NOT NULL,
         name            VARCHAR(256)    NOT NULL,
-        bio             VARCHAR(2048)   DEFAULT '' NOT NULL,
+        bio             VARCHAR(2048)   DEFAULT 'This user does not have a bio' NOT NULL,
         admin           BOOLEAN         DEFAULT FALSE NOT NULL
     );";
 

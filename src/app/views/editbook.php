@@ -7,12 +7,10 @@
     <link rel="stylesheet" href="../../public/css/adminpage.css"></link>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <script type="text/javascript" src="../../public/js/editbook.js"></script>
+    <?php echo strip_tags($REL_DATA, '<link>');?>
 </head>
-<body >
-
-    <?php
-        include __DIR__ . "/../components/adminsidebar.php";
-    ?>
+<body>
+    <?php if(file_exists($TOP_BAR)) include_once($TOP_BAR);?>
 
     <div class="main-content" id="admin-form-main-content">
         <div class="page-container-admin-form" id="admin-book-form-container">

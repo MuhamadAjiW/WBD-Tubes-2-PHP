@@ -73,12 +73,11 @@ use config\AppConfig;
 </body>
 
 
-<!-- TODO: fix submission and edition -->
 <div id="reviewmodal" class="fullscreen centered modal">
     <div class="modal-content">
         <div class="modal-header">
             <h5 class="modal-title">Submit Review</h5>
-            <span id="close-review" class="close-review">&times;</span>
+            <span id="close-review" class="close">&times;</span>
         </div>
         <?php if($self_review) echo '<p class="modal-subtitle">You have written a review for this book</p>';?>
         <form class="modal-body">
@@ -90,10 +89,16 @@ use config\AppConfig;
                 <input id="ratingval" name="ratingval" type="number"  class="form-input" placeholder="1-5" min="1" max="5"
                     value="<?php if($self_review){ echo $self_review['rating'];}?>">
                 <div class="pusher"></div>
-                <button id="submit-review" type="button" class="btn btn-yellow submit-review-btn">Submit</button>
+                <?php
+                if($self_review) echo '<button id="delete-review" type="button" class="btn btn-red circular-btn">Delete</button>';
+                ;?>
+                <button id="submit-review" type="button" class="btn btn-yellow circular-btn">Submit</button>
             </div>
         </form>
     </div>
 </div>
 
+<?php include "../app/components/ConfirmModal.php"?>
+
 <script src="/public/js/bookdetail.js"></script>
+</html> 
