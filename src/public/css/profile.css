@@ -1,92 +1,88 @@
-:root {
-  --primary: #eac44a;
-  --bg: #eff2f3;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: 0;
-  outline: none;
-  border: none;
-  text-decoration: none;
-}
-
-body {
-  font-family: "Rubik", sans-serif;
-  background-color: var(--bg);
-  color: #2a2a2a;
-  font-size: 16px;
-  line-height: 1.5;
-}
-
-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  width: 100%;
-}
-
-.form-box {
-  position: relative;
-  width: 800px;
-  height: 510px;
-  background: var(--bg);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.form-box h2 {
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
+.blur-bg {
+  object-fit: cover;
   position: absolute;
+  min-width: 100vw;
+  max-height: 100%;
+  overflow: hidden;
+  filter: blur(10px) brightness(70%);
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 1);
+  vertical-align: top;
+}
+
+.main-detail {
+  display: inline-flex;
+  flex-direction: row;
+  margin-top: 100px;
+  overflow: hidden;
+}
+
+.modal {
+  display: none;
+  position: fixed;
   top: 0;
-  font-size: 1cm;
-  color: #2a2a2a;
-  text-align: center;
-  padding: 1rem;
-}
-
-.form-box .p {
-  position: absolute;
-  top: 1.4cm;
-  bottom: 0;
   left: 0;
-  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 101;
 }
 
-.inputbox {
+.modal .modal-content {
+  position: relative;
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  margin-top: 0px;
-  margin-left: 0px;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 0.3s;
-  width: 400x;
-  height: 40px;
-  align-self: flex-start;
+  flex-direction: column;
+  width: 500px;
+  height: fit-content;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: white;
+  overflow: hidden;
+}
+
+.modal .modal-header {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
 }
 
-.inputbox input {
-  width: 500px;
-  height: 40px;
+.modal .modal-subtitle {
+  color: #7b7b7b;
+  font-size: 10px;
+  margin-top: 0;
+}
+
+.modal-header h5 {
+  margin: 0;
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.modal-body .reviewer-form {
+  width: 480px;
+  height: 200px;
   border-radius: 10px;
-  border: 1.5px solid #eac44a;
-  text-indent: 20px;
-  margin-top: 3px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  resize: none;
+  font-size: 16px;
+  outline: none;
 }
 
-.inputbox span {
-  margin-right: 10px;
+.modal-body .form-input {
+  width: 60px;
+  height: 30px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  padding: 5px;
+  font-size: 16px;
+  outline: none;
 }
 
-.user img {
-  float: left;
-  margin-left: 70px;
+.modal-body .submit-review-btn {
+  border-radius: 24px;
+}
+
+.modal-body p {
+  margin-left: 50px;
 }

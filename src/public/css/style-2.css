@@ -43,7 +43,7 @@
   transform: translateX(-50%);
 }
 
-.gen-header{
+.gen-header {
   width: 100%;
   font-family: sans-serif;
   padding-top: 35px;
@@ -116,12 +116,13 @@
   background-color: #d5ac00;
 }
 
-.btn-red{
+.btn-red {
   background: #ff9b9b;
   color: #ffffff;
+  margin-bottom: 5%;
 }
 
-.btn-red:hover{
+.btn-red:hover {
   background: #ff6b6b;
 }
 
@@ -374,7 +375,7 @@
   font-size: 24px;
 }
 
-.sty-bckgrnd{
+.sty-bckgrnd {
   position: fixed;
   left: 0;
   width: 1500px;
@@ -384,7 +385,7 @@
   z-index: -1;
   background-color: transparent;
   background-size: cover;
-} 
+}
 
 @media (max-width: 12in) {
   .main-content {
@@ -394,8 +395,9 @@
     width: 85%;
   }
 }
+
 @media (max-width: 7in) {
-  .book-grid{
+  .book-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }

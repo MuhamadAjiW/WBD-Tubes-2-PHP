@@ -152,5 +152,19 @@ class UserModel{
 
         return $this->database->rowCount();
     }
+    public function updateUserData3($user_id, $name, $username, $email, $bio) { // No password update
+        $query = "UPDATE users SET name=:name, username=:username, email=:email, bio=:bio WHERE user_id=:user_id";
+
+        $this->database->query($query);
+        $this->database->bind('email', $email);
+        $this->database->bind('username', $username);
+        $this->database->bind('name', $name);
+        $this->database->bind('bio', $bio);
+        $this->database->bind('user_id', $user_id);
+
+        $this->database->execute();
+
+        return $this->database->rowCount();
+    }
 }
 ?>

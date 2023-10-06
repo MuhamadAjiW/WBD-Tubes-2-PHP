@@ -4,6 +4,7 @@
   <title>Profile User Baca.a</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <?php echo strip_tags($REL_DATA, '<link>');?>
 </head>
 <div class="user">
@@ -41,78 +42,55 @@
           <input type="text" id="admin" name="admin" class="input" value=<?php echo $admin;?> />
           <span>Admin </span>
         </div>
-      <button class="btn btn-red auth-submit" type="submit" name="logout">Log Out</button>
+      <button class="btn btn-red auth-submit" type="button" id="edit-button" name="buttoneditprofile">Edit Profile</button>
+      <button class="btn btn-red auth-submit" type="button" id="logout-button" name="buttonlogout">Log Out</button>
     </form>
   </section>
 </body>
-</html>
-
-<!--<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE-edge" />
-    <meta
-      name="viewport"
-      content="height=device-height,width=device-width,initial-scale=1.0,maximum-scale=1.0,viewport-fit=cover"
-    />
-    <title>Profil</title>
-    Fonts Pake Poppins
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css?family=Rubik:400,400i,500,700&display=swap"
-      rel="stylesheet"
-    />
-    Feather Icons
-    <script src="https://unpkg.com/feather-icons"></script>
-
-    <link rel="stylesheet" href="../../public/css/profile.css" />
-  </head>
-
-  <body>
-    <section>
-      <div class="user">
-        <img
-          src="https://www.theventuretours.com/wp-content/uploads/2020/03/avatar-icon-png-1-1024x1024.png"
-          alt="Gambar User"
-          width="250"
-          height="250"
-        />
-      </div>
-      <div class="form-box">
-        <div class="form-value">
-          <form action="/profile" method="post">
-            <h2>Profile User</h2>
-            <div class="inputbox">
-              <span>Email </span>
-              <input type="email" id="email" name="email" value=<?php echo $email;?> />
-            </div>
-            <div class="inputbox">
-              <span>Nama </span>
-              <input type="text" id="nama" name="nama" value=<?php echo $name;?> />
-            </div>
-            <div class="inputbox">
-              <span>Username </span>
-              <input type="text" id="username" name="username" value=<?php echo $username;?> />
-            </div>
-            <div class="inputbox">
-              <span>Bio </span>
-              <input type="text" id="bio" name="bio" value=<?php echo $bio;?> />
-            </div>
-            <div class="inputbox">
-              <span>Status Admin </span>
-              <input type="text" id="status" name="admin" value=<?php echo $admin;?> />
-            </div>
-          </form>
+<!-- TODO: fix submission and edition -->
+<div id="editprofilemodal" class="fullscreen centered modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Edit Profile</h5>
         </div>
-      </div>
-    </section>
-    Feather Icons
-    <script>
-      feather.replace();
-    </script>
-  </body>
-</html> -->
+        <form class="modal-body" action="/profile" method="POST">
+        <div class="input-bar-profile">
+        <input type="email" id="emailprofile" name="emailprofile" class="input" placeholder="Email" required/>
+        </div>
+        <div class="input-bar-profile">
+        <input type="text" id="usernameprofile" name="usernameprofile" class="input" placeholder="Username" required/>
+        </div>
+        <div class="input-bar-profile">
+        <input type="text" id="nameprofile" name="nameprofile" class="input" placeholder="Name" required/> 
+        </div>
+        <div class="input-bar-profile">
+        <input type="text" id="bioprofile" name="bioprofile" class="input" placeholder="Bio" required/> 
+        </div>  
+            <div class="cluster-h" style="min-width:100%;padding: 5px 0">
+                <div class="pusher"></div>
+                <button id="submit-edit-profile" name="submit-edit-profile" type="submit" class="btn btn-yellow submit-review-btn">Submit</button>
+                <button id="cancel-edit-profile" name="cancel-edit-profile" type="submit" class="btn btn-yellow submit-review-btn">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- TODO: fix submission and edition -->
+<div id="logoutmodal" class="fullscreen centered modal">
+    <div class="modal-content">
+        <div class="modal-header">
+        </div>
+        <form class="modal-body" action="/login" method="POST">
+        <p>Hai, Do you really want to logout?</p>
+            <div class="cluster-h" style="min-width:100%;padding: 5px 0">
+                <div class="pusher"></div>
+                <button id="submit-edit-logout" name="submit-edit-logout" type="submit" class="btn btn-yellow submit-review-btn">Yes</button>
+                <button id="cancel-edit-logout" name="cancel-edit-logout" type="submit" class="btn btn-yellow submit-review-btn">No</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="/public/js/profile.js"></script>
 
 
