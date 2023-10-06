@@ -164,7 +164,7 @@
     to {top:0; opacity:1}
 } */
 
-.modal-body .reviewer-form{
+.modal-body .long-form{
     width: 480px;
     height: 200px;
     border-radius: 10px;
@@ -217,7 +217,7 @@
         width: 80%;
         padding: 10px;
     }
-    .modal-body .reviewer-form{
+    .modal-body .long-form{
         width: 95%;
     }
 }

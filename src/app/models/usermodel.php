@@ -3,6 +3,7 @@
 namespace app\models;
 
 use app\core\Database;
+use config\AppConfig;
 
 class UserModel{
     private $database;
@@ -41,6 +42,22 @@ class UserModel{
         $this->database->bind('email', $email);
         $user = $this->database->fetch(); 
         return $user;
+    }
+
+    public function fetchUsersPaged($page = 1, $pagesize = AppConfig::ENTRIES_PER_PAGE){
+        $query = "SELECT user_id, email, username, name, bio, admin FROM users";
+        $this->database->query($query);
+        $this->database->execute();
+        $totalusers = $this->database->rowCount();
+
+        $query = "SELECT user_id, email, username, name, bio, admin
+        FROM users
+        LIMIT :limit OFFSET :offset";
+        $this->database->query($query);
+        $this->database->bind('limit', $pagesize);
+        $this->database->bind('offset', ($page - 1) * $pagesize);
+        
+        return [$this->database->fetchAll(), $totalusers];
     }
 
     public function fetchUserByID($user_id) {

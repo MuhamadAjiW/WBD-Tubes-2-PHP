@@ -70,35 +70,38 @@ use config\AppConfig;
         </div>
     </div>
     <?php if(file_exists($FOOTER)) include_once($FOOTER);?>
+
+    <div id="reviewmodal" class="fullscreen centered modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Submit Review</h5>
+                <span id="close-review" class="close">&times;</span>
+            </div>
+            <?php if($self_review) echo '<p class="modal-subtitle">You have written a review for this book</p>';?>
+            <form class="modal-body">
+                <input id="uid-data" type="hidden" name="uid" value="<?=$_SESSION['user_id']?>">
+                <input id="bid-data" type="hidden" name="bid" value="<?=$book_data['book_id']?>">
+                <input id="edit-data" type="hidden" name="edit" value="<?php if($self_review) echo true; else echo false;?>">
+                <textarea id="form-review" type="text" class="long-form" placeholder="Enter Your Review"><?php if($self_review) echo $self_review['reviewtext'];?></textarea>
+                <div class="cluster-h" style="min-width:100%;padding: 5px 0">
+                    <label for="ratingval">Score:</label>
+                    <input id="ratingval" name="ratingval" type="number"  class="form-input" placeholder="1-5" min="1" max="5"
+                        value="<?php if($self_review){ echo $self_review['rating'];}?>">
+                    <div class="pusher"></div>
+                    <?php
+                    if($self_review) echo '<button id="delete-review" type="button" class="btn btn-red circular-btn">Delete</button>';
+                    ;?>
+                    <button id="submit-review" type="button" class="btn btn-yellow circular-btn">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <?php include "../app/components/ConfirmModal.php"?>
+    
+    <script src="/public/js/bookdetail.js"></script>
 </body>
 
 
-<div id="reviewmodal" class="fullscreen centered modal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title">Submit Review</h5>
-            <span id="close-review" class="close">&times;</span>
-        </div>
-        <?php if($self_review) echo '<p class="modal-subtitle">You have written a review for this book</p>';?>
-        <form class="modal-body">
-            <input id="bid-data" type="hidden" name="bid" value="<?=$book_data['book_id']?>">
-            <input id="edit-data" type="hidden" name="edit" value="<?php if($self_review) echo true; else echo false;?>">
-            <textarea id="form-review" type="text" class="reviewer-form" placeholder="Enter Your Review"><?php if($self_review) echo $self_review['reviewtext'];?></textarea>
-            <div class="cluster-h" style="min-width:100%;padding: 5px 0">
-                <label for="ratingval">Score:</label>
-                <input id="ratingval" name="ratingval" type="number"  class="form-input" placeholder="1-5" min="1" max="5"
-                    value="<?php if($self_review){ echo $self_review['rating'];}?>">
-                <div class="pusher"></div>
-                <?php
-                if($self_review) echo '<button id="delete-review" type="button" class="btn btn-red circular-btn">Delete</button>';
-                ;?>
-                <button id="submit-review" type="button" class="btn btn-yellow circular-btn">Submit</button>
-            </div>
-        </form>
-    </div>
-</div>
 
-<?php include "../app/components/ConfirmModal.php"?>
-
-<script src="/public/js/bookdetail.js"></script>
 </html> 

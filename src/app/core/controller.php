@@ -6,7 +6,7 @@ use config\AppConfig;
 
 class Controller{
     private $rel = "";
-    private $icon = "<link rel=\"icon\" href=\"storage/assets/logo.svg\" sizes=\"any\" type=\"image/svg+xml\">";
+    private $icon = "<link rel=\"icon\" href=\"/storage/assets/logo.svg\" sizes=\"any\" type=\"image/svg+xml\">";
     private $topbar;
     private $footer;
 

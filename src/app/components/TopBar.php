@@ -33,6 +33,9 @@ use app\models\UserModel;
                     $name = $usermodel->fetchUserByID($_SESSION['user_id'])['name'];
                     
                     echo '<div class="cluster-h cluster-login">';
+                    echo '<button class="book-container" style="background-color: transparent;border:none" onclick="location.href=\'/search\'">';                    
+                    echo '<img class="book-image" src="/storage/assets/search.svg" alt="illustration of a magnifying glass for search">';
+                    echo '</button>';
                     if($_SESSION['permissions']){
                         echo '<button class="btn btn-sm btn-yellow" onclick="location.href=\'/admin\'">Dashboard</button>';
                     }
@@ -47,6 +50,9 @@ use app\models\UserModel;
                 }
             } else{
                 echo '<div class="cluster-h cluster-login">';
+                echo '<button class="book-container" style="background-color: transparent;border:none" onclick="location.href=\'/search\'">';                    
+                echo '<img class="book-image" src="/storage/assets/search.svg" alt="illustration of a magnifying glass for search">';
+                echo '</button>';
                 echo '<button class="btn btn-sm btn-grey" onclick="location.href=\'/login\'">Log in</button>';
                 echo '<button class="btn btn-sm btn-yellow" onclick="location.href=\'/register\'">Sign up</button>';
                 echo '</div>';
@@ -56,7 +62,7 @@ use app\models\UserModel;
         </div>
         <button class="btn btn-menu-sm"
             onclick=showSmallMenu()>
-            <img src="storage/assets/menu3line.svg" alt="Menu button" style="width:100%; height:100%;">
+            <img src="/storage/assets/menu3line.svg" alt="Menu button" style="width:100%; height:100%;">
             </img>
         </button>
     </nav>
@@ -64,40 +70,55 @@ use app\models\UserModel;
     <?php
     if (isset($_SESSION['user_id'])) {
         if($_SESSION['permissions']){
-            echo '<div id="popup-container" class="menu-popup-wrap">';
-            echo '<div id="popup-menu" class="menu-popup-sm">';
-            echo '<button class="btn popup-btn-sm" onclick="location.href=\'/admin\'">';
-            echo '<img class="popup-btn-icn" src="storage/assets/menu3line.svg" alt="Menu button to admin page"> Dashboard';
-            echo '</button>';
+            if(isset($inadminpage)){
+                echo '<div id="popup-container" class="menu-popup-wrap" style="height:320px">';
+                echo '<div id="popup-menu" class="menu-popup-sm">';
+                echo '<button class="btn popup-btn-sm" onclick="location.href=\'/admin/books\'">';
+                echo '<img class="popup-btn-icn" src="/storage/assets/menu3line.svg" alt="Menu button to admin books page"> Books';
+                echo '</button>';
+                echo '<button class="btn popup-btn-sm" onclick="location.href=\'/admin/users\'">';
+                echo '<img class="popup-btn-icn" src="/storage/assets/menu3line.svg" alt="Menu button to admin users page"> Users';
+                echo '</button>';
+                echo '<button class="btn popup-btn-sm" onclick="location.href=\'/admin/reviews\'">';
+                echo '<img class="popup-btn-icn" src="/storage/assets/menu3line.svg" alt="Menu button to admin reviews page"> Reviews';
+                echo '</button>';
+            }
+            else{
+                echo '<div id="popup-container" class="menu-popup-wrap">';
+                echo '<div id="popup-menu" class="menu-popup-sm">';
+                echo '<button class="btn popup-btn-sm" onclick="location.href=\'/admin\'">';
+                echo '<img class="popup-btn-icn" src="/storage/assets/menu3line.svg" alt="Menu button to admin page"> Dashboard';
+                echo '</button>';
+            }
         }
         else{
             echo '<div id="popup-container" class="menu-popup-wrap" style="height:128px">';
             echo '<div id="popup-menu" class="menu-popup-sm">';
         }
         echo '<button class="btn popup-btn-sm" onclick="location.href=\'/profile\'">';
-        echo '<img class="popup-btn-icn" src="storage/assets/menu3line.svg" alt="Menu button to profile page"> Profile';
+        echo '<img class="popup-btn-icn" src="/storage/assets/menu3line.svg" alt="Menu button to profile page"> Profile';
         echo '</button>';
         echo '<button class="btn popup-btn-sm" onclick="location.href=\'/search\'">';
-        echo '<img class="popup-btn-icn" src="storage/assets/menu3line.svg" alt="Menu button to search page"> Search';
+        echo '<img class="popup-btn-icn" src="/storage/assets/menu3line.svg" alt="Menu button to search page"> Search';
         echo '</button>';
         echo '</div></div>';
     } else{
         echo '<div id="popup-container" class="menu-popup-wrap">';
         echo '<div id="popup-menu" class="menu-popup-sm">';
         echo '<button class="btn popup-btn-sm" onclick="location.href=\'/login\'">';
-        echo '<img class="popup-btn-icn" src="storage/assets/menu3line.svg" alt="Menu button"> Log in';
+        echo '<img class="popup-btn-icn" src="/storage/assets/menu3line.svg" alt="Menu button"> Log in';
         echo '</button>';
         echo '<button class="btn popup-btn-sm" onclick="location.href=\'/register\'">';
-        echo '<img class="popup-btn-icn" src="storage/assets/menu3line.svg" alt="Menu button"> Sign up';
+        echo '<img class="popup-btn-icn" src="/storage/assets/menu3line.svg" alt="Menu button"> Sign up';
         echo '</button>';
         echo '<button class="btn popup-btn-sm" onclick="location.href=\'/search\'">';
-        echo '<img class="popup-btn-icn" src="storage/assets/menu3line.svg" alt="Menu button"> Search';
+        echo '<img class="popup-btn-icn" src="/storage/assets/menu3line.svg" alt="Menu button"> Search';
         echo '</button>';
         echo '</div></div>';
     }
     ?>
 
-    <script src="public/js/util.js"></script>
-    <script src="public/js/topbar.js"></script>
 
+    <script src="/public/js/util.js"></script>
+    <script src="/public/js/topbar.js"></script>
 </div>

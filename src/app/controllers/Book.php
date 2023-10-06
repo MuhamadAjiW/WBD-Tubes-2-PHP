@@ -3,20 +3,21 @@
 namespace app\controllers;
 
 use app\core\Controller;
+use app\core\Router;
+use Exception;
 
-class AdminBooks extends Controller{
-    public function index(){
-        $bookmodel = $this->model('BookModel');
-        $bookdata = $bookmodel->fetchAllBooksForAdmin();
+class Book extends Controller{
+    //TODO: Messages and validation
 
-        $this->addRel("stylesheet", "/public/css/topbar.css");
-        $this->addRel("stylesheet", "/public/css/style-2.css");
-        $this->addRel("stylesheet", "/public/css/bookdetail.css");
-        
-        $this->view('AdminBooks', ['bookdata' => $bookdata, 'inadminpage' => true]);
+    public function addBook(){
+
     }
 
-    public function delete() {
+    public function editBook(){
+
+    }
+
+    public function deleteBook() {
         if (isset($_POST['book_id'])) {
             $bookmodel = $this->model("BookModel");
 

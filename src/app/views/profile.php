@@ -15,7 +15,7 @@
         />
 </div>
 <?php if(file_exists($TOP_BAR)) include_once($TOP_BAR);?>
-<img class="sty-bckgrnd" src="storage/assets/logo.svg" alt="Stylized Background">
+<img class="sty-bckgrnd" src="/storage/assets/logo.svg" alt="Stylized Background">
 <body class="fullscreen centered">
   <section class="auth-container">
     <form class="form-container" action="/profile" method="POST">

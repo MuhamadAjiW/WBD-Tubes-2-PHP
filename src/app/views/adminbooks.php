@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Books</title>
-    <link rel="stylesheet" href="../../public/css/adminpage.css"></link>
+    <link rel="stylesheet" href="/public/css/adminpage.css"></link>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-    <script type="text/javascript" src="../../public/js/deletebook.js"></script>
+    <script type="text/javascript" src="/public/js/deletebook.js"></script>
     <?php echo strip_tags($REL_DATA, '<link>');?>
 </head>
 <body>

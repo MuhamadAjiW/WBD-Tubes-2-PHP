@@ -7,6 +7,7 @@ const submitbtn = document.getElementById("submit-review");
 const morereviewbtn = document.getElementById("load-more");
 
 const bid_data = document.getElementById("bid-data");
+const uid_data = document.getElementById("uid-data");
 const edit_data = document.getElementById("edit-data");
 const review_input = document.getElementById("form-review");
 const rating_input = document.getElementById("ratingval");
@@ -36,7 +37,7 @@ function getMoreReviews(){
     const reviewparams = new URLSearchParams(queryString);
     reviewparams.set("offset", reviewOffset);
 
-    xhr.open("GET", "/api/bookdetailrvw?" + reviewparams, true);    
+    xhr.open("GET", "/api/bookdetail/getMore?" + reviewparams, true);    
     xhr.onreadystatechange = function (){
         if(this.readyState == 4 && this.status == 200){
             if(xhr.response != ''){
@@ -66,28 +67,25 @@ function validateEntry(review_input, rating_input){
 }
 
 function submitReview(){
-    const bid_data = document.getElementById("bid-data");
-    const edit_data = document.getElementById("edit-data");
-    const review_input = document.getElementById("form-review");
-    const rating_input = document.getElementById("ratingval");
     if(validateEntry(review_input, rating_input)){
         let xhr = new XMLHttpRequest();
         if(edit_data.value == true){
-            xhr.open("POST", "/api/editreview", true);
+            xhr.open("POST", "/api/review/edit", true);
         }
         else{
-            xhr.open("PUT", "/api/addreview", true);    
+            xhr.open("PUT", "/api/review/add", true);    
         }
         
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         const data = new URLSearchParams();
+        data.append("uid", uid_data.value);
         data.append("bid", bid_data.value);
         data.append("review", review_input.value);
         data.append("rating", rating_input.value);
         
         xhr.onreadystatechange = function (){
             if(this.readyState == 4 && this.status == 200){
-                location.href = window.location.href;
+                location.reload();
             }
         }
         xhr.send(data);
@@ -102,15 +100,16 @@ if(edit_data.value == true){
 
     function deleteReview(){
         let xhr = new XMLHttpRequest();
-        xhr.open("DELETE", "/api/deletereview", true);    
+        xhr.open("DELETE", "/api/review/delete", true);    
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         
         const data = new URLSearchParams();
+        data.append("uid", uid_data.value);
         data.append("bid", bid_data.value);
         
         xhr.onreadystatechange = function (){
             if(this.readyState == 4 && this.status == 200){
-                location.href = window.location.href;
+                location.reload();
             }
         }
         xhr.send(data);

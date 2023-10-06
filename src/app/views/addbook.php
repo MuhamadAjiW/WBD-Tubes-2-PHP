@@ -87,5 +87,5 @@
     <?php if(file_exists($FOOTER)) include_once($FOOTER);?>
 </body>
 
-<script type="text/javascript" src="../../public/js/addbook.js"></script>
+<script type="text/javascript" src="/public/js/addbook.js"></script>
 </html> 

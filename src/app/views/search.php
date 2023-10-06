@@ -90,9 +90,7 @@
     </div>
 
     <?php if(file_exists($FOOTER)) include_once($FOOTER);?>
+    <script src="/public/js/util.js"></script>
+    <script src="/public/js/search.js"></script>
 </body>
-
-<script src="public/js/util.js"></script>
-<script src="public/js/search.js"></script>
-
 </html>

@@ -9,10 +9,10 @@
 </head>
 <body>
     <div class="top-wrapper">
-    <img class="blur-bg" src="images/book_cover.jpeg">
+    <img class="blur-bg" src="/images/book_cover.jpeg">
         <div class="book-info">
             <div class="book-cover">
-                <img class="book-cover-image" src="images/book_cover.jpeg">
+                <img class="book-cover-image" src="/images/book_cover.jpeg">
             </div>
             <div class ="book-contents">
                 <div class="book-contents-header">
@@ -146,8 +146,8 @@
             <h5 class="modal-title">Submit Review</h5>
         </div>
         <div class="modal-body">
-            <input type="text" name="reviewer_name" class="reviewer-form" placeholder="Enter Your Name"/>
-            <textarea type="text" name="reviewer_text" class="reviewer-form" id="form-review" placeholder="Enter Your Review"></textarea>
+            <input type="text" name="reviewer_name" class="long-form" placeholder="Enter Your Name"/>
+            <textarea type="text" name="reviewer_text" class="long-form" id="form-review" placeholder="Enter Your Review"></textarea>
             <button type="button" class="circular-btn">Submit</button>
         </div>
     </div>

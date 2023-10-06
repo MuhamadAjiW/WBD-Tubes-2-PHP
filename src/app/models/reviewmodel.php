@@ -95,6 +95,24 @@ class ReviewModel{
         return $this->database->fetchAll();
     }
 
+    public function fetchReviewsPaged($page = 1, $pagesize = AppConfig::ENTRIES_PER_PAGE){
+        $query = "SELECT user_id, book_id, rating, reviewtext FROM reviews";
+        $this->database->query($query);
+        $this->database->execute();
+        $totalreviews = $this->database->rowCount();
+
+        $query = "SELECT u.user_id, book_id, username, title, rating, reviewtext
+        FROM reviews r
+        NATURAL JOIN books b
+        INNER JOIN users u ON u.user_id = r.user_id
+        LIMIT :limit OFFSET :offset";
+        $this->database->query($query);
+        $this->database->bind('limit', $pagesize);
+        $this->database->bind('offset', ($page - 1) * $pagesize);
+        
+        return [$this->database->fetchAll(), $totalreviews];
+    }
+
     public function fetchReviewByUserNBookID($book_id, $user_id) {
         $query = "SELECT u.user_id, b.book_id, u.username, b.title, r.rating, r.reviewtext FROM reviews r
         INNER JOIN users u ON r.user_id = u.user_id

@@ -58,7 +58,21 @@ class BookDetail extends Controller{
             $reviewmodel = $this->model('ReviewModel');
     
             $book_id = $_GET['bid'];
-            $offset = $_GET['offset'];
+            if(!isset($_GET['offset'])){
+                $offset = 1;
+            } else{
+                try{
+                    if(!intval($_GET['offset'])){
+                        http_response_code(400);
+                    }
+                    if($_GET['offset'] < 1){
+                        http_response_code(400);
+                    }
+                    $offset = $_GET['offset'];
+                }catch(Exception){
+                    http_response_code(400);
+                }
+            }
     
             $reviews = $reviewmodel->fetchReviewData($book_id, $offset)[0];
     
@@ -66,65 +80,13 @@ class BookDetail extends Controller{
                 extract($review);
                 include "../app/components/ReviewEntry.php";
             }
-        } catch (Exception){
-            http_response_code(500);
-        }
-    }
-
-    public function addReview(){
-        try{
-            $reviewmodel = $this->model('ReviewModel');
+            http_response_code(200);
             
-            parse_str(file_get_contents("php://input"), $vars);
-
-            $book_id = $vars['bid'];
-            $rating = $vars['rating'];
-            $review = $vars['review'];
-            $user_id = $_SESSION['user_id'];
-
-            $reviewmodel->addReview($book_id, $user_id, $rating, $review);
-
-            http_response_code(200);
         } catch (Exception){
             http_response_code(500);
         }
     }
 
-    public function editReview(){
-        try{
-            $reviewmodel = $this->model('ReviewModel');
-    
-            parse_str(file_get_contents("php://input"), $vars);
-
-            $book_id = $vars['bid'];
-            $rating = $vars['rating'];
-            $review = $vars['review'];
-            $user_id = $_SESSION['user_id'];
-
-            $reviewmodel->updateReview($book_id, $user_id, $review, $rating);
-
-            http_response_code(200);
-        } catch (Exception){
-            http_response_code(500);
-        }
-    }
-
-    public function deleteReview(){
-        try{
-            $reviewmodel = $this->model('ReviewModel');
-    
-            parse_str(file_get_contents("php://input"), $vars);
-
-            $book_id = $vars['bid'];
-            $user_id = $_SESSION['user_id'];
-
-            $reviewmodel->deleteReview($book_id, $user_id);
-
-            http_response_code(200);
-        } catch (Exception){
-            http_response_code(500);
-        }
-    }
 }
 
 ?>
