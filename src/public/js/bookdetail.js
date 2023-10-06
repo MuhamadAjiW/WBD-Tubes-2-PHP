@@ -30,25 +30,25 @@ cancel_btn.onclick = function() {
     confirmmodal.style.display = "none";
 }
 
-function getMoreReviews(){
-    let xhr = new XMLHttpRequest();
+function getMoreReviews() {
+  let xhr = new XMLHttpRequest();
 
-    const queryString = window.location.search;
-    const reviewparams = new URLSearchParams(queryString);
-    reviewparams.set("offset", reviewOffset);
+  const queryString = window.location.search;
+  const reviewparams = new URLSearchParams(queryString);
+  reviewparams.set("offset", reviewOffset);
 
-    xhr.open("GET", "/api/bookdetail/getMore?" + reviewparams, true);    
-    xhr.onreadystatechange = function (){
-        if(this.readyState == 4 && this.status == 200){
-            if(xhr.response != ''){
-                document.getElementById("review-block").innerHTML += xhr.response;
-                reviewOffset += 1;
-            } else{
-                morereviewbtn.style.display = "none";
-            }
-        }
-    }
-    xhr.send();
+  xhr.open("GET", "/api/bookdetail/getMore?" + reviewparams, true);    
+  xhr.onreadystatechange = function (){
+      if(this.readyState == 4 && this.status == 200){
+          if(xhr.response != ''){
+              document.getElementById("review-block").innerHTML += xhr.response;
+              reviewOffset += 1;
+          } else{
+              morereviewbtn.style.display = "none";
+          }
+      }
+  }
+  xhr.send();
 }
 
 

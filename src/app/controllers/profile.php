@@ -24,7 +24,23 @@ class Profile extends Controller{
         else{
             Router::redirect('/error/404');
         }
+       
 }
+    public function profile(){
+        if(isset($_POST["submit-edit-profile"])){
+            $user_id = $_SESSION['user_id'];
+            $name = $_POST['nameprofile'];
+            $username = $_POST['usernameprofile'];
+            $email = $_POST['emailprofile'];
+            $bio = $_POST['bioprofile'];
+            $addUser = $this->model("UserModel");
+            $addUser->updateUserData3($user_id, $name, $username, $email, $bio);
+            Router::redirect('/profile');
+        }
+        else{
+            Router::redirect('/error/404');
+        }
+    }
 }
 
 ?>
