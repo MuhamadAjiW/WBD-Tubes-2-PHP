@@ -21,7 +21,6 @@ use config\AppConfig;
         </div>
 
         <table id="review-table" class="admin-tb">
-            <!-- TODO: Pagination -->
             <thead>
                 <tr>
                 <th class="admin-tb-c col-20">Username</th>
