@@ -116,6 +116,15 @@
   background-color: #d5ac00;
 }
 
+.btn-red{
+  background: #ff9b9b;
+  color: #ffffff;
+}
+
+.btn-red:hover{
+  background: #ff6b6b;
+}
+
 .cluster-h {
   display: inline-flex;
   flex-direction: row;
@@ -364,6 +373,18 @@
   font-weight: 600;
   font-size: 24px;
 }
+
+.sty-bckgrnd{
+  position: fixed;
+  left: 0;
+  width: 1500px;
+  transform: translateX(-50%) translateY(20%);
+  filter: opacity(40%);
+  height: auto;
+  z-index: -1;
+  background-color: transparent;
+  background-size: cover;
+} 
 
 @media (max-width: 12in) {
   .main-content {

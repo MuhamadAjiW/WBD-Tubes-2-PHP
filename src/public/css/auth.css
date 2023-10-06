@@ -70,18 +70,6 @@
     border-radius: 24px;
 }
 
-.sty-bckgrnd{
-    position: fixed;
-    left: 0;
-    width: 1500px;
-    transform: translateX(-50%) translateY(20%);
-    filter: opacity(40%);
-    height: auto;
-    z-index: 0;
-    background-color: transparent;
-    background-size: cover;
-} 
-
 @media (max-width: 7in){
     .auth-container{
         width: 85%;

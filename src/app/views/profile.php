@@ -14,6 +14,7 @@
           height="250"
         />
 </div>
+<?php if(file_exists($TOP_BAR)) include_once($TOP_BAR);?>
 <img class="sty-bckgrnd" src="storage/assets/logo.svg" alt="Stylized Background">
 <body class="fullscreen centered">
   <section class="auth-container">
@@ -40,7 +41,7 @@
           <input type="text" id="admin" name="admin" class="input" value=<?php echo $admin;?> />
           <span>Admin </span>
         </div>
-      <button class="btn btn-yellow auth-submit" type="submit" name="logout">Log Out</button>
+      <button class="btn btn-red auth-submit" type="submit" name="logout">Log Out</button>
     </form>
   </section>
 </body>

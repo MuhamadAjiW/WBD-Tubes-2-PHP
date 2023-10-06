@@ -8,6 +8,8 @@ class Profile extends Controller{
     public function index(){
         $this->addRel("stylesheet", "/public/css/style-2.css");
         $this->addRel("stylesheet", "/public/css/auth.css");
+        $this->addRel("stylesheet", "/public/css/profile.css");
+        $this->addRel("stylesheet", "/public/css/topbar.css");
         $userProfil = $this->model("UserModel");
         $user = $_SESSION['user_id'];
         if($user != null){
