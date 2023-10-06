@@ -7,6 +7,13 @@ use app\core\Router;
 use Exception;
 
 class User extends Controller{
+
+    public function __construct(){
+        parent::__construct();
+        $middleware = $this->middleware('AuthMiddleware');
+        $middleware->check(false, "/error/404");
+    }
+
     //TODO: Messages and validation
     public function getUser(){
         try{

@@ -15,6 +15,7 @@ class BookModel{
 
     public function addBook(
         $title,
+        $synopsis,
         $author_id,
         $genre,
         $release_date,
@@ -24,11 +25,12 @@ class BookModel{
         $image_path,
         $audio_path
     ){
-        $query = "INSERT INTO books (title, author_id, genre, release_date, word_count, duration, graphic_cntn, image_path, audio_path)
-        VALUES (:title, :author_id, :genre, :release_date, :word_count, :duration, :graphic_cntn, :image_path, :audio_path)";
+        $query = "INSERT INTO books (title, synopsis, author_id, genre, release_date, word_count, duration, graphic_cntn, image_path, audio_path)
+        VALUES (:title, :synopsis, :author_id, :genre, :release_date, :word_count, :duration, :graphic_cntn, :image_path, :audio_path)";
 
         $this->database->query($query);
         $this->database->bind('title', $title);
+        $this->database->bind('synopsis', $synopsis);
         $this->database->bind('author_id', $author_id);
         $this->database->bind('genre', $genre);
         $this->database->bind('release_date', $release_date);
@@ -45,7 +47,8 @@ class BookModel{
 
     public function fetchBookByID($book_id){
         $query = "SELECT book_id, title, synopsis, b.author_id, genre, 
-        release_date, word_count, duration, graphic_cntn, image_path, audio_path, u.username 
+        release_date, word_count, duration, graphic_cntn, image_path, audio_path,
+        username, name
         FROM books b
         INNER JOIN users u ON u.user_id = b.author_id
         WHERE book_id =:book_id";
@@ -202,6 +205,44 @@ class BookModel{
         $result = $this->database->fetchAll();
 
         return [$result, $totalbooks];
+    }
+
+    public function updateBookData(
+        $book_id,
+        $title,
+        $synopsis,
+        $author_id,
+        $genre,
+        $release_date,
+        $word_count,
+        $duration,
+        $graphic_cntn
+    ){
+        $query = 'UPDATE books
+                    SET
+                        title = :title,
+                        synopsis = :synopsis,
+                        author_id = :author_id,
+                        genre = :genre,
+                        release_date = :release_date,
+                        word_count = :word_count,
+                        duration = :duration,
+                        graphic_cntn = :graphic_cntn
+                    WHERE book_id = :book_id';
+
+        $this->database->query($query);
+        $this->database->bind('title', $title);
+        $this->database->bind('synopsis', $synopsis);
+        $this->database->bind('author_id', $author_id);
+        $this->database->bind('genre', $genre);
+        $this->database->bind('release_date', $release_date);
+        $this->database->bind('word_count', $word_count);
+        $this->database->bind('duration', $duration);
+        $this->database->bind('graphic_cntn', $graphic_cntn);
+        $this->database->bind('book_id', $book_id);
+        $this->database->execute();
+
+        return $this->database->rowCount();
     }
 
     public function updateBookTitle($book_id, $title){

@@ -34,7 +34,6 @@ function deleteReview(user_id, book_id){
 
     xhr.onreadystatechange = function() {
         if (this.readyState == 4) {
-            console.log(xhr.response);
             if (this.status === 200) {
                 alert("Review deletion success");
                 location.reload();
@@ -103,7 +102,6 @@ function editReview(){
     
     xhr.onreadystatechange = function (){
         if(this.readyState == 4){
-            console.log(xhr.response);
             if(this.status == 200){
                 alert("Review edition successful");
                 location.reload();
@@ -140,7 +138,6 @@ function addReview(){
     
     xhr.onreadystatechange = function (){
         if(this.readyState == 4){
-            console.log(xhr.responseText);
             if(this.status == 200){
                 alert("Review addition successful");
                 location.reload();

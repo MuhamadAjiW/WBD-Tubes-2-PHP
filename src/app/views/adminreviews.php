@@ -70,16 +70,16 @@ use config\AppConfig;
             </div>
             <form class="modal-body">
                 <label for="userid">User ID:</label>
-                <input id="userid-input" name="userid" type="number" class="form-input">
+                <input required id="userid-input" name="userid" type="number" class="form-input">
                 <label for="bookid">Book ID:</label>
-                <input id="bookid-input" name="bookid" type="number" class="form-input">
+                <input required id="bookid-input" name="bookid" type="number" class="form-input">
                 <div style="height: 15px;"></div>
                 <input id="username" type="hidden" name="uid">
                 <input id="book_id" type="hidden" name="bid">
                 <textarea id="form-review" type="text" class="long-form" placeholder="Enter Review"></textarea>
                 <div class="cluster-h" style="min-width:100%;padding: 5px 0">
                     <label for="ratingval">Score:</label>
-                    <input id="ratingval" name="ratingval" type="number"  class="form-input" placeholder="1-5" min="1" max="5">
+                    <input required id="ratingval" name="ratingval" type="number"  class="form-input" placeholder="1-5" min="1" max="5">
                     <div class="pusher"></div>
                     <button id="submit-review" type="button" class="btn btn-yellow circular-btn">Submit</button>
                 </div>

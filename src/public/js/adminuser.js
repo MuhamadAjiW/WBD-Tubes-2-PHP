@@ -34,9 +34,8 @@ function deleteUser(user_id){
 
     xhr.onreadystatechange = function() {
         if (this.readyState == 4) {
-            console.log(xhr.response);
             if (this.status === 200) {
-                alert("user deletion success");
+                alert("User deletion success");
                 location.reload();
             } else {
                 alert("User deletion failed: " + this.statusText);
@@ -68,16 +67,15 @@ const namein = document.getElementById("name-input");
 const bioin = document.getElementById("bio-input");
 const adminin = document.getElementById("admin-input");
 const submitbtn = document.getElementById("submit-user");
-function editUserPrompt(userId){
+function editUserPrompt(user_id){
     
     const data = new URLSearchParams();
-    data.set("uid", userId);
+    data.set("uid", user_id);
     
     const xhr = new XMLHttpRequest();
     xhr.open("GET", '/api/user/get?' + data.toString());
     xhr.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            console.log(xhr.responseText);
             const responseData = JSON.parse(xhr.responseText);
             if(responseData){
                 usermodal.style.display = 'flex';
@@ -87,7 +85,6 @@ function editUserPrompt(userId){
                 passwordin.value = null;
                 namein.value = responseData['name'];
                 bioin.value = responseData['bio'];
-                console.log(responseData['admin']);
                 adminin.checked = responseData['admin'];
 
                 submitbtn.onclick = editUser;

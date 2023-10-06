@@ -23,9 +23,15 @@ class Admin extends Controller{
 
     public function bookView(){
         $bookmodel = $this->model('BookModel');
+        $currentpage = $this->getPage();
+        $result = $bookmodel->fetchBooksPaged($currentpage, AppConfig::ENTRIES_PER_ADMIN_PAGE);
+        $booktable = $result[0];
+        $booklen = $result[1];
         
-        
-        $this->data['bookdata'] = $bookmodel->fetchAllBooksForAdmin();
+        $this->data['bookdata'] = $booktable;
+        $this->data['booklen'] = $booklen;
+        $this->data['currentpage'] = $currentpage;
+        $this->data['pagelen'] = AppConfig::ENTRIES_PER_ADMIN_PAGE;
         
         $this->view('AdminBooks', $this->data);
     }
@@ -62,7 +68,35 @@ class Admin extends Controller{
     }
 
     public function updateBookList(){
+        $bookmodel = $this->model('BookModel');
+        $currentpage = $this->getPage();
+        $result = $bookmodel->fetchBooksPaged($currentpage, AppConfig::ENTRIES_PER_ADMIN_PAGE);
+        $booktable = $result[0];
+        $booklen = $result[1];
 
+        foreach ($booktable as $book){
+            echo '<tr>';
+            echo '<td class="admin-tb-e col-1">' . $book['book_id'] . '</td>';
+            echo '<td class="admin-tb-e col-20">' . $book['title'] . '</td>';
+            echo '<td class="admin-tb-e col-20">' . $book['name'] . '</td>';
+            echo '<td class="admin-tb-e col-20">' . $book['word_count'] . '</td>';
+            echo '<td class="admin-tb-e col-20">' . $book['duration'] . '</td>';
+            echo '<td class="admin-tb-e col-20">' . $book['release_date'] . '</td>';
+            echo '<td class="admin-tb-e admin-tb-cent">';
+            echo '<button class="btn btn-sm btn-grey" style="flex:1" data-book-id ="'. $book['book_id'] . '" onclick="editBookPrompt(' . $book['book_id'] . ')">Edit</button>';
+            echo '<div style="width: 5px;"></div>';
+            echo '<button class="btn btn-sm btn-red" style="flex:1" data-book-id ="'. $book['book_id'] . '" onclick="deleteBookPrompt(' . $book['book_id'] . ')">Delete</button>';
+            echo '<tr>';
+        }
+        echo '<SPLIT></SPLIT>';
+
+        $data = [
+            'pagelen' => intval(ceil($booklen / AppConfig::ENTRIES_PER_ADMIN_PAGE)),
+            'currentpage' => $currentpage,
+            'clickfunction' => 'changePage',
+        ];
+        extract($data);
+        include '../app/components/PageIndex.php';     
     }
 
     public function updateUserList(){

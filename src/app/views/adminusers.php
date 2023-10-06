@@ -7,7 +7,7 @@ use config\AppConfig;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin users</title>
+    <title>Admin Users</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <?php echo strip_tags($REL_DATA, '<link>');?>
 </head>
@@ -75,16 +75,16 @@ use config\AppConfig;
             <form class="modal-body">
                 <input id="user-id-input" hidden>
                 <div class="input-bar" style="margin: 15px 0;">
-                    <input id="email-input" name="email-input" type="email" class="input" placeholder="Email">
+                    <input required id="email-input" name="email-input" type="email" class="input" placeholder="Email">
                 </div>
                 <div class="input-bar" style="margin: 15px 0;">
-                    <input id="username-input" name="username-input" type="text" class="input" placeholder="username">
+                    <input required id="username-input" name="username-input" type="text" class="input" placeholder="username">
                 </div>
                 <div class="input-bar" style="margin: 15px 0;">
-                    <input id="password-input" name="password-input" type="password" class="input" placeholder="Password">
+                    <input required id="password-input" name="password-input" type="password" class="input" placeholder="Password">
                 </div>
                 <div class="input-bar" style="margin: 15px 0;">
-                    <input id="name-input" name="name-input" type="text" class="input" placeholder="Full name">
+                    <input required id="name-input" name="name-input" type="text" class="input" placeholder="Full name">
                 </div>
                 <textarea id="bio-input" type="text" class="long-form" placeholder="Enter Bio"></textarea>
                 <div style="height: 15px;"></div>

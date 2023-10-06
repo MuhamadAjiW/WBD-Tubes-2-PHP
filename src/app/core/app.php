@@ -12,33 +12,27 @@ class App {
     }
 
     public function initRoutes(){
+        // Redirects
         $this->router->redirect_permanent('/', '/home');
         $this->router->redirect_permanent('/admin', '/admin/books');
 
+        // Basic route for pages
         $this->router->addRoute('/home', 'app/controllers/Home', 'index', ['GET']);
         $this->router->addRoute('/search', 'app/controllers/Search', 'index', ['GET']);
+        $this->router->addRoute('/profile', 'app/controllers/Profile', 'index', ['GET']);
+        $this->router->addRoute('/detail', 'app/controllers/BookDetail', 'index', ['GET']);
         $this->router->addRoute('/login', 'app/controllers/Login', 'index', ['GET']);
-        $this->router->addPost('/login', 'app/controllers/Login', 'login');
-        $this->router->addGet('/logout', 'app/controllers/Login', 'logout');
-        
         $this->router->addRoute('/register', 'app/controllers/Register', 'index', ['GET']);
-        $this->router->addPost('/register', 'app/controllers/Register', 'register');
-        
         $this->router->addRoute('/admin/books', 'app/controllers/Admin', 'bookView', ['GET']);
         $this->router->addRoute('/admin/users', 'app/controllers/Admin', 'userView', ['GET']);
         $this->router->addRoute('/admin/reviews', 'app/controllers/Admin', 'reviewView', ['GET']);
 
-        $this->router->addRoute('/admin/addbook', 'app/controllers/AddBook', 'index', ['GET']);
-        $this->router->addRoute('/admin/editbook', 'app/controllers/EditBook', 'index', ['GET']);
-        $this->router->addPost('/admin/users', 'app/controllers/AdminUsers', 'delete', ['POST']);
-        $this->router->addPost('/admin/reviews', 'app/controllers/AdminReviews', 'delete', ['POST']);
-        $this->router->addPost('/admin/books', 'app/controllers/AdminBooks', 'delete', ['POST']);
-        $this->router->addPost('/admin/addbook', 'app/controllers/AddBook', 'add', ['POST']);
-        $this->router->addPost('/admin/editbook', 'app/controllers/EditBook', 'edit', ['POST']);
-
-        $this->router->addRoute('/profile', 'app/controllers/Profile', 'index', ['GET']);
-        $this->router->addRoute('/detail', 'app/controllers/BookDetail', 'index', ['GET']);
-
+        // Basic route for utility functions
+        $this->router->addPost('/login', 'app/controllers/Login', 'login');
+        $this->router->addPost('/register', 'app/controllers/Register', 'register');
+        $this->router->addPost('/logout', 'app/controllers/Login', 'logout');
+        
+        // Public route for page utilities
         $this->router->addRoute('/api/search', 'app/controllers/Search', 'serve', ['GET']);
         $this->router->addRoute('/api/searchsm', 'app/controllers/TopBar', 'search', ['GET']);
         $this->router->addRoute('/api/homelist', 'app/controllers/Home', 'updatelist', ['GET']);
@@ -46,16 +40,18 @@ class App {
         $this->router->addRoute('/api/admin/booklist', 'app/controllers/Admin', 'updateBookList', ['GET']);
         $this->router->addRoute('/api/admin/userlist', 'app/controllers/Admin', 'updateUserList', ['GET']);
         $this->router->addRoute('/api/admin/reviewlist', 'app/controllers/Admin', 'updateReviewList', ['GET']);
-
+        
+        // Protected API for database
+        // Sori masih bingung best practicenya buat post sama put
+        $this->router->addRoute('/api/book/get', 'app/controllers/Book', 'getBook', ['GET']);
+        $this->router->addRoute('/api/book/edit', 'app/controllers/Book', 'editBook', ['POST']);
+        $this->router->addRoute('/api/book/add', 'app/controllers/Book', 'addBook', ["POST"]); //Pake post soalnya lebih sulid kalo pake put
+        $this->router->addRoute('/api/book/delete', 'app/controllers/Book', 'deleteBook', ['DELETE']);
+        
         $this->router->addRoute('/api/review/get', 'app/controllers/Review', 'getReview', ['GET']);
         $this->router->addRoute('/api/review/edit', 'app/controllers/Review', 'editReview', ['POST']);
         $this->router->addRoute('/api/review/add', 'app/controllers/Review', 'addReview', ["PUT"]);
         $this->router->addRoute('/api/review/delete', 'app/controllers/Review', 'deleteReview', ['DELETE']);
-        
-        $this->router->addRoute('/api/book/get', 'app/controllers/Book', 'getBook', ['GET']);
-        $this->router->addRoute('/api/book/edit', 'app/controllers/Book', 'editBook', ['POST']);
-        $this->router->addRoute('/api/book/add', 'app/controllers/Book', 'addBook', ["PUT"]);
-        $this->router->addRoute('/api/book/delete', 'app/controllers/Book', 'deleteBook', ['DELETE']);
         
         $this->router->addRoute('/api/user/get', 'app/controllers/User', 'getUser', ['GET']);
         $this->router->addRoute('/api/user/edit', 'app/controllers/User', 'editUser', ['POST']);
