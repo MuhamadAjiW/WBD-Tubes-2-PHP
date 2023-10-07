@@ -350,12 +350,6 @@ tr:nth-child(even) {
     gap: 0.5rem;
 }
 
-.long-form {
-    border: 2px solid rgba(0,0,0, 0.1);
-    font-family: Rubik, sans-serif;
-    font-weight: 650;
-}
-
 #form-reviewtext-input {
     min-height: 60px;
     font-weight: 400;

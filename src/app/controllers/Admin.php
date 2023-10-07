@@ -13,7 +13,7 @@ class Admin extends Controller{
     public function __construct(){
         parent::__construct();
         $middleware = $this->middleware('AuthMiddleware');
-        $middleware->check(false, "/error/404");
+        $middleware->check(true, "/error/404");
         $this->addRel("stylesheet", "/public/css/topbar.css");
         $this->addRel("stylesheet", "/public/css/style-2.css");
         $this->addRel("stylesheet", "/public/css/bookdetail.css");

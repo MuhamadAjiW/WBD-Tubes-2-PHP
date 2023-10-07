@@ -1,33 +1,58 @@
-const modal = document.getElementById("editprofilemodal");
+const confirmmodal = document.getElementById("confirmmodal");
+const confirmmsg = document.getElementById("confirmation-msg");
+const confirmbtn = document.getElementById("confirm-btn");
 const editbtn = document.getElementById("edit-button");
-const submitbtn = document.getElementById("submit-edit-profile");
-const cancelbtn = document.getElementById("cancel-edit-profile");
-const email = document.getElementById("emailprofile");
-const username = document.getElementById("usernameprofile");
-const name = document.getElementById("nameprofile");
-const bio = document.getElementById("bioprofile");
-
-const modal2 = document.getElementById("logoutmodal");
-const editbtn2 = document.getElementById("logout-button");
-const submitbtn2 = document.getElementById("submit-edit-logout");
-const cancelbtn2 = document.getElementById("cancel-edit-logout");
+const logoutbtn = document.getElementById("logout-button");
+const emailin = document.getElementById("email-input");
+const usernamein = document.getElementById("username-input");
+const namein = document.getElementById("name-input");
+const bioin = document.getElementById("bio-input");
 
 editbtn.onclick = function () {
-  modal.style.display = "flex";
-};
-editbtn2.onclick = function () {
-  modal2.style.display = "flex";
-};
-cancelbtn.onclick = function () {
-  modal.style.display = "none";
-};
-cancelbtn2.onclick = function () {
-  modal2.style.display = "none";
-};
+  confirmmodal.style.display = "flex";
+  confirmmsg.style.display = "flex"
+  confirmmsg.textContent = "Do you want to change your profile?"
+  
+  confirmbtn.onclick = edit;
+}
 
-submitbtn2.onclick = function(){
+logoutbtn.onclick = function () {
+  confirmmodal.style.display = "flex";
+  confirmmsg.style.display = "flex"
+  confirmmsg.textContent = "Do you want to log out"
+
+  confirmbtn.onclick = logout;
+}
+
+
+function logout(){
   let xhr = new XMLHttpRequest();
-    
+  
   xhr.open("POST", "/logout");    
   xhr.send();
+  
+  location.href='/login';
+}
+
+function edit(){
+  let xhr = new XMLHttpRequest();
+  xhr.open("POST", "/profile", true);    
+  
+  const data = new FormData();
+  data.append("email", emailin.value);
+  data.append("username", usernamein.value);
+  data.append("name", namein.value);
+  data.append("bio", bioin.value);
+  xhr.onreadystatechange = function (){
+      if(this.readyState == 4){
+          if(this.status == 200){
+              alert("Profile edition successful");
+              location.reload();
+          }
+          else{
+              alert("Profile edition failed: " + this.statusText);
+          }
+      }
+  }
+  xhr.send(data);
 }

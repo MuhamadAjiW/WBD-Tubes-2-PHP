@@ -1,8 +1,10 @@
-const reviewmodal = document.getElementById("reviewmodal");
 const confirmmodal = document.getElementById("confirmmodal");
+const confirmmsg = document.getElementById("confirmation-msg");
+const confirm_btn = document.getElementById("confirm-btn");
+
+const reviewmodal = document.getElementById("reviewmodal");
 const reviewbtn = document.getElementById("review-button");
 const closebtn = document.getElementById("close-review");
-const closecnfrm = document.getElementById("close-confirm");
 const submitbtn = document.getElementById("submit-review");
 const morereviewbtn = document.getElementById("load-more");
 
@@ -11,8 +13,6 @@ const uid_data = document.getElementById("uid-data");
 const edit_data = document.getElementById("edit-data");
 const review_input = document.getElementById("form-review");
 const rating_input = document.getElementById("ratingval");
-const confirm_btn = document.getElementById("confirm-btn");
-const cancel_btn = document.getElementById("cancel-btn");
 
 let reviewOffset = 2;
 
@@ -21,13 +21,6 @@ reviewbtn.onclick = function() {
 }
 closebtn.onclick = function() {
     reviewmodal.style.display = "none";
-}
-
-closecnfrm.onclick = function() {
-    confirmmodal.style.display = "none";
-}
-cancel_btn.onclick = function() {
-    confirmmodal.style.display = "none";
 }
 
 function getMoreReviews() {
@@ -118,10 +111,14 @@ if(edit_data.value == true){
     
     submitbtn.onclick = function(){
         confirmmodal.style.display = "flex";
+        confirmmsg.style.display = "flex"
+        confirmmsg.textContent = "Do you want to change your review?"
         confirm_btn.onclick = submitReview; 
     }
     delete_btn.onclick = function(){
         confirmmodal.style.display = "flex";
+        confirmmsg.style.display = "flex"
+        confirmmsg.textContent = "Do you want to delete your review?"
         confirm_btn.onclick = deleteReview; 
     }
 }

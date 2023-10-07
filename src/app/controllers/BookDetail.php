@@ -48,9 +48,25 @@ class BookDetail extends Controller{
         $review_data = $reviews[0];
         $review_count = $reviews[1];
 
+
+        $allreviews = $reviewmodel->fetchReviewByBookID($book_id);
+        $rating_avg = 0;
+
+        $total_ratings = 0;
+        $count = count($allreviews);
+        foreach ($allreviews as $review) {
+            $total_ratings += $review['rating'];
+        }
+        if ($count > 0) {
+            $rating_avg = $total_ratings / $count;
+        } else {
+            $rating_avg = 0;
+        }        
+        $rating_avg = number_format($rating_avg, 2);        
+
         $self_review = $reviewmodel->fetchReviewByBookAndUserID($book_id, $_SESSION['user_id']);
 
-        $this->view('BookDetail', ['book_data' => $book_data, 'author_data' => $author_data, 'review_data' => $review_data, 'review_count' => $review_count, 'self_review' => $self_review]);
+        $this->view('BookDetail', ['book_data' => $book_data, 'author_data' => $author_data, 'review_data' => $review_data, 'review_count' => $review_count, 'self_review' => $self_review, 'rating_avg' => $rating_avg]);
     }
 
     public function moreReviews(){

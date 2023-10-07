@@ -41,7 +41,7 @@ use config\AppConfig;
                 <p class="synopsis-text"><?=$book_data['synopsis'];?></p>
             </section>
             <section class="reviews" id="review-block">
-                <h2>Reviews</h2>
+                <h2>Reviews: <?=$rating_avg?> / 5</h2>
                 <?php
                 foreach ($review_data as $review) {
                     extract($review);

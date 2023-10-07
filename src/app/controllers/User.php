@@ -11,7 +11,7 @@ class User extends Controller{
     public function __construct(){
         parent::__construct();
         $middleware = $this->middleware('AuthMiddleware');
-        $middleware->check(false, "/error/404");
+        $middleware->check(true, "/error/404");
     }
 
     //TODO: Messages and validation

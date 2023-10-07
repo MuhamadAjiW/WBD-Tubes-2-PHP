@@ -22,17 +22,17 @@ class Profile extends Controller{
             $this->view('Profile', ['email' => $email, 'name' => $name, 'username' => $username, 'bio' => $bio, 'admin' => $admin]);
         }
         else{
-            Router::redirect('/error/404');
+            Router::redirect('/login');
         }
        
 }
     public function profile(){
         if(isset($_POST["submit-edit-profile"])){
             $user_id = $_SESSION['user_id'];
-            $name = $_POST['nameprofile'];
-            $username = $_POST['usernameprofile'];
-            $email = $_POST['emailprofile'];
-            $bio = $_POST['bioprofile'];
+            $username = $_POST['username'];
+            $name = $_POST['name'];
+            $email = $_POST['email'];
+            $bio = $_POST['bio'];
             $addUser = $this->model("UserModel");
             $addUser->updateUserData3($user_id, $name, $username, $email, $bio);
             Router::redirect('/profile');
