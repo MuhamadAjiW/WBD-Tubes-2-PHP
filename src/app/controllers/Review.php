@@ -17,11 +17,11 @@ class Review extends Controller{
     //TODO: Messages and validation
     public function getReview(){
         try{
-            $reviewmodel = $this->model('ReviewModel');
-            $usermodel = $this->model("UserModel");
-            $bookmodel = $this->model("BookModel");    
-            
             if (isset($_GET['bid']) && isset($_GET['uid'])) {
+                $reviewmodel = $this->model('ReviewModel');
+                $usermodel = $this->model("UserModel");
+                $bookmodel = $this->model("BookModel");    
+
                 $user_id = $_GET['uid'];
                 $book_id = $_GET['bid'];
 
@@ -43,9 +43,9 @@ class Review extends Controller{
                     $reviewData = $reviewmodel->fetchReviewByBookAndUserID($book_id, $user_id);
                     if (!empty($reviewData)) {
                         header('Content-Type: application/json');
-                        echo json_encode($reviewData);
-    
+                        
                         http_response_code(200);
+                        echo json_encode($reviewData);
                         echo json_encode(array("message" => "Fetch review success"));
                         exit;
                     } else {

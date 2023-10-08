@@ -16,26 +16,39 @@ class Book extends Controller{
     //TODO: Messages and validation
     public function getBook(){
         try{
-            $bookmodel = $this->model('BookModel');
-            
-            $book_id = $_GET['bid'];
-
-            try{
-                $bookData = $bookmodel->fetchBookByID($book_id);
-                if (!empty($bookData)) {
-                    header('Content-Type: application/json');
-                    echo json_encode($bookData);
-
-                    http_response_code(200);
-                } else {
-                    http_response_code(404);
-                }
-            } catch(Exception){
+            if (isset($_GET['uid'])) {
+                $bookmodel = $this->model('BookModel');
+                
+                $book_id = $_GET['bid'];
+                try{
+                    $bookData = $bookmodel->fetchBookByID($book_id);
+                    if (!empty($bookData)) {
+                        header('Content-Type: application/json');
+                        
+                        http_response_code(200);
+                        echo json_encode($bookData);
+                        echo json_encode(array("message" => "Fetch user success"));
+                    } else {
+                        http_response_code(404);
+                        echo json_encode(array("message" => "Book does not exist"));
+                        exit;
+                    }
+                } catch(Exception){
+                    http_response_code(500);
+                    echo json_encode(array("message" => "Fetch book failed"));
+                    exit;
+                }            
+            }
+            else{
                 http_response_code(400);
-                exit;
-            }            
+                echo json_encode(array("message" => "Bad request"));
+                exit;    
+            }
+
         } catch (Exception){
             http_response_code(500);
+            echo json_encode(array("message" => "Fetch book failed"));
+            exit;
         }
     }
 

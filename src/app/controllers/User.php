@@ -17,32 +17,45 @@ class User extends Controller{
     //TODO: Messages and validation
     public function getUser(){
         try{
-            $usermodel = $this->model('UserModel');
-            
-            $user_id = $_GET['uid'];
-    
-            try{                
-                $userData = $usermodel->fetchUserByID($user_id);
-                if (!empty($userData)) {
-                    header('Content-Type: application/json');
-                    echo json_encode($userData);
-    
-                    http_response_code(200);
-                } else {
-                    http_response_code(404);
-                }
-            } catch(Exception){
+            if (isset($_GET['uid'])) {
+                $usermodel = $this->model('UserModel');
+                
+                $user_id = $_GET['uid'];
+
+                try{                
+                    $userData = $usermodel->fetchUserByID($user_id);
+                    if (!empty($userData)) {
+                        header('Content-Type: application/json');
+                        
+                        http_response_code(200);
+                        echo json_encode($userData);
+                        echo json_encode(array("message" => "Fetch user success"));
+                        exit;
+                    } else {
+                        http_response_code(404);
+                        echo json_encode(array("message" => "User does not exist"));
+                        exit;
+                    }
+                } catch(Exception){
+                    http_response_code(500);
+                    echo json_encode(array("message" => "Fetch user failed"));
+                    exit;
+                }            
+            }
+            else{
                 http_response_code(400);
+                echo json_encode(array("message" => "Bad request"));
                 exit;
-            }            
+            }
         } catch (Exception){
             http_response_code(500);
+            echo json_encode(array("message" => "Fetch user failed"));
+            exit;
         }
     }
 
     public function addUser(){
         try{
-            $usermodel = $this->model('UserModel');
             parse_str(file_get_contents("php://input"), $vars);
             
             $email = $vars['email'];
@@ -52,6 +65,7 @@ class User extends Controller{
             $bio = $vars['bio'];
             $admin = $vars['admin'];
             if (isset($vars['name']) && isset($vars['username']) && isset($vars['password']) && isset($vars['email']) && isset($vars['bio']) && isset($vars['admin'])) {
+                $usermodel = $this->model('UserModel');
 
                 $usernameexist = $usermodel->checkUsernameExists($username);
 
@@ -93,7 +107,6 @@ class User extends Controller{
 
     public function editUser(){
         try{
-            $usermodel = $this->model('UserModel');
             parse_str(file_get_contents("php://input"), $vars);
             
             $user_id = $vars['uid'];
@@ -103,7 +116,8 @@ class User extends Controller{
             $name = $vars['name'];
             $bio = $vars['bio'];
             $admin = $vars['admin'];
-            if (isset($vars['name']) && isset($vars['username']) && isset($vars['password']) && isset($vars['email']) && isset($vars['bio']) && isset($vars['admin'])) {
+            if (isset($vars['uid']) && isset($vars['name']) && isset($vars['username']) && isset($vars['password']) && isset($vars['email']) && isset($vars['bio']) && isset($vars['admin'])) {
+                $usermodel = $this->model('UserModel');
 
                 $usernameexist = $usermodel->checkUsernameExists($username);
 
@@ -146,11 +160,12 @@ class User extends Controller{
 
     public function deleteUser(){
         try{
-            $usermodel = $this->model('UserModel');
-    
+            
             parse_str(file_get_contents("php://input"), $vars);
-
+            
             if (isset($vars['uid'])) {
+                $usermodel = $this->model('UserModel');
+
                 $user_id = $vars['uid'];
 
                 $userData = $usermodel->fetchUserByID($user_id);
