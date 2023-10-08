@@ -95,10 +95,32 @@ function editReview(){
     
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     const data = new URLSearchParams();
-    data.append("uid", useridin.value);
-    data.append("bid", bookidin.value);
-    data.append("review", formreview.value);
-    data.append("rating", ratingval.value);
+
+    const userId = useridin.value;
+    const bookId = bookidin.value;
+    const review = formreview.value;
+    const rating = ratingval.value;
+    
+    if (review === null || typeof review !== "string" || review.trim() === "") {
+        alert("Review must be a non-empty string.");
+    } else {
+        if(review.length > 2048){
+            alert("Review must not be longer than 2048 characters.");
+        }
+    }
+    
+    if (rating === null || isNaN(parseInt(rating))) {
+        alert("Rating must be a valid integer.");
+    } else {
+        if(rating < 1 || rating > 5){
+            alert("Rating must be in range of 1-5.");
+        }
+    }
+
+    data.append("uid", userId);
+    data.append("bid", bookId);
+    data.append("review", review);
+    data.append("rating", rating);
     
     xhr.onreadystatechange = function (){
         if(this.readyState == 4){
@@ -131,10 +153,32 @@ function addReview(){
     
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     const data = new URLSearchParams();
-    data.append("uid", useridin.value);
-    data.append("bid", bookidin.value);
-    data.append("review", formreview.value);
-    data.append("rating", ratingval.value);
+    
+    const userId = useridin.value;
+    const bookId = bookidin.value;
+    const review = formreview.value;
+    const rating = ratingval.value;
+    
+    if (review === null || typeof review !== "string" || review.trim() === "") {
+        alert("Review must be a non-empty string.");
+    } else {
+        if(review.length > 2048){
+            alert("Review must not be longer than 2048 characters.");
+        }
+    }
+    
+    if (rating === null || isNaN(parseInt(rating))) {
+        alert("Rating must be a valid integer.");
+    } else {
+        if(rating < 1 || rating > 5){
+            alert("Rating must be in range of 1-5.");
+        }
+    }
+
+    data.append("uid", userId);
+    data.append("bid", bookId);
+    data.append("review", review);
+    data.append("rating", rating);
     
     xhr.onreadystatechange = function (){
         if(this.readyState == 4){

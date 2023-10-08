@@ -105,17 +105,78 @@ function editBook(){
     xhr.open("POST", "/api/book/edit", true);    
     
     const data = new FormData();
-    data.append("bid", bookidin.value);
-    data.append("title", titlein.value);
-    data.append("synopsis", synopsisin.value);
-    data.append("username", authorin.value);
-    data.append("genre", genrein.value);
-    data.append("release_date", releasein.value);
-    data.append("word_count", wordin.value);
-    data.append("duration", durationin.value);
-    data.append('image_file', imagein.files[0])
-    data.append('audio_file', audioin.files[0])
-    data.append("graphic_cntn", gcin.checked);
+
+    const bookId = bookidin.value;
+    const title = titlein.value;
+    const synopsis = synopsisin.value;
+    const author = authorin.value;
+    const genre = genrein.value;
+    const releaseDate = releasein.value;
+    const wordCount = wordin.value;
+    const duration = durationin.value;
+    const imageFile = imagein.files[0];
+    const audioFile = audioin.files[0];
+    const graphicContent = gcin.checked;
+    
+    if (typeof title !== "string" || title.trim() === "") {
+        alert("Title must be a non-empty string.");
+    } else {
+        if(title.length > 256){
+            alert("Title must not be longer than 256 characters.");
+        }
+    }
+    
+    if (synopsis === null || typeof synopsis !== "string" || synopsis.trim() === "") {
+        alert("Synopsis must be a non-empty string.");
+    } else {
+        if(synopsis.length > 2048){
+            alert("Synopsis must not be longer than 2048 characters.");
+        }
+    }
+    
+    if (author === null || isNaN(parseInt(author))) {
+        alert("Author ID must be a valid integer.");
+    }
+    
+    if (genre === null || typeof genre !== "string" || genre.trim() === "") {
+        alert("Genre must be a non-empty string.");
+    } else {
+        if(genre.length > 256){
+            alert("Genre must not be longer than 256 characters.");
+        }
+    }
+    
+    if (releaseDate === null || !/^\d{4}-\d{2}-\d{2}$/.test(releaseDate)) {
+        alert("Release Date must be in YYYY-MM-DD format.");
+    }
+    
+    if (wordCount === null || isNaN(parseInt(wordCount))) {
+        alert("Word Count must be a valid integer.");
+    }
+    
+    if (duration === null || isNaN(parseInt(duration))) {
+        alert("Duration must be a valid integer.");
+    }
+    
+    if (imageFile === null) {
+        alert("Image file is required.");
+    }
+    
+    if (audioFile === null) {
+        alert("Audio file is required.");
+    }
+
+    data.append("bid", bookId);
+    data.append("title", title);
+    data.append("synopsis", synopsis);
+    data.append("username", username);
+    data.append("genre", genre);
+    data.append("release_date", releaseDate);
+    data.append("word_count", wordCount);
+    data.append("duration", duration);
+    data.append('image_file', imageFile)
+    data.append('audio_file', audioFile)
+    data.append("graphic_cntn", graphicContent);
     xhr.onreadystatechange = function (){
         if(this.readyState == 4){
             if(this.status == 200){
@@ -151,17 +212,81 @@ function addBook(){
     xhr.open("POST", "/api/book/add", true);    
     
     const data = new FormData();
-    data.append("bid", bookidin.value);
-    data.append("title",titlein.value);
-    data.append("synopsis", synopsisin.value);
-    data.append("username", authorin.value);
-    data.append("genre", genrein.value);
-    data.append("release_date", releasein.value);
-    data.append("word_count", wordin.value);
-    data.append("duration", durationin.value);
-    data.append('image_file', imagein.files[0])
-    data.append('audio_file', audioin.files[0])
-    data.append("graphic_cntn", gcin.checked);
+
+    const title = titlein.value;
+    const synopsis = synopsisin.value;
+    const author = authorin.value;
+    const genre = genrein.value;
+    const releaseDate = releasein.value;
+    const wordCount = wordin.value;
+    const duration = durationin.value;
+    const imageFile = imagein.files[0];
+    const audioFile = audioin.files[0];
+    const graphicContent = gcin.checked;
+    
+    if (typeof title !== "string" || title.trim() === "") {
+        alert("Title must be a non-empty string.");
+    } else {
+        if(title.length > 256){
+            alert("Title must not be longer than 256 characters.");
+        }
+        else{
+            data.append("title", title);
+        }
+    }
+    
+    if (synopsis === null || typeof synopsis !== "string" || synopsis.trim() === "") {
+        alert("Synopsis must be a non-empty string.");
+    } else {
+        if(synopsis.length > 2048){
+            alert("Synopsis must not be longer than 2048 characters.");
+        }
+    }
+    
+    if (author === null || isNaN(parseInt(author))) {
+        alert("Author ID must be a valid integer.");
+    } else {
+        data.append("username", author);
+    }
+    
+    if (genre === null || typeof genre !== "string" || genre.trim() === "") {
+        alert("Genre must be a non-empty string.");
+    } else {
+        if(genre.length > 256){
+            alert("Genre must not be longer than 256 characters.");
+        }
+    }
+    
+    if (releaseDate === null || !/^\d{4}-\d{2}-\d{2}$/.test(releaseDate)) {
+        alert("Release Date must be in YYYY-MM-DD format.");
+    }
+    
+    if (wordCount === null || isNaN(parseInt(wordCount))) {
+        alert("Word Count must be a valid integer.");
+    }
+    
+    if (duration === null || isNaN(parseInt(duration))) {
+        alert("Duration must be a valid integer.");
+    }
+    
+    if (imageFile === null) {
+        alert("Image file is required.");
+    }
+    
+    if (audioFile === null) {
+        alert("Audio file is required.");
+    }
+
+    data.append("title", title);
+    data.append("synopsis", synopsis);
+    data.append("username", username);
+    data.append("genre", genre);
+    data.append("release_date", releaseDate);
+    data.append("word_count", wordCount);
+    data.append("duration", duration);
+    data.append('image_file', imageFile)
+    data.append('audio_file', audioFile)
+    data.append("graphic_cntn", graphicContent);
     
     xhr.onreadystatechange = function (){
         if(this.readyState == 4){
