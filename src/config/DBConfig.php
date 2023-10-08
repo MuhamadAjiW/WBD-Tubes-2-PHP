@@ -41,8 +41,8 @@ class DBConfig{
         word_count      INT             NOT NULL,
         duration        INT             NOT NULL,
         graphic_cntn    BOOLEAN         NOT NULL,
-        image_path      VARCHAR(256)    NOT NULL,
-        audio_path      VARCHAR(256)    NOT NULL,
+        image_path      VARCHAR(256)    UNIQUE NOT NULL,
+        audio_path      VARCHAR(256)    UNIQUE NOT NULL,
         FOREIGN KEY (author_id) REFERENCES users(user_id)
                                             ON DELETE CASCADE
                                             ON UPDATE CASCADE
