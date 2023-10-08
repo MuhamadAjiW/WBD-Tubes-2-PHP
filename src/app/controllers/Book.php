@@ -16,7 +16,7 @@ class Book extends Controller{
     //TODO: Messages and validation
     public function getBook(){
         try{
-            if (isset($_GET['uid'])) {
+            if (isset($_GET['bid'])) {
                 $bookmodel = $this->model('BookModel');
                 
                 $book_id = $_GET['bid'];
@@ -27,7 +27,6 @@ class Book extends Controller{
                         
                         http_response_code(200);
                         echo json_encode($bookData);
-                        echo json_encode(array("message" => "Fetch user success"));
                     } else {
                         http_response_code(404);
                         echo json_encode(array("message" => "Book does not exist"));

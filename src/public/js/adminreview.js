@@ -38,7 +38,7 @@ function deleteReview(user_id, book_id){
                 alert("Review deletion success");
                 location.reload();
             } else {
-                alert("Review deletion failed: " + this.statusText);
+                alert("Review deletion failed: " + this.response);
             }
         }
     };
@@ -96,24 +96,28 @@ function editReview(){
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     const data = new URLSearchParams();
 
-    const userId = useridin.value;
-    const bookId = bookidin.value;
-    const review = formreview.value;
-    const rating = ratingval.value;
+    let userId = useridin.value;
+    let bookId = bookidin.value;
+    let review = formreview.value;
+    let rating = ratingval.value;
     
     if (review === null || typeof review !== "string" || review.trim() === "") {
         alert("Review must be a non-empty string.");
+        return
     } else {
         if(review.length > 2048){
             alert("Review must not be longer than 2048 characters.");
+            return
         }
     }
     
     if (rating === null || isNaN(parseInt(rating))) {
         alert("Rating must be a valid integer.");
+        return
     } else {
         if(rating < 1 || rating > 5){
             alert("Rating must be in range of 1-5.");
+            return
         }
     }
 
@@ -129,7 +133,7 @@ function editReview(){
                 location.reload();
             }
             else{
-                alert("Review edition failed: " + this.statusText);
+                alert("Review edition failed: " + this.response);
             }
         }
     }
@@ -153,25 +157,29 @@ function addReview(){
     
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     const data = new URLSearchParams();
-    
-    const userId = useridin.value;
-    const bookId = bookidin.value;
-    const review = formreview.value;
-    const rating = ratingval.value;
+
+    let userId = useridin.value;
+    let bookId = bookidin.value;
+    let review = formreview.value;
+    let rating = ratingval.value;
     
     if (review === null || typeof review !== "string" || review.trim() === "") {
         alert("Review must be a non-empty string.");
+        return
     } else {
         if(review.length > 2048){
             alert("Review must not be longer than 2048 characters.");
+            return
         }
     }
     
     if (rating === null || isNaN(parseInt(rating))) {
         alert("Rating must be a valid integer.");
+        return
     } else {
         if(rating < 1 || rating > 5){
             alert("Rating must be in range of 1-5.");
+            return
         }
     }
 
@@ -187,7 +195,7 @@ function addReview(){
                 location.reload();
             }
             else{
-                alert("Review addition failed: " + this.statusText);
+                alert("Review addition failed: " + this.response);
             }
         }
     }

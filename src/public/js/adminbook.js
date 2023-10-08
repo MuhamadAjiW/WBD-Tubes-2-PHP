@@ -38,7 +38,7 @@ function deleteBook(book_id){
                 alert("Book deletion success");
                 location.reload();
             } else {
-                alert("Book deletion failed: " + this.statusText);
+                alert("Book deletion failed: " + this.response);
             }
         }
     };
@@ -106,64 +106,76 @@ function editBook(){
     
     const data = new FormData();
 
-    const bookId = bookidin.value;
-    const title = titlein.value;
-    const synopsis = synopsisin.value;
-    const author = authorin.value;
-    const genre = genrein.value;
-    const releaseDate = releasein.value;
-    const wordCount = wordin.value;
-    const duration = durationin.value;
-    const imageFile = imagein.files[0];
-    const audioFile = audioin.files[0];
-    const graphicContent = gcin.checked;
+    let bookId = bookidin.value;
+    let title = titlein.value;
+    let synopsis = synopsisin.value;
+    let username = authorin.value;
+    let genre = genrein.value;
+    let releaseDate = releasein.value;
+    let wordCount = wordin.value;
+    let duration = durationin.value;
+    let imageFile = imagein.files[0];
+    let audioFile = audioin.files[0];
+    let graphicContent = gcin.checked;
     
     if (typeof title !== "string" || title.trim() === "") {
         alert("Title must be a non-empty string.");
+        return
     } else {
         if(title.length > 256){
             alert("Title must not be longer than 256 characters.");
+            return
         }
     }
     
     if (synopsis === null || typeof synopsis !== "string" || synopsis.trim() === "") {
         alert("Synopsis must be a non-empty string.");
+        return
     } else {
         if(synopsis.length > 2048){
             alert("Synopsis must not be longer than 2048 characters.");
+            return
         }
     }
     
-    if (author === null || isNaN(parseInt(author))) {
-        alert("Author ID must be a valid integer.");
+    if (username === null || typeof username !== "string" || username.trim() === "") {
+        alert("Author username must be a non-empty string.");
+        return
     }
     
     if (genre === null || typeof genre !== "string" || genre.trim() === "") {
         alert("Genre must be a non-empty string.");
+        return
     } else {
         if(genre.length > 256){
             alert("Genre must not be longer than 256 characters.");
+            return
         }
     }
     
     if (releaseDate === null || !/^\d{4}-\d{2}-\d{2}$/.test(releaseDate)) {
         alert("Release Date must be in YYYY-MM-DD format.");
+        return
     }
     
     if (wordCount === null || isNaN(parseInt(wordCount))) {
         alert("Word Count must be a valid integer.");
+        return
     }
     
     if (duration === null || isNaN(parseInt(duration))) {
         alert("Duration must be a valid integer.");
+        return
     }
     
     if (imageFile === null) {
         alert("Image file is required.");
+        return
     }
     
     if (audioFile === null) {
         alert("Audio file is required.");
+        return
     }
 
     data.append("bid", bookId);
@@ -184,7 +196,7 @@ function editBook(){
                 location.reload();
             }
             else{
-                alert("Book edition failed: " + this.statusText);
+                alert("Book edition failed: " + this.response);
             }
         }
     }
@@ -213,22 +225,24 @@ function addBook(){
     
     const data = new FormData();
 
-    const title = titlein.value;
-    const synopsis = synopsisin.value;
-    const author = authorin.value;
-    const genre = genrein.value;
-    const releaseDate = releasein.value;
-    const wordCount = wordin.value;
-    const duration = durationin.value;
-    const imageFile = imagein.files[0];
-    const audioFile = audioin.files[0];
-    const graphicContent = gcin.checked;
+    let title = titlein.value;
+    let synopsis = synopsisin.value;
+    let username = authorin.value;
+    let genre = genrein.value;
+    let releaseDate = releasein.value;
+    let wordCount = wordin.value;
+    let duration = durationin.value;
+    let imageFile = imagein.files[0];
+    let audioFile = audioin.files[0];
+    let graphicContent = gcin.checked;
     
     if (typeof title !== "string" || title.trim() === "") {
         alert("Title must be a non-empty string.");
+        return
     } else {
         if(title.length > 256){
             alert("Title must not be longer than 256 characters.");
+            return
         }
         else{
             data.append("title", title);
@@ -237,44 +251,52 @@ function addBook(){
     
     if (synopsis === null || typeof synopsis !== "string" || synopsis.trim() === "") {
         alert("Synopsis must be a non-empty string.");
+        return
     } else {
         if(synopsis.length > 2048){
             alert("Synopsis must not be longer than 2048 characters.");
+            return
         }
     }
     
-    if (author === null || isNaN(parseInt(author))) {
-        alert("Author ID must be a valid integer.");
-    } else {
-        data.append("username", author);
+    if (username === null || typeof username !== "string" || username.trim() === "") {
+        alert("Author username must be a non-empty string.");
+        return
     }
     
     if (genre === null || typeof genre !== "string" || genre.trim() === "") {
         alert("Genre must be a non-empty string.");
+        return
     } else {
         if(genre.length > 256){
             alert("Genre must not be longer than 256 characters.");
+            return
         }
     }
     
     if (releaseDate === null || !/^\d{4}-\d{2}-\d{2}$/.test(releaseDate)) {
         alert("Release Date must be in YYYY-MM-DD format.");
+        return
     }
     
     if (wordCount === null || isNaN(parseInt(wordCount))) {
         alert("Word Count must be a valid integer.");
+        return
     }
     
     if (duration === null || isNaN(parseInt(duration))) {
         alert("Duration must be a valid integer.");
+        return
     }
     
     if (imageFile === null) {
         alert("Image file is required.");
+        return
     }
     
     if (audioFile === null) {
         alert("Audio file is required.");
+        return
     }
 
     data.append("title", title);
@@ -295,7 +317,7 @@ function addBook(){
                 location.reload();
             }
             else{
-                alert("Book addition failed: " + this.statusText);
+                alert("Book addition failed: " + this.response);
             }
         }
     }

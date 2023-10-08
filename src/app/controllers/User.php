@@ -29,7 +29,6 @@ class User extends Controller{
                         
                         http_response_code(200);
                         echo json_encode($userData);
-                        echo json_encode(array("message" => "Fetch user success"));
                         exit;
                     } else {
                         http_response_code(404);
@@ -116,15 +115,19 @@ class User extends Controller{
             $name = $vars['name'];
             $bio = $vars['bio'];
             $admin = $vars['admin'];
-            if (isset($vars['uid']) && isset($vars['name']) && isset($vars['username']) && isset($vars['password']) && isset($vars['email']) && isset($vars['bio']) && isset($vars['admin'])) {
+            $changeUname = $vars['changeUname'];
+
+            if (isset($vars['uid']) && isset($vars['name']) && isset($vars['username']) && isset($vars['password']) && isset($vars['email']) && isset($vars['bio']) && isset($vars['admin']) && isset($vars['changeUname'])) {
                 $usermodel = $this->model('UserModel');
 
-                $usernameexist = $usermodel->checkUsernameExists($username);
-
-                if (count($usernameexist) > 0) {
-                    http_response_code(409);
-                    echo json_encode(array("message" => "Username already taken"));
-                    exit;
+                if ($changeUname == 'true'){
+                    $usernameexist = $usermodel->checkUsernameExists($username);
+        
+                    if (count($usernameexist) > 0) {
+                        http_response_code(409);
+                        echo json_encode(array("message" => "Username already taken"));
+                        exit;
+                    }
                 }
                 
                 try{

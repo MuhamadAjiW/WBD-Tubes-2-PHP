@@ -46,7 +46,6 @@ class Review extends Controller{
                         
                         http_response_code(200);
                         echo json_encode($reviewData);
-                        echo json_encode(array("message" => "Fetch review success"));
                         exit;
                     } else {
                         http_response_code(404);

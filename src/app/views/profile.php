@@ -25,15 +25,15 @@
       <div class="input-container">
         <label for="email">Email </label>
         <div class="input-bar">
-          <input type="email" id="email-input" name="email-input" class="input" value=<?php echo $email;?> />
+          <input type="email" id="email-input" name="email-input" class="input" value="<?php echo $email;?>" />
         </div>
         <label for="username">Username </label>
         <div class="input-bar">
-          <input type="name" id="username-input" name="username-input" class="input" value=<?php echo $username;?> />
+          <input type="name" id="username-input" name="username-input" class="input" value="<?php echo $username;?>" />
         </div>
         <label for="name">Name </label>
         <div class="input-bar">
-          <input type="name" id="name-input" name="name-input" class="input" value=<?php echo $name;?> />
+          <input type="name" id="name-input" name="name-input" class="input" value="<?php echo $name;?>" />
         </div>
         <label for="bio">Bio </label>
         <textarea id="bio-input" type="text" class="long-form" placeholder="Enter Bio"><?php echo $bio;?></textarea>
