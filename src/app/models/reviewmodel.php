@@ -135,6 +135,8 @@ class ReviewModel{
         $this->database->bind('reviewtext', $reviewtext);
         $this->database->bind('rating', $rating);
         $this->database->execute();
+
+        return $this->database->rowCount();
     }
 
     public function updateReviewText($book_id, $user_id, $reviewtext) {
@@ -145,6 +147,8 @@ class ReviewModel{
         $this->database->bind('user_id', $user_id);
         $this->database->bind('reviewtext', $reviewtext);
         $this->database->execute();
+
+        return $this->database->rowCount();
     }
 
     public function updateReviewRating($book_id, $user_id, $rating) {
@@ -155,6 +159,8 @@ class ReviewModel{
         $this->database->bind('user_id', $user_id);
         $this->database->bind('rating', $rating);
         $this->database->execute();
+
+        return $this->database->rowCount();
     }
 
     public function deleteReview($book_id, $user_id) {

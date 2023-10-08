@@ -17,11 +17,11 @@ class Review extends Controller{
     //TODO: Messages and validation
     public function getReview(){
         try{
-            if (isset($_POST['bid']) && isset($_POST['uid'])) {
-                $reviewmodel = $this->model('ReviewModel');
-                $usermodel = $this->model("UserModel");
-                $bookmodel = $this->model("BookModel");    
-                
+            $reviewmodel = $this->model('ReviewModel');
+            $usermodel = $this->model("UserModel");
+            $bookmodel = $this->model("BookModel");    
+            
+            if (isset($_GET['bid']) && isset($_GET['uid'])) {
                 $user_id = $_GET['uid'];
                 $book_id = $_GET['bid'];
 
@@ -73,18 +73,18 @@ class Review extends Controller{
 
     public function addReview(){
         try{
-            if (isset($_POST['bid']) && isset($_POST['uid']) && isset($_POST['rating']) && isset($_POST['review'])) {
             
-                $reviewmodel = $this->model('ReviewModel');
-                $usermodel = $this->model("UserModel");
-                $bookmodel = $this->model("BookModel");    
+            $reviewmodel = $this->model('ReviewModel');
+            $usermodel = $this->model("UserModel");
+            $bookmodel = $this->model("BookModel");    
                 
-                parse_str(file_get_contents("php://input"), $vars);
-    
-                $user_id = $vars['uid'];
-                $book_id = $vars['bid'];
-                $rating = $vars['rating'];
-                $review = $vars['review'];
+            parse_str(file_get_contents("php://input"), $vars);
+            
+            $user_id = $vars['uid'];
+            $book_id = $vars['bid'];
+            $rating = $vars['rating'];
+            $review = $vars['review'];
+            if (isset($vars['bid']) && isset($vars['uid']) && isset($vars['rating']) && isset($vars['review'])) {
 
                 $bookexist = $bookmodel->fetchBookByID($book_id);
                 $userexist = $usermodel->fetchUserByID($user_id);
@@ -134,17 +134,17 @@ class Review extends Controller{
 
     public function editReview(){
         try{
-            if (isset($_POST['bid']) && isset($_POST['uid']) && isset($_POST['rating']) && isset($_POST['review'])) {
-                $reviewmodel = $this->model('ReviewModel');
-                $usermodel = $this->model("UserModel");
-                $bookmodel = $this->model("BookModel");
-        
-                parse_str(file_get_contents("php://input"), $vars);
-    
-                $user_id = $vars['uid'];
-                $book_id = $vars['bid'];
-                $rating = $vars['rating'];
-                $review = $vars['review'];
+            $reviewmodel = $this->model('ReviewModel');
+            $usermodel = $this->model("UserModel");
+            $bookmodel = $this->model("BookModel");
+            
+            parse_str(file_get_contents("php://input"), $vars);
+            
+            $user_id = $vars['uid'];
+            $book_id = $vars['bid'];
+            $rating = $vars['rating'];
+            $review = $vars['review'];
+            if (isset($vars['bid']) && isset($vars['uid']) && isset($vars['rating']) && isset($vars['review'])) {
     
                 $bookexist = $bookmodel->fetchBookByID($book_id);
                 $userexist = $usermodel->fetchUserByID($user_id);
@@ -196,13 +196,13 @@ class Review extends Controller{
 
     public function deleteReview(){
         try{
-            if (isset($_POST['uid']) && isset($_POST['bid'])) {
-                $reviewmodel = $this->model('ReviewModel');
-                $usermodel = $this->model("UserModel");
-                $bookmodel = $this->model("BookModel");
-        
-                parse_str(file_get_contents("php://input"), $vars);
-    
+            $reviewmodel = $this->model('ReviewModel');
+            $usermodel = $this->model("UserModel");
+            $bookmodel = $this->model("BookModel");
+            
+            parse_str(file_get_contents("php://input"), $vars);
+            
+            if (isset($vars['uid']) && isset($vars['bid'])) {
                 $user_id = $vars['uid'];
                 $book_id = $vars['bid'];
 

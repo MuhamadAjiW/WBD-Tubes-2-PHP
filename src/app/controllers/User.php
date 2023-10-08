@@ -43,35 +43,59 @@ class User extends Controller{
     public function addUser(){
         try{
             $usermodel = $this->model('UserModel');
-            
             parse_str(file_get_contents("php://input"), $vars);
-
+            
             $email = $vars['email'];
             $username = $vars['username'];
             $password = $vars['password'];
             $name = $vars['name'];
             $bio = $vars['bio'];
             $admin = $vars['admin'];
+            if (isset($vars['name']) && isset($vars['username']) && isset($vars['password']) && isset($vars['email']) && isset($vars['bio']) && isset($vars['admin'])) {
 
-            try{        
-                $usermodel->addUser($email, $username, $password, $name, $bio, $admin);
-            } catch(Exception){
+                $usernameexist = $usermodel->checkUsernameExists($username);
+
+                if (count($usernameexist) > 0) {
+                    http_response_code(409);
+                    echo json_encode(array("message" => "Username already taken"));
+                    exit;
+                }
+
+                try{        
+                    $rows = $usermodel->addUser($email, $username, $password, $name, $bio, $admin);
+                    if($rows){
+                        http_response_code(200);
+                        echo json_encode(array("message" => "Add user success"));
+                        exit;
+                    }
+                    else{
+                        http_response_code(500);
+                        echo json_encode(array("message" => "Add user failed"));
+                        exit;
+                    }
+                } catch(Exception){
+                    http_response_code(500);
+                    echo json_encode(array("message" => "Add user failed"));
+                    exit;
+                }
+            }
+            else{
                 http_response_code(400);
+                echo json_encode(array("message" => "Bad request"));
                 exit;
             }
-
-            http_response_code(200);
         } catch (Exception){
             http_response_code(500);
+            echo json_encode(array("message" => "Add user failed"));
+            exit;
         }
     }
 
     public function editUser(){
         try{
             $usermodel = $this->model('UserModel');
-    
             parse_str(file_get_contents("php://input"), $vars);
-
+            
             $user_id = $vars['uid'];
             $email = $vars['email'];
             $username = $vars['username'];
@@ -79,17 +103,44 @@ class User extends Controller{
             $name = $vars['name'];
             $bio = $vars['bio'];
             $admin = $vars['admin'];
+            if (isset($vars['name']) && isset($vars['username']) && isset($vars['password']) && isset($vars['email']) && isset($vars['bio']) && isset($vars['admin'])) {
 
-            try{
-                $usermodel->updateUserData($user_id, $name, $username, $email, $password, $bio, $admin);
-            } catch(Exception){
+                $usernameexist = $usermodel->checkUsernameExists($username);
+
+                if (count($usernameexist) > 0) {
+                    http_response_code(409);
+                    echo json_encode(array("message" => "Username already taken"));
+                    exit;
+                }
+                
+                try{
+                    $rows = $usermodel->updateUserData($user_id, $name, $username, $email, $password, $bio, $admin);
+
+                    if($rows){
+                        http_response_code(200);
+                        echo json_encode(array("message" => "Edit user success"));
+                        exit;
+                    }
+                    else{
+                        http_response_code(500);
+                        echo json_encode(array("message" => "Edit user failed"));
+                        exit;
+                    }
+                } catch(Exception){
+                    http_response_code(500);
+                    echo json_encode(array("message" => "Edit user failed"));
+                    exit;
+                }
+            }
+            else{
                 http_response_code(400);
+                echo json_encode(array("message" => "Bad request"));
                 exit;
             }
-
-            http_response_code(200);
         } catch (Exception){
             http_response_code(500);
+            echo json_encode(array("message" => "Edit user failed"));
+            exit;
         }
     }
 
@@ -99,18 +150,35 @@ class User extends Controller{
     
             parse_str(file_get_contents("php://input"), $vars);
 
-            $user_id = $vars['uid'];
+            if (isset($vars['uid'])) {
+                $user_id = $vars['uid'];
 
-            try{
-                $usermodel->deleteUserByID($user_id);
-            } catch(Exception){
-                http_response_code(400);
-                exit;
+                $userData = $usermodel->fetchUserByID($user_id);
+
+                if (count($userData) > 0) {
+                    try{
+                        $rows = $usermodel->deleteUserByID($user_id);
+                        if($rows){
+                            http_response_code(200);
+                            echo json_encode(array("message" => "Edit user success"));
+                            exit;   
+                        }
+                    } catch(Exception){
+                        http_response_code(500);
+                        echo json_encode(array("message" => "Edit user failed"));
+                        exit;
+                    }
+                }
+                else{
+                    http_response_code(404);
+                    echo json_encode(array("message" => "User does not exist"));
+                    exit;
+                }
             }
-
-            http_response_code(200);
         } catch (Exception){
             http_response_code(500);
+            echo json_encode(array("message" => "Delete user failed"));
+            exit;
         }
     }
 }

@@ -260,6 +260,8 @@ class BookModel{
         $this->database->bind('synopsis', $synopsis);
         $this->database->bind('book_id', $book_id);
         $this->database->execute();
+
+        return $this->database->rowCount();
     }
     public function updateBookAuthor($book_id, $author_id){
         $query = 'UPDATE books SET author_id = :author_id WHERE book_id = :book_id';
@@ -268,6 +270,8 @@ class BookModel{
         $this->database->bind('author_id', $author_id);
         $this->database->bind('book_id', $book_id);
         $this->database->execute();
+
+        return $this->database->rowCount();
     }
     public function updateBookGenre($book_id, $genre){
         $query = 'UPDATE books SET genre = :genre WHERE book_id = :book_id';
@@ -276,6 +280,8 @@ class BookModel{
         $this->database->bind('genre', $genre);
         $this->database->bind('book_id', $book_id);
         $this->database->execute();
+
+        return $this->database->rowCount();
     }
     public function updateBookRelease($book_id, $release_date){
         $query = 'UPDATE books SET release_date = :release_date WHERE book_id = :book_id';
@@ -284,6 +290,8 @@ class BookModel{
         $this->database->bind('release_date', $release_date);
         $this->database->bind('book_id', $book_id);
         $this->database->execute();
+
+        return $this->database->rowCount();
     }
     public function updateBookWord($book_id, $word_count){
         $query = 'UPDATE books SET word_count = :word_count WHERE book_id = :book_id';
@@ -292,6 +300,8 @@ class BookModel{
         $this->database->bind('word_count', $word_count);
         $this->database->bind('book_id', $book_id);
         $this->database->execute();
+
+        return $this->database->rowCount();
     }
     public function updateBookDuration($book_id, $duration){
         $query = 'UPDATE books SET duration = :duration WHERE book_id = :book_id';
@@ -300,6 +310,8 @@ class BookModel{
         $this->database->bind('duration', $duration);
         $this->database->bind('book_id', $book_id);
         $this->database->execute();
+
+        return $this->database->rowCount();
     }
     public function updateBookGraphic($book_id, $graphic_cntn){
         $query = 'UPDATE books SET graphic_cntn = :graphic_cntn WHERE book_id = :book_id';
@@ -308,6 +320,8 @@ class BookModel{
         $this->database->bind('graphic_cntn', $graphic_cntn);
         $this->database->bind('book_id', $book_id);
         $this->database->execute();
+
+        return $this->database->rowCount();
     }
     public function updateBookImgPath($book_id, $image_path){
         $query = 'UPDATE books SET image_path = :image_path WHERE book_id = :book_id';
@@ -316,6 +330,8 @@ class BookModel{
         $this->database->bind('image_path', $image_path);
         $this->database->bind('book_id', $book_id);
         $this->database->execute();
+
+        return $this->database->rowCount();
     }
     public function updateBookAudiopath($book_id, $audio_path){
         $query = 'UPDATE books SET audio_path = :audio_path WHERE book_id = :book_id';
@@ -324,6 +340,8 @@ class BookModel{
         $this->database->bind('audio_path', $audio_path);
         $this->database->bind('book_id', $book_id);
         $this->database->execute();
+
+        return $this->database->rowCount();
     }
 
     public function deleteBookById($book_id){
