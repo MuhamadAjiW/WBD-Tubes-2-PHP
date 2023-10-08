@@ -17,97 +17,231 @@ class Review extends Controller{
     //TODO: Messages and validation
     public function getReview(){
         try{
-            $reviewmodel = $this->model('ReviewModel');
-            
-            $user_id = $_GET['uid'];
-            $book_id = $_GET['bid'];
+            if (isset($_POST['bid']) && isset($_POST['uid'])) {
+                $reviewmodel = $this->model('ReviewModel');
+                $usermodel = $this->model("UserModel");
+                $bookmodel = $this->model("BookModel");    
+                
+                $user_id = $_GET['uid'];
+                $book_id = $_GET['bid'];
 
-            try{                
-                $reviewData = $reviewmodel->fetchReviewByBookAndUserID($book_id, $user_id);
-                if (!empty($reviewData)) {
-                    header('Content-Type: application/json');
-                    echo json_encode($reviewData);
+                $bookexist = $bookmodel->fetchBookByID($book_id);
+                $userexist = $usermodel->fetchUserByID($user_id);
 
-                    http_response_code(200);
-                } else {
-                    http_response_code(404);
+                if(count($bookexist) < 1){
+                    http_response_code(409);
+                    echo json_encode(array("message" => "Book does not exist"));
+                    exit;
                 }
-            } catch(Exception){
+                if(count($userexist) < 1){
+                    http_response_code(409);
+                    echo json_encode(array("message" => "User does not exist"));
+                    exit;
+                }
+    
+                try{                
+                    $reviewData = $reviewmodel->fetchReviewByBookAndUserID($book_id, $user_id);
+                    if (!empty($reviewData)) {
+                        header('Content-Type: application/json');
+                        echo json_encode($reviewData);
+    
+                        http_response_code(200);
+                        echo json_encode(array("message" => "Fetch review success"));
+                        exit;
+                    } else {
+                        http_response_code(404);
+                        echo json_encode(array("message" => "Review does not exist"));
+                        exit;
+                    }
+                } catch(Exception){
+                    http_response_code(500);
+                    echo json_encode(array("message" => "Fetch review failed"));
+                    exit;
+                }
+            }
+            else{
                 http_response_code(400);
-                exit;
-            }            
+                echo json_encode(array("message" => "Bad request"));
+                exit;    
+            }
         } catch (Exception){
             http_response_code(500);
+            echo json_encode(array("message" => "Fetch review failed"));
+            exit;
         }
     }
 
     public function addReview(){
         try{
-            $reviewmodel = $this->model('ReviewModel');
+            if (isset($_POST['bid']) && isset($_POST['uid']) && isset($_POST['rating']) && isset($_POST['review'])) {
             
-            parse_str(file_get_contents("php://input"), $vars);
+                $reviewmodel = $this->model('ReviewModel');
+                $usermodel = $this->model("UserModel");
+                $bookmodel = $this->model("BookModel");    
+                
+                parse_str(file_get_contents("php://input"), $vars);
+    
+                $user_id = $vars['uid'];
+                $book_id = $vars['bid'];
+                $rating = $vars['rating'];
+                $review = $vars['review'];
 
-            $user_id = $vars['uid'];
-            $book_id = $vars['bid'];
-            $rating = $vars['rating'];
-            $review = $vars['review'];
+                $bookexist = $bookmodel->fetchBookByID($book_id);
+                $userexist = $usermodel->fetchUserByID($user_id);
 
-            try{                
-                $reviewmodel->addReview($book_id, $user_id, $rating, $review);
-            } catch(Exception){
+                if(count($bookexist) < 1){
+                    http_response_code(409);
+                    echo json_encode(array("message" => "Book doesn't exist"));
+                    exit;
+                }
+                if(count($userexist) < 1){
+                    http_response_code(409);
+                    echo json_encode(array("message" => "User doesn't exist"));
+                    exit;
+                }
+                
+                try{                
+                    $rows = $reviewmodel->addReview($book_id, $user_id, $rating, $review);
+
+                    if ($rows){
+                        http_response_code(200);
+                        echo json_encode(array("message" => "Add review success", "redirect" => "/admin/reviews"));
+                        exit;
+                    }
+                    else{
+                        http_response_code(500);
+                        echo json_encode(array("message" => "Add review failed"));
+                        exit;
+                    }
+
+                } catch(Exception){
+                    http_response_code(500);
+                    echo json_encode(array("message" => "Add review failed"));
+                    exit;
+                }
+            }
+            else{                
                 http_response_code(400);
+                echo json_encode(array("message" => "Bad request"));
                 exit;
             }
-
-            http_response_code(200);
         } catch (Exception){
             http_response_code(500);
+            echo json_encode(array("message" => "Add review failed"));
+            exit;
         }
     }
 
     public function editReview(){
         try{
-            $reviewmodel = $this->model('ReviewModel');
+            if (isset($_POST['bid']) && isset($_POST['uid']) && isset($_POST['rating']) && isset($_POST['review'])) {
+                $reviewmodel = $this->model('ReviewModel');
+                $usermodel = $this->model("UserModel");
+                $bookmodel = $this->model("BookModel");
+        
+                parse_str(file_get_contents("php://input"), $vars);
     
-            parse_str(file_get_contents("php://input"), $vars);
+                $user_id = $vars['uid'];
+                $book_id = $vars['bid'];
+                $rating = $vars['rating'];
+                $review = $vars['review'];
+    
+                $bookexist = $bookmodel->fetchBookByID($book_id);
+                $userexist = $usermodel->fetchUserByID($user_id);
+                $reviewexist = $reviewmodel->fetchReviewByBookAndUserID($book_id, $user_id);
+    
+                if(count($bookexist) < 1){
+                    http_response_code(409);
+                    echo json_encode(array("message" => "Book doesn't exist"));
+                    exit;
+                }
+                if(count($userexist) < 1){
+                    http_response_code(409);
+                    echo json_encode(array("message" => "User doesn't exist"));
+                    exit;
+                }
+                if(count($reviewexist) < 1){
+                    http_response_code(409);
+                    echo json_encode(array("message" => "Review doesn't exist"));
+                    exit;
+                }
+    
+                try{
+                    $rows = $reviewmodel->updateReview($book_id, $user_id, $review, $rating);
 
-            $user_id = $vars['uid'];
-            $book_id = $vars['bid'];
-            $rating = $vars['rating'];
-            $review = $vars['review'];
-
-            try{
-                $reviewmodel->updateReview($book_id, $user_id, $review, $rating);
-            } catch(Exception){
-                http_response_code(400);
-                exit;
+                    if ($rows){
+                        http_response_code(200);
+                        echo json_encode(array("message" => "Edit review success"));
+                        exit;
+                    }
+                    else{
+                        http_response_code(500);
+                        echo json_encode(array("message" => "Edit review failed"));
+                        exit;    
+                    }
+                } catch(Exception){
+                    http_response_code(500);
+                    echo json_encode(array("message" => "Edit review failed"));
+                    exit;
+                }
+    
             }
 
-            http_response_code(200);
         } catch (Exception){
             http_response_code(500);
+            echo json_encode(array("message" => "Edit review failed"));
+            exit;
         }
     }
 
     public function deleteReview(){
         try{
-            $reviewmodel = $this->model('ReviewModel');
+            if (isset($_POST['uid']) && isset($_POST['bid'])) {
+                $reviewmodel = $this->model('ReviewModel');
+                $usermodel = $this->model("UserModel");
+                $bookmodel = $this->model("BookModel");
+        
+                parse_str(file_get_contents("php://input"), $vars);
     
-            parse_str(file_get_contents("php://input"), $vars);
+                $user_id = $vars['uid'];
+                $book_id = $vars['bid'];
 
-            $user_id = $vars['uid'];
-            $book_id = $vars['bid'];
+                $bookexist = $bookmodel->fetchBookByID($book_id);
+                $userexist = $usermodel->fetchUserByID($user_id);
+                $reviewexist = $reviewmodel->fetchReviewByBookAndUserID($book_id, $user_id);
+    
+                if(count($bookexist) < 1){
+                    http_response_code(409);
+                    echo json_encode(array("message" => "Book doesn't exist"));
+                    exit;
+                }
+                if(count($userexist) < 1){
+                    http_response_code(409);
+                    echo json_encode(array("message" => "User doesn't exist"));
+                    exit;
+                }
+                if(count($reviewexist) < 1){
+                    http_response_code(409);
+                    echo json_encode(array("message" => "Review doesn't exist"));
+                    exit;
+                }
+    
+                try{
+                    $reviewmodel->deleteReview($book_id, $user_id);
 
-            try{
-                $reviewmodel->deleteReview($book_id, $user_id);
-            } catch(Exception){
-                http_response_code(400);
-                exit;
+                    http_response_code(200);
+                    echo json_encode(array("message" => "Delete review success"));
+                    exit;
+                } catch(Exception){
+                    http_response_code(500);
+                    echo json_encode(array("message" => "Delete review failed"));
+                    exit;
+                }
             }
-
-            http_response_code(200);
         } catch (Exception){
             http_response_code(500);
+            echo json_encode(array("message" => "Delete review failed"));
+            exit;
         }
     }
 }
