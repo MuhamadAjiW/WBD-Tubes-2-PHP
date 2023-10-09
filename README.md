@@ -84,7 +84,7 @@
 
 ![Add Review Admin](./doc/screenshots/AddReviewAdmin.png)
 ![Add Review User](./doc/screenshots/AddReviewUser.png)
-![Edit Review](./doc/screenshots/screenshots/.png)
+![Edit Review](./doc/screenshots/screenshots/EditReview.png)
 
 ### Edit Audiobook
 
@@ -101,7 +101,7 @@
 
 ### Delete Audiobook
 
-![Delete Audiobook](./doc/screenshots/DeleteAudioBook.png)
+![Delete Audiobook](./doc/screenshots/DeleteAudiobook.png)
 
 ### List-List User
 
