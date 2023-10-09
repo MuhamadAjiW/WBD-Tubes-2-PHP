@@ -32,6 +32,9 @@
 13. Navbar
 14. Pagination
 15. List-List User
+16. Add User
+17. Delete User
+18. Edit Info User
 
 # Cara instalasi
 
@@ -106,8 +109,17 @@
 ### List-List User
 
 ![List Semua User](./doc/screenshots/ListUser1.png)
-![List Semua User](./doc/screenshots/ListUser2.png)
-![Hapus User](./doc/screenshots/HapusUser.png)
+
+### Add User
+
+![Add User](./doc/screenshots/AddUser.png)
+
+### Delete User
+
+![Delete User](./doc/screenshots/HapusUser.png)
+
+### Edit Info User
+
 ![Edit User](./doc/screenshots/EditUser.png)
 
 ### Error
@@ -131,9 +143,12 @@
 10. Navbar: 13521095
 11. Pagination: 13521095
 12. List-List User: 13521127
-13. Error : 13521095
-14. Responsive Adjustments: 13521095
-15. Global Styling: 13521095
+13. Add User: 13521127
+14. Delete User: 13521127
+15. Edit Info User: 13521127
+16. Error : 13521095
+17. Responsive Adjustments: 13521095
+18. Global Styling: 13521095
 
 ## Backend / Server-side
 
@@ -149,4 +164,7 @@
 10. Navbar: 13521095
 11. Pagination: 13521095
 12. List-List User: 13521127
-13. Initial Project,Routing, Database & Docker Setup: 13521095
+13. Add User: 13521127
+14. Delete User: 13521127
+15. Edit Info User: 13521127
+16. Initial Project,Routing, Database & Docker Setup: 13521095
