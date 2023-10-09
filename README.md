@@ -9,6 +9,7 @@
 - [Cara Instalasi](#cara-instalasi)
 - [Cara Menjalankan _Server_](#cara-menjalankan-server)
 - [Screenshot Tampilan Aplikasi](#screenshot-tampilan-aplikasi)
+- [Screenshot Google Lighthouse](#screenshot-google-lighthouse)
 - [Pembagian Tugas](#pembagian-tugas)
 
 ## Deskripsi Aplikasi _Web_
@@ -126,6 +127,40 @@
 
 ![Error 404](./doc/screenshots/Error404.png)
 ![Error 501](./doc/screenshots/Error501.png)
+
+# Screenshot Google Lighthouse
+
+### Page Login
+
+![Page Login](./doc/lighthouse/loginpage.png)
+
+### Page Register
+
+![Page Register](./doc/lighthouse/registerpage.png)
+
+### Page Audiobook
+
+![Page Audiobool](./doc/lighthouse/bookspage.png)
+
+### Page Details
+
+![Page Details](./doc/lighthouse/detailspage.png)
+
+### Home
+
+![Home](./doc/lighthouse/homepng.png)
+
+### Page Profile
+
+![Page Profile](./doc/lighthouse/profilepage.png)
+
+### Page Reviews
+
+![Page Reviews](./doc/lighthouse/reviewspage.png)
+
+### Page User
+
+![Page User](./doc/lighthouse/userpage.png)
 
 # Pembagian tugas
 
