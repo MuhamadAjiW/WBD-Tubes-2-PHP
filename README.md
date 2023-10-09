@@ -160,7 +160,7 @@
 
 ### Page User
 
-![Page User](./doc/lighthouse/userpage.png)
+![Page User](./doc/lighthouse/userspage.png)
 
 # Pembagian tugas
 
