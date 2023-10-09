@@ -50,7 +50,7 @@
 
 ### Login
 
-![Login Page](././screenshots/Login.png)
+![Login Page](../../screenshots/Login.png)
 
 ### Register
 
