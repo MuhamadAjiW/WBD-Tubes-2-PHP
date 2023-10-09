@@ -8,15 +8,14 @@ use config\AppConfig;
     <title>Book details</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <?php echo strip_tags($REL_DATA, '<link>');?>
 </head>
 <body class="gen-body">
     <?php if(file_exists($TOP_BAR)) include_once($TOP_BAR);?>
     <div class="main-content first">
-        <img class="blur-bg" src="<?=$book_data['image_path'];?>">
+        <img class="blur-bg" src="<?=$book_data['image_path'];?>" alt="background with the blurred book cover">
         <header class="gen-header cluster-h book-header">
-            <img class="book-cover-image" src="<?=$book_data['image_path'];?>">
+            <img class="book-cover-image" src="<?=$book_data['image_path'];?>" alt="picture of the book cover">
             <div class="book-cluster">
                 <p><?=$book_data['genre'];?></p>
                 <h1><?=$book_data['title'];?></h1>
@@ -99,7 +98,7 @@ use config\AppConfig;
     
     <?php include "../app/components/ConfirmModal.php"?>
     
-    <script src="/public/js/bookdetail.js"></script>
+    <script defer type="text/javascript" src="/public/js/bookdetail.js"></script>
 </body>
 
 

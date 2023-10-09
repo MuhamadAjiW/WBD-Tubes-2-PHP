@@ -162,13 +162,14 @@
 .btn-catalog{
     width: 100px;
     border-radius: 0;
-    min-height: 100%;
     font-size: 16px;
     border: 0;
     background-color: transparent;
     color: #2a2a2a;
     cursor: pointer;
     transition: 0.3s;
+    text-align: center;
+    padding: 24px 0;
 }
 
 .btn-catalog:hover{

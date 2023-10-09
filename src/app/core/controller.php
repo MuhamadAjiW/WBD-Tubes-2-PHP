@@ -37,11 +37,11 @@ class Controller{
     }
 
     public function addRel($type, $path){
-        $this->rel = $this->rel . "<link rel=" . "\"" . $type . "\" href=" . "\"" . $path . "\">";
+        $this->rel = $this->rel . "<link defer rel=" . "\"" . $type . "\" href=" . "\"" . $path . "\">";
     }
 
     public function setIcon($path){
-        $icon = "<link rel=\"icon\" href=\"" . $path . "\" sizes=\"any\" type=\"image/svg+xml\">";
+        $icon = "<link defer rel=\"icon\" href=\"" . $path . "\" sizes=\"any\" type=\"image/svg+xml\">";
     }
     public function setTopBar($path){
         $this->topbar = $path;

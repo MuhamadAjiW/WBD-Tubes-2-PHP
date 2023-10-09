@@ -8,7 +8,6 @@ use config\AppConfig;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Books</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <?php echo strip_tags($REL_DATA, '<link>');?>
 </head>
 <body class="gen-body">
@@ -122,6 +121,6 @@ use config\AppConfig;
     
     <?php include "../app/components/ConfirmModal.php"?>
 
-    <script type="text/javascript" src="/public/js/adminbook.js"></script>
+    <script defer type="text/javascript" src="/public/js/adminbook.js"></script>
 </body>
 </html> 

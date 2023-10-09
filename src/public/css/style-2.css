@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
 .gen-body {
   display: flex;
   flex-direction: column;
@@ -300,7 +299,7 @@
   text-align: center;
   padding-top: 5px;
   font-size: 14px;
-  color: #9b9b9b;
+  color: #7b7b7b;
   word-wrap: break-word;
   overflow-wrap: break-word;
   margin: 0;

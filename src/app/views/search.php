@@ -25,7 +25,7 @@
             <h2>Filter</h2>
             
             <div class="select-container">
-                <label>Select Genre</label>
+                <label for="genre-select">Select Genre</label>
                 <select id="genre-select" name="genre" onchange="changeGenre()">
                     <option value="all" <?php if($querydata['genre'] === "all") echo "selected";?>>All</option>
                     <?php
@@ -40,7 +40,7 @@
             </div>
 
             <div class="select-container">
-                <label>Sort by</label>
+                <label for="sort-select">Sort by</label>
                 <select id="sort-select" name="sort" onchange="changeSort()">
                     <option value="title" <?php if($querydata['sort'] === "title") echo "selected";?>>Title</option>
                     <option value="genre" <?php if($querydata['sort'] === "genre") echo "selected";?>>Genre</option>
@@ -55,13 +55,13 @@
                     <input id="desc-input" class="toggle" type="checkbox"  onchange="changeDesc()"
                         <?php if($querydata['desc']) echo "checked";?>
                     ></input>
-                    <label>Descending</label>
+                    <label for="desc-input">Descending</label>
                 </div>    
                 <div class="cluster-h">
                     <input id="graphic-input" class="toggle" type="checkbox" onchange="changeHgcntn()"
                         <?php if($querydata['not_graphic_cntn']) echo "checked";?>
                     ></input>
-                    <label>Hide graphic content</label>
+                    <label for="graphic-input">Hide graphic content</label>
                 </div>
             </div>
         </section>
@@ -90,7 +90,7 @@
     </div>
 
     <?php if(file_exists($FOOTER)) include_once($FOOTER);?>
-    <script src="/public/js/util.js"></script>
-    <script src="/public/js/search.js"></script>
+    <script defer type="text/javascript" src="/public/js/util.js"></script>
+    <script defer type="text/javascript" src="/public/js/search.js"></script>
 </body>
 </html>

@@ -65,7 +65,7 @@ use config\AppConfig;
     </div>
 
     <?php if(file_exists($FOOTER)) include_once($FOOTER);?>
-    <script src="/public/js/home.js"></script>
+    <script defer type="text/javascript" src="/public/js/home.js"></script>
 </body>
 </html>
 

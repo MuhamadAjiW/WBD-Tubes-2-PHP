@@ -31,9 +31,13 @@ function logout(){
   let xhr = new XMLHttpRequest();
   
   xhr.open("POST", "/logout");    
+  xhr.onreadystatechange = function (){
+    if(this.readyState == 4 && this.status == 200){
+        location.href='/login';
+    }
+  }
   xhr.send();
   
-  location.href='/login';
 }
 
 function edit(){
