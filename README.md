@@ -84,7 +84,7 @@
 
 ![Add Review Admin](./doc/screenshots/AddReviewAdmin.png)
 ![Add Review User](./doc/screenshots/AddReviewUser.png)
-![Edit Review](./doc/screenshots/screenshots/EditReview.png)
+![Edit Review](./doc/screenshots/EditReview.png)
 
 ### Edit Audiobook
 
