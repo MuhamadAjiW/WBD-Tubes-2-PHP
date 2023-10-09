@@ -1,20 +1,170 @@
-## Panduan Pengerjaan
-Berikut adalah hal yang harus diperhatikan untuk pengumpulan tugas ini:
-1. Buatlah grup pada Gitlab dengan format "IF3110-2023-01-XX", dengan XX adalah nomor kelompok (untuk K1 dan K2) atau kode kelompok (untuk K3).
-2. Tambahkan anggota tim pada grup anda.
-3. **Fork** pada repository ini dengan organisasi yang telah dibuat.
-4. Ubah hak akses repository hasil Fork anda menjadi **private**.
-5. Hal-hal yang harus diperhatikan.
-    * Silakan commit pada repository anda (hasil fork)
-    * Lakukan beberapa commit dengan pesan yang bermakna, contoh: “add register form”, “fix logout bug”, jangan seperti “final”, “benerin dikit”, “fix bug”.
-    * Disarankan untuk tidak melakukan commit dengan perubahan yang besar karena akan mempengaruhi penilaian (contoh: hanya melakukan satu commit kemudian dikumpulkan).
-    * Commit dari setiap anggota tim akan mempengaruhi penilaian.
-    * Jadi, setiap anggota tim harus melakukan commit yang berpengaruh terhadap proses pembuatan aplikasi.
-    * Sebagai panduan bisa mengikuti [semantic commit](https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716).
-6. Buatlah file README yang berisi:
-    * Deskripsi aplikasi web
-    * Daftar requirement
-    * Cara instalasi
-    * Cara menjalankan server
-    * Screenshot tampilan aplikasi (tidak perlu semua kasus, minimal 1 per halaman), dan 
-    * Penjelasan mengenai pembagian tugas masing-masing anggota (lihat formatnya pada bagian pembagian tugas).
+# Baca.a
+
+> Disusun untuk memenuhi Tugas Milestone 1 - Monolithic PHP & Vanilla Web Application IF3110 Pengembangan Aplikasi Berbasis Web
+
+## Daftar Isi
+
+- [Deskripsi Aplikasi _Web_](#deskripsi-aplikasi-web)
+- [Daftar _Requirement_](#daftar-requirement)
+- [Cara Instalasi](#cara-instalasi)
+- [Cara Menjalankan _Server_](#cara-menjalankan-server)
+- [Screenshot Tampilan Aplikasi](#screenshot-tampilan-aplikasi)
+- [Pembagian Tugas](#pembagian-tugas)
+
+## Deskripsi Aplikasi _Web_
+
+**Baca.a** adalah sebuah aplikasi web yang sederhana namun sangat berguna, dirancang untuk memberikan penilaian terhadap audiobook dan juga memungkinkan pengguna untuk mendengarkannya. Website ini menjadi alat yang penting bagi mereka yang ingin mengevaluasi atau mendengarkan audiobook. Aplikasi ini dikembangkan tanpa mengandalkan framework apapun, menggunakan teknologi seperti PHP, HTML, CSS, dan JavaScript, serta memanfaatkan XHR (XMLHttpRequest) sebagai implementasi Ajax. Untuk penyimpanan data, web ini memanfaatkan database PostgreSQL.
+
+# Daftar requirement
+
+1. Login
+2. Register
+3. Home
+4. Profile
+5. History Review
+6. Search, Sort, dan Filter
+7. List-List Audiobook
+8. Review Audiobook
+9. Edit Audiobook
+10. Detail Audiobook
+11. Add Audiobook
+12. Delete Audiobook
+13. Navbar
+14. Pagination
+15. List-List User
+16. Add User
+17. Delete User
+18. Edit Info User
+
+# Cara instalasi
+
+1. Lakukan pengunduhan _repository_ ini dengan menggunakan perintah `git clone https://gitlab.informatika.org/if3110-2023-01-24/tugas-besar-1-wbd.git` pada terminal komputer Anda.
+2. Pastikan komputer Anda telah menginstalasi dan menjalankan aplikasi Docker.
+3. Lakukan pembuatan _image_ Docker yang akan digunakan oleh aplikasi ini dengan menjalankan perintah `docker-compose up --build -d.` pada terminal _directory_ aplikasi web.
+4. Buatlah sebuah file `.env` yang bersesuaian dengan penggunaan (contoh file tersebut dapat dilihat pada `.env.example`).
+
+# Cara menjalankan server
+
+1. Anda dapat menjalankan program ini dengan menjalankan perintah `docker-compose up -d` pada terminal _directory_ aplikasi web.
+2. Aplikasi web dapat diakses dengan menggunakan browser pada URL `http://localhost:8008/home`.
+3. Aplikasi web dapat dihentikan dengan menjalankan perintah perintah `docker-compose down` pada terminal _directory_ aplikasi web.
+
+# Screenshot tampilan aplikasi
+
+### Login
+
+![Login Page](./doc/screenshots/Login.png)
+
+### Register
+
+![Register Page](./doc/screenshots/SignUp.png)
+
+### Home
+
+![Home Page](./doc/screenshots/Home1.png)
+![Home Page](./doc/screenshots/Home2.png)
+
+### Profile
+
+![Profile](./doc/screenshots/Profile1.png)
+![Profile](./doc/screenshots/Profile2.png)
+
+### History Review
+
+![History Review](./doc/screenshots/HistoryReview1.png)
+![History Review](./doc/screenshots/HistoryReview2.png)
+
+### Search, Sort, dan Filter
+
+![Search, Sort, dan Filter Page](./doc/screenshots/Search-Sort-Filter.png)
+
+### List-List Audiobook
+
+![List-List Audiobook](./doc/screenshots/ListOfAllBook1.png)
+![List-List Audiobook](./doc/screenshots/ListOfAllBook2.png)
+
+### Review Audiobook
+
+![Add Review Admin](./doc/screenshots/AddReviewAdmin.png)
+![Add Review User](./doc/screenshots/AddReviewUser.png)
+![Edit Review](./doc/screenshots/EditReview.png)
+
+### Edit Audiobook
+
+![Edit Audiobook](./doc/screenshots/EditAudiobook.png)
+
+### Detail Audiobook
+
+![Detail Audiobook](./doc/screenshots/DetailAudioBook1.png)
+![Detail Audiobook](./doc/screenshots/DetailAudioBook2.png)
+
+### Add Audiobook
+
+![Add Audiobook](./doc/screenshots/TambahBuku.png)
+
+### Delete Audiobook
+
+![Delete Audiobook](./doc/screenshots/DeleteAudiobook.png)
+
+### List-List User
+
+![List Semua User](./doc/screenshots/ListUser1.png)
+
+### Add User
+
+![Add User](./doc/screenshots/AddUser.png)
+
+### Delete User
+
+![Delete User](./doc/screenshots/HapusUser.png)
+
+### Edit Info User
+
+![Edit User](./doc/screenshots/EditUser.png)
+
+### Error
+
+![Error 404](./doc/screenshots/Error404.png)
+![Error 501](./doc/screenshots/Error501.png)
+
+# Pembagian tugas
+
+## Frontend / Client-side
+
+1. Login: 13521115
+2. Register: 13521115
+3. Home: 13521095
+4. Profile: 13521115
+5. Search, Sort, Filter: 13521095
+6. List-List Audiobook: 13521095
+7. Review Audiobook: 13521127
+8. Edit Audiobook: 13521127
+9. Delete Audiobook: 13521127
+10. Navbar: 13521095
+11. Pagination: 13521095
+12. List-List User: 13521127
+13. Add User: 13521127
+14. Delete User: 13521127
+15. Edit Info User: 13521127
+16. Error : 13521095
+17. Responsive Adjustments: 13521095
+18. Global Styling: 13521095
+
+## Backend / Server-side
+
+1. Login: 13521115
+2. Register: 13521115
+3. Home: 13521095
+4. Profile: 13521115
+5. Search, Sort, Filter: 13521095
+6. List-List Audiobook: 13521095
+7. Review Audiobook: 13521127
+8. Edit Audiobook: 13521127
+9. Delete Audiobook: 13521127
+10. Navbar: 13521095
+11. Pagination: 13521095
+12. List-List User: 13521127
+13. Add User: 13521127
+14. Delete User: 13521127
+15. Edit Info User: 13521127
+16. Initial Project,Routing, Database & Docker Setup: 13521095
