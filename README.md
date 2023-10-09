@@ -119,35 +119,34 @@
 
 ## Frontend / Client-side
 
-1. Login:
-2. Register:
-3. Home:
-4. Profile:
-5. Search, Sort, Filter:
-6. List-List Audiobook:
-7. Review Audiobook:
-8. Edit Audiobook:
-9. Delete Audiobook:
-10. Navbar:
-11. Pagination:
-12. List-List User:
-13. Error :
-14. Responsive Adjustments:
-15. Global Styling:
-16. Initial Design:
+1. Login: 13521115
+2. Register: 13521115
+3. Home: 13521095
+4. Profile: 13521115
+5. Search, Sort, Filter: 13521095
+6. List-List Audiobook: 13521095
+7. Review Audiobook: 13521127
+8. Edit Audiobook: 13521127
+9. Delete Audiobook: 13521127
+10. Navbar: 13521095
+11. Pagination: 13521095
+12. List-List User: 13521127
+13. Error : 13521095
+14. Responsive Adjustments: 13521095
+15. Global Styling: 13521095
 
 ## Backend / Server-side
 
-1. Auth (Login, Register, Logout): 13520016
-2. Guest & Limiting: 13520016, 13520076
-3. Home: 13520073
-4. Search, Sort, Filter: 13520016
-5. Detail Lagu: 13520073
-6. Detail Album: 13520076
-7. Daftar Album: 13520076
-8. Edit Lagu: 13520016, 13520073
-9. Edit Album: 13520016
-10. Tambah Album: 13520016
-11. Tambah Lagu: 13520016
-12. Daftar User: 13520073
-13. Initial Project, Database & Docker Setup: 13520016
+1. Login: 13521115
+2. Register: 13521115
+3. Home: 13521095
+4. Profile: 13521115
+5. Search, Sort, Filter: 13521095
+6. List-List Audiobook: 13521095
+7. Review Audiobook: 13521127
+8. Edit Audiobook: 13521127
+9. Delete Audiobook: 13521127
+10. Navbar: 13521095
+11. Pagination: 13521095
+12. List-List User: 13521127
+13. Initial Project,Routing, Database & Docker Setup: 13521095
