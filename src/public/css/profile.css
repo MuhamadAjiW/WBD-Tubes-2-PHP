@@ -1,0 +1,25 @@
+.user{
+  padding-right: 25px;
+}
+
+.user img {
+  float: right;
+  padding-right: 90px;
+}
+
+@media (max-width: 7in) {
+  .user{
+    padding-right: 0;
+    align-content: center;
+  }
+  .fullscreen.centered{
+    flex-direction: column;
+  }
+  .user img {
+    padding-right: 0;
+  }
+  .long-form{
+    display: flex;
+    width: 95%;
+  }
+}

@@ -1,0 +1,616 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Rubik, sans-serif;
+    font-size: 18px;
+}
+
+.main-content {
+    width: 86%;
+    float: left;
+    min-height: 100vh;
+    margin-left: 14%;
+}
+
+.sidebar, .sidebar-header, .sidebar-body {
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.sidebar {
+    position: fixed;
+    width: 14%;
+    min-height: 100vh;
+    background-color: #3B3131;
+    gap: 2rem;
+    float: left;
+}
+
+.sidebar-header {
+    align-items: center;
+    justify-content: left;
+    margin-top: 40px;
+}
+
+.user-profile-img {
+    width: 120px;
+    height: auto;
+}
+
+.sidebar-body {
+    gap: 1rem;
+    width: 100%;
+}
+
+.section-sidebar {
+    padding-left: 20px;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: 0.75rem;
+    height: 50px;
+}
+
+.section-sidebar:hover {
+    background-color: #544343;
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+#books-icon {
+    font-size: 32px;
+}
+
+#user-icon {
+    font-size: 32px;
+}
+
+#comment-icon {
+    font-size: 32px;
+}
+
+#sign-out-icon {
+    font-size: 32px;
+}
+
+.sidebar-text {
+    font-size: 32px;
+}
+
+h2 {
+    font-family: Rubik, sans-serif;
+    font-size: 35px;
+    font-weight: 500;
+    margin-left: 10px;
+    align-items: center;
+}
+
+.page-header {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 3rem;
+    padding: 0 4rem;
+}
+
+
+
+table {
+    align-items: center;
+    width: 90%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    box-shadow: 0 2px 15px rgba(64, 64, 64, .7);
+    border-radius: 12px 12px 0 0;
+    margin-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+td,
+th {
+    padding: 10px 16px;
+    text-align: center;
+}
+
+th {
+    background-color: #d7b20d;
+    color: #fafafa;
+    font-family: 'Rubik', Sans-serif;
+    font-weight: bold;
+    border: 2px solid rgb(249, 242, 39);
+}
+
+tr {
+    width: 100%;
+    background-color: #fafafa;
+    font-family: 'Rubik', sans-serif;
+  }
+
+tr:nth-child(even) {
+    background-color: #eeeeee;
+}
+
+.admin-buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.edit-button {
+    margin: 0;
+    background-color: rgb(18, 151, 247);
+    height: 30px;
+    color: white;
+}
+
+.add-button {
+    margin: 0;
+    /* margin-left: 68.7%; */
+    width: 100px;
+    height: 35px;
+    font-size: 20px;
+    background-color: rgb(22, 223, 22);
+    color: white;
+}
+
+#add-user-button {
+    margin-left: 69.3%;
+}
+
+#add-review-button {
+    font-size: 16px;
+    margin-left: 66%;
+}
+
+.add-button:active {
+    transform: translateY(4px);
+}
+
+.delete-button {
+    margin: 0;
+    background-color: rgb(240, 61, 41);
+    height: 30px;
+    color: white;
+}
+
+.edit-button:active {
+    transform: translateY(4px);
+}
+
+.delete-button:active {
+    transform: translateY(4px);
+}
+
+.delete-container {
+    padding: 16px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.delete-modal {
+    display: none;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 250px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4);
+    overflow: auto;
+}
+
+.delete-modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto;
+    border: 1px solid #888;
+    width: 60%; 
+    height: 20%;
+}
+
+.delete-modal-btn, .add-book-form-buttons {
+    float: left;
+    width: 50%;
+    border: none;
+    height: 50px;
+    cursor: pointer;
+    font-family: Rubik, sans-serif;
+    font-weight: 700;
+    color: white;
+    opacity: 0.8;
+}
+
+.delete-modal-btn:hover, .add-book-form-buttons:hover {
+    opacity: 1;
+}
+
+#cancel-delete-btn {
+    background-color: #ccc;
+}
+
+#cancel-add-book-btn {
+    background-color: #f44336;
+}
+
+#modal-delete-book-btn {
+    background-color: #f44336;
+}
+
+#modal-delete-user-btn {
+    background-color: #f44336;
+}
+
+#modal-delete-review-btn {
+    background-color: #f44336;
+}
+
+.delete-modal-title {
+    margin: 0;
+    font-family: Rubik, sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.delete-modal-text {
+    margin: 0;
+    font-family: Rubik, sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+/* Modal for Adding review */
+
+.add-modal, .edit-modal {
+    display: none;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 250px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4);
+    overflow: auto;
+}
+
+
+.add-modal-content, .edit-modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+}
+  
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header {
+    padding: 2px 16px;
+    background-color: #edc001;
+    color: white;
+    height: 50px;
+}
+
+.modal-title {
+    margin: 0;
+    margin-top: 7px;
+    text-align: center;
+    justify-content: center;
+    font-size: 25px;
+}
+
+.modal-body {
+    padding: 2px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+#form-reviewtext-input {
+    min-height: 60px;
+    font-weight: 400;
+}
+
+.circular-btn {
+    background-color: #edc001;
+    color: white;
+    height: 40px;
+    width: 20%;
+    margin-right: 40%;
+    margin-left: 39%;
+    justify-content: center;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.circular-btn:active {
+    transform: translateY(4px);
+}
+
+.form-title {
+    font-weight: 700;
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+    margin-right: auto;
+}
+
+.form-input {
+    display: flex;
+    flex-direction: row;
+    margin-right: auto;
+}
+
+#form-add-name-input {
+    margin-right: 43px;
+    background-color: white;
+}
+
+#form-add-book-input {
+    margin-right: 10px;
+    background-color: white;
+}
+
+#form-rating-input {
+    background-color: white;
+}
+
+#form-add-rating-input {
+    margin-left: 10px;
+    background-color: white;
+}
+
+#add-modal-rating {
+    margin-left: 40px;
+}
+
+/* Admin Form Styling */
+
+#admin-form-main-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Rubik, sans-serif;
+}
+
+.page-container-admin-form .admin-form-title {
+    text-align: center;
+    font-size: 41px;
+    font-weight: 600;
+    background: -webkit-linear-gradient(right, #56d8e4, #9f01ea, #56d8e4, #9f01ea);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.page-container-admin-form {
+    max-width: 800px;
+    background: #fff;
+    width: 800px;
+    padding: 25px 40px 10px 40px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+}
+
+.page-container-admin-form form{
+    padding: 30px 0 0 0;
+}
+
+.admin-form-row {
+    display: flex;
+    margin: 32px 0;
+}
+
+.admin-form-input {
+    width: 100%;
+    height: 40px;
+    margin: 0 20px;
+    position: relative;
+}
+
+.admin-form-input-textarea textarea {
+    height: 70px;
+}
+
+.admin-form-input input, 
+.admin-form-input-textarea textarea {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: none;
+    font-size: 17px;
+    border-bottom: 2px solid rgba(0,0,0, 0.12);
+    background: #fff;
+}
+
+
+.admin-form-input input:focus,
+.admin-form-input-textarea textarea:focus {
+    border: none; /* Remove the border on focus */
+    outline: none; /* Remove the default focus outline (optional) */
+}
+
+.admin-form-input input:focus ~ label, .admin-form-input-textarea textarea:focus ~label,
+.admin-form-input input:valid ~ label, .admin-form-input-textarea textarea:valid ~label {
+    transform: translateY(-20px);
+    font-size: 14px;
+    color: #3498db;
+}
+
+.admin-form-input-textarea textarea {
+    resize: none;
+    padding-top: 10px;
+}
+
+.admin-form-input-textarea {
+    margin-top: 1rem;
+}
+
+.admin-form-input label {
+    position: absolute;
+    pointer-events: none;
+    bottom: 10px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.admin-form-input-textarea label {
+    width: 100%;
+    bottom: 40px;
+    background: #fff;
+}
+
+.admin-form-input .underline {
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    width: 100%;
+}
+
+.admin-form-input .underline:before {
+    position: absolute;
+    content: "";
+    height: 2px;
+    width: 100%;
+    background: #3498db;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease;
+}
+
+.admin-form-input input:focus ~ .underline:before,
+.admin-form-input input:valid ~ .underline:before,
+.admin-form-input-textarea textarea:focus ~ .underline:before,
+.admin-form-input-textarea textarea:valid ~ .underline:before {
+    transform: scale(1);
+}
+
+.admin-form-input-textarea textarea:focus {
+    background: #f7f7f7;
+}
+
+.admin-form-buttons {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
+
+#add-review-form-buttons {
+    margin-top: 30px;
+}
+
+.admin-form-cancel-btn {
+    width: 48%;
+    background-color: rgb(240, 44, 44);
+    font-size: 28px;
+    font-family: Rubik, sans-serif;
+    font-weight: 700;
+    color: white;
+    border: none;
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.admin-form-submit-btn {
+    width: 48%;
+    background-color: rgb(42, 137, 239);
+    font-size: 28px;
+    font-family: Rubik, sans-serif;
+    font-weight: 700;
+    color: white;
+    border: none;
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.admin-form-cancel-btn:hover {
+    opacity: 1;
+}
+
+.admin-form-submit-btn:hover {
+    opacity: 1;
+}
+
+#admin-form-row-textarea {
+    margin-bottom: 15px;
+}
+
+.add-user-form-checkbox {
+    position: relative;
+    margin-right: 10px;
+}
+
+#admin-form-row-checkbox {
+    padding-left: 20px;
+    margin-bottom: 12px;
+}
+
+input[type=date]:required:invalid::-webkit-datetime-edit {
+    color: transparent;
+}
+
+input[type=date]:focus::-webkit-datetime-edit {
+    color: black !important;
+}
+
+.admin-form-row-file {
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+
+.admin-form-row-file label {
+    font-size: 16px;
+}
+
+#admin-form-row-checkbox label {
+    font-size: 16px;
+}
+
+.add-book-form-checkbox {
+    margin-right: 10px;
+}
