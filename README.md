@@ -50,70 +50,70 @@
 
 ### Login
 
-![Login Page](../../screenshots/Login.png)
+![Login Page](./doc/screenshots/Login.png)
 
 ### Register
 
-![Register Page](././screenshots/SignUp.png)
+![Register Page](./doc/screenshots/SignUp.png)
 
 ### Home
 
-![Home Page](./screenshots/Home1.png)
-![Home Page](./screenshots/Home2.png)
+![Home Page](./doc/screenshots/Home1.png)
+![Home Page](./doc/screenshots/Home2.png)
 
 ### Profile
 
-![Profile](./screenshots/Profile1.png)
-![Profile](./screenshots/Profile2.png)
+![Profile](./doc/screenshots/Profile1.png)
+![Profile](./doc/screenshots/Profile2.png)
 
 ### History Review
 
-![History Review](./screenshots/HistoryReview1.png)
-![History Review](./screenshots/HistoryReview2.png)
+![History Review](./doc/screenshots/HistoryReview1.png)
+![History Review](./doc/screenshots/HistoryReview2.png)
 
 ### Search, Sort, dan Filter
 
-![Search, Sort, dan Filter Page](./screenshots/Search-Sort-Filter.png)
+![Search, Sort, dan Filter Page](./doc/screenshots/Search-Sort-Filter.png)
 
 ### List-List Audiobook
 
-![List-List Audiobook](./screenshots/ListOfAllBook1.png)
-![List-List Audiobook](./screenshots/ListOfAllBook2.png)
+![List-List Audiobook](./doc/screenshots/ListOfAllBook1.png)
+![List-List Audiobook](./doc/screenshots/ListOfAllBook2.png)
 
 ### Review Audiobook
 
-![Add Review Admin](./screenshots/AddReviewAdmin.png)
-![Add Review User](./screenshots/AddReviewUser.png)
-![Edit Review](EditReview./screenshots/.png)
+![Add Review Admin](./doc/screenshots/AddReviewAdmin.png)
+![Add Review User](./doc/screenshots/AddReviewUser.png)
+![Edit Review](./doc/screenshots/screenshots/.png)
 
 ### Edit Audiobook
 
-![Edit Audiobook](./screenshots/EditAudiobook.png)
+![Edit Audiobook](./doc/screenshots/EditAudiobook.png)
 
 ### Detail Audiobook
 
-![Detail Audiobook](./screenshots/DetailAudioBook1.png)
-![Detail Audiobook](./screenshots/DetailAudioBook2.png)
+![Detail Audiobook](./doc/screenshots/DetailAudioBook1.png)
+![Detail Audiobook](./doc/screenshots/DetailAudioBook2.png)
 
 ### Add Audiobook
 
-![Add Audiobook](./screenshots/TambahBuku.png)
+![Add Audiobook](./doc/screenshots/TambahBuku.png)
 
 ### Delete Audiobook
 
-![Delete Audiobook](./screenshots/DeleteAudioBook.png)
+![Delete Audiobook](./doc/screenshots/DeleteAudioBook.png)
 
 ### List-List User
 
-![List Semua User](./screenshots/ListUser1.png)
-![List Semua User](./screenshots/ListUser2.png)
-![Hapus User](./screenshots/HapusUser.png)
-![Edit User](./screenshots/EditUser.png)
+![List Semua User](./doc/screenshots/ListUser1.png)
+![List Semua User](./doc/screenshots/ListUser2.png)
+![Hapus User](./doc/screenshots/HapusUser.png)
+![Edit User](./doc/screenshots/EditUser.png)
 
 ### Error
 
-![Error 404](./screenshots/Error404.png)
-![Error 501](./screenshots/Error501.png)
+![Error 404](./doc/screenshots/Error404.png)
+![Error 501](./doc/screenshots/Error501.png)
 
 # Pembagian tugas
 
