@@ -1,6 +1,7 @@
 <?php
 
 use app\core\App;
+// use app\core\Seeder;
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -17,6 +18,8 @@ function autoLoad($class_name){
 }
 spl_autoload_register('autoload');
 
+// $seeder = new Seeder;
+// $seeder->seedBooks();
 $app = new App;
 
 ?>

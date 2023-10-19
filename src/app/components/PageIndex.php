@@ -51,7 +51,7 @@
                 else if($offsetR >= $pagelen){
                     for ($i = $pagelen - 4; $i <= $pagelen; $i++){ 
                         if($i === $currentpage){
-                            $buttonconfig = '<a class="btn page-nav-btn-on"> name="navigation button"';
+                            $buttonconfig = '<a class="btn page-nav-btn-on" name="navigation button">';
                         }
                         else{
                             $buttonconfig = '<a class="btn page-nav-btn" name="navigation button"
@@ -62,7 +62,7 @@
                 }else{
                     for ($i = $currentpage - 2; $i <= $currentpage + 2; $i++){ 
                         if($i === $currentpage){
-                            $buttonconfig = '<a class="btn page-nav-btn-on"> name="navigation button"';
+                            $buttonconfig = '<a class="btn page-nav-btn-on" name="navigation button">';
                         }
                         else{
                             $buttonconfig = '<a class="btn page-nav-btn" name="navigation button"

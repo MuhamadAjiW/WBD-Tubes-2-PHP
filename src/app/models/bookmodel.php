@@ -184,7 +184,7 @@ class BookModel{
                     JOIN users u ON b.author_id = u.user_id
                     JOIN
                         (SELECT b.book_id, AVG(rating) as rating_avg
-                            FROM books b JOIN reviews r ON b.book_id = r.book_id
+                            FROM books b LEFT JOIN reviews r ON b.book_id = r.book_id
                             GROUP BY b.book_id) r_avg
                         ON b.book_id = r_avg.book_id
                     WHERE (b.title ILIKE :search or u.name ILIKE :search)";
