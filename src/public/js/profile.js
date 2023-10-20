@@ -78,7 +78,7 @@ function edit(){
       }
   } 
   
-  if (bio === null || typeof bio !== "string" || bio.trim() === "" || bio.length) {
+  if (bio === null || typeof bio !== "string" || bio.trim() === "") {
       bio = "This user does not have a bio";
   } else{
       if (bio.length > 2048){
