@@ -183,5 +183,7 @@ class UserModel{
 
         return $this->database->rowCount();
     }
+
+
 }
 ?>

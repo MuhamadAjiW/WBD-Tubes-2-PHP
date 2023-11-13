@@ -24,6 +24,7 @@ class App {
         $this->router->addRoute('/login', 'app/controllers/Login', 'index', ['GET']);
         $this->router->addPost('/profile', 'app/controllers/Profile', 'profile');
         $this->router->addPost('/login', 'app/controllers/Login', 'login');
+        $this->router->addRoute('/subscriber', 'app/controllers/Subscriber', 'index', ['GET']);
         
         $this->router->addRoute('/register', 'app/controllers/Register', 'index', ['GET']);
         $this->router->addRoute('/admin/books', 'app/controllers/Admin', 'bookView', ['GET']);
@@ -34,6 +35,7 @@ class App {
         $this->router->addPost('/login', 'app/controllers/Login', 'login');
         $this->router->addPost('/register', 'app/controllers/Register', 'register');
         $this->router->addPost('/logout', 'app/controllers/Login', 'logout');
+        $this->router->addPost('/subscriber', 'app/controllers/Subscriber', 'subscriber');
         
         // Public route for page utilities
         $this->router->addRoute('/api/search', 'app/controllers/Search', 'serve', ['GET']);
@@ -60,6 +62,7 @@ class App {
         $this->router->addRoute('/api/user/edit', 'app/controllers/User', 'editUser', ['POST']);
         $this->router->addRoute('/api/user/add', 'app/controllers/User', 'addUser', ["PUT"]);
         $this->router->addRoute('/api/user/delete', 'app/controllers/User', 'deleteUser', ['DELETE']);
+
         
         // Sori masih bingung best practicenya buat post sama put
     }

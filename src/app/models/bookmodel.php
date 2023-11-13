@@ -401,6 +401,12 @@ class BookModel{
 
         return $this->database->fetch();
     }
+    public function getAuthor(){
+        $query = "SELECT username FROM users where user_id IN  (SELECT DISTINCT author_id FROM books)";
+        $this->database->query($query);
+        $result = $this->database->fetchAll();
+        return $result;
+    }
 }
 
 ?>
