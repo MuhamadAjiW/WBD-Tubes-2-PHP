@@ -19,6 +19,10 @@ class AppConfig{
     public const FEATURED_SEED = 3310;
     public const INACTIVITY_THRESHOLD = 86400; //kelogout otomatis kalo ga remember sehari inactive atau sampe browser di close
     public const REMEMBER_THRESHOLD = 2592000; //cookienya bakal masih valid sebulan
+
+    public static function getToken() {
+        return getenv('API_TOKEN');
+    }
 }
 
 ?>

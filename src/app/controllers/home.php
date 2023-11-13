@@ -79,6 +79,8 @@ class Home extends Controller{
         $year = intval(date("Y", strtotime($currentDate)));
         $month = intval(date("m", strtotime($currentDate)));
         $day = intval(date("d", strtotime($currentDate)));
+
+        if($booklen == 0) $booklen = 1;
         $featurednumber =  @abs((intval(AppConfig::FEATURED_SEED * $year) * cos($month) * sin($day)) % $booklen);
         
         $bookmodel = $this->model('BookModel');

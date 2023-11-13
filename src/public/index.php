@@ -1,6 +1,9 @@
 <?php
 
 use app\core\App;
+use app\util\RESTUtil;
+use app\util\SOAPUtil;
+
 // use app\core\Seeder;
 
 if (session_status() === PHP_SESSION_NONE) {
@@ -22,4 +25,9 @@ spl_autoload_register('autoload');
 // $seeder->seedBooks();
 $app = new App;
 
+
+// TODO: Delete later
+echo "Testing connections:\n\n";
+$rest = new SOAPUtil();
+$rest->testRequest();
 ?>

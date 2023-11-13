@@ -1,8 +1,6 @@
 version: "3.3"
 services:
   web:
-    hostname: web_wbd_1
-    image: tubes-wbd-1:latest
     env_file: .env
     ports:
       - 8008:80
@@ -11,10 +9,15 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    depends_on:
+      - db
+    networks:
+      - dockerNet
   db:
-    hostname: db_wbd_1
-    image: postgres:latest
-    env_file: .env
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Aa123456
+      POSTGRES_DB: wbd_db
     ports:
       - 5432:5432
     volumes:
@@ -22,3 +25,9 @@ services:
     build:
       context: ./postgres
       dockerfile: Dockerfile
+    networks:
+      - dockerNet
+networks:
+  dockerNet:
+    external:
+      true
