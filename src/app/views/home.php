@@ -27,6 +27,9 @@ use config\AppConfig;
                     echo '<h1 class="gen-h1 ">Start Exploring</h1>';
                 }
             ?>
+        <button class="btn btn-yellow subscribe" type="submit" name="Premium">Daftar Premium</button>
+
+
             <p>Here's what our reviewers think you should read this today</p>
             <p id="currentdate" style="color:#9b9b9b;text-align:right">date</p>
         </header>
