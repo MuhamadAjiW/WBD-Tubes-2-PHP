@@ -28,6 +28,7 @@ class User extends Controller{
                         header('Content-Type: application/json');
                         
                         http_response_code(200);
+                        unset($userData['password']);
                         echo json_encode($userData);
                         exit;
                     } else {
