@@ -76,7 +76,7 @@ class UserModel{
 
         return $this->database->fetch();
     }
-    
+
     public function fetchUserIDByEmail($email) {
         $query = "SELECT email FROM users WHERE email=:email";
         $this->database->query($query);

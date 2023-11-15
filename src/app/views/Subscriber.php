@@ -20,7 +20,10 @@
               echo '<div class="author-info">';
               echo '<img src="https://tse4.mm.bing.net/th?id=OIP._arhxJRyb58rGEtxa_v_1QHaHa&pid=Api&P=0&h=180" alt="Author Image">';
               echo '<h3>' . $value["username"] . '</h3>';
-              echo '<button class="btn btn-yellow">Subscribe</button>';
+              echo '<form method="POST" action="/subscribe">';
+              echo '<input type="hidden" name="user_number" value="' . $value["username"] . '">';
+              echo '<button class="btn btn-yellow" type="submit" name="subscribe_button">Subscribe</button>';
+              echo '</form>';
               echo '</div>';
           }
       }

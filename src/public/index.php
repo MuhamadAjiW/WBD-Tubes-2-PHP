@@ -27,7 +27,7 @@ $app = new App;
 
 
 // TODO: Delete later
-echo "Testing connections:\n\n";
-$rest = new SOAPUtil();
-$rest->testRequest();
+// echo "Testing connections:\n\n";
+// $rest = new SOAPUtil();
+// $rest->testRequest();
 ?>
