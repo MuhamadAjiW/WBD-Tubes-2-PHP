@@ -56,36 +56,39 @@ Class SOAPUtil{
         
         
         $response = curl_exec($ch);
+        echo "<br>Raw:<br>";
+        echo htmlspecialchars($response);
         
         if (curl_errno($ch)){
             echo "Curl error: " . curl_error($ch);
         }
         
         curl_close($ch);
-        if ($response !== false) {            
+        if ($response !== false) {
             $response_group = $method . "Response";
-            $clean_xml = str_ireplace(['SOAP-ENV:', 'SOAP:', 'S:', 'ns2:'], '', $response);
+            $clean_xml = str_ireplace(['SOAP-ENV:', 'SOAP:', 'S:', 'ns2:', ':xsi', 'xsi:'], '', $response);
             $responseData = simplexml_load_string($clean_xml)->Body->$response_group->return;
             $returnValue = json_decode(json_encode($responseData), true);
 
             // TODO: Delete later
-            echo "<br>Result:<br>";
+            echo "<br><br>Result:<br>";
             echo htmlspecialchars($clean_xml);
             echo "<br>parsed:<br>";
             var_dump($returnValue);
 
             return $returnValue;
         } else {
-            echo 'Failed to retrieve data from the API.';
+            echo '<br><br>Failed to retrieve data from the API.';
         }
     }
 
     public function testRequest(){
         $data = [
-            "message" => "Some message",
+            "user_id" => "4",
+            "author_id" => "4",
         ];
 
-        $this->sendRequest("/api/test", 'TestService', 'hello', $data);
+        $this->sendRequest("/api/subscribe", 'SubscriptionService', 'subscribeRequest', $data);
     }
 }
 
