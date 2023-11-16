@@ -10,15 +10,20 @@
 <img class="sty-bckgrnd" src="/storage/assets/logo.svg" alt="Stylized Background">
 <body class="gen-body">
   <div class="main-content first">
-    <div class="gen-header cluster-h">
-      <h1>Daftar Buku Yang Dibuat User</h1>
+    <div class="gen-header">
+      <h1>User Premium</h1>
     </div>
-    <div class="author">
+    <section id="author-info" class="main-content">
       <div class="author-info-userbooks">
         <img src="/storage/assets/profile.svg" alt="Author Image" style="width: 200px;margin-top: 25px">
         <h2><?=$authorData['name']?></h2>
       </div>
-    </div>
+    </section>
+    <section class="bio" style="border-bottom: 1px solid #e9e9e9">
+      <h3>Biografi</h3>
+      <p><?=$authorData['bio']?></p>
+    </section>
+    <section id="content-booklist">
     <?php
       if (is_array($bookData)) {
         if(empty($bookData)){
@@ -26,7 +31,7 @@
         } else{       
           echo '<div class="book-grid">';
           foreach ($bookData as $key => $value) {
-              echo '<a class="book-grid-mem" name="clickable gridmember with image and brief description" onclick="location.href=\'/detail?bid=' . $value['bookp_id'] . '\'">';
+              echo '<a class="book-grid-mem" name="clickable gridmember with image and brief description" onclick="location.href=\'/detailprem?bid=' . $value['bookp_id'] . '\'">';
               echo '<img class="book-image" src="' . $value['image_path'] . '" alt="image of the book cover">';
               echo '<p class="book-grid-mem-t">' . $value['title'] . '</p>';
               echo '<p class="book-grid-mem-auth">' . $value['genre'] . '</p>';
@@ -40,5 +45,6 @@
           echo 'Data tidak valid atau kosong.';
       }
         ?>
+    </section>
 </body>
 </html>

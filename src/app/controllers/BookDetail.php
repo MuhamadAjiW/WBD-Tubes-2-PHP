@@ -11,10 +11,6 @@ class BookDetail extends Controller{
         $middleware = $this->middleware('AuthMiddleware');
         $middleware->check(false, "/login");
 
-        $this->addRel("stylesheet", "/public/css/topbar.css");
-        $this->addRel("stylesheet", "/public/css/style-2.css");
-        $this->addRel("stylesheet", "/public/css/bookdetail.css");
-
         if(!isset($_GET['bid'])) Router::NotFound();
 
         $book_id = $_GET['bid'];
@@ -65,7 +61,10 @@ class BookDetail extends Controller{
         $rating_avg = number_format($rating_avg, 2);        
 
         $self_review = $reviewmodel->fetchReviewByBookAndUserID($book_id, $_SESSION['user_id']);
-
+        
+        $this->addRel("stylesheet", "/public/css/topbar.css");
+        $this->addRel("stylesheet", "/public/css/style-2.css");
+        $this->addRel("stylesheet", "/public/css/bookdetail.css");
         $this->view('BookDetail', ['book_data' => $book_data, 'author_data' => $author_data, 'review_data' => $review_data, 'review_count' => $review_count, 'self_review' => $self_review, 'rating_avg' => $rating_avg]);
     }
 
@@ -102,7 +101,6 @@ class BookDetail extends Controller{
             http_response_code(500);
         }
     }
-
 }
 
 ?>
