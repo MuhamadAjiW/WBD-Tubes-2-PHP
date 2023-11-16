@@ -26,7 +26,6 @@
         } else{       
           echo '<div class="book-grid">';
           foreach ($bookData as $key => $value) {
-            var_dump($value);
               echo '<a class="book-grid-mem" name="clickable gridmember with image and brief description" onclick="location.href=\'/detail?bid=' . $value['bookp_id'] . '\'">';
               echo '<img class="book-image" src="' . $value['image_path'] . '" alt="image of the book cover">';
               echo '<p class="book-grid-mem-t">' . $value['title'] . '</p>';

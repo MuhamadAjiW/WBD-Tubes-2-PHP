@@ -63,6 +63,7 @@ class UserBooks extends Controller{
         if(!empty($bookData['data'])){
             foreach ($bookData['data'] as $key => &$value) {
                 $value['image_path'] = RESTConfig::getURLsecondary() . "/" . $value['image_path'];
+                $value['release_date'] = date('Y-m-d', strtotime($value['release_date']));
             }
         }
 
