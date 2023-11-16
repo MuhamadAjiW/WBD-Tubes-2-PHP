@@ -27,7 +27,7 @@ use config\AppConfig;
                     echo '<h1 class="gen-h1 ">Start Exploring</h1>';
                 }
             ?>
-            <a class="btn btn-yellow subscribe" onclick="location.href='/subscribe'">Daftar Premium</a>
+            <a class="btn btn-yellow subscribe" onclick="location.href='/subscribe'">Author Khusus</a>
 
 
             <p>Here's what our reviewers think you should read this today</p>

@@ -58,7 +58,17 @@ class Subscriber extends Controller{
             
             Router::redirect("/subscribe");
         }
-        
+    }
+
+    public function deleteSubscriber(){
+        if(isset($_POST["cancel_subscribe_button"])){
+            $user = $_SESSION['user_id'];
+            $author_id = $_POST["author_id"];
+            $data = ["user_id" => $user, "author_id" => $author_id];
+            $this->soap->sendRequest("/api/subscribe", "SubcriptionService", "deleteSubscriptionsOne", $data);
+            
+            Router::redirect("/subscribe");
+        }
     }
 }
 ?>

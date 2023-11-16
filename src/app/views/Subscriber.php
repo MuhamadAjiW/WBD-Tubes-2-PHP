@@ -11,7 +11,7 @@
 <body class="gen-body">
   <div class="main-content first">
     <div class="gen-header cluster-h">
-      <h1>Daftar Author Yang Bisa Di Subscribe</h1>
+      <h1>Author Khusus</h1>
     </div>
     <div class="book-grid" style="margin-top: 15px;">
       <?php
@@ -30,10 +30,18 @@
                 } else{
                   switch ($value['status']) {
                     case 'PENDING':
-                      echo '<p class="subtitle-text" style="font-size:14px">Request pending</p>';
+                      echo '<p class="subtitle-text" style="font-size:14px;margin:0px;padding:14.5px 0px">Request pending</p>';
+                      echo '<form method="POST" action="/unsubscribe" style="margin-top:5px">';
+                      echo '<input type="hidden" name="author_id" value="' . $value["author_id"] . '">';
+                      echo '<button class="btn btn-red" type="submit" name="cancel_subscribe_button">Cancel Request</button>';
+                      echo '</form>';
                       break;
                     case 'ACCEPTED':
                       echo '<a class="btn btn-yellow" onclick="location.href=\'/userbooks?aid=' . $value['author_id']. '\'" style="display:inline-block;font-size:13.3333px">Lihat buku</a>';
+                      echo '<form method="POST" action="/unsubscribe" style="margin-top:5px">';
+                      echo '<input type="hidden" name="author_id" value="' . $value["author_id"] . '">';
+                      echo '<button class="btn btn-red" type="submit" name="cancel_subscribe_button">Unsubscribe</button>';
+                      echo '</form>';
                       break;
                     case 'REJECTED':
                       echo '<p class="subtitle-text" style="font-size:14px;color:red">Request rejected</p>';
