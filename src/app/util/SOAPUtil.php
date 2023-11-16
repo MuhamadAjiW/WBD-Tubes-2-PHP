@@ -35,7 +35,7 @@ Class SOAPUtil{
         $url = SOAPConfig::getURL() . $endpoint;
         
         // TODO: Delete later
-        echo $url . "<br>";
+        // echo $url . "<br>";
 
         $data = $this->getEnvelope($method, $args);
         
@@ -71,10 +71,10 @@ Class SOAPUtil{
             $returnValue = json_decode(json_encode($responseData), true);
 
             // TODO: Delete later
-            echo "<br><br>Result:<br>";
-            echo htmlspecialchars($clean_xml);
-            echo "<br>parsed:<br>";
-            var_dump($returnValue);
+            // echo "<br><br>Result:<br>";
+            // echo htmlspecialchars($clean_xml);
+            // echo "<br>parsed:<br>";
+            // var_dump($returnValue);
 
             return $returnValue;
         } else {

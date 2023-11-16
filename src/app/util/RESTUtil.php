@@ -11,7 +11,7 @@ Class RESTUtil{
         $url = RESTConfig::getURL() . $endpoint;
         
         // TODO: Delete later
-        echo $url . "<br>";
+        // echo $url . "<br>";
 
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -55,8 +55,8 @@ Class RESTUtil{
             $responseData = json_decode($response, true);
             
             // TODO: Delete later
-            echo "<br>Result:<br>";
-            var_dump($responseData);
+            // echo "<br>Result:<br>";
+            // var_dump($responseData);
 
             return $responseData;
         } else {
