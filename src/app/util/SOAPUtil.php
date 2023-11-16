@@ -69,6 +69,15 @@ Class SOAPUtil{
             $clean_xml = str_ireplace(['SOAP-ENV:', 'SOAP:', 'S:', 'ns2:', ':xsi', 'xsi:'], '', $response);
             $responseData = simplexml_load_string($clean_xml)->Body->$response_group->return;
             $returnValue = json_decode(json_encode($responseData), true);
+            if(isset($returnValue['data'])){
+                // Convert to array if it's not already
+                if (!isset($returnValue['data'][0])) {
+                    $returnValue['data'] = [$returnValue['data']];
+                }
+            }
+            if(isset($returnValue['valid'])){
+                $returnValue['valid'] = $returnValue['valid'] === 'true';
+            }
 
             // TODO: Delete later
             // echo "<br><br>Result:<br>";

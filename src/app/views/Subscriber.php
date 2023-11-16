@@ -33,12 +33,10 @@
                       echo '<p class="subtitle-text" style="font-size:14px">Request pending</p>';
                       break;
                     case 'ACCEPTED':
-                      echo '<a class="btn btn-yellow" onclick="location.href=\'/userbooks\'" style="display:inline-block;font-size:13.3333px">Lihat buku</a>';
-                      //TODO: add button to go to booklist
+                      echo '<a class="btn btn-yellow" onclick="location.href=\'/userbooks?aid=' . $value['author_id']. '\'" style="display:inline-block;font-size:13.3333px">Lihat buku</a>';
                       break;
                     case 'REJECTED':
                       echo '<p class="subtitle-text" style="font-size:14px;color:red">Request rejected</p>';
-                      //TODO: Do what?
                       break;
                     
                     default:

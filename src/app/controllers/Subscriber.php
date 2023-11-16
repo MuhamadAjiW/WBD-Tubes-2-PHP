@@ -4,12 +4,8 @@ namespace app\controllers;
 use app\core\Controller;
 use app\core\Request;
 use app\core\Router;
-use app\core\Sessions;
 use app\util\RESTUtil;
 use app\util\SOAPUtil;
-use config\AppConfig;
-use Exception;
-use util;
 
 class Subscriber extends Controller{
     private $rest;
@@ -34,17 +30,19 @@ class Subscriber extends Controller{
         ];
         $subInfo = $this->soap->sendRequest("/api/subscribe", "SubscriptionService", "getSubscriptionsByUser", $params);
         
-        // var_dump($subInfo);
-        // echo "<br><br><br>";
+        var_dump($subInfo);
+        echo "<br><br><br>";
         // var_dump($data);
-
-        foreach ($data['data'] as &$authorData) {
-            foreach ($subInfo['data'] as $subsData) {
-                if ($authorData['author_id'] == $subsData['author_id']) {
-                    $authorData['status'] = $subsData['status'];
+        if(isset($subInfo['data'])){
+            foreach ($data['data'] as &$authorData) {
+                foreach ($subInfo['data'] as $subsData) {
+                    if ($authorData['author_id'] == $subsData['author_id']) {
+                        $authorData['status'] = $subsData['status'];
+                    }
                 }
             }
         }
+
         // echo "<br><br><br>";
         // var_dump($data);
 

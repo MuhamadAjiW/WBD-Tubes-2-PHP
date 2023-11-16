@@ -11,6 +11,7 @@ class Router{
     public function __construct() {
         $this->addRoute('/error/404', 'app/controllers/Error', 'not_found', ['GET']);
         $this->addRoute('/error/501', 'app/controllers/Error', 'not_implemented', ['GET']);
+        $this->addRoute('/error/500', 'app/controllers/Error', 'internal_error', ['GET']);
     }
     
     private function validityCheck($route, $methods, $handler){
@@ -102,6 +103,10 @@ class Router{
 
     public static function NotImplemented(){
         self::redirect('/error/501');
+    }
+
+    public static function InternalError(){
+        self::redirect('/error/500');
     }
 }
 
