@@ -27,9 +27,7 @@ use config\AppConfig;
                     echo '<h1 class="gen-h1 ">Start Exploring</h1>';
                 }
             ?>
-        <form action="/subscriber" method="post">
-            <button class="btn btn-yellow subscribe" type="submit" name="Premium">Daftar Premium</button>
-        </form>
+            <a class="btn btn-yellow subscribe" onclick="location.href='/subscribe'">Daftar Premium</a>
 
 
             <p>Here's what our reviewers think you should read this today</p>

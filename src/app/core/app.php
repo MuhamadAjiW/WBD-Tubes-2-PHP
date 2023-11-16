@@ -24,7 +24,7 @@ class App {
         $this->router->addRoute('/login', 'app/controllers/Login', 'index', ['GET']);
         $this->router->addPost('/profile', 'app/controllers/Profile', 'profile');
         $this->router->addPost('/login', 'app/controllers/Login', 'login');
-        $this->router->addRoute('/subscriber', 'app/controllers/Subscriber', 'index', ['GET']);
+        $this->router->addRoute('/subscribe', 'app/controllers/Subscriber', 'index', ['GET']);
         $this->router->addRoute('/userbooks', 'app/controllers/UserBooks', 'index', ['GET']);
         $this->router->addRoute('/register', 'app/controllers/Register', 'index', ['GET']);
         $this->router->addRoute('/admin/books', 'app/controllers/Admin', 'bookView', ['GET']);
@@ -35,7 +35,7 @@ class App {
         $this->router->addPost('/login', 'app/controllers/Login', 'login');
         $this->router->addPost('/register', 'app/controllers/Register', 'register');
         $this->router->addPost('/logout', 'app/controllers/Login', 'logout');
-        $this->router->addPost('/subscriber', 'app/controllers/Subscriber', 'subscriber');
+        $this->router->addPost('/subscribe', 'app/controllers/Subscriber', 'subscriber');
         
         // Public route for page utilities
         $this->router->addRoute('/api/search', 'app/controllers/Search', 'serve', ['GET']);

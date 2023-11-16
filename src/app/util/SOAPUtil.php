@@ -39,8 +39,8 @@ Class SOAPUtil{
 
         $data = $this->getEnvelope($method, $args);
         
-        echo "Sent data: <br>";
-        echo htmlspecialchars($data) . "<br>";
+        // echo "Sent data: <br>";
+        // echo htmlspecialchars($data) . "<br>";
 
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -56,8 +56,8 @@ Class SOAPUtil{
         
         
         $response = curl_exec($ch);
-        echo "<br>Raw:<br>";
-        echo htmlspecialchars($response);
+        // echo "<br>Raw:<br>";
+        // echo htmlspecialchars($response);
         
         if (curl_errno($ch)){
             echo "Curl error: " . curl_error($ch);
