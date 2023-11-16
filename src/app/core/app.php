@@ -25,7 +25,7 @@ class App {
         $this->router->addPost('/profile', 'app/controllers/Profile', 'profile');
         $this->router->addPost('/login', 'app/controllers/Login', 'login');
         $this->router->addRoute('/subscriber', 'app/controllers/Subscriber', 'index', ['GET']);
-        
+        $this->router->addRoute('/userbooks', 'app/controllers/UserBooks', 'index', ['GET']);
         $this->router->addRoute('/register', 'app/controllers/Register', 'index', ['GET']);
         $this->router->addRoute('/admin/books', 'app/controllers/Admin', 'bookView', ['GET']);
         $this->router->addRoute('/admin/users', 'app/controllers/Admin', 'userView', ['GET']);

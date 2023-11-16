@@ -138,6 +138,43 @@
   flex: 1 0 18%; /* 18% untuk memberikan sedikit ruang antara kotak */
   margin-bottom: 20px; /* Jarak antara baris */
 }
+
+.userbooks-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.userbooks-item {
+  flex-basis: 22%;
+  margin: 30px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.userbooks-item img {
+  width: 100%;
+  height: auto;
+}
+
+.userbooks-item h3 {
+  margin: 0;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.userbooks-item .btn {
+  margin-top: 5px;
+}
+.author-info-userbooks {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.author-info-userbooks img {
+  display: block;
+  margin: 0 auto;
+}
 .btn-red:hover {
   background: #ff6b6b;
 }
