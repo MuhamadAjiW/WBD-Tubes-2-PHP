@@ -64,10 +64,9 @@ class Profile extends Controller{
             }
 
             try{
-
                 if(isset($getResponse['valid']) && $getResponse['valid']){
                     $author_id = $getResponse['data']['author_id'];
-                    $response = $this->rest->sendRequest("/api/authors/" . $username, Request::PATCH_METHOD, json_encode(
+                    $response = $this->rest->sendRequest("/api/authors/" . $author_id, Request::PATCH_METHOD, json_encode(
                         array(
                             "author_id" => $author_id,
                             "username" => $username,

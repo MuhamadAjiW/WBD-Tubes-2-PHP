@@ -37,7 +37,7 @@
                       echo '</form>';
                       break;
                     case 'ACCEPTED':
-                      echo '<a class="btn btn-yellow" onclick="location.href=\'/userbooks?aid=' . $value['author_id']. '\'" style="display:inline-block;font-size:13.3333px">Lihat buku</a>';
+                      echo '<a class="btn btn-yellow" onclick="location.href=\'/userbooks?aid=' . $value['author_id']. '\'" style="display:inline-block;font-size:13.3333px">Lihat detail</a>';
                       echo '<form method="POST" action="/unsubscribe" style="margin-top:5px">';
                       echo '<input type="hidden" name="author_id" value="' . $value["author_id"] . '">';
                       echo '<button class="btn btn-red" type="submit" name="cancel_subscribe_button">Unsubscribe</button>';
