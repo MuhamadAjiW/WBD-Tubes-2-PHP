@@ -19,7 +19,7 @@
 
 **Baca.a** adalah sebuah aplikasi web yang sederhana namun sangat berguna, dirancang untuk memberikan penilaian terhadap audiobook dan juga memungkinkan pengguna untuk mendengarkannya. Website ini menjadi alat yang penting bagi mereka yang ingin mengevaluasi atau mendengarkan audiobook. Aplikasi ini dikembangkan tanpa mengandalkan framework apapun, menggunakan teknologi seperti PHP, HTML, CSS, dan JavaScript, serta memanfaatkan XHR (XMLHttpRequest) sebagai implementasi Ajax. Untuk penyimpanan data, web ini memanfaatkan database PostgreSQL.
 
-# Daftar requirement
+## Daftar requirement
 
 1. Login
 2. Register
@@ -40,20 +40,20 @@
 17. Delete User
 18. Edit Info User
 
-# Cara instalasi
+## Cara instalasi
 
 1. Lakukan pengunduhan _repository_ ini dengan menggunakan perintah `git clone https://gitlab.informatika.org/if3110-2023-01-24/tugas-besar-1-wbd.git` pada terminal komputer Anda.
 2. Pastikan komputer Anda telah menginstalasi dan menjalankan aplikasi Docker.
 3. Lakukan pembuatan _image_ Docker yang akan digunakan oleh aplikasi ini dengan menjalankan perintah `docker-compose up --build -d.` pada terminal _directory_ aplikasi web.
 4. Buatlah sebuah file `.env` yang bersesuaian dengan penggunaan (contoh file tersebut dapat dilihat pada `.env.example`).
 
-# Cara menjalankan server
+## Cara menjalankan server
 
 1. Anda dapat menjalankan program ini dengan menjalankan perintah `docker-compose up -d` pada terminal _directory_ aplikasi web.
 2. Aplikasi web dapat diakses dengan menggunakan browser pada URL `http://localhost:8008/home`.
 3. Aplikasi web dapat dihentikan dengan menjalankan perintah perintah `docker-compose down` pada terminal _directory_ aplikasi web.
 
-# Screenshot tampilan aplikasi
+## Screenshot tampilan aplikasi
 
 ### Login
 
@@ -131,7 +131,7 @@
 ![Error 404](./doc/screenshots/Error404.png)
 ![Error 501](./doc/screenshots/Error501.png)
 
-# Screenshot Google Lighthouse
+## Screenshot Google Lighthouse
 
 ### Page Login
 
@@ -165,12 +165,12 @@
 
 ![Page User](./doc/lighthouse/userspage.png)
 
-# Daftar Perubahan
+## Daftar Perubahan
 
 1. Page subscriber
 2. Page daftar buku-buku yang dibuat user(UserBooks)
 
-# Screenshot tampilan aplikasi
+## Screenshot tampilan aplikasi
 
 ### Page Subscriber
 
@@ -181,9 +181,9 @@
 ![Page UserBooks](./doc/screenshots/userbooks.png)
 
 
-# Pembagian tugas
+## Pembagian tugas
 
-## Frontend / Client-side
+### Frontend / Client-side
 
 1. Login: 13521115
 2. Register: 13521115
@@ -206,7 +206,7 @@
 19. Page Subscriber: 13521115
 20. Page UserBooks: 13521115
 
-## Backend / Server-side
+### Backend / Server-side
 
 1. Login: 13521115
 2. Register: 13521115
@@ -228,10 +228,10 @@
 18. Page Detail Buku: 13521095
 19. Integrasi monolithic dengan SOAP dan REST : 13521095
 
-# Angota Kelompok
+## Angota Kelompok
 
-1. Muhamad Aji Wibisoni: 13521095
+1. Muhammad Aji Wibisono: 13521095
 2. Shelma Salsabila: 13521115
-3. Marcel Ryan Anthony : 13521127
+3. Marcel Ryan Antony : 13521127
 
 
