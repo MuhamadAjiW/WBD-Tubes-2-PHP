@@ -158,13 +158,13 @@
 
 ![Page Profile](./doc/lighthouse/profilepage.png)
 
-### Page Subscriber
+### Page Subscribe
 
-![Page Subscriber](./doc/screenshots/subscriber.png)
+![Page Subscribe](./doc/lighthouse/subscribe.png)
 
-### Page detail buku yang dibuat user
+### Page detail author khusus
 
-![Page Detail Buku](./doc/screenshots/.png)bookdetail
+![Page Detail Author Khusus](./doc/lighthouse/userbooks.png)
 
 ## Daftar Perubahan
 
@@ -175,11 +175,11 @@
 
 ### Page Subscriber
 
-![Page Subscriber](./doc/screenshots/subscriber.png)
+![Page Subscribe](./doc/screenshots/subscribe.png)
 
-### Page daftar buku-buku yang dibuat user
+### Page detail author khusus
 
-![Page UserBooks](./doc/screenshots/userbooks.png)
+![Page Detail Author Khusus](./doc/screenshots/userbooks.png)
 
 
 ## Pembagian tugas

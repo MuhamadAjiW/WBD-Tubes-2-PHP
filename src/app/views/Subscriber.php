@@ -20,7 +20,7 @@
             if (is_array($value) && isset($value['username'])) {
                 echo '<div class="author-info" style="margin:15px 15px">';
                 echo '<img src="/storage/assets/profile.svg" alt="Author Image">';
-                echo '<h3 class="title-text" style="font-size:16px">' . $value["name"] . '</h3>';
+                echo '<p class="title-text" style="font-size:16px;font-weight:bold">' . $value["name"] . '</p>';
                 
                 if(!isset($value['status'])){
                   echo '<form method="POST" action="/subscribe">';

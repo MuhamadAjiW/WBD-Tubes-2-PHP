@@ -11,7 +11,7 @@
 <body class="gen-body">
   <div class="main-content first">
     <div class="gen-header">
-      <h1>User Premium</h1>
+      <h1>Author Khusus</h1>
     </div>
     <section id="author-info" class="main-content">
       <div class="author-info-userbooks">
