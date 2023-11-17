@@ -10,8 +10,8 @@
 - [Cara Menjalankan _Server_](#cara-menjalankan-server)
 - [Screenshot Tampilan Aplikasi](#screenshot-tampilan-aplikasi)
 - [Screenshot Google Lighthouse](#screenshot-google-lighthouse)
-- [Daftar _Perubahan_](#daftar-perubahan)
-- [Screenshot _Perubahan_](#screenshot-perubahan)
+- [Daftar Perubahan](#daftar-perubahan)
+- [Screenshot Perubahan](#screenshot-perubahan)
 - [Pembagian Tugas](#pembagian-tugas)
 - [Anggota Kelompok](#anggota-kelompok)
 
