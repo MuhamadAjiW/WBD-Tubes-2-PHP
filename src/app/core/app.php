@@ -68,6 +68,7 @@ class App {
         $this->router->addPost('/subscribe', 'app/controllers/Subscriber', 'subscriber');
         $this->router->addPost('/unsubscribe', 'app/controllers/Subscriber', 'deleteSubscriber');
 
+        $this->router->addPost('/api/users/premium', 'app/controllers/Register', 'registerApi');
         // Sori masih bingung best practicenya buat post sama put
     }
 }

@@ -3,10 +3,22 @@
 namespace app\controllers;
 use app\core\Router;
 use app\core\Controller;
+use app\core\Request;
 use app\models\UserModel;
+use app\util\RESTUtil;
 use Exception;
 
 class Profile extends Controller{
+    private $rest;
+
+    public function __construct() {
+        parent::__construct();
+        $middleware = $this->middleware('AuthMiddleware');
+        $middleware->check(false, "/login");
+
+        $this->rest = new RESTUtil();
+    }
+
     public function index(){
         $this->addRel("stylesheet", "/public/css/style-2.css");
         $this->addRel("stylesheet", "/public/css/auth.css");
@@ -39,6 +51,8 @@ class Profile extends Controller{
             $bio = $_POST['bio'];
             $changeUname = $_POST['changeUname'];
 
+            $getResponse = $this->rest->sendRequest("/api/authors/" . $username, Request::GET_METHOD, null);
+
             if ($changeUname == 'true'){
                 $usernameexist = $usermodel->checkUsernameExists($username);
     
@@ -50,6 +64,20 @@ class Profile extends Controller{
             }
 
             try{
+
+                if(isset($getResponse['valid']) && $getResponse['valid']){
+                    $author_id = $getResponse['data']['author_id'];
+                    $response = $this->rest->sendRequest("/api/authors/" . $username, Request::PATCH_METHOD, json_encode(
+                        array(
+                            "author_id" => $author_id,
+                            "username" => $username,
+                            "name" => $name,
+                            "email" => $email,
+                            "bio" => $bio
+                        )
+                    ));
+                }
+
                 $rows = $usermodel->updateUserData3($user_id, $name, $username, $email, $bio);
                 if($rows){
                     http_response_code(200);
